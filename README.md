@@ -8,7 +8,7 @@ A multiplayer game of chess, with some rules changed to make the game fast-paced
 <br>
 
 # Rules: <br>
-General rules follow the basic game of chess, but there are added special features where turns are executed simulataneously. 
+General rules follow the basic game of chess, but there are added special features where turns are executed simulataneously and such scenarios will be handled accordingly.
 <br>
 <br> Scenario #1: Space Occupancy Conflict ```<extends>``` Turn <br>
 Given two game pieces and both move to occupy the same space in the same turn, when the game attempts to execute the turn, then the priority of the move will be determined by whomever inputted their move the quickest and the slower player’s game piece will be taken. <br>
