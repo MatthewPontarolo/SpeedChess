@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<project default = "compile">
+
+  <property environment="env"/>
+  <property name="project" value="SpeedChess"/>
+
+  <property name="mainClass" value="Main"/>
+
+  <path id="project.class.path">
+    <pathelement path="build"/>
+    <pathelement path="lib/junit-4.8.2.jar"/>
+  </path>
+
+  <target name="compile" description="compile the code">
+    <mkdir dir="build"/> 
+    <javac srcdir="src" destdir="build" includeantruntime="false" debug="true" debuglevel="lines,source" >
+      <classpath refid="project.class.path"/>
+    </javac>
+  </target>
+
+  <target name="run" depends="compile" description="run the game">
+    <java classname="${mainClass}" classpath="build" fork="true"/>
+  </target>
+
+  <target name="clean" description="delete unnecessary files and directories">
+    <delete dir="build" quiet="true" />
+  </target>
+
+</project>
