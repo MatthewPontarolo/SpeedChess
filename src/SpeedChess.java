@@ -54,8 +54,6 @@ public class SpeedChess extends BorderPane {
 			center.getRowConstraints().add(new RowConstraints(50));
 			for (int j = 0; j < 8; j++) {
 				Button button = new Button();
-				//GridPane.setConstraints(button, i, j);
-				//center.getChildren().addAll(button);
 				center.add(button, i, j);
 			}
 		}
