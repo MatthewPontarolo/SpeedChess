@@ -1,3 +1,3 @@
-class PossibleMoves
+public class PossibleMoves
 {
 }
