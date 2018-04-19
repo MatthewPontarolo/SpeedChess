@@ -6,7 +6,7 @@ public class Bishop extends Piece
 {
   // Assuming that we are storing board positions as something like 'C2' (??)
   // possibly changes
-  private Arraylist<Integer> moves;
+  private Arraylist<Point> moves;
 
   // CONSTRUCTOR
   public Bishop(int x, int y)
@@ -15,11 +15,21 @@ public class Bishop extends Piece
     this.setPosition(x, y);
   }
 
-  // Precondition: Piece is on board
+  // Precondition: Piece is on board. get the position of current spot
   // Postcondition: returns array of viable move options and stores into 'moves' arraylist
-  public int validMoves(int position)
+  public void setValidMoves(int x, int y)
   {
-    
+    //all posible moves up toward the left
+    for (int j = y-1, i = x-1; j > -1 && i > -1; j--, i--)
+    {
+      Point coords = new Point(i,j);
+      
+    }
+  }
+
+  public ArrayList<Integer> getValidMoves()
+  {
+
   }
 
   public int move(Board board, int position)
@@ -28,7 +38,6 @@ public class Bishop extends Piece
     // if yes, update position -- setCurrentPosition(position)
     // if no, give error message -- depending on implementation of UI
     // function could just do nothing
-
 
   }
 }

@@ -24,7 +24,7 @@ public class Player
     }
   }
 
-  public setUp()
+  public void setUp()
   {
     int PLACEHOLDER = 0; // FOR POSITION BC WE HAVEN'T DECIDED
     for (int i = 0; i < pawns; i++)

@@ -1,3 +1,5 @@
+java.lang.Object; //import the Point class from Java
+
 public abstract class Piece
 {
   protected int Xposition;
