@@ -10,7 +10,7 @@ public class Board
 
   public Board()
   {
-     setUp(Player player1, Player player2);
+     setUp();
   }
 
   public setUp(Player player1, Player player2)

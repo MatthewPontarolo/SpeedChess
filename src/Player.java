@@ -11,13 +11,13 @@ public class Player
   private int king = 1;
 
   // CONSTRUCTOR
-  public Player(boolean first = TRUE)
+  public Player(boolean first)
   {
-    if (first == TRUE)
+    if (first == true)
     {
       setUp();
     }
-    else if (first == FALSE)
+    else if (first == false)
     {
       // some other
       setUp();

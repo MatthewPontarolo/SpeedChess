@@ -2,8 +2,8 @@ public class GameHost
 {
 
 
-  public Player whitePlayer = new Player();
-  public Player blackPlayer = new Player(FALSE);
+  public Player whitePlayer = new Player(true);
+  public Player blackPlayer = new Player(false);
 
   public Board gameBoard = new Board(whitePlayer, blackPlayer);
 
