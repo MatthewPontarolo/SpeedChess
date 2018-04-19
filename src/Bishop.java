@@ -6,15 +6,16 @@ public class Bishop implements Piece
 {
   // Assuming that we are storing board positions as something like 'C2' (??)
   // possibly changes
-  ENUM currentPosition;
+  int Xposition;
+  int Yposition;
   private Arraylist<Integer> moves;
-  boolean alive;
+  private boolean alive;
 
   // CONSTRUCTOR
-  public Bishop(int position)
+  public Bishop(int x, int y)
   {
     alive = true;
-    this.setCurrentPosition(position);
+    this.setPosition(x, y);
   }
   // check if piece is still on board
   public boolean isAlive()
@@ -33,10 +34,22 @@ public class Bishop implements Piece
   {
     this.alive = alive;
   }
-
-  public void setCurrentPosition(int position)
+  public void getPosition()
   {
 
+  }
+
+  public void setPosition(int x, int y)
+  {
+
+  }
+  public int getXPosition()
+  {
+    return Xposition;
+  }
+  public int getYPosition()
+  {
+    return Yposition;
   }
 
   // Precondition: Piece is on board

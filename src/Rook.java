@@ -5,9 +5,10 @@
 class Rook
 {
   // Assuming that we are storing board positions as something like 'C2'
-  ENUM currentPosition;
+  int Xposition;
+  int Yposition;
   private Arraylist<Integer> moves;
-  boolean alive;
+  private boolean alive;
 
   public Rook(int position)
   {
@@ -32,9 +33,15 @@ class Rook
   {
 
   }
-  public void setCurrentPosition()
+  public void setPosition(int x, int y)
   {
 
+  }
+  public int getXPosition()
+  {
+  }
+  public int getYPosition()
+  {
   }
   // Precondition: Piece is on board
   // Postcondition: returns array of viable move options and stores into 'moves' arraylist

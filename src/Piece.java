@@ -11,9 +11,15 @@ interface Piece
 
   }
   /** SUBJECT TO CHANGE DEPENDING ON HOW WE DECIDE TO STORE BOARD POSITIONS **/
-  public void setCurrentPosition()
+  public void setPosition()
   {
 
+  }
+  public int getXPosition()
+  {
+  }
+  public int getYPosition()
+  {
   }
   // Precondition: Piece is on board
   // Postcondition: returns array of viable move options and stores into 'moves' arraylist

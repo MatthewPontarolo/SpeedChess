@@ -11,9 +11,22 @@ public class Player
   private int king = 1;
 
   // CONSTRUCTOR
-  public Player()
+  public Player(boolean first = TRUE)
   {
-    int PLACEHOLDER = 0;
+    if (first == TRUE)
+    {
+      setUp();
+    }
+    else if (first == FALSE)
+    {
+      // some other
+      setUp();
+    }
+  }
+
+  public setUp()
+  {
+    int PLACEHOLDER = 0; // FOR POSITION BC WE HAVEN'T DECIDED
     for (int i = 0; i < pawns; i++)
     {
       Pieces.add(new Pawn(PLACEHOLDER));

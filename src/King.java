@@ -5,15 +5,16 @@ public class King implements Piece
 {
   // Assuming that we are storing board positions as something like 'C2'
   // ??? will change?
-  ENUM currentPosition;
+  int Xposition;
+  int Yposition;
   private Arraylist<Integer> moves;
-  boolean alive;
+  private boolean alive;
 
   // CONSTRUCTOR
-  public King(int position)
+  public King(int x, int y)
   {
     alive = true;
-    this.setCurrentPosition(position);
+    this.setPosition(x, y);
   }
 
   // check if piece is still on board
@@ -33,9 +34,15 @@ public class King implements Piece
   {
 
   }
-  public void setCurrentPosition()
+  public void setPosition(int x, int y)
   {
 
+  }
+  public int getXPosition()
+  {
+  }
+  public int getYPosition()
+  {
   }
   // Precondition: Piece is on board
   // Postcondition: returns array of viable move options and stores into 'moves' arraylist
