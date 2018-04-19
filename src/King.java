@@ -1,48 +1,17 @@
 /**
 * This class implements the Piece interface and defines the specific behavior
 */
-public class King implements Piece
+public class King extends Piece
 {
   // Assuming that we are storing board positions as something like 'C2'
   // ??? will change?
-  int Xposition;
-  int Yposition;
   private Arraylist<Integer> moves;
-  private boolean alive;
 
   // CONSTRUCTOR
   public King(int x, int y)
   {
-    alive = true;
+    this.setAlive(true);
     this.setPosition(x, y);
-  }
-
-  // check if piece is still on board
-  public boolean isAlive()
-  {
-    if (alive == true)
-    {
-      return true;
-    }
-    else
-    {
-      return false;
-    }
-  }
-
-  public void setAlive()
-  {
-
-  }
-  public void setPosition(int x, int y)
-  {
-
-  }
-  public int getXPosition()
-  {
-  }
-  public int getYPosition()
-  {
   }
   // Precondition: Piece is on board
   // Postcondition: returns array of viable move options and stores into 'moves' arraylist

@@ -2,47 +2,18 @@
 * This class implements the Piece interface and defines the specific behavior
 * associated with game piece 'Rook'
 */
-class Rook
+public class Rook extends Piece
 {
+
   // Assuming that we are storing board positions as something like 'C2'
-  int Xposition;
-  int Yposition;
   private Arraylist<Integer> moves;
-  private boolean alive;
 
-  public Rook(int position)
+  public Rook(int x, int y)
   {
-    alive = true;
-    this.setCurrentPosition(position);
-  }
-
-  // check if piece is still on board
-  public boolean isAlive()
-  {
-    if (alive == true)
-    {
-      return true;
-    }
-    else
-    {
-      return false;
-    }
+    this.setAlive(true);
+    this.setPosition(x, y);
   }
 
-  public void setAlive()
-  {
-
-  }
-  public void setPosition(int x, int y)
-  {
-
-  }
-  public int getXPosition()
-  {
-  }
-  public int getYPosition()
-  {
-  }
   // Precondition: Piece is on board
   // Postcondition: returns array of viable move options and stores into 'moves' arraylist
   public int validMoves(int position)
@@ -57,5 +28,4 @@ class Rook
     // function could just do nothing
 
   }
-
 }

@@ -1,40 +1,34 @@
-interface Piece
+public abstract class Piece
 {
-
+  protected int Xposition;
+  protected int Yposition;
+  protected boolean status;
   // check if piece is still on board
   public boolean isAlive()
   {
+    return status;
   }
 
-  public void setAlive()
+  public void setAlive(boolean alive)
   {
-
+    status = alive;
   }
   /** SUBJECT TO CHANGE DEPENDING ON HOW WE DECIDE TO STORE BOARD POSITIONS **/
-  public void setPosition()
+  public void setPosition(int x, int y)
   {
-
+    Xposition = x;
+    Yposition = y;
   }
+
   public int getXPosition()
   {
+    return Xposition;
   }
+
   public int getYPosition()
   {
+    return Yposition;
   }
-  // Precondition: Piece is on board
-  // Postcondition: returns array of viable move options and stores into 'moves' arraylist
-  public int validMoves(int position)
-  {
-  }
-
-  public int move(Board board, int position)
-  {
-    // check if the position the piece wants to move to is in array of possible moves
-    // if yes, update position -- setCurrentPosition(position)
-    // if no, give error message -- depending on implementation of UI
-    // function could just do nothing
-    // call function from board!
-
-  }
+}
 
 }
