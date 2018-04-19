@@ -30,5 +30,3 @@ public abstract class Piece
     return Yposition;
   }
 }
-
-}

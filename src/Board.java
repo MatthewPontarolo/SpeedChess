@@ -13,7 +13,7 @@ public class Board
      setUp();
   }
 
-  public setUp(Player player1, Player player2)
+  public void setUp(Player player1, Player player2)
   {
     ArrayList<? extends Pieces> pieces_1 = player1.getPieces();
     ArrayList<? extends Pieces> pieces_2 = player2.getPieces();
@@ -31,7 +31,7 @@ public class Board
 
   }
 
-  public getSpot()
+  public Piece getPiece(int x, int y) //return piece at some spot
   {
       //return some combination of horizontal and vertical
   }
