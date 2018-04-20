@@ -7,8 +7,7 @@ public class GameHost
 
   public Board gameBoard = new Board(whitePlayer, blackPlayer);
 
-  public GameHost()
-  {
+  public GameHost() {
 
 
   }

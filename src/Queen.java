@@ -3,12 +3,12 @@
 * associated with game piece 'Queen'
 */
 import java.util.ArrayList;
-import java.lang.Object;
+import java.awt.Point;
 
 public class Queen extends Piece
 {
   // Assuming that we are storing board positions as something like 'C2'
-  private Arraylist<Integer> moves;
+  private ArrayList<Integer> moves;
 
   public Queen(int x, int y)
   {

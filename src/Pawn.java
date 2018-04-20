@@ -4,15 +4,12 @@
 */
 
 import java.util.ArrayList;
-import java.lang.Object;
+import java.awt.Point;
 
 public class Pawn extends Piece
 {
   // Assuming that we are storing board positions as something like 'C2'
   private ArrayList<Integer> moves;
-
-  // Assuming that we are storing board positions as something like 'C2'
-  private Arraylist<Integer> moves;
 
   public Pawn(int x, int y)
   {

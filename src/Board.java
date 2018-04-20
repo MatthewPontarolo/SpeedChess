@@ -9,13 +9,12 @@ public class Board {
   private final char horizontal[] = {'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'};
   private final int vertical[] = {1, 2, 3, 4, 5, 6, 7, 8};
 
-  public Board()
+  public Board(Player player1, Player player2)
   {
-     setUp();
+     setUp(player1, player2);
   }
 
-  public void setUp(/*Player player1, Player player2*/)
-  {
+  public void setUp(Player player1, Player player2) {
     /*ArrayList<? extends Piece> pieces_1 = player1.getPieces();
     ArrayList<? extends Piece> pieces_2 = player2.getPieces();
 

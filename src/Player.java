@@ -21,29 +21,27 @@ public class Player {
     }
   }
 
-  public void setUp()
-  {
+  public void setUp() {
     int PLACEHOLDER = 0; // FOR POSITION BC WE HAVEN'T DECIDED
-    for (int i = 0; i < pawns; i++)
-    {
-      Pieces.add(new Pawn(PLACEHOLDER));
+    for (int i = 0; i < pawns; i++) {
+      pieces.add(new Pawn(PLACEHOLDER));
     }
-    Piece.add(new Rook(PLACEHOLDER));
-    Piece.add(new Rook(PLACEHOLDER));
+	pieces.add(new Rook(PLACEHOLDER));
+	pieces.add(new Rook(PLACEHOLDER));
 
-    Piece.add(new Knight(PLACEHOLDER));
-    Piece.add(new Knight(PLACEHOLDER));
+	pieces.add(new Knight(PLACEHOLDER));
+	pieces.add(new Knight(PLACEHOLDER));
 
-    Piece.add(new Bishop(PLACEHOLDER));
-    Piece.add(new Bishop(PLACEHOLDER));
+	pieces.add(new Bishop(PLACEHOLDER));
+	pieces.add(new Bishop(PLACEHOLDER));
 
-    Piece.add(new Queen(PLACEHOLDER));
-    Piece.add(new King(PLACEHOLDER));
+	pieces.add(new Queen(PLACEHOLDER));
+	pieces.add(new King(PLACEHOLDER));
 
   }
 
   public ArrayList<? extends Piece> getPieces()
   {
-    return Pieces;
+    return pieces;
   }
 }

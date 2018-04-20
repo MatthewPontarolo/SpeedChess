@@ -3,7 +3,7 @@
 */
 
 import java.util.ArrayList;
-import java.lang.Object;
+import java.awt.Point;
 
 public class King extends Piece
 {
