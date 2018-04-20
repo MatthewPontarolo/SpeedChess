@@ -1,4 +1,4 @@
-public static class GameHost {
+public class GameHost {
 
   public static Player whitePlayer = new Player(true);
   public static Player blackPlayer = new Player(false);
