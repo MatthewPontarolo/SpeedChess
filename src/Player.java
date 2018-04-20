@@ -22,21 +22,28 @@ public class Player {
   }
 
   public void setUp() {
-    int PLACEHOLDER = 0; // FOR POSITION BC WE HAVEN'T DECIDED
-    for (int i = 0; i < pawns; i++) {
-      pieces.add(new Pawn(PLACEHOLDER, PLACEHOLDER));
-    }
-	pieces.add(new Rook(PLACEHOLDER, PLACEHOLDER));
-	pieces.add(new Rook(PLACEHOLDER, PLACEHOLDER));
+	int PLACEHOLDER = 0; // FOR POSITION BC WE HAVEN'T DECIDED
+	int offset = 0;
+	if (!first)
+		offset = 7;
 
-	pieces.add(new Knight(PLACEHOLDER, PLACEHOLDER));
-	pieces.add(new Knight(PLACEHOLDER, PLACEHOLDER));
+	for (int i = 0; i < pawns; i++) {
+		pieces.add(new Pawn(i, offset));
+	}
+	if (!first)
+		offset = 6;
 
-	pieces.add(new Bishop(PLACEHOLDER, PLACEHOLDER));
-	pieces.add(new Bishop(PLACEHOLDER, PLACEHOLDER));
+	pieces.add(new Rook(0, 1+offset));
+	pieces.add(new Rook(7, 1+offset));
 
-	pieces.add(new Queen(PLACEHOLDER, PLACEHOLDER));
-	pieces.add(new King(PLACEHOLDER, PLACEHOLDER));
+	pieces.add(new Knight(1, 1+offset));
+	pieces.add(new Knight(6, 1+offset));
+
+	pieces.add(new Bishop(2, 1+offset));
+	pieces.add(new Bishop(5, 1+offset));
+
+	pieces.add(new Queen(3, 1+offset));
+	pieces.add(new King(4, 1+offset));
 
   }
 
