@@ -69,7 +69,7 @@ public class SpeedChess extends BorderPane {
 		//Create pieces
 		buttons[2][4].setText("Pawn");
 		Player p1 = GameHost.whitePlayer;
-		for (Piece p in p1.getPieces()) {
+		for (Piece p : p1.getPieces()) {
 			buttons[p.getXPosition()][p.getYPosition()].setText(p.getName());
 		}
 	}
