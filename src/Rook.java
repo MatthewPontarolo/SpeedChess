@@ -6,30 +6,26 @@
 import java.util.ArrayList;
 import java.awt.Point;
 
-public class Rook extends Piece
-{
+public class Rook extends Piece {
+	// Assuming that we are storing board positions as something like 'C2'
+	private ArrayList<Integer> moves;
 
-  // Assuming that we are storing board positions as something like 'C2'
-  private ArrayList<Integer> moves;
+	public Rook(int x, int y) {
+		this.setAlive(true);
+		this.setPosition(x, y);
+	}
 
-  public Rook(int x, int y)
-  {
-    this.setAlive(true);
-    this.setPosition(x, y);
-  }
+	public ArrayList<Point> getValidMoves() {
+		ArrayList<Point> valid = new ArrayList<Point>();
+		//code
+		return valid;
+	}
 
-  // Precondition: Piece is on board
-  // Postcondition: returns array of viable move options and stores into 'moves' arraylist
-  public int validMoves(int position)
-  {
-  }
+	public int move(Board board, int position) {
+		// check if the position the piece wants to move to is in array of possible moves
+		// if yes, update position -- setCurrentPosition(position)
+		// if no, give error message -- depending on implementation of UI
+		// function could just do nothing
 
-  public int move(Board board, int position)
-  {
-    // check if the position the piece wants to move to is in array of possible moves
-    // if yes, update position -- setCurrentPosition(position)
-    // if no, give error message -- depending on implementation of UI
-    // function could just do nothing
-
-  }
+	}
 }

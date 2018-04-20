@@ -31,9 +31,10 @@ public class Bishop extends Piece
     }
   }
 
-  public ArrayList<Integer> getValidMoves()
-  {
-
+  public ArrayList<Point> getValidMoves() {
+  	ArrayList<Point> valid = new ArrayList<Point>();
+  	//code
+  	return valid;
   }
 
   public int move(Board board, int position)
