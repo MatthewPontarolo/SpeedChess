@@ -33,5 +33,5 @@ public abstract class Piece {
     return Yposition;
   }
 
-  public ArrayList<Point> getValidMoves();
+  public abstract ArrayList<Point> getValidMoves();
 }
