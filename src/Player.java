@@ -24,19 +24,19 @@ public class Player {
   public void setUp() {
     int PLACEHOLDER = 0; // FOR POSITION BC WE HAVEN'T DECIDED
     for (int i = 0; i < pawns; i++) {
-      pieces.add(new Pawn(PLACEHOLDER));
+      pieces.add(new Pawn(PLACEHOLDER, PLACEHOLDER));
     }
-	pieces.add(new Rook(PLACEHOLDER));
-	pieces.add(new Rook(PLACEHOLDER));
+	pieces.add(new Rook(PLACEHOLDER, PLACEHOLDER));
+	pieces.add(new Rook(PLACEHOLDER, PLACEHOLDER));
 
-	pieces.add(new Knight(PLACEHOLDER));
-	pieces.add(new Knight(PLACEHOLDER));
+	pieces.add(new Knight(PLACEHOLDER, PLACEHOLDER));
+	pieces.add(new Knight(PLACEHOLDER, PLACEHOLDER));
 
-	pieces.add(new Bishop(PLACEHOLDER));
-	pieces.add(new Bishop(PLACEHOLDER));
+	pieces.add(new Bishop(PLACEHOLDER, PLACEHOLDER));
+	pieces.add(new Bishop(PLACEHOLDER, PLACEHOLDER));
 
-	pieces.add(new Queen(PLACEHOLDER));
-	pieces.add(new King(PLACEHOLDER));
+	pieces.add(new Queen(PLACEHOLDER, PLACEHOLDER));
+	pieces.add(new King(PLACEHOLDER, PLACEHOLDER));
 
   }
 
