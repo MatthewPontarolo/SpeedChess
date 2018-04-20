@@ -1,10 +1,10 @@
-java.lang.Object; //import the Point class from Java
+import java.lang.Object; //import the Point class from Java
 
-public abstract class Piece
-{
+public abstract class Piece {
   protected int Xposition;
   protected int Yposition;
   protected boolean status;
+
   // check if piece is still on board
   public boolean isAlive()
   {
@@ -15,9 +15,9 @@ public abstract class Piece
   {
     status = alive;
   }
+
   /** SUBJECT TO CHANGE DEPENDING ON HOW WE DECIDE TO STORE BOARD POSITIONS **/
-  public void setPosition(int x, int y)
-  {
+  public void setPosition(int x, int y) {
     Xposition = x;
     Yposition = y;
   }
