@@ -20,7 +20,7 @@ public class Player {
 	int PLACEHOLDER = 0; // FOR POSITION BC WE HAVEN'T DECIDED
 	int offset = 0;
 	if (!first)
-		offset = 6;
+		offset = 5;
 
 	for (int i = 0; i < pawns; i++) {
 		pieces.add(new Pawn(i, 1+offset));
