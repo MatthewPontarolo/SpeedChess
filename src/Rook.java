@@ -15,6 +15,10 @@ public class Rook extends Piece {
 		this.setPosition(x, y);
 	}
 
+	public String getName() {
+		return "Rook";
+	}
+
 	public ArrayList<Point> getValidMoves() {
 		ArrayList<Point> valid = new ArrayList<Point>();
 		//code

@@ -34,4 +34,6 @@ public abstract class Piece {
   }
 
   public abstract ArrayList<Point> getValidMoves();
+
+  public abstract String getName();
 }

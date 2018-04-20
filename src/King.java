@@ -16,6 +16,10 @@ public class King extends Piece {
 		this.setPosition(x, y);
 	}
 
+	public String getName() {
+		return "King";
+	}
+
 	public ArrayList<Point> getValidMoves() {
 		ArrayList<Point> valid = new ArrayList<Point>();
 		//code

@@ -15,6 +15,10 @@ public class Pawn extends Piece {
 		this.setPosition(x, y);
 	}
 
+	public String getName() {
+		return "Pawn";
+	}
+
 	public ArrayList<Point> getValidMoves() {
 		ArrayList<Point> valid = new ArrayList<Point>();
 		//code

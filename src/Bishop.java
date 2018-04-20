@@ -13,10 +13,13 @@ public class Bishop extends Piece
   private ArrayList<Point> moves;
 
   // CONSTRUCTOR
-  public Bishop(int x, int y)
-  {
+  public Bishop(int x, int y) {
     this.setAlive(true);
     this.setPosition(x, y);
+  }
+
+  public String getName() {
+  	return "Bishop";
   }
 
   // Precondition: Piece is on board. get the position of current spot
