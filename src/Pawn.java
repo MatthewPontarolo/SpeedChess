@@ -5,7 +5,7 @@
 public class Pawn extends Piece
 {
   // Assuming that we are storing board positions as something like 'C2'
-  private Arraylist<Integer> moves;
+  private ArrayList<Integer> moves;
 
   // Assuming that we are storing board positions as something like 'C2'
   private Arraylist<Integer> moves;

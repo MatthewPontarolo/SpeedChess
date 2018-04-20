@@ -1,5 +1,6 @@
-public class Player
-{
+import java.util.ArrayList;
+
+public class Player {
   // should default, hold starting # of pieces in arraylist
   // 8 PAWNS, 2 ROOKS, 2 KNIGHTS, 2 BISHOPS, 1 QUEEN, 1 KING
   private ArrayList<? extends Piece> Pieces = new ArrayList<? extends Piece>();
@@ -11,14 +12,10 @@ public class Player
   private int king = 1;
 
   // CONSTRUCTOR
-  public Player(boolean first)
-  {
-    if (first == true)
-    {
+  public Player(boolean first) {
+    if (first) {
       setUp();
-    }
-    else if (first == false)
-    {
+    } else if (!first) {
       // some other
       setUp();
     }

@@ -6,7 +6,7 @@ public class Rook extends Piece
 {
 
   // Assuming that we are storing board positions as something like 'C2'
-  private Arraylist<Integer> moves;
+  private ArrayList<Integer> moves;
 
   public Rook(int x, int y)
   {

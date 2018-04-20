@@ -7,9 +7,6 @@ public class Queen extends Piece
   // Assuming that we are storing board positions as something like 'C2'
   private Arraylist<Integer> moves;
 
-  // Assuming that we are storing board positions as something like 'C2'
-  private Arraylist<Integer> moves;
-
   public Queen(int x, int y)
   {
     this.setAlive(true);

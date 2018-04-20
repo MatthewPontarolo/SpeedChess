@@ -5,7 +5,7 @@
 public class Knight extends Piece
 {
   // Assuming that we are storing board positions as something like 'C2'
-  private Arraylist<Integer> moves;
+  private ArrayList<Integer> moves;
 
   public Knight(int x, int y)
   {

@@ -5,7 +5,7 @@ public class King extends Piece
 {
   // Assuming that we are storing board positions as something like 'C2'
   // ??? will change?
-  private Arraylist<Integer> moves;
+  private ArrayList<Integer> moves;
 
   // CONSTRUCTOR
   public King(int x, int y)

@@ -1,4 +1,5 @@
 import java.lang.Object; //import the Point class from Java
+import java.util.ArrayList;
 
 public abstract class Piece {
   protected int Xposition;

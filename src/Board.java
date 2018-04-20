@@ -1,5 +1,6 @@
-public class Board
-{
+import java.util.ArrayList;
+
+public class Board {
   // 8x8 matrix to store board positions
   private Piece[][] spots = new Piece[8][8];
   private Player[] players;

@@ -6,7 +6,7 @@ public class Bishop extends Piece
 {
   // Assuming that we are storing board positions as something like 'C2' (??)
   // possibly changes
-  private Arraylist<Point> moves;
+  private ArrayList<Point> moves;
 
   // CONSTRUCTOR
   public Bishop(int x, int y)
