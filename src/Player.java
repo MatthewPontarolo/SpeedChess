@@ -20,25 +20,25 @@ public class Player {
 	int PLACEHOLDER = 0; // FOR POSITION BC WE HAVEN'T DECIDED
 	int offset = 0;
 	if (!first)
-		offset = 7;
-
-	for (int i = 0; i < pawns; i++) {
-		pieces.add(new Pawn(i, offset));
-	}
-	if (!first)
 		offset = 6;
 
-	pieces.add(new Rook(0, 1+offset));
-	pieces.add(new Rook(7, 1+offset));
+	for (int i = 0; i < pawns; i++) {
+		pieces.add(new Pawn(i, 1+offset));
+	}
+	if (!first)
+		offset = 7;
 
-	pieces.add(new Knight(1, 1+offset));
-	pieces.add(new Knight(6, 1+offset));
+	pieces.add(new Rook(0, offset));
+	pieces.add(new Rook(7, offset));
 
-	pieces.add(new Bishop(2, 1+offset));
-	pieces.add(new Bishop(5, 1+offset));
+	pieces.add(new Knight(1, offset));
+	pieces.add(new Knight(6, offset));
 
-	pieces.add(new Queen(3, 1+offset));
-	pieces.add(new King(4, 1+offset));
+	pieces.add(new Bishop(2, offset));
+	pieces.add(new Bishop(5, offset));
+
+	pieces.add(new Queen(3, offset));
+	pieces.add(new King(4, offset));
 
   }
 
