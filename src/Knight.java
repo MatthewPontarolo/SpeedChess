@@ -26,6 +26,6 @@ public class Knight extends Piece {
 		// if yes, update position -- setCurrentPosition(position)
 		// if no, give error message -- depending on implementation of UI
 		// function could just do nothing
-
+		return 0;
 	}
 }

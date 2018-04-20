@@ -27,5 +27,6 @@ public class Rook extends Piece {
 		// if no, give error message -- depending on implementation of UI
 		// function could just do nothing
 
+		return 0;
 	}
 }

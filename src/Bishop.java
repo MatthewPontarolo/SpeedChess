@@ -21,13 +21,10 @@ public class Bishop extends Piece
 
   // Precondition: Piece is on board. get the position of current spot
   // Postcondition: returns array of viable move options and stores into 'moves' arraylist
-  public void setValidMoves(int x, int y)
-  {
+  public void setValidMoves(int x, int y) {
     //all posible moves up toward the left
-    for (int j = y-1, i = x-1; j > -1 && i > -1; j--, i--)
-    {
-      Point coords = new Point(i,j);
-      
+    for (int j = y-1, i = x-1; j > -1 && i > -1; j--, i--) {
+      Point coords = new Point(i, j);
     }
   }
 
@@ -37,12 +34,11 @@ public class Bishop extends Piece
   	return valid;
   }
 
-  public int move(Board board, int position)
-  {
+  public int move(Board board, int position) {
     // check if the position the piece wants to move to is in array of possible moves
     // if yes, update position -- setCurrentPosition(position)
     // if no, give error message -- depending on implementation of UI
     // function could just do nothing
-
+	return 0;
   }
 }
