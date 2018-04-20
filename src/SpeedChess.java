@@ -34,32 +34,39 @@ import javafx.geometry.Insets;
 
 public class SpeedChess extends BorderPane {
 
+	Button[][] buttons = new Button[8][8];
+
 	public SpeedChess() {
-		//Setting the top as a temporary test
+		GameHost.initialize();
+
+		//Setting the top as text for now
 		HBox northBox = new HBox(10);
 		setTop(northBox);
 		northBox.setPadding(new Insets(10, 10, 10, 10));
 		northBox.setAlignment(Pos.CENTER);
 		northBox.setStyle("-fx-background-color: #667788;");
 
-		Label testLabel = new Label("This is a test");
+		Label testLabel = new Label("Speed Chess");
 		testLabel.setFont(new Font("Lucida Grande", 18));
 
 		northBox.getChildren().addAll(testLabel);
 
 		//Setting up the chess grid in the center
-		GridPane center = new GridPane();
+		GridPane grid = new GridPane();
 		for (int i = 0; i < 8; i++) {
-			center.getColumnConstraints().add(new ColumnConstraints(50));
-			center.getRowConstraints().add(new RowConstraints(50));
+			grid.getColumnConstraints().add(new ColumnConstraints(50));
+			grid.getRowConstraints().add(new RowConstraints(50));
 			for (int j = 0; j < 8; j++) {
 				Button button = new Button();
-				center.add(button, i, j);
+				grid.add(button, i, j);
+				buttons[i][j] = button;
 			}
 		}
-		center.setAlignment(Pos.CENTER);
-		
-		setCenter(center);
+		grid.setAlignment(Pos.CENTER);
+		setCenter(grid);
+
+		//Create pieces
+		buttons[2][4].setText("Pawn");
 	}
 	
 }

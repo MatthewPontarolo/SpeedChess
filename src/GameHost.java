@@ -1,17 +1,12 @@
-public class GameHost
-{
+public static class GameHost {
 
+  public static Player whitePlayer = new Player(true);
+  public static Player blackPlayer = new Player(false);
 
-  public Player whitePlayer = new Player(true);
-  public Player blackPlayer = new Player(false);
+  public static Board gameBoard = new Board(whitePlayer, blackPlayer);
 
-  public Board gameBoard = new Board(whitePlayer, blackPlayer);
-
-  public GameHost() {
-
+  public static void initialize() {
 
   }
-
-
 
 }

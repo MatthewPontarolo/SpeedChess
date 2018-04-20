@@ -1,3 +1,3 @@
-class TileDisplay
-{
+class TileDisplay {
+
 }

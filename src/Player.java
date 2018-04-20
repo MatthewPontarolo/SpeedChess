@@ -40,8 +40,9 @@ public class Player {
 
   }
 
-  public ArrayList<? extends Piece> getPieces()
+  public ArrayList<Piece> getPieces()
   {
     return pieces;
   }
+
 }
