@@ -13,15 +13,10 @@ public class Player {
 
   // CONSTRUCTOR
   public Player(boolean first) {
-    if (first) {
-      setUp();
-    } else if (!first) {
-      // some other
-      setUp();
-    }
+    setUp(first);
   }
 
-  public void setUp() {
+  public void setUp(bool first) {
 	int PLACEHOLDER = 0; // FOR POSITION BC WE HAVEN'T DECIDED
 	int offset = 0;
 	if (!first)
