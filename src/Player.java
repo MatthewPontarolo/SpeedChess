@@ -16,7 +16,7 @@ public class Player {
     setUp(first);
   }
 
-  public void setUp(bool first) {
+  public void setUp(boolean first) {
 	int PLACEHOLDER = 0; // FOR POSITION BC WE HAVEN'T DECIDED
 	int offset = 0;
 	if (!first)
