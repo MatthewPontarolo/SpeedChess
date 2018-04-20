@@ -2,6 +2,10 @@
 * This class implements the Piece interface and defines the specific behavior
 * associated with game piece 'Rook'
 */
+
+import java.util.ArrayList;
+import java.lang.Object;
+
 public class Rook extends Piece
 {
 

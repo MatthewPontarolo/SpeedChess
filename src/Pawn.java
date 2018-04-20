@@ -2,6 +2,10 @@
 * This class implements the Piece interface and defines the specific behavior
 * associated with game piece 'Pawn'
 */
+
+import java.util.ArrayList;
+import java.lang.Object;
+
 public class Pawn extends Piece
 {
   // Assuming that we are storing board positions as something like 'C2'

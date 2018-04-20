@@ -3,7 +3,7 @@ import java.util.ArrayList;
 public class Player {
   // should default, hold starting # of pieces in arraylist
   // 8 PAWNS, 2 ROOKS, 2 KNIGHTS, 2 BISHOPS, 1 QUEEN, 1 KING
-  private ArrayList<? extends Piece> Pieces = new ArrayList<? extends Piece>();
+  private ArrayList<Piece> pieces = new ArrayList<Piece>();
   private int pawns = 8;
   private int rooks = 2;
   private int knights = 2;

@@ -14,12 +14,12 @@ public class Board {
      setUp();
   }
 
-  public void setUp(Player player1, Player player2)
+  public void setUp(/*Player player1, Player player2*/)
   {
-    ArrayList<? extends Pieces> pieces_1 = player1.getPieces();
-    ArrayList<? extends Pieces> pieces_2 = player2.getPieces();
+    /*ArrayList<? extends Piece> pieces_1 = player1.getPieces();
+    ArrayList<? extends Piece> pieces_2 = player2.getPieces();
 
-    for (int i = 0; i < pieces_1.length(); i++)
+    for (int i = 0; i < pieces_1.size() i++)
     {
       int Xposition = pieces_1.get(i).getXPosition();
       int Yposition = pieces_1.get(i).getYPosition();
@@ -28,7 +28,7 @@ public class Board {
       int Xposition = pieces_2.get(i).getXPosition();
       int Yposition = pieces_2.get(i).getYPosition();
       this.spots[Xposition][Yposition] = pieces_2.get(i);
-    }
+    }*/
 
   }
 
