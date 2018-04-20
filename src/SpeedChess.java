@@ -42,7 +42,7 @@ public class SpeedChess extends BorderPane {
 		//Setting the top as text for now
 		HBox northBox = new HBox(10);
 		setTop(northBox);
-		northBox.setPadding(new Insets(10, 10, 10, 10));
+		northBox.setPadding(new Insets(5, 5, 5, 5));
 		northBox.setAlignment(Pos.CENTER);
 		northBox.setStyle("-fx-background-color: #667788;");
 
@@ -54,8 +54,8 @@ public class SpeedChess extends BorderPane {
 		//Setting up the chess grid in the center
 		GridPane grid = new GridPane();
 		for (int i = 0; i < 8; i++) {
-			grid.getColumnConstraints().add(new ColumnConstraints(50));
-			grid.getRowConstraints().add(new RowConstraints(50));
+			grid.getColumnConstraints().add(new ColumnConstraints(65));
+			grid.getRowConstraints().add(new RowConstraints(65));
 			for (int j = 0; j < 8; j++) {
 				Button button = new Button();
 				grid.add(button, i, j);
