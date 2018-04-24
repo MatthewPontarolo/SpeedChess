@@ -40,10 +40,6 @@ public class Player {
 		pieces.add(new Queen(3, offset));
 		pieces.add(new King(4, offset));
 
-		for (Piece p : pieces) {
-			GameHost.gameBoard.addPiece(p);
-		}
-
 	}
 
 	public ArrayList<Piece> getPieces()

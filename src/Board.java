@@ -15,7 +15,12 @@ public class Board {
 	}
 
 	public void setUp(Player player1, Player player2) {
-
+		for (Piece p : player1.getPieces()) {
+			addPiece(p);
+		}
+		for (Piece p : player2.getPieces()) {
+			addPiece(p);
+		}
 	}
 
 	//return piece at some spot
