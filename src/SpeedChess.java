@@ -61,12 +61,43 @@ public class SpeedChess extends BorderPane {
 				grid.add(button, i, j);
 				buttons[i][j] = button;
 				button.setAlignment(Pos.CENTER);
+
+				button.setOnAction(new EventHandler<ActionEvent> {
+					Board b = GameHost.gameBoard;
+					int x = i;
+					int y = j;
+					if (selectedPiece != null) {
+						if (selectedPiece == b.getPiece(x, y)) {
+							selectedPiece = null;
+						} else {
+							b.movePiece(selectedPiece, x, y);
+						}
+					} else {
+						selectedPiece = b.getPiece(x, y);
+					}
+					redrawBoard();
+				});
 			}
 		}
 		grid.setAlignment(Pos.CENTER);
 		setCenter(grid);
 
 		//Create pieces
+		Player p1 = GameHost.whitePlayer;
+		for (Piece p : p1.getPieces()) {
+			buttons[p.getXPosition()][p.getYPosition()].setText(p.getName());
+		}
+		Player p2 = GameHost.blackPlayer;
+		for (Piece p : p2.getPieces()) {
+			buttons[p.getXPosition()][p.getYPosition()].setText(p.getName());
+		}
+	}
+
+	public void redrawBoard(){
+		for (Button b : buttons) {
+			b.setText("");
+		}
+		//Place pieces
 		Player p1 = GameHost.whitePlayer;
 		for (Piece p : p1.getPieces()) {
 			buttons[p.getXPosition()][p.getYPosition()].setText(p.getName());

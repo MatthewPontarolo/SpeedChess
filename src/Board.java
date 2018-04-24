@@ -15,25 +15,21 @@ public class Board {
 	}
 
 	public void setUp(Player player1, Player player2) {
-		/*ArrayList<Piece> pieces_1 = player1.getPieces();
-		ArrayList<Piece> pieces_2 = player2.getPieces();
-
-		for (int i = 0; i < pieces_1.size() i++) {
-			int Xposition = pieces_1.get(i).getXPosition();
-			int Yposition = pieces_1.get(i).getYPosition();
-			this.spots[Xposition][Yposition] = pieces_1.get(i);
-
-			int Xposition = pieces_2.get(i).getXPosition();
-			int Yposition = pieces_2.get(i).getYPosition();
-			this.spots[Xposition][Yposition] = pieces_2.get(i);
-		}*/
 
 	}
 
 	//return piece at some spot
 	public Piece getPiece(int x, int y) {
-		//return some combination of horizontal and vertical
-		return null;
+		return spots[x][y];
+	}
+
+	public void addPiece(Piece p) {
+		spots[p.getXPosition()][p.getYPosition()] = p;
+	}
+
+	public void movePiece(Piece p, int x, int y) {
+		spots[p.getXPosition()][p.getYPosition()] = null;
+		spots[x][y] = p;
 	}
 
 	public void addPlayer(Player player, int index) {
