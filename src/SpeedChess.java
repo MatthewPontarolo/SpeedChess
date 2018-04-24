@@ -35,6 +35,7 @@ import javafx.geometry.Insets;
 public class SpeedChess extends BorderPane {
 
 	Button[][] buttons = new Button[8][8];
+	Piece selectedPiece = null;
 
 	public SpeedChess() {
 		GameHost.initialize();
