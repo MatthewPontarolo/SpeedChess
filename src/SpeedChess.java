@@ -75,7 +75,12 @@ public class SpeedChess extends BorderPane {
 							if (selectedPiece == b.getPiece(x, y)) {
 								selectedPiece = null;
 							} else {
-								b.movePiece(selectedPiece, x, y);
+								if (b.getPiece(x, y) == null) {
+									b.movePiece(selectedPiece, x, y);
+									selectedPiece = null;
+								} else {
+									System.out.println("Move conflict!");
+								}
 							}
 						} else {
 							selectedPiece = b.getPiece(x, y);
@@ -89,15 +94,17 @@ public class SpeedChess extends BorderPane {
 		grid.setAlignment(Pos.CENTER);
 		setCenter(grid);
 
+		redrawBoard();
+
 		//Create pieces
-		Player p1 = GameHost.whitePlayer;
+		/*Player p1 = GameHost.whitePlayer;
 		for (Piece p : p1.getPieces()) {
 			buttons[p.getXPosition()][p.getYPosition()].setText(p.getName());
 		}
 		Player p2 = GameHost.blackPlayer;
 		for (Piece p : p2.getPieces()) {
 			buttons[p.getXPosition()][p.getYPosition()].setText(p.getName());
-		}
+		}*/
 	}
 
 	public void redrawBoard(){

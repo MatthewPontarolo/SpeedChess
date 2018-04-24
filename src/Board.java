@@ -35,6 +35,7 @@ public class Board {
 	public void movePiece(Piece p, int x, int y) {
 		spots[p.getXPosition()][p.getYPosition()] = null;
 		spots[x][y] = p;
+		p.setPosition(x, y);
 	}
 
 	public void addPlayer(Player player, int index) {
