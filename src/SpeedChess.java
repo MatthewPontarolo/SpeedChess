@@ -68,6 +68,9 @@ public class SpeedChess extends BorderPane {
 				button.setOnAction(new EventHandler<ActionEvent>() {
 					public void handle(ActionEvent event) {
 						Board b = GameHost.gameBoard;
+
+						System.out.println("Clicked at " + x " " + y);
+
 						if (selectedPiece != null) {
 							if (selectedPiece == b.getPiece(x, y)) {
 								selectedPiece = null;
