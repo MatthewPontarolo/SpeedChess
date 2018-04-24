@@ -63,19 +63,21 @@ public class SpeedChess extends BorderPane {
 				button.setAlignment(Pos.CENTER);
 
 				button.setOnAction(new EventHandler<ActionEvent>() {
-					Board b = GameHost.gameBoard;
-					int x = i;
-					int y = j;
-					if (selectedPiece != null) {
-						if (selectedPiece == b.getPiece(x, y)) {
-							selectedPiece = null;
+					public void handle(ActionEvent event) {
+						Board b = GameHost.gameBoard;
+						int x = i;
+						int y = j;
+						if (selectedPiece != null) {
+							if (selectedPiece == b.getPiece(x, y)) {
+								selectedPiece = null;
+							} else {
+								b.movePiece(selectedPiece, x, y);
+							}
 						} else {
-							b.movePiece(selectedPiece, x, y);
+							selectedPiece = b.getPiece(x, y);
 						}
-					} else {
-						selectedPiece = b.getPiece(x, y);
+						redrawBoard();
 					}
-					redrawBoard();
 				});
 			}
 		}
