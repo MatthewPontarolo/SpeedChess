@@ -97,8 +97,9 @@ public class SpeedChess extends BorderPane {
 	}
 
 	public void redrawBoard(){
-		for (Button b : buttons) {
-			b.setText("");
+		for (Button[] bt : buttons) {
+			for (Button b : bt)
+				b.setText("");
 		}
 		//Place pieces
 		Player p1 = GameHost.whitePlayer;

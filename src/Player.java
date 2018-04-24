@@ -41,7 +41,7 @@ public class Player {
 		pieces.add(new King(4, offset));
 
 		for (Piece p : pieces) {
-			Board.gameBoard.addPiece(p);
+			GameHost.gameBoard.addPiece(p);
 		}
 
 	}
