@@ -112,7 +112,8 @@ public class SpeedChess extends BorderPane {
 		for (Button[] bt : buttons) {
 			for (Button b : bt) {
 				b.setText("");
-				b.setGraphic(null);
+				Image im = new Image(getClass().getResourceAsStream("BlankSlot.png"));
+				b.setGraphic(new ImageView(im));
 			}
 		}
 		//Place pieces
