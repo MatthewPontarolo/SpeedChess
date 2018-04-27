@@ -112,6 +112,7 @@ public class SpeedChess extends BorderPane {
 		for (Button[] bt : buttons) {
 			for (Button b : bt) {
 				b.setText("");
+				//Later I can use the coords to determine if it should be a black or white tile
 				Image im = new Image(getClass().getResourceAsStream("BlankSlot.png"));
 				b.setGraphic(new ImageView(im));
 			}
@@ -120,22 +121,14 @@ public class SpeedChess extends BorderPane {
 		Player p1 = GameHost.whitePlayer;
 		for (Piece p : p1.getPieces()) {
 			Button b = buttons[p.getXPosition()][p.getYPosition()];
-			if (p.getName() != "King") {
-				Image im = new Image(getClass().getResourceAsStream(p.getName() + "WhitePiece.png"));
-				b.setGraphic(new ImageView(im));
-			} else {
-				b.setText(p.getName());
-			}
+			Image im = new Image(getClass().getResourceAsStream(p.getName() + "WhitePiece.png"));
+			b.setGraphic(new ImageView(im));
 		}
 		Player p2 = GameHost.blackPlayer;
 		for (Piece p : p2.getPieces()) {
-			Button b = buttons[p.getXPosition()][p.getYPosition()];
-			if (p.getName() != "King") {
-				Image im = new Image(getClass().getResourceAsStream(p.getName() + "BlackPiece.png"));
-				b.setGraphic(new ImageView(im));
-			} else {
-				b.setText(p.getName());
-			}
+			Button b = buttons[p.getXPosition()][p.getYPosition()];\
+			Image im = new Image(getClass().getResourceAsStream(p.getName() + "BlackPiece.png"));
+			b.setGraphic(new ImageView(im));
 		}
 	}
 	
