@@ -16,6 +16,8 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.BorderPane;
@@ -115,7 +117,10 @@ public class SpeedChess extends BorderPane {
 		//Place pieces
 		Player p1 = GameHost.whitePlayer;
 		for (Piece p : p1.getPieces()) {
-			buttons[p.getXPosition()][p.getYPosition()].setText(p.getName());
+			Button b = buttons[p.getXPosition()][p.getYPosition()];
+			b.setText(p.getName());
+			Image im = new Image(getClass().getResourceAsStream("pieceTest.png"));
+			b.setGraphic(new ImageView(im))
 		}
 		Player p2 = GameHost.blackPlayer;
 		for (Piece p : p2.getPieces()) {
