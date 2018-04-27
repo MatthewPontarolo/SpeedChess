@@ -120,8 +120,10 @@ public class SpeedChess extends BorderPane {
 			if (p.getName() == "Pawn") {
 				Image im = new Image(getClass().getResourceAsStream(p.getName() + "WhitePiece.png"));
 				b.setGraphic(new ImageView(im));
+				b.setText("");
 			} else {
 				b.setText(p.getName());
+				b.setGraphic(null);
 			}
 		}
 		Player p2 = GameHost.blackPlayer;
