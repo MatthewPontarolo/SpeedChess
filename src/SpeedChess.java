@@ -117,13 +117,16 @@ public class SpeedChess extends BorderPane {
 		Player p1 = GameHost.whitePlayer;
 		for (Piece p : p1.getPieces()) {
 			Button b = buttons[p.getXPosition()][p.getYPosition()];
-			b.setText(p.getName());
-			Image im = new Image(getClass().getResourceAsStream("pieceTest.png"));
+			//b.setText(p.getName());
+			Image im = new Image(getClass().getResourceAsStream(p.getName() + "WhitePiece.png"));
 			b.setGraphic(new ImageView(im));
 		}
 		Player p2 = GameHost.blackPlayer;
 		for (Piece p : p2.getPieces()) {
-			buttons[p.getXPosition()][p.getYPosition()].setText(p.getName());
+			Button b = buttons[p.getXPosition()][p.getYPosition()];
+			//b.setText(p.getName());
+			Image im = new Image(getClass().getResourceAsStream(p.getName() + "BlackPiece.png"));
+			b.setGraphic(new ImageView(im));
 		}
 	}
 	
