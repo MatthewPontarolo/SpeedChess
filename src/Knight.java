@@ -20,6 +20,11 @@ public class Knight extends Piece {
 	}
 
 	public void setValidMoves(Board board, int x, int y) {
+		int vForward = y++;
+		int vBackward = y--;
+		while (board.getPiece(x, vForward) == null)
+		{
+			
 	}
 
 	public ArrayList<Point> getValidMoves(Board board) {
@@ -33,7 +38,7 @@ public class Knight extends Piece {
 		// if yes, update position -- setPosition(position)
 		// if no, give error message -- depending on implementation of UI
 		// function could just do nothing
-	
+
 		// no valid moves found
 		// error message in UI
 
