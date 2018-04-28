@@ -8,7 +8,7 @@ import java.awt.Point;
 
 public class Knight extends Piece {
 	// Assuming that we are storing board positions as something like 'C2'
-	private ArrayList<Integer> moves;
+	private ArrayList<Point> moves;
 
 	public Knight(int x, int y) {
 		this.setAlive(true);
@@ -19,17 +19,24 @@ public class Knight extends Piece {
 		return "Knight";
 	}
 
-	public ArrayList<Point> getValidMoves() {
+	public void setValidMoves(Board board, int x, int y) {
+	}
+
+	public ArrayList<Point> getValidMoves(Board board) {
 		ArrayList<Point> valid = new ArrayList<Point>();
 		//code
 		return valid;
 	}
 
-	public int move(Board board, int position) {
+	public int move(Board board, Point position) {
 		// check if the position the piece wants to move to is in array of possible moves
-		// if yes, update position -- setCurrentPosition(position)
+		// if yes, update position -- setPosition(position)
 		// if no, give error message -- depending on implementation of UI
 		// function could just do nothing
+	
+		// no valid moves found
+		// error message in UI
+
 		return 0;
 	}
 }

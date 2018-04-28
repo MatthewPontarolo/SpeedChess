@@ -8,7 +8,7 @@ import java.awt.Point;
 public class King extends Piece {
 	// Assuming that we are storing board positions as something like 'C2'
 	// ??? will change?
-	private ArrayList<Integer> moves;
+	private ArrayList<Point> moves;
 
 	// CONSTRUCTOR
 	public King(int x, int y) {
@@ -20,7 +20,10 @@ public class King extends Piece {
 		return "King";
 	}
 
-	public ArrayList<Point> getValidMoves() {
+	public void setValidMoves(Board board, int x, int y) {
+	}
+
+	public ArrayList<Point> getValidMoves(Board board) {
 		ArrayList<Point> valid = new ArrayList<Point>();
 		//code
 		return valid;
@@ -32,6 +35,9 @@ public class King extends Piece {
 		// if no, give error message -- depending on implementation of UI
 		// function could just do nothing
 
+		
+		// no valid moves found
+		// error message in UI
 		return 0;
 	}
 }

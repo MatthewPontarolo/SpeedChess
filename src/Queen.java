@@ -7,7 +7,7 @@ import java.awt.Point;
 
 public class Queen extends Piece {
 	// Assuming that we are storing board positions as something like 'C2'
-	private ArrayList<Integer> moves;
+	private ArrayList<Point> moves;
 
 	public Queen(int x, int y) {
 		this.setAlive(true);
@@ -18,7 +18,10 @@ public class Queen extends Piece {
 		return "Queen";
 	}
 
-	public ArrayList<Point> getValidMoves() {
+	public void setValidMoves(Board board, int x, int y) {
+	}
+
+	public ArrayList<Point> getValidMoves(Board board) {
 		ArrayList<Point> valid = new ArrayList<Point>();
 		//code
 		return valid;
@@ -29,6 +32,9 @@ public class Queen extends Piece {
 		// if yes, update position -- setCurrentPosition(position)
 		// if no, give error message -- depending on implementation of UI
 		// function could just do nothing
+	
+		// no valid moves found
+		// error message in UI
 
 		return 0;
 	}
