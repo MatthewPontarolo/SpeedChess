@@ -8,7 +8,7 @@ import java.awt.Point;
 
 public class Knight extends Piece {
 	// Assuming that we are storing board positions as something like 'C2'
-	private ArrayList<Point> moves;
+	private ArrayList<Point> moves = new ArrayList<Point>();
 
 	public Knight(int x, int y) {
 		this.setAlive(true);
@@ -33,7 +33,7 @@ public class Knight extends Piece {
 		// if yes, update position -- setPosition(position)
 		// if no, give error message -- depending on implementation of UI
 		// function could just do nothing
-	
+
 		// no valid moves found
 		// error message in UI
 

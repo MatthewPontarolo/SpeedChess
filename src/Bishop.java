@@ -10,7 +10,7 @@ public class Bishop extends Piece
 {
   // Assuming that we are storing board positions as something like 'C2' (??)
   // possibly changes
-  private ArrayList<Point> moves;
+  private ArrayList<Point> moves  = new ArrayList<Point>();
 
   // CONSTRUCTOR
   public Bishop(int x, int y) {
@@ -28,53 +28,85 @@ public class Bishop extends Piece
     //all posible moves up toward the left
     // all possible moves from spot
       // check if occupied, if yes don't add, if no, add
-    for (int j = y-1, i = x-1; j > -1 && i > -1; j--, i--) {
-      Point coords = new Point(i, j);
-    }
+
     // left side bishop -- figure out how to distinguish later
-    int xForward = x++;
-    int yForward = y++;
+    int xForward = x+1;
+    int yForward = y+1;
     // diagonal forward, once anything is in the way, stop
-    while ((board.getPiece(xForward, yForward) == null))
+    while (xForward <=8 && yForward <= 8 && xForward >= 0 && yForward >=0)
     {
-      Point move = new Point(xForward, yForward);
-      moves.add(move);
-      xForward++;
-      yForward++;
+      if ((board.getPiece(xForward, yForward) == null))
+      {
+        Point move = new Point(xForward, yForward);
+        moves.add(move);
+        xForward++;
+        yForward++;
+        System.out.println("left-forward");
+      }
+      else
+      {
+        break;
+      }
     }
 
-    int xBackward = x--;
-    int yBackward = y--;
+    int xBackward = x-1;
+    int yBackward = y-1;
     // diagonal backwards, once anything is in the way, stop
-    while (board.getPiece(xBackward, yBackward) == null)
+    while (xBackward<=8 && yBackward<= 8 && xBackward >= 0 && yBackward >=0)
     {
-      Point move = new Point(xBackward, yBackward);
-      moves.add(move);
-      xBackward--;
-      yBackward--;
+      if (board.getPiece(xBackward, yBackward) == null)
+      {
+        Point move = new Point(xBackward, yBackward);
+        moves.add(move);
+        xBackward--;
+        yBackward--;
+        System.out.println("left-backward");
+      }
+      else
+      {
+        break;
+      }
     }
 
     // right side bishop
-    xForward = x--;
-    yForward = y++;
+    xForward = x-1;
+    yForward = y+1;
     // diagonal forward, once anything is in the way, stop
-    while ((board.getPiece(xForward, yForward) == null))
+    while (xForward <= 8 && yForward <= 8 && xForward >= 0 && yForward >= 0)
     {
-      Point move = new Point(xForward, yForward);
-      moves.add(move);
-      xForward--;
-      yForward++;
+      if ((board.getPiece(xForward, yForward) == null))
+      {
+        Point move = new Point(xForward, yForward);
+        moves.add(move);
+        xForward--;
+        yForward++;
+        System.out.println("right-forward");
+      }
+      else
+      {
+        break;
+      }
+
     }
 
-    xBackward = x++;
-    yBackward = y--;
+    xBackward = x+1;
+    yBackward = y-1;
     // diagonal backwards, once anything is in the way, stop
-    while (board.getPiece(xBackward, yBackward) == null)
+    while (xBackward <=8 && yBackward <= 8 && xBackward >= 0 && yBackward >=0)
     {
-      Point move = new Point(xBackward, yBackward);
-      moves.add(move);
-      xBackward++;
-      yBackward--;
+      if (board.getPiece(xBackward, yBackward) == null)
+      {
+        Point move = new Point(xBackward, yBackward);
+        moves.add(move);
+        xBackward++;
+        yBackward--;
+        System.out.println("right-backward");
+
+      }
+      else
+      {
+        break;
+      }
     }
 	}
 

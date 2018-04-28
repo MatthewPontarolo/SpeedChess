@@ -32,6 +32,8 @@ import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import javafx.geometry.Pos;
 import javafx.geometry.Insets;
+import java.util.ArrayList;
+import java.awt.Point;
 
 public class SpeedChess extends BorderPane {
 
@@ -86,6 +88,20 @@ public class SpeedChess extends BorderPane {
 						} else {
 							selectedPiece = b.getPiece(x, y);
 						}
+
+						if (selectedPiece != null)
+						{
+							//ArrayList<Point> k = selectedPiece.getValidMoves(b);
+							//Bishop p = new Bishop(1,6);
+							//Piece p = selectedPiece;
+							Pawn p = new Pawn(1,6);
+							ArrayList<Point> k = p.getValidMoves(b);
+							for (int i = 0; i < k.size(); i++)
+							{
+								System.out.println(k.get(i).getX() + ", " + k.get(i).getY());
+							}
+
+						}
 						System.out.println("selected piece is now: " + selectedPiece);
 						redrawBoard();
 					}
@@ -131,5 +147,5 @@ public class SpeedChess extends BorderPane {
 			b.setGraphic(new ImageView(im));
 		}
 	}
-	
+
 }

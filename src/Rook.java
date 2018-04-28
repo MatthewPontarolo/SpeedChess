@@ -8,7 +8,7 @@ import java.awt.Point;
 
 public class Rook extends Piece {
 	// Assuming that we are storing board positions as something like 'C2'
-	private ArrayList<Point> moves;
+	private ArrayList<Point> moves  = new ArrayList<Point>();
 
 	public Rook(int x, int y) {
 		this.setAlive(true);
