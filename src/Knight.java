@@ -20,6 +20,11 @@ public class Knight extends Piece {
 	}
 
 	public void setValidMoves(Board board, int x, int y) {
+		int vForward = y++;
+		int vBackward = y--;
+		while (board.getPiece(x, vForward) == null)
+		{
+			
 	}
 
 	public ArrayList<Point> getValidMoves(Board board) {
