@@ -8,7 +8,7 @@ import java.awt.Point;
 
 public class Pawn extends Piece {
 	// Assuming that we are storing board positions as something like 'C2'
-	private ArrayList<Point> moves;
+	private ArrayList<Point> moves = new ArrayList<Point>();
 	private boolean firstMove = true;
 
 	public Pawn(int x, int y) {
@@ -24,39 +24,40 @@ public class Pawn extends Piece {
 	// either have it called explicitly or through helper function
 	public void setValidMoves(Board board, int x, int y) {
 		// if this is pawn's first move, it can move two squares forward
+		Piece nullPiece = null;
 		if (firstMove == true)
 		{
-			int X_move = 0;
-			int Y_move = 2;
-			Point firstMove = new Point(X_move, Y_move);
+			Point firstMove = new Point(x, y+2);
 			moves.add(firstMove);
 		}
-		else
+		// if a piece is occupying a square diagonal from pawn, it can capture
+		if (board.getPiece(x+1, y+1) != null)
 		{
-			// if a piece is occupying a square diagonal from pawn, it can capture
-			if (board.getPiece(x++, y++) != null)
+			if (x+1 <=8 && y+1 <= 8 && x+1 >= 0 && y+1 >=0)
 			{
-				int X_move = x++;
-				int Y_move = y++;
-				Point move = new Point(X_move, Y_move);
-				moves.add(move);
-			}
-			if (board.getPiece(x--, y++) != null)
-			{
-				int X_move = x--;
-				int Y_move = y++;
-				Point move = new Point(X_move, Y_move);
-				moves.add(move);
-			}
-			// if no piece is in front of pawn, it can move forward one square
-			if (board.getPiece(x, y++) == null)
-			{
-				int X_move = x;
-				int Y_move = y++;
-				Point move = new Point(X_move, Y_move);
+				Point move = new Point(x+1, y+1);
 				moves.add(move);
 			}
 		}
+
+		if (board.getPiece(x-1, y+1) != null)
+		{
+			if (x-1 <=8 && y+1 <= 8 && x-1 >= 0 && y+1 >=0)
+			{
+				Point move = new Point(x-1, y+1);
+				moves.add(move);
+			}
+		}
+		// if no piece is in front of pawn, it can move forward one square
+		if (board.getPiece(x, y+1) == null)
+		{
+			if (x <=8 && y+1 <= 8 && x >= 0 && y+1 >=0)
+			{
+				Point move = new Point(x, y+1);
+				moves.add(move);
+			}
+		}
+
 	}
 
 	// for UI, call selectedPiece.getValidMoves(gameBoard)
@@ -64,6 +65,7 @@ public class Pawn extends Piece {
 	  // NOTE: will possibly reconsider use of Points bc of return type double
 	public ArrayList<Point> getValidMoves(Board board)
 	{
+
 		this.setValidMoves(board, Xposition, Yposition);
 		return moves;
 	}
