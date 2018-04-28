@@ -22,8 +22,8 @@ public class Rook extends Piece {
 	public void setValidMoves(Board board, int x, int y)
 	{
 		// move vertically, if anything blocking, stop immediately
-		int vForward = y++;
-		int vBackward = y--;
+		int vForward = y+1;
+		int vBackward = y-1;
 		while (board.getPiece(x, vForward) == null)
 		{
 			Point move = new Point(x, vForward);
@@ -39,8 +39,8 @@ public class Rook extends Piece {
 		}
 
 		// move horizontally, if anything blocking, stop immediately
-		int hForward = x++;
-		int hBackward = x--;
+		int hForward = x+1;
+		int hBackward = x-1;
 		while (board.getPiece(hForward, y) == null)
 		{
 			Point move = new Point(hForward, y);
