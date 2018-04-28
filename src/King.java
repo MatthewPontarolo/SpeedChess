@@ -21,6 +21,17 @@ public class King extends Piece {
 	}
 
 	public void setValidMoves(Board board, int x, int y) {
+		for (int i = 0; i < x+1; i++)
+		{
+			for (int j = 0; j < y+1; j++)
+			{
+				if(i != x && j != y)
+				{
+					Point move = new Point(i, j);
+					moves.add(move);
+				}
+			}
+		}
 	}
 
 	public ArrayList<Point> getValidMoves(Board board) {
@@ -35,7 +46,7 @@ public class King extends Piece {
 		// if no, give error message -- depending on implementation of UI
 		// function could just do nothing
 
-		
+
 		// no valid moves found
 		// error message in UI
 		return 0;
