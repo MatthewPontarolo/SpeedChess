@@ -23,69 +23,90 @@ public class Queen extends Piece {
 		int vBackward = y--;
 		while (board.getPiece(x, vForward) == null)
 		{
-			Point move = new Point(x, vForward);
-			moves.add(move);
-			vForward++;
+			if(x < 8 && vForward < 8 && x >= 0 && vForward >= 0)
+			{
+				Point move = new Point(x, vForward);
+				moves.add(move);
+				vForward++;
+			}
 		}
 		while (board.getPiece(x, vBackward) == null)
 		{
-			Point move = new Point(x, vBackward);
-			moves.add(move);
-			vBackward--;
+			if(x < 8 && vForward < 8 && x >= 0 && vForward >= 0)
+			{
+				Point move = new Point(x, vBackward);
+				moves.add(move);
+				vBackward--;
+			}
 		}
 		int hForward = x++;
 		int hBackward = x--;
 		while (board.getPiece(hForward, y) == null)
 		{
-			Point move = new Point(hForward, y);
-			moves.add(move);
-			hForward++;
+			if(x < 8 && vForward < 8 && x >= 0 && vForward >= 0)
+			{
+				Point move = new Point(hForward, y);
+				moves.add(move);
+				hForward++;
+			}
 		}
 		while (board.getPiece(hBackward, y) == null)
 		{
-			Point move = new Point(hBackward, y);
-			moves.add(move);
-			hBackward++;
+			if(x < 8 && vForward < 8 && x >= 0 && vForward >= 0)
+			{
+				Point move = new Point(hBackward, y);
+				moves.add(move);
+				hBackward++;
+			}
 		}
-		for (int j = y-1; i = x-1; j > -1 && i > -1; j--, i--)
-		{
-			Point coords = new Point(i, j);
-		}
+
 		int xForward = x++;
 		int yForward = y++;
 		while (board.getPiece(xForward, yForward) == null)
 		{
-			Point move = new Point(xFoward, yForward);
-			moves.add(move);
-			xForward++;
-			yFoward++;
+			if(x < 8 && vForward < 8 && x >= 0 && vForward >= 0)
+			{
+				Point move = new Point(xFoward, yForward);
+				moves.add(move);
+				xForward++;
+				yFoward++;
+			}
 		}
 		int xBackward = x--;
 		int yBackward = y--;
 		while (board.getPiece(xBackward, yBackward) == null)
 		{
-			Point move = new Point(xBackward, yBackward);
-			moves.add(move);
-			xBackward--;
-			yBackward--;
+			if(x < 8 && vForward < 8 && x >= 0 && vForward >= 0)
+			{
+				Point move = new Point(xBackward, yBackward);
+				moves.add(move);
+				xBackward--;
+				yBackward--;
+			}
 		}
 		xForward = x--;
 		yForward = y++;
 		while (board.getPiece(xForward, yForward) == null)
 		{
-			Point move = new Point(xForward, yForward);
-      moves.add(move);
-      xForward--;
-      yForward++;
+			if(x < 8 && vForward < 8 && x >= 0 && vForward >= 0)
+			{
+				Point move = new Point(xForward, yForward);
+	      moves.add(move);
+	      xForward--;
+	      yForward++;
+			}
 		}
 		xBackward = x++;
 		yBackward = y--;
 		while (board.getPiece(xBackward, yBackward) == null)
 		{
-			Point move = new Point(xBackward, yBackward);
-			moves.add(move);
-			xBackward++;
-			yBackward--;
+			if(x < 8 && vForward < 8 && x >= 0 && vForward >= 0)
+			{
+				Point move = new Point(xBackward, yBackward);
+				moves.add(move);
+				xBackward++;
+				yBackward--;
+			}
 		}
 	}
 

@@ -86,6 +86,22 @@ public class SpeedChess extends BorderPane {
 						} else {
 							selectedPiece = b.getPiece(x, y);
 						}
+
+						//test if valid moves is highlighting the right moves
+						if (selectedPiece != null)
+						{
+							//ArrayList<Point> k = selectedPiece.getValidMoves(b);
+							Queen q = new Queen(1,6);
+							//Piece p = selectedPiece;
+							ArrayList<Point> k = p.getValidMoves(b);
+							for (int i = 0; i < k.size(); i++)
+							{
+								System.out.println(k.get(i).getX() + ", " + k.get(i).getY());
+							}
+						}
+
+
+
 						System.out.println("selected piece is now: " + selectedPiece);
 						redrawBoard();
 					}
@@ -131,5 +147,5 @@ public class SpeedChess extends BorderPane {
 			b.setGraphic(new ImageView(im));
 		}
 	}
-	
+
 }

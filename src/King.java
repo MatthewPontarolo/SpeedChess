@@ -25,7 +25,7 @@ public class King extends Piece {
 		{
 			for (int j = 0; j < y+1; j++)
 			{
-				if(i != x && j != y)
+				if(i != x && j != y && i >= 0 && j >= 0 && i < 8 && j < 8)
 				{
 					Point move = new Point(i, j);
 					moves.add(move);
