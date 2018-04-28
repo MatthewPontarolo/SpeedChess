@@ -1,6 +1,5 @@
 import java.awt.*;
 import java.awt.Graphics;
-import java.awt.Image;
 import java.awt.Toolkit;
 import java.awt.event.ActionListener;
 import java.awt.FlowLayout;
@@ -16,6 +15,8 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.BorderPane;
@@ -55,8 +56,8 @@ public class SpeedChess extends BorderPane {
 		//Setting up the chess grid in the center
 		GridPane grid = new GridPane();
 		for (int i = 0; i < 8; i++) {
-			grid.getColumnConstraints().add(new ColumnConstraints(65));
-			grid.getRowConstraints().add(new RowConstraints(65));
+			grid.getColumnConstraints().add(new ColumnConstraints(68));
+			grid.getRowConstraints().add(new RowConstraints(60));
 			for (int j = 0; j < 8; j++) {
 				Button button = new Button();
 				grid.add(button, i, j);
@@ -109,17 +110,25 @@ public class SpeedChess extends BorderPane {
 
 	public void redrawBoard(){
 		for (Button[] bt : buttons) {
-			for (Button b : bt)
+			for (Button b : bt) {
 				b.setText("");
+				//Later I can use the coords to determine if it should be a black or white tile
+				Image im = new Image(getClass().getResourceAsStream("BlankSlot.png"));
+				b.setGraphic(new ImageView(im));
+			}
 		}
 		//Place pieces
 		Player p1 = GameHost.whitePlayer;
 		for (Piece p : p1.getPieces()) {
-			buttons[p.getXPosition()][p.getYPosition()].setText(p.getName());
+			Button b = buttons[p.getXPosition()][p.getYPosition()];
+			Image im = new Image(getClass().getResourceAsStream(p.getName() + "WhitePiece.png"));
+			b.setGraphic(new ImageView(im));
 		}
 		Player p2 = GameHost.blackPlayer;
 		for (Piece p : p2.getPieces()) {
-			buttons[p.getXPosition()][p.getYPosition()].setText(p.getName());
+			Button b = buttons[p.getXPosition()][p.getYPosition()];
+			Image im = new Image(getClass().getResourceAsStream(p.getName() + "BlackPiece.png"));
+			b.setGraphic(new ImageView(im));
 		}
 	}
 	
