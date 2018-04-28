@@ -66,10 +66,10 @@ public class Queen extends Piece {
 		{
 			if(xForward < 8 && yForward < 8 && xForward >= 0 && yForward >= 0)
 			{
-				Point move = new Point(xFoward, yForward);
+				Point move = new Point(xForward, yForward);
 				moves.add(move);
 				xForward++;
-				yFoward++;
+				yForward++;
 			}
 		}
 		int xBackward = x--;

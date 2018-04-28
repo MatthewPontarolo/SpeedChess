@@ -92,9 +92,9 @@ public class SpeedChess extends BorderPane {
 						if (selectedPiece != null)
 						{
 							//ArrayList<Point> k = selectedPiece.getValidMoves(b);
-							//Bishop p = new Bishop(1,6);
+							Bishop p = new Bishop(1,6);
 							//Piece p = selectedPiece;
-							Pawn p = new Pawn(1,6);
+							//Pawn p = new Pawn(1,6);
 							ArrayList<Point> k = p.getValidMoves(b);
 							for (int i = 0; i < k.size(); i++)
 							{
