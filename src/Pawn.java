@@ -27,7 +27,7 @@ public class Pawn extends Piece {
 		Piece nullPiece = null;
 		if (firstMove == true)
 		{
-			Point firstMove = new Point(x, y+2);
+			Point firstMove = new Point(0, 2);
 			moves.add(firstMove);
 		}
 		// if a piece is occupying a square diagonal from pawn, it can capture
@@ -35,7 +35,7 @@ public class Pawn extends Piece {
 		{
 			if (x+1 <=8 && y+1 <= 8 && x+1 >= 0 && y+1 >=0)
 			{
-				Point move = new Point(x+1, y+1);
+				Point move = new Point(1, 1);
 				moves.add(move);
 			}
 		}
@@ -44,7 +44,7 @@ public class Pawn extends Piece {
 		{
 			if (x-1 <=8 && y+1 <= 8 && x-1 >= 0 && y+1 >=0)
 			{
-				Point move = new Point(x-1, y+1);
+				Point move = new Point(-1, 1);
 				moves.add(move);
 			}
 		}
@@ -53,7 +53,7 @@ public class Pawn extends Piece {
 		{
 			if (x <=8 && y+1 <= 8 && x >= 0 && y+1 >=0)
 			{
-				Point move = new Point(x, y+1);
+				Point move = new Point(0, 1);
 				moves.add(move);
 			}
 		}
