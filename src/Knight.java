@@ -20,15 +20,27 @@ public class Knight extends Piece {
 	}
 
 	public void setValidMoves(Board board, int x, int y, int playerType) {
-		int vForward = y++;
-		int vBackward = y--;
-
+		Point move = new Point(2, 1);
+		moves.add(move);
+		Point move1 = new Point(2, -1);
+		moves.add(move1);
+		Point move2 = new Point(-2. 1);
+		moves.add(move2);
+		Point move3 = new Point(-2, -1);
+		moves.add(move3);
+		Point move4 = new Point(1, 2);
+		moves.add(move4);
+		Point move5 = new Point(1, -2);
+		moves.add(move5);
+		Point move6 = new Point (-1, 2);
+		moves.add(move6);
+		Point move7 = new Point (-1, -2);
+		moves.add(move7);
 	}
 
 	public ArrayList<Point> getValidMoves(Board board, int playerType) {
-		ArrayList<Point> valid = new ArrayList<Point>();
-		//code
-		return valid;
+		this.setValidMoves(board, Xposition, Yposition, playerType);
+		return moves;
 	}
 
 	public int move(Board board, Point position) {
