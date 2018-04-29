@@ -34,6 +34,7 @@ public class Queen extends Piece {
 			moves.add(move);
 			xForward++;
 			yForward++;
+			System.out.println(xForward + ", " + yForward);
 		}
 
 		int xBackward = x;
@@ -100,7 +101,7 @@ public class Queen extends Piece {
 		int hForward = x;
 		int hBackward = x;
 		offset = 0;
-		while (hForward >=0 && hForward < 8)
+		while (hForward >= 0 && hForward < 8)
 		{
 			Point move = new Point(offset--, 0);
 			moves.add(move);
@@ -114,13 +115,12 @@ public class Queen extends Piece {
 			moves.add(move);
 			hBackward++;
 		}
-		
+
 	}
 
 	public ArrayList<Point> getValidMoves(Board board, int playerType) {
-		ArrayList<Point> valid = new ArrayList<Point>();
-		//code
-		return valid;
+		this.setValidMoves(board, Xposition, Yposition, playerType);
+		return moves;
 	}
 
 	public int move(Board board, int position) {
