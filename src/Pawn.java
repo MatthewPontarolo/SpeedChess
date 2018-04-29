@@ -22,10 +22,7 @@ public class Pawn extends Piece {
 
 	// must be given a board to check game situation from
 	// either have it called explicitly or through helper function
-<<<<<<< HEAD
-	public void setValidMoves(Board board, int x, int y) {
-		
-=======
+
 	public void setValidMoves(Board board, int x, int y, int playerType) {
 		// if this is pawn's first move, it can move two squares forward
 		Piece nullPiece = null;
@@ -53,7 +50,6 @@ public class Pawn extends Piece {
 			Point move = new Point(0, 1);
 			moves.add(move);
 		}
->>>>>>> moveAlgorithms
 
 
 	}
