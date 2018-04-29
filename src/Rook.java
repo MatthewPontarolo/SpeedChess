@@ -65,7 +65,6 @@ public class Rook extends Piece {
 		else if (playerType == 1)
 		{
 			// need to reconsider bc of d/f board perspective
-
 		}
 
 	}
