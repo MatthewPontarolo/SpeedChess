@@ -18,96 +18,103 @@ public class Queen extends Piece {
 		return "Queen";
 	}
 
-	public void setValidMoves(Board board, int x, int y, int playerType) {
-		int vForward = y++;
-		int vBackward = y--;
-		while (board.getPiece(x, vForward) == null)
+	public void setValidMoves(Board board, int x, int y, int playerType)
+	{
+		//diagonals - similar to the bishops algoirthm
+		// left side bishop -- figure out how to distinguish later
+		int xForward = x;
+		int yForward = y;
+		int xOffset = 0;
+		int yOffset = 0;
+
+		// diagonal forward, once anything is in the way, stop
+		while (xForward < 8 && yForward < 8 && xForward >= 0 && yForward >=0)
 		{
-			if(x < 8 && vForward < 8 && x >= 0 && vForward >= 0)
-			{
-				Point move = new Point(x, vForward);
-				moves.add(move);
-				vForward++;
-			}
-		}
-		while (board.getPiece(x, vBackward) == null)
-		{
-			if(x < 8 && vBackward < 8 && x >= 0 && vBackward >= 0)
-			{
-				Point move = new Point(x, vBackward);
-				moves.add(move);
-				vBackward--;
-			}
-		}
-		int hForward = x++;
-		int hBackward = x--;
-		while (board.getPiece(hForward, y) == null)
-		{
-			if(y < 8 && hForward < 8 && y >= 0 && hForward >= 0)
-			{
-				Point move = new Point(hForward, y);
-				moves.add(move);
-				hForward++;
-			}
-		}
-		while (board.getPiece(hBackward, y) == null)
-		{
-			if(y < 8 && hBackward < 8 && y >= 0 && hBackward >= 0)
-			{
-				Point move = new Point(hBackward, y);
-				moves.add(move);
-				hBackward++;
-			}
+			Point move = new Point(xOffset++, yOffset++);
+			moves.add(move);
+			xForward++;
+			yForward++;
 		}
 
-		int xForward = x++;
-		int yForward = y++;
-		while (board.getPiece(xForward, yForward) == null)
+		int xBackward = x;
+		int yBackward = y;
+		// diagonal backwards, once anything is in the way, stop
+		xOffset = 0;
+		yOffset = 0;
+		while (xBackward < 8 && yBackward < 8 && xBackward >= 0 && yBackward >=0)
 		{
-			if(xForward < 8 && yForward < 8 && xForward >= 0 && yForward >= 0)
-			{
-				Point move = new Point(xForward, yForward);
-				moves.add(move);
-				xForward++;
-				yForward++;
-			}
+			Point move = new Point(xOffset--, yOffset--);
+			moves.add(move);
+			xBackward--;
+			yBackward--;
 		}
-		int xBackward = x--;
-		int yBackward = y--;
-		while (board.getPiece(xBackward, yBackward) == null)
+
+		// right side bishop
+		xForward = x;
+		yForward = y;
+		xOffset = 0;
+		yOffset = 0;
+		// diagonal forward, once anything is in the way, stop
+		while (xForward < 8 && yForward < 8 && xForward >= 0 && yForward >= 0)
 		{
-			if(xBackward < 8 && yBackward < 8 && xBackward >= 0 && yBackward >= 0)
-			{
-				Point move = new Point(xBackward, yBackward);
-				moves.add(move);
-				xBackward--;
-				yBackward--;
-			}
+			Point move = new Point(xOffset--, yOffset++);
+			moves.add(move);
+			xForward--;
+			yForward++;
 		}
-		xForward = x--;
-		yForward = y++;
-		while (board.getPiece(xForward, yForward) == null)
+
+		xBackward = x;
+		yBackward = y;
+		xOffset = 0;
+		yOffset = 0;
+		// diagonal backwards, once anything is in the way, stop
+		while (xBackward < 8 && yBackward < 8 && xBackward >= 0 && yBackward >= 0)
 		{
-			if(xForward < 8 && yForward < 8 && xForward >= 0 && yForward >= 0)
-			{
-				Point move = new Point(xForward, yForward);
-	      moves.add(move);
-	      xForward--;
-	      yForward++;
-			}
+			Point move = new Point(xOffset++, yOffset--);
+			moves.add(move);
+			xBackward++;
+			yBackward--;
 		}
-		xBackward = x++;
-		yBackward = y--;
-		while (board.getPiece(xBackward, yBackward) == null)
+
+		//vertical and horizontal movements - similar to the rook implementation
+
+		// move vertically, if anything blocking, stop immediately
+		int vForward = y;
+		int vBackward = y;
+		int offset = 0;
+		while (vForward >= 0 && vForward < 8)
 		{
-			if(xBackward < 8 && yBackward < 8 && xBackward >= 0 && yBackward >= 0)
-			{
-				Point move = new Point(xBackward, yBackward);
-				moves.add(move);
-				xBackward++;
-				yBackward--;
-			}
+			Point move = new Point(0, offset++);
+			moves.add(move);
+			vForward++;
 		}
+		offset = 0;
+		while (vBackward >= 0 && vBackward < 8)
+		{
+			Point move = new Point(0, offset--);
+			moves.add(move);
+			vBackward--;
+		}
+
+		// move horizontally, if anything blocking, stop immediately
+		int hForward = x;
+		int hBackward = x;
+		offset = 0;
+		while (hForward >=0 && hForward < 8)
+		{
+			Point move = new Point(offset--, 0);
+			moves.add(move);
+			hForward--;
+
+		}
+		offset = 0;
+		while (hBackward >= 0 && hBackward < 8)
+		{
+			Point move = new Point(offset++, 0);
+			moves.add(move);
+			hBackward++;
+		}
+		
 	}
 
 	public ArrayList<Point> getValidMoves(Board board, int playerType) {
