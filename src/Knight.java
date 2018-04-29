@@ -24,7 +24,7 @@ public class Knight extends Piece {
 		moves.add(move);
 		Point move1 = new Point(2, -1);
 		moves.add(move1);
-		Point move2 = new Point(-2. 1);
+		Point move2 = new Point(-2, 1);
 		moves.add(move2);
 		Point move3 = new Point(-2, -1);
 		moves.add(move3);

@@ -89,20 +89,6 @@ public class SpeedChess extends BorderPane {
 							selectedPiece = b.getPiece(x, y);
 						}
 
-						if (selectedPiece != null)
-						{
-							//ArrayList<Point> k = selectedPiece.getValidMoves(b);
-							//Pawn p = new Pawn(1,6);
-							Piece p = selectedPiece;
-							//Pawn p = new Pawn(1,6);
-							PossibleMoves k = new PossibleMoves(0);
-							ArrayList<Point> moves = k.getPossibleMoves(p, b, 0);
-							for (int i = 0; i < moves.size(); i++)
-							{
-								System.out.println(moves.get(i).getX() + ", " + moves.get(i).getY());
-							}
-
-						}
 						System.out.println("selected piece is now: " + selectedPiece);
 						redrawBoard();
 					}
