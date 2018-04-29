@@ -25,7 +25,7 @@ public class PossibleMoves
         int x = p.getXPosition() + (int)k.getX();
         int y = p.getYPosition() + (int)k.getY();
         Point move = new Point(x, y);
-        if (board.getPiece(x, y) == null)
+        if (x >=0 && x < 8 && y >= 0 && y < 8 && board.getPiece(x, y) == null)
         {
           moves.add(move);
         }
@@ -40,7 +40,7 @@ public class PossibleMoves
         int x = p.getXPosition() - (int)k.getX();
         int y = p.getYPosition() - (int)k.getY();
         Point move = new Point(x, y);
-        if (board.getPiece(x, y) == null)
+        if (x >=0 && x < 8 && y >= 0 && y < 8 && board.getPiece(x, y) == null)
         {
           moves.add(move);
         }

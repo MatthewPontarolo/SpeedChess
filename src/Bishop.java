@@ -28,61 +28,110 @@ public class Bishop extends Piece
     //all posible moves up toward the left
     // all possible moves from spot
       // check if occupied, if yes don't add, if no, add
-
-    // left side bishop -- figure out how to distinguish later
-    int xForward = x+1;
-    int yForward = y+1;
-    // diagonal forward, once anything is in the way, stop
-    while (xForward <=8 && yForward <= 8 && xForward >= 0 && yForward >=0)
+    if (playerType == 0)
     {
+      // left side bishop -- figure out how to distinguish later
+      int xForward = x+1;
+      int yForward = y+1;
+      // diagonal forward, once anything is in the way, stop
+      while (xForward <= 8 && yForward <= 8 && xForward >= 0 && yForward >=0)
+      {
         Point move = new Point(xForward, yForward);
         moves.add(move);
         xForward++;
         yForward++;
-        System.out.println("left-forward");
-    }
+      }
 
-    int xBackward = x-1;
-    int yBackward = y-1;
-    // diagonal backwards, once anything is in the way, stop
-    while (xBackward<=8 && yBackward<= 8 && xBackward >= 0 && yBackward >=0)
-    {
+      int xBackward = x-1;
+      int yBackward = y-1;
+      // diagonal backwards, once anything is in the way, stop
+      while (xBackward <= 8 && yBackward<= 8 && xBackward >= 0 && yBackward >=0)
+      {
         Point move = new Point(xBackward, yBackward);
         moves.add(move);
         xBackward--;
         yBackward--;
-        System.out.println("left-backward");
+      }
 
-    }
-
-    // right side bishop
-    xForward = x-1;
-    yForward = y+1;
-    // diagonal forward, once anything is in the way, stop
-    while (xForward <= 8 && yForward <= 8 && xForward >= 0 && yForward >= 0)
-    {
-
+      // right side bishop
+      xForward = x-1;
+      yForward = y+1;
+      // diagonal forward, once anything is in the way, stop
+      while (xForward <= 8 && yForward <= 8 && xForward >= 0 && yForward >= 0)
+      {
         Point move = new Point(xForward, yForward);
         moves.add(move);
         xForward--;
         yForward++;
-        System.out.println("right-forward");
+      }
 
-
-    }
-
-    xBackward = x+1;
-    yBackward = y-1;
-    // diagonal backwards, once anything is in the way, stop
-    while (xBackward <=8 && yBackward <= 8 && xBackward >= 0 && yBackward >=0)
-    {
-
+      xBackward = x+1;
+      yBackward = y-1;
+      // diagonal backwards, once anything is in the way, stop
+      while (xBackward <= 8 && yBackward <= 8 && xBackward >= 0 && yBackward >= 0)
+      {
         Point move = new Point(xBackward, yBackward);
         moves.add(move);
         xBackward++;
         yBackward--;
-        System.out.println("right-backward");
+      }
+
     }
+    else if (playerType == 1)
+    {
+      // left side bishop -- figure out how to distinguish later
+      int xForward = x-1;
+      int yForward = y-1;
+      // diagonal forward, once anything is in the way, stop
+      while (xForward < 8 && yForward < 8 && xForward >= 0 && yForward >=0)
+      {
+        Point move = new Point(-1, -1);
+        moves.add(move);
+        xForward--;
+        yForward--;
+
+      }
+
+      int xBackward = x+1;
+      int yBackward = y+1;
+      // diagonal backwards, once anything is in the way, stop
+      while (xBackward<8 && yBackward< 8 && xBackward >= 0 && yBackward >=0)
+      {
+        Point move = new Point(1, 1);
+        moves.add(move);
+        xBackward++;
+        yBackward++;
+
+      }
+
+      // right side bishop
+      xForward = x+1;
+      yForward = y-1;
+      // diagonal forward, once anything is in the way, stop
+      while (xForward < 8 && yForward < 8 && xForward >= 0 && yForward >= 0)
+      {
+        Point move = new Point(1, -1);
+        moves.add(move);
+        xForward++;
+        yForward--;
+
+      }
+
+      xBackward = x-1;
+      yBackward = y+1;
+      // diagonal backwards, once anything is in the way, stop
+      while (xBackward <8 && yBackward < 8 && xBackward >= 0 && yBackward >=0)
+      {
+        Point move = new Point(-1, 1);
+        moves.add(move);
+        xBackward--;
+        yBackward++;
+      
+      }
+
+    }
+
+
 	}
 
 	// for UI, call selectedPiece.getValidMoves(gameBoard)
