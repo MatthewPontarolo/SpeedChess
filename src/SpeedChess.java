@@ -95,8 +95,8 @@ public class SpeedChess extends BorderPane {
 							//Pawn p = new Pawn(1,6);
 							Piece p = selectedPiece;
 							//Pawn p = new Pawn(1,6);
-							PossibleMoves k = new PossibleMoves(1);
-							ArrayList<Point> moves = k.getPossibleMoves(p, b, 1);
+							PossibleMoves k = new PossibleMoves(0);
+							ArrayList<Point> moves = k.getPossibleMoves(p, b, 0);
 							for (int i = 0; i < moves.size(); i++)
 							{
 								System.out.println(moves.get(i).getX() + ", " + moves.get(i).getY());

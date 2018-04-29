@@ -31,46 +31,55 @@ public class Bishop extends Piece
     if (playerType == 0)
     {
       // left side bishop -- figure out how to distinguish later
-      int xForward = x+1;
-      int yForward = y+1;
+      int xForward = x;
+      int yForward = y;
+      int xOffset = 0;
+      int yOffset = 0;
+
       // diagonal forward, once anything is in the way, stop
-      while (xForward <= 8 && yForward <= 8 && xForward >= 0 && yForward >=0)
+      while (xForward < 8 && yForward < 8 && xForward >= 0 && yForward >=0)
       {
-        Point move = new Point(xForward, yForward);
+        Point move = new Point(xOffset++, yOffset++);
         moves.add(move);
         xForward++;
         yForward++;
       }
 
-      int xBackward = x-1;
-      int yBackward = y-1;
+      int xBackward = x;
+      int yBackward = y;
       // diagonal backwards, once anything is in the way, stop
-      while (xBackward <= 8 && yBackward<= 8 && xBackward >= 0 && yBackward >=0)
+      xOffset = 0;
+      yOffset = 0;
+      while (xBackward < 8 && yBackward < 8 && xBackward >= 0 && yBackward >=0)
       {
-        Point move = new Point(xBackward, yBackward);
+        Point move = new Point(xOffset--, yOffset--);
         moves.add(move);
         xBackward--;
         yBackward--;
       }
 
       // right side bishop
-      xForward = x-1;
-      yForward = y+1;
+      xForward = x;
+      yForward = y;
+      xOffset = 0;
+      yOffset = 0;
       // diagonal forward, once anything is in the way, stop
-      while (xForward <= 8 && yForward <= 8 && xForward >= 0 && yForward >= 0)
+      while (xForward < 8 && yForward < 8 && xForward >= 0 && yForward >= 0)
       {
-        Point move = new Point(xForward, yForward);
+        Point move = new Point(xOffset--, yOffset++);
         moves.add(move);
         xForward--;
         yForward++;
       }
 
-      xBackward = x+1;
-      yBackward = y-1;
+      xBackward = x;
+      yBackward = y;
+      xOffset = 0;
+      yOffset = 0;
       // diagonal backwards, once anything is in the way, stop
-      while (xBackward <= 8 && yBackward <= 8 && xBackward >= 0 && yBackward >= 0)
+      while (xBackward < 8 && yBackward < 8 && xBackward >= 0 && yBackward >= 0)
       {
-        Point move = new Point(xBackward, yBackward);
+        Point move = new Point(xOffset++, yOffset--);
         moves.add(move);
         xBackward++;
         yBackward--;
@@ -79,56 +88,7 @@ public class Bishop extends Piece
     }
     else if (playerType == 1)
     {
-      // left side bishop -- figure out how to distinguish later
-      int xForward = x-1;
-      int yForward = y-1;
-      // diagonal forward, once anything is in the way, stop
-      while (xForward < 8 && yForward < 8 && xForward >= 0 && yForward >=0)
-      {
-        Point move = new Point(-1, -1);
-        moves.add(move);
-        xForward--;
-        yForward--;
-
-      }
-
-      int xBackward = x+1;
-      int yBackward = y+1;
-      // diagonal backwards, once anything is in the way, stop
-      while (xBackward<8 && yBackward< 8 && xBackward >= 0 && yBackward >=0)
-      {
-        Point move = new Point(1, 1);
-        moves.add(move);
-        xBackward++;
-        yBackward++;
-
-      }
-
-      // right side bishop
-      xForward = x+1;
-      yForward = y-1;
-      // diagonal forward, once anything is in the way, stop
-      while (xForward < 8 && yForward < 8 && xForward >= 0 && yForward >= 0)
-      {
-        Point move = new Point(1, -1);
-        moves.add(move);
-        xForward++;
-        yForward--;
-
-      }
-
-      xBackward = x-1;
-      yBackward = y+1;
-      // diagonal backwards, once anything is in the way, stop
-      while (xBackward <8 && yBackward < 8 && xBackward >= 0 && yBackward >=0)
-      {
-        Point move = new Point(-1, 1);
-        moves.add(move);
-        xBackward--;
-        yBackward++;
-      
-      }
-
+      // need to reconsider bc of board perspective
     }
 
 

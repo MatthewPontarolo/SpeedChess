@@ -21,38 +21,51 @@ public class Rook extends Piece {
 
 	public void setValidMoves(Board board, int x, int y, int playerType)
 	{
-		// move vertically, if anything blocking, stop immediately
-		int vForward = y++;
-		int vBackward = y--;
-		while (y >= 0 && y <= 8)
+		if (playerType == 0)
 		{
-			Point move = new Point(x, vForward);
-			moves.add(move);
-			vForward++;
+			// move vertically, if anything blocking, stop immediately
+			int vForward = y;
+			int vBackward = y;
+			int offset = 0;
+			while (vForward >= 0 && vForward < 8)
+			{
+				Point move = new Point(0, offset++);
+				moves.add(move);
+				vForward++;
+			}
+			offset = 0;
+			while (vBackward >= 0 && vBackward < 8)
+			{
+				Point move = new Point(0, offset--);
+				moves.add(move);
+				vBackward--;
+			}
+
+			// move horizontally, if anything blocking, stop immediately
+			int hForward = x;
+			int hBackward = x;
+			offset = 0;
+			while (hForward >=0 && hForward < 8)
+			{
+				Point move = new Point(offset--, 0);
+				moves.add(move);
+				hForward--;
+
+			}
+			offset = 0;
+			while (hBackward >= 0 && hBackward < 8)
+			{
+				Point move = new Point(offset++, 0);
+				moves.add(move);
+				hBackward++;
+			}
+
 
 		}
-		while (x >= 0 && x <=8)
+		else if (playerType == 1)
 		{
-			Point move = new Point(x, vBackward);
-			moves.add(move);
-			vBackward--;
-		}
+			// need to reconsider bc of d/f board perspective
 
-		// move horizontally, if anything blocking, stop immediately
-		int hForward = x++;
-		int hBackward = x--;
-		while (x >=0 && x <= 8)
-		{
-			Point move = new Point(hForward, y);
-			moves.add(move);
-			hForward++;
-
-		}
-		while (y >= 0 && y <= 8)
-		{
-			Point move = new Point(hBackward, y);
-			moves.add(move);
-			hBackward++;
 		}
 
 	}
