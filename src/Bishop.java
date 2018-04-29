@@ -10,7 +10,7 @@ public class Bishop extends Piece
 {
   // Assuming that we are storing board positions as something like 'C2' (??)
   // possibly changes
-  private ArrayList<Point> moves  = new ArrayList<Point>();
+  private ArrayList<Point> moves = new ArrayList<Point>();
 
   // CONSTRUCTOR
   public Bishop(int x, int y) {
@@ -24,17 +24,82 @@ public class Bishop extends Piece
 
   // Precondition: Piece is on board. get the position of current spot
   // Postcondition: sets array of viable move options and stores into 'moves' arraylist
-  public void setValidMoves(Board board, int x, int y) {
+  public void setValidMoves(Board board, int x, int y, int playerType) {
+    //all posible moves up toward the left
+    // all possible moves from spot
+      // check if occupied, if yes don't add, if no, add
+    if (playerType == 0)
+    {
+      // left side bishop -- figure out how to distinguish later
+      int xForward = x;
+      int yForward = y;
+      int xOffset = 0;
+      int yOffset = 0;
 
-  
+      // diagonal forward, once anything is in the way, stop
+      while (xForward < 8 && yForward < 8 && xForward >= 0 && yForward >=0)
+      {
+        Point move = new Point(xOffset++, yOffset++);
+        moves.add(move);
+        xForward++;
+        yForward++;
+      }
+
+      int xBackward = x;
+      int yBackward = y;
+      // diagonal backwards, once anything is in the way, stop
+      xOffset = 0;
+      yOffset = 0;
+      while (xBackward < 8 && yBackward < 8 && xBackward >= 0 && yBackward >=0)
+      {
+        Point move = new Point(xOffset--, yOffset--);
+        moves.add(move);
+        xBackward--;
+        yBackward--;
+      }
+
+      // right side bishop
+      xForward = x;
+      yForward = y;
+      xOffset = 0;
+      yOffset = 0;
+      // diagonal forward, once anything is in the way, stop
+      while (xForward < 8 && yForward < 8 && xForward >= 0 && yForward >= 0)
+      {
+        Point move = new Point(xOffset--, yOffset++);
+        moves.add(move);
+        xForward--;
+        yForward++;
+      }
+
+      xBackward = x;
+      yBackward = y;
+      xOffset = 0;
+      yOffset = 0;
+      // diagonal backwards, once anything is in the way, stop
+      while (xBackward < 8 && yBackward < 8 && xBackward >= 0 && yBackward >= 0)
+      {
+        Point move = new Point(xOffset++, yOffset--);
+        moves.add(move);
+        xBackward++;
+        yBackward--;
+      }
+
+    }
+    else if (playerType == 1)
+    {
+      // need to reconsider bc of board perspective
+    }
+
+
 	}
 
 	// for UI, call selectedPiece.getValidMoves(gameBoard)
 	// returns arrayList of Points for valid moves of current piece position
   // NOTE: will possibly reconsider use of Points bc of return type double
-	public ArrayList<Point> getValidMoves(Board board)
+	public ArrayList<Point> getValidMoves(Board board, int playerType)
 	{
-		this.setValidMoves(board, Xposition, Yposition);
+		this.setValidMoves(board, Xposition, Yposition, playerType);
 		return moves;
 	}
 
