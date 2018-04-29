@@ -18,7 +18,7 @@ public class Queen extends Piece {
 		return "Queen";
 	}
 
-	public void setValidMoves(Board board, int x, int y) {
+	public void setValidMoves(Board board, int x, int y, int playerType) {
 		int vForward = y++;
 		int vBackward = y--;
 		while (board.getPiece(x, vForward) == null)
@@ -110,7 +110,7 @@ public class Queen extends Piece {
 		}
 	}
 
-	public ArrayList<Point> getValidMoves(Board board) {
+	public ArrayList<Point> getValidMoves(Board board, int playerType) {
 		ArrayList<Point> valid = new ArrayList<Point>();
 		//code
 		return valid;

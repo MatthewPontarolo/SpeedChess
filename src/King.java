@@ -20,7 +20,7 @@ public class King extends Piece {
 		return "King";
 	}
 
-	public void setValidMoves(Board board, int x, int y) {
+	public void setValidMoves(Board board, int x, int y, int playerType) {
 		for (int i = 0; i < x+1; i++)
 		{
 			for (int j = 0; j < y+1; j++)
@@ -34,7 +34,7 @@ public class King extends Piece {
 		}
 	}
 
-	public ArrayList<Point> getValidMoves(Board board) {
+	public ArrayList<Point> getValidMoves(Board board, int playerType) {
 		ArrayList<Point> valid = new ArrayList<Point>();
 		//code
 		return valid;

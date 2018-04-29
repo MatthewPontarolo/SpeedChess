@@ -19,19 +19,19 @@ public class Rook extends Piece {
 		return "Rook";
 	}
 
-	public void setValidMoves(Board board, int x, int y)
+	public void setValidMoves(Board board, int x, int y, int playerType)
 	{
 		// move vertically, if anything blocking, stop immediately
 		int vForward = y++;
 		int vBackward = y--;
-		while (board.getPiece(x, vForward) == null)
+		while (y >= 0 && y <= 8)
 		{
 			Point move = new Point(x, vForward);
 			moves.add(move);
 			vForward++;
 
 		}
-		while (board.getPiece(x, vBackward) == null)
+		while (x >= 0 && x <=8)
 		{
 			Point move = new Point(x, vBackward);
 			moves.add(move);
@@ -41,14 +41,14 @@ public class Rook extends Piece {
 		// move horizontally, if anything blocking, stop immediately
 		int hForward = x++;
 		int hBackward = x--;
-		while (board.getPiece(hForward, y) == null)
+		while (x >=0 && x <= 8)
 		{
 			Point move = new Point(hForward, y);
 			moves.add(move);
 			hForward++;
 
 		}
-		while (board.getPiece(hBackward, y) == null)
+		while (y >= 0 && y <= 8)
 		{
 			Point move = new Point(hBackward, y);
 			moves.add(move);
@@ -60,9 +60,9 @@ public class Rook extends Piece {
 	// for UI, call selectedPiece.getValidMoves(gameBoard)
 	// returns arrayList of Points for valid moves of current piece position
 	  // NOTE: will possibly reconsider use of Points bc of return type double
-	public ArrayList<Point> getValidMoves(Board board)
+	public ArrayList<Point> getValidMoves(Board board, int playerType)
 	{
-		this.setValidMoves(board, Xposition, Yposition);
+		this.setValidMoves(board, Xposition, Yposition, playerType);
 		return moves;
 	}
 

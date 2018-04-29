@@ -10,7 +10,7 @@ public class Bishop extends Piece
 {
   // Assuming that we are storing board positions as something like 'C2' (??)
   // possibly changes
-  private ArrayList<Point> moves  = new ArrayList<Point>();
+  private ArrayList<Point> moves = new ArrayList<Point>();
 
   // CONSTRUCTOR
   public Bishop(int x, int y) {
@@ -24,7 +24,7 @@ public class Bishop extends Piece
 
   // Precondition: Piece is on board. get the position of current spot
   // Postcondition: sets array of viable move options and stores into 'moves' arraylist
-  public void setValidMoves(Board board, int x, int y) {
+  public void setValidMoves(Board board, int x, int y, int playerType) {
     //all posible moves up toward the left
     // all possible moves from spot
       // check if occupied, if yes don't add, if no, add
@@ -35,18 +35,11 @@ public class Bishop extends Piece
     // diagonal forward, once anything is in the way, stop
     while (xForward <=8 && yForward <= 8 && xForward >= 0 && yForward >=0)
     {
-      if ((board.getPiece(xForward, yForward) == null))
-      {
         Point move = new Point(xForward, yForward);
         moves.add(move);
         xForward++;
         yForward++;
         System.out.println("left-forward");
-      }
-      else
-      {
-        break;
-      }
     }
 
     int xBackward = x-1;
@@ -54,18 +47,12 @@ public class Bishop extends Piece
     // diagonal backwards, once anything is in the way, stop
     while (xBackward<=8 && yBackward<= 8 && xBackward >= 0 && yBackward >=0)
     {
-      if (board.getPiece(xBackward, yBackward) == null)
-      {
         Point move = new Point(xBackward, yBackward);
         moves.add(move);
         xBackward--;
         yBackward--;
         System.out.println("left-backward");
-      }
-      else
-      {
-        break;
-      }
+
     }
 
     // right side bishop
@@ -74,18 +61,13 @@ public class Bishop extends Piece
     // diagonal forward, once anything is in the way, stop
     while (xForward <= 8 && yForward <= 8 && xForward >= 0 && yForward >= 0)
     {
-      if ((board.getPiece(xForward, yForward) == null))
-      {
+
         Point move = new Point(xForward, yForward);
         moves.add(move);
         xForward--;
         yForward++;
         System.out.println("right-forward");
-      }
-      else
-      {
-        break;
-      }
+
 
     }
 
@@ -94,28 +76,21 @@ public class Bishop extends Piece
     // diagonal backwards, once anything is in the way, stop
     while (xBackward <=8 && yBackward <= 8 && xBackward >= 0 && yBackward >=0)
     {
-      if (board.getPiece(xBackward, yBackward) == null)
-      {
+
         Point move = new Point(xBackward, yBackward);
         moves.add(move);
         xBackward++;
         yBackward--;
         System.out.println("right-backward");
-
-      }
-      else
-      {
-        break;
-      }
     }
 	}
 
 	// for UI, call selectedPiece.getValidMoves(gameBoard)
 	// returns arrayList of Points for valid moves of current piece position
   // NOTE: will possibly reconsider use of Points bc of return type double
-	public ArrayList<Point> getValidMoves(Board board)
+	public ArrayList<Point> getValidMoves(Board board, int playerType)
 	{
-		this.setValidMoves(board, Xposition, Yposition);
+		this.setValidMoves(board, Xposition, Yposition, playerType);
 		return moves;
 	}
 

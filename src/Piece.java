@@ -32,9 +32,9 @@ public abstract class Piece {
 		return Yposition;
 	}
 
-	public abstract void setValidMoves(Board board, int x, int y);
+	public abstract void setValidMoves(Board board, int x, int y, int playerType);
 
-	public abstract ArrayList<Point> getValidMoves(Board board);
+	public abstract ArrayList<Point> getValidMoves(Board board, int playerType);
 
 	public abstract String getName();
 

@@ -19,13 +19,13 @@ public class Knight extends Piece {
 		return "Knight";
 	}
 
-	public void setValidMoves(Board board, int x, int y) {
+	public void setValidMoves(Board board, int x, int y, int playerType) {
 		int vForward = y++;
 		int vBackward = y--;
 
 	}
 
-	public ArrayList<Point> getValidMoves(Board board) {
+	public ArrayList<Point> getValidMoves(Board board, int playerType) {
 		ArrayList<Point> valid = new ArrayList<Point>();
 		//code
 		return valid;

@@ -15,7 +15,7 @@ public class PossibleMoves
   public static ArrayList<Point> getPossibleMoves(Piece p, Board board, int playerType)
   {
     ArrayList<Point> moves = new ArrayList<Point>();
-    ArrayList<Point> offsets = p.getValidMoves(board);
+    ArrayList<Point> offsets = p.getValidMoves(board, playerType);
     // white player -- adds offset
     if (playerType == 0)
     {
@@ -25,9 +25,11 @@ public class PossibleMoves
         int x = p.getXPosition() + (int)k.getX();
         int y = p.getYPosition() + (int)k.getY();
         Point move = new Point(x, y);
-        moves.add(move);
+        if (board.getPiece(x, y) == null)
+        {
+          moves.add(move);
+        }
       }
-
     }
     // black player -- minus offset
     else if (playerType == 1)
@@ -38,9 +40,11 @@ public class PossibleMoves
         int x = p.getXPosition() - (int)k.getX();
         int y = p.getYPosition() - (int)k.getY();
         Point move = new Point(x, y);
-        moves.add(move);
+        if (board.getPiece(x, y) == null)
+        {
+          moves.add(move);
+        }
       }
-
     }
     return moves;
 
