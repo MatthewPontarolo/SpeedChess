@@ -21,17 +21,8 @@ public class King extends Piece {
 	}
 
 	public void setValidMoves(Board board, int x, int y) {
-		for (int i = 0; i < x+1; i++)
-		{
-			for (int j = 0; j < y+1; j++)
-			{
-				if(i != x && j != y && i >= 0 && j >= 0 && i < 8 && j < 8)
-				{
-					Point move = new Point(i, j);
-					moves.add(move);
-				}
-			}
-		}
+
+
 	}
 
 	public ArrayList<Point> getValidMoves(Board board) {
