@@ -100,8 +100,9 @@ public class SpeedChess extends BorderPane {
 
 		GridPane overlay = new GridPane();
 		StackPane stack = new StackPane();
+		stack.setPickOnBounds(false);
 		setCenter(stack);
-		stack.getChildren().addAll(grid/*, overlay*/);
+		stack.getChildren().addAll(grid, overlay);
 
 		redrawBoard();
 
