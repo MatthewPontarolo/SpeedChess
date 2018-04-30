@@ -21,6 +21,7 @@ import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.StackPane;
 import javafx.scene.layout.RowConstraints;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.HBox;
@@ -93,7 +94,11 @@ public class SpeedChess extends BorderPane {
 			}
 		}
 		grid.setAlignment(Pos.CENTER);
-		setCenter(grid);
+
+		GridPane overlay = new GridPane();
+		StackPane stack = new StackPane();
+		setCenter(stack);
+		stack.getChildren().addAll(grid, overlay);
 
 		redrawBoard();
 
