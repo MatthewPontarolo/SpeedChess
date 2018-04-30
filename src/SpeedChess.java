@@ -33,6 +33,8 @@ import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import javafx.geometry.Pos;
 import javafx.geometry.Insets;
+import java.util.ArrayList;
+import java.awt.Point;
 
 public class SpeedChess extends BorderPane {
 
@@ -87,6 +89,7 @@ public class SpeedChess extends BorderPane {
 						} else {
 							selectedPiece = b.getPiece(x, y);
 						}
+
 						System.out.println("selected piece is now: " + selectedPiece);
 						redrawBoard();
 					}
@@ -136,5 +139,5 @@ public class SpeedChess extends BorderPane {
 			b.setGraphic(new ImageView(im));
 		}
 	}
-	
+
 }

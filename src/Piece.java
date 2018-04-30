@@ -24,15 +24,17 @@ public abstract class Piece {
 
 	public int getXPosition()
 	{
-	return Xposition;
+		return Xposition;
 	}
 
 	public int getYPosition()
 	{
-	return Yposition;
+		return Yposition;
 	}
 
-	public abstract ArrayList<Point> getValidMoves();
+	public abstract void setValidMoves(Board board, int x, int y, int playerType);
+
+	public abstract ArrayList<Point> getValidMoves(Board board, int playerType);
 
 	public abstract String getName();
 

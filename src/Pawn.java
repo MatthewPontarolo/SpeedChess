@@ -8,7 +8,8 @@ import java.awt.Point;
 
 public class Pawn extends Piece {
 	// Assuming that we are storing board positions as something like 'C2'
-	private ArrayList<Integer> moves;
+	private ArrayList<Point> moves = new ArrayList<Point>();
+	private boolean firstMove = true;
 
 	public Pawn(int x, int y) {
 		this.setAlive(true);
@@ -19,10 +20,48 @@ public class Pawn extends Piece {
 		return "Pawn";
 	}
 
-	public ArrayList<Point> getValidMoves() {
-		ArrayList<Point> valid = new ArrayList<Point>();
-		//code
-		return valid;
+	// must be given a board to check game situation from
+	// either have it called explicitly or through helper function
+
+	public void setValidMoves(Board board, int x, int y, int playerType) {
+		// if this is pawn's first move, it can move two squares forward
+		Piece nullPiece = null;
+		if (firstMove == true)
+		{
+			Point firstMove = new Point(0, 2);
+			moves.add(firstMove);
+		}
+
+		// if a piece is occupying a square diagonal from pawn, it can capture
+		if (x+1 <=8 && y+1 <= 8 && x+1 >= 0 && y+1 >=0)
+		{
+			Point move = new Point(1, 1);
+			moves.add(move);
+		}
+		if (x-1 <=8 && y+1 <= 8 && x-1 >= 0 && y+1 >=0)
+		{
+			Point move = new Point(-1, 1);
+			moves.add(move);
+		}
+
+			// if no piece is in front of pawn, it can move forward one square
+		if (x <=8 && y+1 <= 8 && x >= 0 && y+1 >=0)
+		{
+			Point move = new Point(0, 1);
+			moves.add(move);
+		}
+
+
+	}
+
+	// for UI, call selectedPiece.getValidMoves(gameBoard)
+	// returns arrayList of Points for valid moves of current piece position
+	  // NOTE: will possibly reconsider use of Points bc of return type double
+	public ArrayList<Point> getValidMoves(Board board, int playerType)
+	{
+
+		this.setValidMoves(board, Xposition, Yposition, playerType);
+		return moves;
 	}
 
 	public int move(Board board, int position) {
@@ -30,6 +69,13 @@ public class Pawn extends Piece {
 		// if yes, update position -- setCurrentPosition(position)
 		// if no, give error message -- depending on implementation of UI
 		// function could just do nothing
+		if (firstMove == true)
+		{
+			firstMove = false;
+		}
+
+		// no valid moves found
+		// error message in UI
 		return 0;
 	}
 }
