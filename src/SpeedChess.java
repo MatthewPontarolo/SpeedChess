@@ -109,8 +109,10 @@ public class SpeedChess extends BorderPane {
 				label.setAlignment(Pos.CENTER);
 				Image im = new Image(getClass().getResourceAsStream("HighlightValid.png"));
 				label.setGraphic(new ImageView(im));
+				label.setMouseTransparent(true);
 			}
 		}
+		overlay.setAlignment(Pos.CENTER);
 
 		StackPane stack = new StackPane();
 		setCenter(stack);
