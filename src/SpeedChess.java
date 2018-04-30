@@ -39,6 +39,7 @@ import java.awt.Point;
 public class SpeedChess extends BorderPane {
 
 	Button[][] buttons = new Button[8][8];
+	Label[][] highlights = new Label[8][8];
 	Piece selectedPiece = null;
 
 	public SpeedChess() {
@@ -107,9 +108,10 @@ public class SpeedChess extends BorderPane {
 				Label label = new Label();
 				overlay.add(label, i, j);
 				label.setAlignment(Pos.CENTER);
-				Image im = new Image(getClass().getResourceAsStream("HighlightValid.png"));
-				label.setGraphic(new ImageView(im));
 				label.setMouseTransparent(true);
+				highlights[i][j] = label;
+				//Image im = new Image(getClass().getResourceAsStream("HighlightValid.png"));
+				//label.setGraphic(new ImageView(im));
 			}
 		}
 		overlay.setAlignment(Pos.CENTER);
@@ -152,6 +154,26 @@ public class SpeedChess extends BorderPane {
 			Button b = buttons[p.getXPosition()][p.getYPosition()];
 			Image im = new Image(getClass().getResourceAsStream(p.getName() + "BlackPiece.png"));
 			b.setGraphic(new ImageView(im));
+		}
+	}
+
+	public void drawHighlights() {
+		if (selectedPiece != null) {
+			ArrayList<Point> moves = selectedPiece.getValidMoves(GameHost.gameBoard, 0);
+			for (int i = 0; i < 8; i++) {
+				for (int j = 0; j < 8; j++) {
+					if (moves.contains(new Point(i, j))) {
+						Image im = new Image(getClass().getResourceAsStream("HighlightValid.png"));
+						highlights[i][j].setGraphic(new ImageView(im));
+					} else {
+						highlights[i][j].setGraphic(null);
+					}
+				}
+			}
+		} else {
+			for (int i = 0; i < 8; i++)
+				for (int j = 0; j < 8; j++)
+					highlights[i][j].setGraphic(null);
 		}
 	}
 
