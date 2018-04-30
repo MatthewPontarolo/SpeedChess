@@ -99,8 +99,20 @@ public class SpeedChess extends BorderPane {
 		grid.setAlignment(Pos.CENTER);
 
 		GridPane overlay = new GridPane();
-		StackPane stack = new StackPane();
 		overlay.setPickOnBounds(false);
+		for (int i = 0; i < 8; i++) {
+			overlay.getColumnConstraints().add(new ColumnConstraints(68));
+			overlay.getRowConstraints().add(new RowConstraints(60));
+			for (int j = 0; j < 8; j++) {
+				Label label = new Label();
+				overlay.add(label, i, j);
+				label.setAlignment(Pos.CENTER);
+				Image im = new Image(getClass().getResourceAsStream("HighlightValid.png"));
+				label.setGraphic(new ImageView(im));
+			}
+		}
+
+		StackPane stack = new StackPane();
 		setCenter(stack);
 		stack.getChildren().addAll(grid, overlay);
 
