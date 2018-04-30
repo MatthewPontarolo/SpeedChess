@@ -93,6 +93,7 @@ public class SpeedChess extends BorderPane {
 
 						System.out.println("selected piece is now: " + selectedPiece);
 						redrawBoard();
+						drawHighlights();
 					}
 				});
 			}
