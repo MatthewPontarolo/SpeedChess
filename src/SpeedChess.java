@@ -160,6 +160,10 @@ public class SpeedChess extends BorderPane {
 
 	public void drawHighlights() {
 		if (selectedPiece != null) {
+			/* something like this should work, general moves pattern should appear
+			PossibleMoves move = new PossibleMoves(0);
+			ArrayList<Point> moves = move.getPossibleMoves(selectedPiece, GameHost.gameBoard, 0);
+			*/
 			ArrayList<Point> moves = selectedPiece.getValidMoves(GameHost.gameBoard, 0);
 			for (int i = 0; i < 8; i++) {
 				for (int j = 0; j < 8; j++) {
