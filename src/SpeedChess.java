@@ -166,7 +166,7 @@ public class SpeedChess extends BorderPane {
 			PossibleMoves move = new PossibleMoves(0);
 			ArrayList<Point> moves = move.getPossibleMoves(selectedPiece, GameHost.gameBoard, 0);
 			*/
-			ArrayList<Point> moves = selectedPiece.getValidMoves(GameHost.gameBoard, 0);
+			ArrayList<Point> moves = PossibleMoves.getPossibleMoves(selectedPiece, GameHost.gameBoard, selectedPiece.getPlayer());
 			for (int i = 0; i < 8; i++) {
 				for (int j = 0; j < 8; j++) {
 					if (moves.contains(new Point(i, j))) {

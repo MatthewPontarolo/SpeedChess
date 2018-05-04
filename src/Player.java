@@ -12,11 +12,11 @@ public class Player {
 	private int king = 1;
 
 	// CONSTRUCTOR
-	public Player(boolean first) {
-		setUp(first);
+	public Player(int playerType) {
+		setUp(playerType);
 	}
 
-	public void setUp(boolean first) {
+	public void setUp(int playerType) {
 		int PLACEHOLDER = 0; // FOR POSITION BC WE HAVEN'T DECIDED
 		int offset = 0;
 		if (!first)
@@ -40,11 +40,13 @@ public class Player {
 		pieces.add(new Queen(3, offset));
 		pieces.add(new King(4, offset));
 
+		for (int i = 0; i < 16; i++) {
+			pieces[i].setPlayer(playerType);
+		}
 	}
 
-	public ArrayList<Piece> getPieces()
-	{
-	return pieces;
+	public ArrayList<Piece> getPieces() {
+		return pieces;
 	}
 
 }

@@ -5,6 +5,7 @@ public abstract class Piece {
 	protected int Xposition;
 	protected int Yposition;
 	protected boolean status;
+	protected int player;
 
 	// check if piece is still on board
 	public boolean isAlive()
@@ -37,6 +38,13 @@ public abstract class Piece {
 	public abstract ArrayList<Point> getValidMoves(Board board, int playerType);
 
 	public abstract String getName();
+
+	public int getPlayer() {
+		return player;
+	}
+	public void setPlayer(int p) {
+		player = p;
+	}
 
 	@Override
 	public String toString() { return getName(); }
