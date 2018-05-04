@@ -38,6 +38,10 @@ public class Knight extends Piece {
 		moves.add(move7);
 	}
 
+	// helper function
+	// for UI, call getPossibleMoves
+	// returns arrayList of Points for valid moves of current piece position
+	// NOTE: will possibly reconsider use of Points bc of return type double
 	public ArrayList<Point> getValidMoves(Board board, int playerType) {
 		this.setValidMoves(board, Xposition, Yposition, playerType);
 		return moves;
