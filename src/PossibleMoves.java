@@ -16,6 +16,8 @@ public class PossibleMoves
   // returns arrayList of Points for valid moves of current piece position
     // NOTE: will possibly reconsider use of Points bc of return type double
   // deal with offsets depending on which player perspective
+  // NOTE: only whitePlayer works right now, bc of possible board flipping(??)
+    // if board flipping won't happen, I can add in proper offsets for blackPlayer as well.
   public static ArrayList<Point> getPossibleMoves(Piece p, Board board, int playerType)
   {
     ArrayList<Point> moves = new ArrayList<Point>();
