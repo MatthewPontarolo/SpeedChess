@@ -11,6 +11,10 @@ public class PossibleMoves
     this.playerType = playerType;
   }
 
+  // for UI, call getPossibleMoves(Piece selectedPiece, gameBoard, int playerType)
+  // whitePlayer -- playerType = 0, blackPlayer -- playerType = 1
+  // returns arrayList of Points for valid moves of current piece position
+    // NOTE: will possibly reconsider use of Points bc of return type double
   // deal with offsets depending on which player perspective
   public static ArrayList<Point> getPossibleMoves(Piece p, Board board, int playerType)
   {

@@ -54,9 +54,7 @@ public class Pawn extends Piece {
 
 	}
 
-	// for UI, call selectedPiece.getValidMoves(gameBoard)
-	// returns arrayList of Points for valid moves of current piece position
-	  // NOTE: will possibly reconsider use of Points bc of return type double
+
 	public ArrayList<Point> getValidMoves(Board board, int playerType)
 	{
 
