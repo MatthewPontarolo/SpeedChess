@@ -19,13 +19,13 @@ public class Player {
 	public void setUp(int playerType) {
 		int PLACEHOLDER = 0; // FOR POSITION BC WE HAVEN'T DECIDED
 		int offset = 0;
-		if (!first)
+		if (playerType == 0)
 			offset = 5;
 
 		for (int i = 0; i < pawns; i++) {
 			pieces.add(new Pawn(i, 1+offset));
 		}
-		if (!first)
+		if (playerType == 0)
 			offset = 7;
 
 		pieces.add(new Rook(0, offset));
@@ -41,7 +41,7 @@ public class Player {
 		pieces.add(new King(4, offset));
 
 		for (int i = 0; i < 16; i++) {
-			pieces[i].setPlayer(playerType);
+			pieces.get(i).setPlayer(playerType);
 		}
 	}
 
