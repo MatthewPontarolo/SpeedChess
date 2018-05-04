@@ -160,7 +160,9 @@ public class SpeedChess extends BorderPane {
 
 	public void drawHighlights() {
 		if (selectedPiece != null) {
-			/* something like this should work, general moves pattern should appear
+			/* something like this should work, general moves pattern should appear though not entirely accurate yet
+			// we can possibly consider extending possibleMoves or in some way to not have to make
+			// a new instance of PossibleMoves
 			PossibleMoves move = new PossibleMoves(0);
 			ArrayList<Point> moves = move.getPossibleMoves(selectedPiece, GameHost.gameBoard, 0);
 			*/
