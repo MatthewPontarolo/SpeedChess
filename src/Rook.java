@@ -29,14 +29,16 @@ public class Rook extends Piece {
 			int offset = 0;
 			while (vForward >= 0 && vForward < 8)
 			{
-				Point move = new Point(0, offset++);
+				offset++;
+				Point move = new Point(x, y + offset);
 				moves.add(move);
 				vForward++;
 			}
 			offset = 0;
 			while (vBackward >= 0 && vBackward < 8)
 			{
-				Point move = new Point(0, offset--);
+				offset--;
+				Point move = new Point(x, y + offset);
 				moves.add(move);
 				vBackward--;
 			}
@@ -47,7 +49,8 @@ public class Rook extends Piece {
 			offset = 0;
 			while (hForward >=0 && hForward < 8)
 			{
-				Point move = new Point(offset--, 0);
+				offset--;
+				Point move = new Point(x + offset, y);
 				moves.add(move);
 				hForward--;
 
@@ -55,7 +58,8 @@ public class Rook extends Piece {
 			offset = 0;
 			while (hBackward >= 0 && hBackward < 8)
 			{
-				Point move = new Point(offset++, 0);
+				offset++;
+				Point move = new Point(x + offset, y);
 				moves.add(move);
 				hBackward++;
 			}

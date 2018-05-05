@@ -39,7 +39,9 @@ public class Bishop extends Piece
       // diagonal forward, once anything is in the way, stop
       while (xForward < 8 && yForward < 8 && xForward >= 0 && yForward >=0)
       {
-        Point move = new Point(xOffset++, yOffset++);
+        xOffset++;
+        yOffset++;
+        Point move = new Point(x + xOffset, y + yOffset);
         moves.add(move);
         xForward++;
         yForward++;
@@ -52,7 +54,9 @@ public class Bishop extends Piece
       yOffset = 0;
       while (xBackward < 8 && yBackward < 8 && xBackward >= 0 && yBackward >=0)
       {
-        Point move = new Point(xOffset--, yOffset--);
+        xOffset--;
+        yOffset--;
+        Point move = new Point(x + xOffset, y + yOffset);
         moves.add(move);
         xBackward--;
         yBackward--;
@@ -66,7 +70,9 @@ public class Bishop extends Piece
       // diagonal forward, once anything is in the way, stop
       while (xForward < 8 && yForward < 8 && xForward >= 0 && yForward >= 0)
       {
-        Point move = new Point(xOffset--, yOffset++);
+        xOffset--;
+        yOffset++;
+        Point move = new Point(x + xOffset, y + yOffset);
         moves.add(move);
         xForward--;
         yForward++;
@@ -79,7 +85,9 @@ public class Bishop extends Piece
       // diagonal backwards, once anything is in the way, stop
       while (xBackward < 8 && yBackward < 8 && xBackward >= 0 && yBackward >= 0)
       {
-        Point move = new Point(xOffset++, yOffset--);
+        xOffset++;
+        yOffset--;
+        Point move = new Point(x + xOffset, y + yOffset);
         moves.add(move);
         xBackward++;
         yBackward--;

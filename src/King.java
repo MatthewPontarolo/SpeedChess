@@ -23,23 +23,23 @@ public class King extends Piece {
 	public void setValidMoves(Board board, int x, int y, int playerType)
 	{
 		//computing the diaglonals for king
-		Point move = new Point(1, 1);
+		Point move = new Point(x + 1, y + 1);
 		moves.add(move);
-		Point move1 = new Point(-1, -1);
+		Point move1 = new Point(x - 1, y - 1);
 		moves.add(move1);
-		Point move2 = new Point(1, -1);
+		Point move2 = new Point(x + 1, y - 1);
 		moves.add(move2);
-		Point move3 = new Point(-1, 1);
+		Point move3 = new Point(x - 1, y + 1);
 		moves.add(move3);
 
 		//computing the horizontals and verticals
-		Point move4 = new Point(0, 1);
+		Point move4 = new Point(x, y + 1);
 		moves.add(move4);
-		Point move5 = new Point(0, -1);
+		Point move5 = new Point(x, y - 1);
 		moves.add(move5);
-		Point move6 = new Point(1, 0);
+		Point move6 = new Point(x + 1, y);
 		moves.add(move6);
-		Point move7 = new Point(-1, 0);
+		Point move7 = new Point(x - 1, y);
 		moves.add(move7);
 
 	}

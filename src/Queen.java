@@ -30,7 +30,9 @@ public class Queen extends Piece {
 		// diagonal forward, once anything is in the way, stop
 		while (xForward < 8 && yForward < 8 && xForward >= 0 && yForward >=0)
 		{
-			Point move = new Point(xOffset++, yOffset++);
+			xOffset++;
+			yOffset++;
+			Point move = new Point(x + xOffset, y + yOffset);
 			moves.add(move);
 			xForward++;
 			yForward++;
@@ -44,7 +46,9 @@ public class Queen extends Piece {
 		yOffset = 0;
 		while (xBackward < 8 && yBackward < 8 && xBackward >= 0 && yBackward >=0)
 		{
-			Point move = new Point(xOffset--, yOffset--);
+			xOffset--;
+			yOffset--;
+			Point move = new Point(x + xOffset, y + yOffset);
 			moves.add(move);
 			xBackward--;
 			yBackward--;
@@ -58,7 +62,9 @@ public class Queen extends Piece {
 		// diagonal forward, once anything is in the way, stop
 		while (xForward < 8 && yForward < 8 && xForward >= 0 && yForward >= 0)
 		{
-			Point move = new Point(xOffset--, yOffset++);
+			xOffset--;
+			yOffset++;
+			Point move = new Point(x + xOffset, y + yOffset);
 			moves.add(move);
 			xForward--;
 			yForward++;
@@ -71,7 +77,9 @@ public class Queen extends Piece {
 		// diagonal backwards, once anything is in the way, stop
 		while (xBackward < 8 && yBackward < 8 && xBackward >= 0 && yBackward >= 0)
 		{
-			Point move = new Point(xOffset++, yOffset--);
+			xOffset++;
+			yOffset--;
+			Point move = new Point(x + xOffset, y + yOffset);
 			moves.add(move);
 			xBackward++;
 			yBackward--;
@@ -85,14 +93,16 @@ public class Queen extends Piece {
 		int offset = 0;
 		while (vForward >= 0 && vForward < 8)
 		{
-			Point move = new Point(0, offset++);
+			offset++;
+			Point move = new Point(x, y + offset);
 			moves.add(move);
 			vForward++;
 		}
 		offset = 0;
 		while (vBackward >= 0 && vBackward < 8)
 		{
-			Point move = new Point(0, offset--);
+			offset--;
+			Point move = new Point(x, y + offset);
 			moves.add(move);
 			vBackward--;
 		}
@@ -103,7 +113,8 @@ public class Queen extends Piece {
 		offset = 0;
 		while (hForward >= 0 && hForward < 8)
 		{
-			Point move = new Point(offset--, 0);
+			offset--;
+			Point move = new Point(x + offset, y);
 			moves.add(move);
 			hForward--;
 
@@ -111,7 +122,8 @@ public class Queen extends Piece {
 		offset = 0;
 		while (hBackward >= 0 && hBackward < 8)
 		{
-			Point move = new Point(offset++, 0);
+			offset++;
+			Point move = new Point(x + offset, y);
 			moves.add(move);
 			hBackward++;
 		}
