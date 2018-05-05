@@ -28,8 +28,8 @@ public class Bishop extends Piece
     //all posible moves up toward the left
     // all possible moves from spot
       // check if occupied, if yes don't add, if no, add
-    if (playerType == 0)
-    {
+    //if (playerType == 0)
+    //{
       // left side bishop -- figure out how to distinguish later
       int xForward = x;
       int yForward = y;
@@ -93,11 +93,11 @@ public class Bishop extends Piece
         yBackward--;
       }
 
-    }
-    else if (playerType == 1)
-    {
+    //}
+    //else if (playerType == 1)
+    //{
       // need to reconsider bc of board perspective
-    }
+    //}
 
 
 	}

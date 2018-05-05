@@ -36,7 +36,7 @@ public class Queen extends Piece {
 			moves.add(move);
 			xForward++;
 			yForward++;
-			System.out.println(xForward + ", " + yForward);
+			//System.out.println(xForward + ", " + yForward);
 		}
 
 		int xBackward = x;
