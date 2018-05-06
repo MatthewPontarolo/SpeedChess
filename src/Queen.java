@@ -32,11 +32,16 @@ public class Queen extends Piece {
 		{
 			xOffset++;
 			yOffset++;
-			Point move = new Point(x + xOffset, y + yOffset);
+			int xCoord = x + xOffset;
+			int yCoord = y + yOffset;
+			Point move = new Point(xCoord, yCoord);
 			moves.add(move);
+			if (xCoord < 8 && xCoord >= 0 && yCoord < 8 && yCoord >= 0 && board.getPiece(xCoord, yCoord) != null)
+			{
+				break;
+			}
 			xForward++;
 			yForward++;
-			//System.out.println(xForward + ", " + yForward);
 		}
 
 		int xBackward = x;
@@ -48,8 +53,14 @@ public class Queen extends Piece {
 		{
 			xOffset--;
 			yOffset--;
-			Point move = new Point(x + xOffset, y + yOffset);
+			int xCoord = x + xOffset;
+			int yCoord = y + yOffset;
+			Point move = new Point(xCoord, yCoord);
 			moves.add(move);
+			if (xCoord < 8 && xCoord >= 0 && yCoord < 8 && yCoord >= 0 && board.getPiece(xCoord, yCoord) != null)
+			{
+				break;
+			}
 			xBackward--;
 			yBackward--;
 		}
@@ -64,8 +75,14 @@ public class Queen extends Piece {
 		{
 			xOffset--;
 			yOffset++;
-			Point move = new Point(x + xOffset, y + yOffset);
+			int xCoord = x + xOffset;
+			int yCoord = y + yOffset;
+			Point move = new Point(xCoord, yCoord);
 			moves.add(move);
+			if (xCoord < 8 && xCoord >= 0 && yCoord < 8 && yCoord >= 0 && board.getPiece(xCoord, yCoord) != null)
+			{
+				break;
+			}
 			xForward--;
 			yForward++;
 		}
@@ -79,8 +96,14 @@ public class Queen extends Piece {
 		{
 			xOffset++;
 			yOffset--;
-			Point move = new Point(x + xOffset, y + yOffset);
+			int xCoord = x + xOffset;
+			int yCoord = y + yOffset;
+			Point move = new Point(xCoord, yCoord);
 			moves.add(move);
+			if (xCoord < 8 && xCoord >= 0 && yCoord < 8 && yCoord >= 0 && board.getPiece(xCoord, yCoord) != null)
+			{
+				break;
+			}
 			xBackward++;
 			yBackward--;
 		}
@@ -94,16 +117,28 @@ public class Queen extends Piece {
 		while (vForward >= 0 && vForward < 8)
 		{
 			offset++;
-			Point move = new Point(x, y + offset);
+			int xCoord = x;
+			int yCoord = y + offset;
+			Point move = new Point(xCoord, yCoord);
 			moves.add(move);
+			if (xCoord < 8 && xCoord >= 0 && yCoord < 8 && yCoord >= 0 && board.getPiece(xCoord, yCoord) != null)
+			{
+				break;
+			}
 			vForward++;
 		}
 		offset = 0;
 		while (vBackward >= 0 && vBackward < 8)
 		{
 			offset--;
-			Point move = new Point(x, y + offset);
+			int xCoord = x;
+			int yCoord = y + offset;
+			Point move = new Point(xCoord, yCoord);
 			moves.add(move);
+			if (xCoord < 8 && xCoord >= 0 && yCoord < 8 && yCoord >= 0 && board.getPiece(xCoord, yCoord) != null)
+			{
+				break;
+			}
 			vBackward--;
 		}
 
@@ -111,11 +146,17 @@ public class Queen extends Piece {
 		int hForward = x;
 		int hBackward = x;
 		offset = 0;
-		while (hForward >= 0 && hForward < 8)
+		while (hForward >=0 && hForward < 8)
 		{
 			offset--;
-			Point move = new Point(x + offset, y);
+			int xCoord = x + offset;
+			int yCoord = y;
+			Point move = new Point(xCoord, yCoord);
 			moves.add(move);
+			if (xCoord < 8 && xCoord >= 0 && yCoord < 8 && yCoord >= 0 && board.getPiece(xCoord, yCoord) != null)
+			{
+				break;
+			}
 			hForward--;
 
 		}
@@ -123,8 +164,14 @@ public class Queen extends Piece {
 		while (hBackward >= 0 && hBackward < 8)
 		{
 			offset++;
-			Point move = new Point(x + offset, y);
+			int xCoord = x + offset;
+			int yCoord = y;
+			Point move = new Point(xCoord, yCoord);
 			moves.add(move);
+			if (xCoord < 8 && xCoord >= 0 && yCoord < 8 && yCoord >= 0 && board.getPiece(xCoord, yCoord) != null)
+			{
+				break;
+			}
 			hBackward++;
 		}
 

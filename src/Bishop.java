@@ -41,8 +41,14 @@ public class Bishop extends Piece
       {
         xOffset++;
         yOffset++;
-        Point move = new Point(x + xOffset, y + yOffset);
+        int xCoord = x + xOffset;
+        int yCoord = y + yOffset;
+        Point move = new Point(xCoord, yCoord);
         moves.add(move);
+        if (xCoord < 8 && xCoord >= 0 && yCoord < 8 && yCoord >= 0 && board.getPiece(xCoord, yCoord) != null)
+        {
+          break;
+        }
         xForward++;
         yForward++;
       }
@@ -56,8 +62,14 @@ public class Bishop extends Piece
       {
         xOffset--;
         yOffset--;
-        Point move = new Point(x + xOffset, y + yOffset);
+        int xCoord = x + xOffset;
+        int yCoord = y + yOffset;
+        Point move = new Point(xCoord, yCoord);
         moves.add(move);
+        if (xCoord < 8 && xCoord >= 0 && yCoord < 8 && yCoord >= 0 && board.getPiece(xCoord, yCoord) != null)
+        {
+          break;
+        }
         xBackward--;
         yBackward--;
       }
@@ -72,8 +84,14 @@ public class Bishop extends Piece
       {
         xOffset--;
         yOffset++;
-        Point move = new Point(x + xOffset, y + yOffset);
+        int xCoord = x + xOffset;
+        int yCoord = y + yOffset;
+        Point move = new Point(xCoord, yCoord);
         moves.add(move);
+        if (xCoord < 8 && xCoord >= 0 && yCoord < 8 && yCoord >= 0 && board.getPiece(xCoord, yCoord) != null)
+        {
+          break;
+        }
         xForward--;
         yForward++;
       }
@@ -87,8 +105,14 @@ public class Bishop extends Piece
       {
         xOffset++;
         yOffset--;
-        Point move = new Point(x + xOffset, y + yOffset);
+        int xCoord = x + xOffset;
+        int yCoord = y + yOffset;
+        Point move = new Point(xCoord, yCoord);
         moves.add(move);
+        if (xCoord < 8 && xCoord >= 0 && yCoord < 8 && yCoord >= 0 && board.getPiece(xCoord, yCoord) != null)
+        {
+          break;
+        }
         xBackward++;
         yBackward--;
       }

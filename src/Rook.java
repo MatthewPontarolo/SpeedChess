@@ -21,8 +21,8 @@ public class Rook extends Piece {
 
 	public void setValidMoves(Board board, int x, int y, int playerType)
 	{
-		if (playerType == 0)
-		{
+		//if (playerType == 0)
+		//{
 			// move vertically, if anything blocking, stop immediately
 			int vForward = y;
 			int vBackward = y;
@@ -30,16 +30,28 @@ public class Rook extends Piece {
 			while (vForward >= 0 && vForward < 8)
 			{
 				offset++;
-				Point move = new Point(x, y + offset);
+				int xCoord = x;
+				int yCoord = y + offset;
+				Point move = new Point(xCoord, yCoord);
 				moves.add(move);
+				if (xCoord < 8 && xCoord >= 0 && yCoord < 8 && yCoord >= 0 && board.getPiece(xCoord, yCoord) != null)
+        {
+          break;
+        }
 				vForward++;
 			}
 			offset = 0;
 			while (vBackward >= 0 && vBackward < 8)
 			{
 				offset--;
-				Point move = new Point(x, y + offset);
+				int xCoord = x;
+				int yCoord = y + offset;
+				Point move = new Point(xCoord, yCoord);
 				moves.add(move);
+				if (xCoord < 8 && xCoord >= 0 && yCoord < 8 && yCoord >= 0 && board.getPiece(xCoord, yCoord) != null)
+        {
+          break;
+        }
 				vBackward--;
 			}
 
@@ -50,8 +62,14 @@ public class Rook extends Piece {
 			while (hForward >=0 && hForward < 8)
 			{
 				offset--;
-				Point move = new Point(x + offset, y);
+				int xCoord = x + offset;
+				int yCoord = y;
+				Point move = new Point(xCoord, yCoord);
 				moves.add(move);
+				if (xCoord < 8 && xCoord >= 0 && yCoord < 8 && yCoord >= 0 && board.getPiece(xCoord, yCoord) != null)
+        {
+          break;
+        }
 				hForward--;
 
 			}
@@ -59,17 +77,23 @@ public class Rook extends Piece {
 			while (hBackward >= 0 && hBackward < 8)
 			{
 				offset++;
-				Point move = new Point(x + offset, y);
+				int xCoord = x + offset;
+				int yCoord = y;
+				Point move = new Point(xCoord, yCoord);
 				moves.add(move);
+				if (xCoord < 8 && xCoord >= 0 && yCoord < 8 && yCoord >= 0 && board.getPiece(xCoord, yCoord) != null)
+        {
+          break;
+        }
 				hBackward++;
 			}
 
 
-		}
-		else if (playerType == 1)
-		{
+		//}
+		//else if (playerType == 1)
+		//{
 			// need to reconsider bc of d/f board perspective
-		}
+		//}
 
 	}
 
