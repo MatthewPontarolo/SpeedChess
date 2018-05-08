@@ -81,13 +81,12 @@ public class SpeedChess extends BorderPane {
 								selectedPiece = null;
 							} else {
 								if (selectedPiece.getValidMoves(b, selectedPiece.getPlayer()).contains(new Point(x, y))) {
-									//check whether or not it's a capture move
-									if (b.getPiece(x, y) == null) {
-										b.movePiece(selectedPiece, x, y);
-										selectedPiece = null;
-									} else {
+									//check whether or not it's a capture move (need to check for friendly piece)
+									if (b.getPiece(x, y) != null) {
 										b.getPiece(x, y).capture();
 									}
+									b.movePiece(selectedPiece, x, y);
+									selectedPiece = null;
 								} else {
 									System.out.println("Invalid move!");
 								}
