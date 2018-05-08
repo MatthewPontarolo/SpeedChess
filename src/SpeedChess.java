@@ -82,8 +82,12 @@ public class SpeedChess extends BorderPane {
 							} else {
 								if (selectedPiece.getValidMoves(b, selectedPiece.getPlayer()).contains(new Point(x, y))) {
 									//check whether or not it's a capture move
-									b.movePiece(selectedPiece, x, y);
-									selectedPiece = null;
+									if (b.getPiece(x, y) == null) {
+										b.movePiece(selectedPiece, x, y);
+										selectedPiece = null;
+									} else {
+										b.getPiece(x, y).capture();
+									}
 								} else {
 									System.out.println("Invalid move!");
 								}
@@ -141,15 +145,19 @@ public class SpeedChess extends BorderPane {
 		//Place pieces
 		Player p1 = GameHost.whitePlayer;
 		for (Piece p : p1.getPieces()) {
-			Button b = buttons[p.getXPosition()][p.getYPosition()];
-			Image im = new Image(getClass().getResourceAsStream(p.getName() + "WhitePiece.png"));
-			b.setGraphic(new ImageView(im));
+			if (p.getAlive()) {
+				Button b = buttons[p.getXPosition()][p.getYPosition()];
+				Image im = new Image(getClass().getResourceAsStream(p.getName() + "WhitePiece.png"));
+				b.setGraphic(new ImageView(im));
+			}
 		}
 		Player p2 = GameHost.blackPlayer;
 		for (Piece p : p2.getPieces()) {
-			Button b = buttons[p.getXPosition()][p.getYPosition()];
-			Image im = new Image(getClass().getResourceAsStream(p.getName() + "BlackPiece.png"));
-			b.setGraphic(new ImageView(im));
+			if (p.getAlive()) {
+				Button b = buttons[p.getXPosition()][p.getYPosition()];
+				Image im = new Image(getClass().getResourceAsStream(p.getName() + "BlackPiece.png"));
+				b.setGraphic(new ImageView(im));
+			}
 		}
 	}
 

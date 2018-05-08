@@ -46,6 +46,11 @@ public abstract class Piece {
 		player = p;
 	}
 
+	public void capture() {
+		setAlive(false);
+		setPosition(-1, -1);
+	}
+
 	@Override
 	public String toString() { return getName(); }
 }
