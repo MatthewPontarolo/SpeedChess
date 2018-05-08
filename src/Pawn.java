@@ -24,6 +24,7 @@ public class Pawn extends Piece {
 	// either have it called explicitly or through helper function
 
 	public void setValidMoves(Board board, int x, int y, int playerType) {
+		moves.clear();
 		// if this is pawn's first move, it can move two squares forward
 		Piece nullPiece = null;
 		if (firstMove == true)

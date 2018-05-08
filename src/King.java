@@ -22,6 +22,8 @@ public class King extends Piece {
 
 	public void setValidMoves(Board board, int x, int y, int playerType)
 	{
+		moves.clear();
+
 		//computing the diaglonals for king
 		Point move = new Point(x + 1, y + 1);
 		moves.add(move);

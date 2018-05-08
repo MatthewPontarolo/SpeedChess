@@ -20,6 +20,8 @@ public class Knight extends Piece {
 	}
 
 	public void setValidMoves(Board board, int x, int y, int playerType) {
+		moves.clear();
+
 		Point move = new Point(x + 2, y + 1);
 		moves.add(move);
 		Point move1 = new Point(x + 2, y - 1);

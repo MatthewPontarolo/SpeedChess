@@ -21,6 +21,8 @@ public class Rook extends Piece {
 
 	public void setValidMoves(Board board, int x, int y, int playerType)
 	{
+		moves.clear();
+
 		//if (playerType == 0)
 		//{
 			// move vertically, if anything blocking, stop immediately

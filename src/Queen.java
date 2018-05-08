@@ -20,6 +20,7 @@ public class Queen extends Piece {
 
 	public void setValidMoves(Board board, int x, int y, int playerType)
 	{
+		moves.clear();
 		//diagonals - similar to the bishops algoirthm
 		// left side bishop -- figure out how to distinguish later
 		int xForward = x;

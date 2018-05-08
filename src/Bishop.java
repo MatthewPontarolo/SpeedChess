@@ -25,9 +25,11 @@ public class Bishop extends Piece
   // Precondition: Piece is on board. get the position of current spot
   // Postcondition: sets array of viable move options and stores into 'moves' arraylist
   public void setValidMoves(Board board, int x, int y, int playerType) {
-    //all posible moves up toward the left
-    // all possible moves from spot
-      // check if occupied, if yes don't add, if no, add
+	moves.clear();
+
+	//all posible moves up toward the left
+	//all possible moves from spot
+	// check if occupied, if yes don't add, if no, add
     //if (playerType == 0)
     //{
       // left side bishop -- figure out how to distinguish later
