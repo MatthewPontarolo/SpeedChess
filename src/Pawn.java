@@ -26,11 +26,10 @@ public class Pawn extends Piece {
 	public void setValidMoves(Board board, int x, int y, int playerType) {
 		moves.clear();
 		// if this is pawn's first move, it can move two squares forward
-		Piece nullPiece = null;
 		if (firstMove == true)
 		{
 			Point firstMove = new Point(x + 0, y + 2);
-			if (board.getPiece(x,y+2) != null)
+			if (board.getPiece(x,y + 2) != null)
 			{
 				if (board.getPiece(x, y+2).getPlayer() != this.getPlayer())
 				{
@@ -44,51 +43,35 @@ public class Pawn extends Piece {
 		}
 
 		// if a piece is occupying a square diagonal from pawn, it can capture
-		if (x+1 <=8 && y+1 <= 8 && x+1 >= 0 && y+1 >=0)
+		if (x + 1 <= 8 && y + 1 <= 8 && x + 1 >= 0 && y + 1 >= 0)
 		{
+			Point move = new Point(x + 1, y + 1);
 			if (board.getPiece(x + 1, y + 1) != null)
 			{
-				Point move = new Point(x + 1, y + 1);
-				if (board.getPiece(x+1,y+1) != null)
-				{
-					if (board.getPiece(x+1,y+1).getPlayer() != this.getPlayer())
-					{
-						moves.add(move);
-					}
-				}
-				else
+				if (board.getPiece(x+1,y+1).getPlayer() != this.getPlayer())
 				{
 					moves.add(move);
 				}
 			}
-
 		}
-		if (x-1 <=8 && y+1 <= 8 && x-1 >= 0 && y+1 >=0)
+		if (x - 1 <= 8 && y + 1 <= 8 && x - 1 >= 0 && y + 1 >= 0)
 		{
+			Point move = new Point(x - 1, y + 1);
 			if (board.getPiece(x - 1, y + 1) != null)
 			{
-				Point move = new Point(x - 1, y + 1);
-				if (board.getPiece(x-1,y+1) != null)
-				{
-					if (board.getPiece(x-1,y+1).getPlayer() != this.getPlayer())
-					{
-						moves.add(move);
-					}
-				}
-				else
+				if (board.getPiece(x - 1, y + 1).getPlayer() != this.getPlayer())
 				{
 					moves.add(move);
 				}
 			}
 		}
-
 			// if no piece is in front of pawn, it can move forward one square
-		if (x <=8 && y+1 <= 8 && x >= 0 && y+1 >=0)
+		if (x <= 8 && y + 1 <= 8 && x >= 0 && y + 1 >=0)
 		{
 			Point move = new Point(x + 0, y + 1);
-			if (board.getPiece(x,y+1) != null)
+			if (board.getPiece(x, y + 1) != null)
 			{
-				if (board.getPiece(x,y+1).getPlayer() != this.getPlayer())
+				if (board.getPiece(x, y + 1).getPlayer() != this.getPlayer())
 				{
 					moves.add(move);
 				}
@@ -98,8 +81,6 @@ public class Pawn extends Piece {
 				moves.add(move);
 			}
 		}
-
-
 	}
 
 	// helper function
@@ -108,7 +89,6 @@ public class Pawn extends Piece {
 	// NOTE: will possibly reconsider use of Points bc of return type double
 	public ArrayList<Point> getValidMoves(Board board, int playerType)
 	{
-
 		this.setValidMoves(board, Xposition, Yposition, playerType);
 		return moves;
 	}
