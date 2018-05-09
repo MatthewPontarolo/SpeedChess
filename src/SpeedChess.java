@@ -90,12 +90,6 @@ public class SpeedChess extends BorderPane {
 								} else {
 									System.out.println("Invalid move!");
 								}
-								/*if (b.getPiece(x, y) == null) {
-									b.movePiece(selectedPiece, x, y);
-									selectedPiece = null;
-								} else {
-									System.out.println("Move conflict!");
-								}*/
 							}
 						} else {
 							selectedPiece = b.getPiece(x, y);
@@ -162,17 +156,18 @@ public class SpeedChess extends BorderPane {
 
 	public void drawHighlights() {
 		if (selectedPiece != null) {
-			/* something like this should work, general moves pattern should appear though not entirely accurate yet
-			// we can possibly consider extending possibleMoves or in some way to not have to make
-			// a new instance of PossibleMoves
-			PossibleMoves move = new PossibleMoves(0);
-			ArrayList<Point> moves = move.getPossibleMoves(selectedPiece, GameHost.gameBoard, 0);
-			*/
+			Image im = new Image(getClass().getResourceAsStream("HighlightSelected.png"));
+			highlights[selectedPiece.getXPosition()][selectedPiece.getYPosition()].setGraphic(new ImageView(im));
+
 			ArrayList<Point> moves = selectedPiece.getValidMoves(GameHost.gameBoard, selectedPiece.getPlayer());
 			for (int i = 0; i < 8; i++) {
 				for (int j = 0; j < 8; j++) {
 					if (moves.contains(new Point(i, j))) {
-						Image im = new Image(getClass().getResourceAsStream("HighlightValid.png"));
+						if (GameHost.gameBoard.getPiece(i, j) != null && GameHost.gameBoard.getPiece(i, j).getPlayer() != selectedPiece.getPlayer()) {
+							im = new Image(getClass().getResourceAsStream("HighlightCapture.png"));
+						} else {
+							im = new Image(getClass().getResourceAsStream("HighlightValid.png"));
+						}
 						highlights[i][j].setGraphic(new ImageView(im));
 					} else {
 						highlights[i][j].setGraphic(null);
