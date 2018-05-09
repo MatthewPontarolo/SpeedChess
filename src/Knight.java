@@ -49,15 +49,17 @@ public class Knight extends Piece {
 		return moves;
 	}
 
-	public int move(Board board, Point position) {
+	public void move(int x, int y) {
 		// check if the position the piece wants to move to is in array of possible moves
 		// if yes, update position -- setPosition(position)
 		// if no, give error message -- depending on implementation of UI
 		// function could just do nothing
 
+		this.setPosition(x, y);
+
 		// no valid moves found
 		// error message in UI
 
-		return 0;
+
 	}
 }

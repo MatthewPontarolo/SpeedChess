@@ -35,7 +35,10 @@ public class Board {
 	public void movePiece(Piece p, int x, int y) {
 		spots[p.getXPosition()][p.getYPosition()] = null;
 		spots[x][y] = p;
-		p.setPosition(x, y);
+		// moved into Piece::move()
+		//p.setPosition(x, y);
+		p.move(x, y);
+
 	}
 
 	public void addPlayer(Player player, int index) {

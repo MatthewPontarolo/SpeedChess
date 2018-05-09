@@ -66,7 +66,7 @@ public class Pawn extends Piece {
 		return moves;
 	}
 
-	public int move(Board board, int position) {
+	public void move(int x, int y) {
 		// check if the position the piece wants to move to is in array of possible moves
 		// if yes, update position -- setCurrentPosition(position)
 		// if no, give error message -- depending on implementation of UI
@@ -76,8 +76,10 @@ public class Pawn extends Piece {
 			firstMove = false;
 		}
 
+		this.setPosition(x, y);
+
 		// no valid moves found
 		// error message in UI
-		return 0;
+
 	}
 }

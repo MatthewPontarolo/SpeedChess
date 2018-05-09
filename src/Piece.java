@@ -50,6 +50,8 @@ public abstract class Piece {
 		setAlive(false);
 		setPosition(-1, -1);
 	}
+	public abstract void move(int x, int y);
+
 
 	@Override
 	public String toString() { return getName(); }

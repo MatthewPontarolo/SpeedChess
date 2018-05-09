@@ -138,7 +138,7 @@ public class Bishop extends Piece
 		return moves;
 	}
 
-  public int move(Board board, Point position) {
+  public void move(int x, int y) {
     // check if the position the piece wants to move to is in array of possible moves
     // if yes, update position -- setCurrentPosition(position)
     // if no, give error message -- depending on implementation of UI
@@ -146,8 +146,8 @@ public class Bishop extends Piece
 
     // no valid moves found
     // error message in UI
+    this.setPosition(x, y);
 
-	return 0;
   }
 
 }
