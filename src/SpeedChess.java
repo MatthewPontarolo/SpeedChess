@@ -156,9 +156,7 @@ public class SpeedChess extends BorderPane {
 
 	public void drawHighlights() {
 		if (selectedPiece != null) {
-			Image im = new Image(getClass().getResourceAsStream("HighlightSelected.png"));
-			highlights[selectedPiece.getXPosition()][selectedPiece.getYPosition()].setGraphic(new ImageView(im));
-
+			Image im;
 			ArrayList<Point> moves = selectedPiece.getValidMoves(GameHost.gameBoard, selectedPiece.getPlayer());
 			for (int i = 0; i < 8; i++) {
 				for (int j = 0; j < 8; j++) {
@@ -174,6 +172,8 @@ public class SpeedChess extends BorderPane {
 					}
 				}
 			}
+			im = new Image(getClass().getResourceAsStream("HighlightSelected.png"));
+			highlights[selectedPiece.getXPosition()][selectedPiece.getYPosition()].setGraphic(new ImageView(im));
 		} else {
 			for (int i = 0; i < 8; i++)
 				for (int j = 0; j < 8; j++)
