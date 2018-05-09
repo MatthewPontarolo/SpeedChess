@@ -35,11 +35,18 @@ public class Rook extends Piece {
 				int xCoord = x;
 				int yCoord = y + offset;
 				Point move = new Point(xCoord, yCoord);
-				moves.add(move);
-				if (xCoord < 8 && xCoord >= 0 && yCoord < 8 && yCoord >= 0 && board.getPiece(xCoord, yCoord) != null)
-        {
-          break;
-        }
+				if (xCoord < 8 && xCoord >= 0 && yCoord < 8 && yCoord >= 0)
+				{
+					if (board.getPiece(xCoord, yCoord) != null)
+					{
+						if (board.getPiece(xCoord,yCoord).getPlayer() != this.getPlayer())
+						{
+							moves.add(move);
+						}
+						break;
+					}
+					moves.add(move);
+				}
 				vForward++;
 			}
 			offset = 0;
@@ -49,11 +56,18 @@ public class Rook extends Piece {
 				int xCoord = x;
 				int yCoord = y + offset;
 				Point move = new Point(xCoord, yCoord);
-				moves.add(move);
-				if (xCoord < 8 && xCoord >= 0 && yCoord < 8 && yCoord >= 0 && board.getPiece(xCoord, yCoord) != null)
-        {
-          break;
-        }
+				if (xCoord < 8 && xCoord >= 0 && yCoord < 8 && yCoord >= 0)
+				{
+					if (board.getPiece(xCoord, yCoord) != null)
+					{
+						if (board.getPiece(xCoord,yCoord).getPlayer() != this.getPlayer())
+						{
+							moves.add(move);
+						}
+						break;
+					}
+					moves.add(move);
+				}
 				vBackward--;
 			}
 
@@ -67,11 +81,18 @@ public class Rook extends Piece {
 				int xCoord = x + offset;
 				int yCoord = y;
 				Point move = new Point(xCoord, yCoord);
-				moves.add(move);
-				if (xCoord < 8 && xCoord >= 0 && yCoord < 8 && yCoord >= 0 && board.getPiece(xCoord, yCoord) != null)
-        {
-          break;
-        }
+				if (xCoord < 8 && xCoord >= 0 && yCoord < 8 && yCoord >= 0)
+				{
+					if (board.getPiece(xCoord, yCoord) != null)
+					{
+						if (board.getPiece(xCoord,yCoord).getPlayer() != this.getPlayer())
+						{
+							moves.add(move);
+						}
+						break;
+					}
+					moves.add(move);
+				}
 				hForward--;
 
 			}
@@ -82,7 +103,18 @@ public class Rook extends Piece {
 				int xCoord = x + offset;
 				int yCoord = y;
 				Point move = new Point(xCoord, yCoord);
-				moves.add(move);
+				if (xCoord < 8 && xCoord >= 0 && yCoord < 8 && yCoord >= 0)
+				{
+					if (board.getPiece(xCoord, yCoord) != null)
+					{
+						if (board.getPiece(xCoord,yCoord).getPlayer() != this.getPlayer())
+						{
+							moves.add(move);
+						}
+						break;
+					}
+					moves.add(move);
+				}
 				if (xCoord < 8 && xCoord >= 0 && yCoord < 8 && yCoord >= 0 && board.getPiece(xCoord, yCoord) != null)
         {
           break;
