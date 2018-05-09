@@ -36,13 +36,20 @@ public class Pawn extends Piece {
 		// if a piece is occupying a square diagonal from pawn, it can capture
 		if (x+1 <=8 && y+1 <= 8 && x+1 >= 0 && y+1 >=0)
 		{
-			Point move = new Point(x + 1, y + 1);
-			moves.add(move);
+			if (board.getPiece(x + 1, y + 1) != null)
+			{
+				Point move = new Point(x + 1, y + 1);
+				moves.add(move);
+			}
+
 		}
 		if (x-1 <=8 && y+1 <= 8 && x-1 >= 0 && y+1 >=0)
 		{
-			Point move = new Point(x - 1, y + 1);
-			moves.add(move);
+			if (board.getPiece(x - 1, y + 1) != null)
+			{
+				Point move = new Point(x - 1, y + 1);
+				moves.add(move);
+			}
 		}
 
 			// if no piece is in front of pawn, it can move forward one square
