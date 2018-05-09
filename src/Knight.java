@@ -23,9 +23,10 @@ public class Knight extends Piece {
 		moves.clear();
 		if (x+2 <= 8 && y+1 <= 8 && x+2 >=0 && y+1 >=0)
 		{
+			Point move = new Point(x + 2, y + 1);
 			if (board.getPiece(x+2,y+1) != null)
 			{
-				Point move = new Point(x + 2, y + 1);
+
 				if (board.getPiece(x+2,y+1) != null)
 				{
 					if (board.getPiece(x+2,y+1).getPlayer() != this.getPlayer())
@@ -41,9 +42,10 @@ public class Knight extends Piece {
 		}
 		if (x+2 <= 8 && y-1 <= 8 && x+2 >=0 && y-1 >=0)
 		{
+			Point move = new Point(x + 2, y - 1);
 			if (board.getPiece(x+2,y-1) != null)
 			{
-				Point move = new Point(x + 2, y - 1);
+
 				if (board.getPiece(x+2,y-1) != null)
 				{
 					if (board.getPiece(x+2,y-1).getPlayer() != this.getPlayer())
@@ -59,9 +61,10 @@ public class Knight extends Piece {
 		}
 		if (x-2 <= 8 && y-1 <= 8 && x-2 >= 0 && y-1 >= 0)
 		{
+			Point move = new Point(x - 2, y - 1);
 			if (board.getPiece(x-2,y-1) != null)
 			{
-				Point move = new Point(x - 2, y - 1);
+
 				if (board.getPiece(x-2,y-1) != null)
 				{
 					if (board.getPiece(x-2,y-1).getPlayer() != this.getPlayer())
@@ -77,46 +80,66 @@ public class Knight extends Piece {
 		}
 		if (x+1 <= 8 && y+2 <= 8 && x+1 >= 0 && y+2 >= 0)
 		{
-			if (board.getPiece(x-2,y-1) != null)
+			Point move = new Point(x + 1, y + 2);
+			if (board.getPiece(x+1,y+2) != null)
 			{
-				Point move = new Point(x + 1, y + 2);
+
 				if (board.getPiece(x+1,y+2).getPlayer() != this.getPlayer())
 				{
 					moves.add(move);
 				}
 			}
+			else
+			{
+				moves.add(move);
+			}
 		}
 		if (x+1 <= 8 && y-2 <= 8 && x+1 >= 0 && y-2 >= 0)
 		{
+			Point move = new Point(x+1,y-2);
 			if (board.getPiece(x+1,y-2) != null)
 			{
-				Point move = new Point(x+1,y-2);
+
 				if (board.getPiece(x+1,y-2).getPlayer() != this.getPlayer())
 				{
 					moves.add(move);
 				}
 			}
+			else
+			{
+				moves.add(move);
+			}
 		}
 		if (x-1 <= 8 && y+2 <= 8 && x-1 >= 0 && y+2 >= 0)
 		{
+			Point move = new Point(x-1,y+2);
 			if (board.getPiece(x-1,y+2) != null)
 			{
-				Point move = new Point(x-1,y+2);
+
 				if (board.getPiece(x-1,y+2).getPlayer() != this.getPlayer())
 				{
 					moves.add(move);
 				}
 			}
+			else
+			{
+				moves.add(move);
+			}
 		}
 		if (x-1 <= 8 && y-2 <=8 && x-1 >= 0 && y-2 >= 0)
 		{
+			Point move = new Point(x-1,y-2);
 			if (board.getPiece(x-1, y-2) != null)
 			{
-				Point move = new Point(x-1,y-2);
+
 				if (board.getPiece(x-1,y-2).getPlayer() != this.getPlayer())
 				{
 					moves.add(move);
 				}
+			}
+			else
+			{
+				moves.add(move);
 			}
 		}
 	}
