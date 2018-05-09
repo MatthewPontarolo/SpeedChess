@@ -30,7 +30,17 @@ public class Pawn extends Piece {
 		if (firstMove == true)
 		{
 			Point firstMove = new Point(x + 0, y + 2);
-			moves.add(firstMove);
+			if (board.getPiece(x,y+2) != null)
+			{
+				if (board.getPiece(x, y+2).getPlayer() != this.getPlayer())
+				{
+					moves.add(firstMove);
+				}
+			}
+			else
+			{
+				moves.add(firstMove);
+			}
 		}
 
 		// if a piece is occupying a square diagonal from pawn, it can capture
@@ -39,7 +49,17 @@ public class Pawn extends Piece {
 			if (board.getPiece(x + 1, y + 1) != null)
 			{
 				Point move = new Point(x + 1, y + 1);
-				moves.add(move);
+				if (board.getPiece(x+1,y+1) != null)
+				{
+					if (board.getPiece(x+1,y+1).getPlayer() != this.getPlayer())
+					{
+						moves.add(move);
+					}
+				}
+				else
+				{
+					moves.add(move);
+				}
 			}
 
 		}
@@ -48,7 +68,17 @@ public class Pawn extends Piece {
 			if (board.getPiece(x - 1, y + 1) != null)
 			{
 				Point move = new Point(x - 1, y + 1);
-				moves.add(move);
+				if (board.getPiece(x-1,y+1) != null)
+				{
+					if (board.getPiece(x-1,y+1).getPlayer() != this.getPlayer())
+					{
+						moves.add(move);
+					}
+				}
+				else
+				{
+					moves.add(move);
+				}
 			}
 		}
 
@@ -56,7 +86,17 @@ public class Pawn extends Piece {
 		if (x <=8 && y+1 <= 8 && x >= 0 && y+1 >=0)
 		{
 			Point move = new Point(x + 0, y + 1);
-			moves.add(move);
+			if (board.getPiece(x,y+1) != null)
+			{
+				if (board.getPiece(x,y+1).getPlayer() != this.getPlayer())
+				{
+					moves.add(move);
+				}
+			}
+			else
+			{
+				moves.add(move);
+			}
 		}
 
 

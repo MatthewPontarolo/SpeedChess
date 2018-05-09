@@ -10,12 +10,12 @@ public abstract class Piece {
 	// check if piece is still on board
 	public boolean isAlive()
 	{
-	return status;
+		return status;
 	}
 
 	public void setAlive(boolean alive)
 	{
-	status = alive;
+		status = alive;
 	}
 
 	public void setPosition(int x, int y) {

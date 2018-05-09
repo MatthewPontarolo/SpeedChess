@@ -11,9 +11,14 @@ public class Player {
 	private int queen = 1;
 	private int king = 1;
 
+	private int playerType;
+	//1 = white
+	//0 = black
+
 	// CONSTRUCTOR
 	public Player(int playerType) {
 		setUp(playerType);
+		this.playerType = playerType;
 	}
 
 	public void setUp(int playerType) {
