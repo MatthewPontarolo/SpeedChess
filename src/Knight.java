@@ -21,23 +21,102 @@ public class Knight extends Piece {
 
 	public void setValidMoves(Board board, int x, int y, int playerType) {
 		moves.clear();
-
-		Point move = new Point(x + 2, y + 1);
-		moves.add(move);
-		Point move1 = new Point(x + 2, y - 1);
-		moves.add(move1);
-		Point move2 = new Point(x - 2, y + 1);
-		moves.add(move2);
-		Point move3 = new Point(x - 2, y - 1);
-		moves.add(move3);
-		Point move4 = new Point(x + 1, y + 2);
-		moves.add(move4);
-		Point move5 = new Point(x + 1, y - 2);
-		moves.add(move5);
-		Point move6 = new Point (x - 1, y + 2);
-		moves.add(move6);
-		Point move7 = new Point (x - 1, y - 2);
-		moves.add(move7);
+		if (x+2 <= 8 && y+1 <= 8 && x+2 >=0 && y+1 >=0)
+		{
+			if (board.getPiece(x+2,y+1) != null)
+				Point move = new Point(x + 2, y + 1);
+				if (board.getPiece(x+2,y+1) != null)
+				{
+					if (board.getPiece(x+2,y+1).getPlayer() != this.getPlayer())
+					{
+						moves.add(move);
+					}
+				}
+				else
+				{
+					moves.add(move);
+				}
+			}
+		if (x+2 <= 8 && y-1 <= 8 && x+2 >=0 && y-1 >=0)
+		{
+			if (board.getPiece(x+2,y-1) != null)
+			{
+				Point move = new Point(x + 2, y - 1);
+				if (board.getPiece(x+2,y-1) != null)
+				{
+					if (board.getPiece(x+2,y-1).getPlayer() != this.getPlayer())
+					{
+						moves.add(move);
+					}
+				}
+				else
+				{
+					moves.add(move);
+				}
+			}
+		}
+		if (x-2 <= 8 && y-1 <= 8 && x-2 >= 0 && y-1 >= 0)
+		{
+			if (board.getPiece(x-2,y-1) != null)
+			{
+				Point move = new Point(x - 2, y - 1);
+				if (board.getPiece(x-2,y-1) != null)
+				{
+					if (board.getPiece(x-2,y-1).getPlayer() != this.getPlayer())
+					{
+						moves.add(move);
+					}
+				}
+				else
+				{
+					moves.add(move);
+				}
+			}
+		}
+		if (x+1 <= 8 && y+2 <= 8 && x+1 >= 0 && y+2 >= 0)
+		{
+			if (board.getPiece(x-2,y-1) != null)
+			{
+				Point move = new Point(x + 1, y + 2);
+				if (board.getPiece(x+1,y+2).getPlayer() != this.getPlayer())
+				{
+					moves.add(move);
+				}
+			}
+		}
+		if (x+1 <= 8 && y-2 <= 8 && x+1 >= 0 && y-2 >= 0)
+		{
+			if (board.getPiece(x+1,y-2) != null)
+			{
+				Point move = new Point(x+1,y-2);
+				if (board.getPiece(x+1,y-2).getPlayer() != this.getPlayer())
+				{
+					moves.add(move);
+				}
+			}
+		}
+		if (x-1 <= 8 && y+2 <= 8 && x-1 >= 0 && y+2 >= 0
+		{
+			if (board.getPiece(x-1,y+2) != null)
+			{
+				Point move = new Point(x-1,y+2);
+				if (board.getPiece(x-1,y+2).getPlayer() != this.getPlayer())
+				{
+					moves.add(move);
+				}
+			}
+		}
+		if (x-1 <= 8 && y-2 <=8 && x-1 >= 0 && y-2 >= 0)
+		{
+			if (board.getPiece(x-1, y-2) != null)
+			{
+				Point move = new Point(x-1,y-2);
+				if (board.getPiece(x-1,y-2).getPlayer() != this.getPlayer())
+				{
+					moves.add(move);
+				}
+			}
+		}
 	}
 
 	// helper function
