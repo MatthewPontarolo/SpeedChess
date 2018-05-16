@@ -30,7 +30,7 @@ Given the user has trouble placing their next move or uncertain about it, when t
 
 # How to Run <br>
 Requirements: <br>
-<br>Be able to run ```ant``` on terminal. <br>
+<br>Be able to run ```ant``` on terminal.
 
 <br>Clone the git repository into your local environment. <br> 
 ```git clone https://github.com/MatthewPontarolo/SpeedChess.git```<br>
