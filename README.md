@@ -36,8 +36,7 @@ Requirements: <br>
 ```git clone https://github.com/MatthewPontarolo/SpeedChess.git```<br>
 <br>Go into directory <br>
 ```cd SpeedChess``` <br>
-<br>Build and Run <br>
-Execute the following lines on your terminal: <br> 
+<br>Execute the following lines on your terminal: <br> 
 ```ant compile``` <br>
 ```ant run``` <br>
 
