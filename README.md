@@ -25,8 +25,6 @@ Given the next turn timer runs and both users get the chance to input their next
 <br> Scenario #5: User Doesn’t Know Their Next Move ```<extends>``` turn <br>
 Given the user has trouble placing their next move or uncertain about it, when the timer starts for both players to input their move, then the user can click on a piece for the program to show which moves are available for that piece and the user will either know which move to input or validate their move. <br>
 
-<br> Scenario #6: Configuration ```<extends>``` Game Startup <br>
-
 
 # How to Run <br>
 Requirements: <br>
