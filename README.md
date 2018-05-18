@@ -29,6 +29,7 @@ Given the user has trouble placing their next move or uncertain about it, when t
 # How to Run <br>
 Requirements: <br>
 Be able to run ```ant``` on terminal. <br>
+<br>Some computers already have installed ant automatically, however, you can check by typing ```ant -version``` on your terminal. To install ant, you can install it through Homebrew with ```brew install ant``` on your terminal. If you do not have Homebrew, you can install it [here](https://brew.sh/) and then run the command to install ant. Both installations should be fairly quick and do not required much time to get it running. If you would prefer to install ant manually, you can take a look at this [link](http://ant.apache.org/manual/install.html) for more information. After ant is installed, you may proceed to the following steps. <br>
 <br>Clone the git repository into your local environment. <br> 
 ```git clone https://github.com/MatthewPontarolo/SpeedChess.git```<br>
 <br>Go into directory <br>
