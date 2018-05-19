@@ -4,7 +4,7 @@
   <property environment="env"/>
   <property name="project" value="SpeedChess"/>
 
-  <property name="mainClass" value="Main"/>
+  <property name="mainClass" value="cs48g02s18.chessGame.Main"/>
 
   <path id="project.class.path">
     <pathelement path="build"/>
@@ -13,7 +13,7 @@
 
   <target name="compile" description="compile the code">
     <mkdir dir="build"/> 
-    <javac srcdir="src" destdir="build" includeantruntime="false" debug="true" debuglevel="lines,source" >
+    <javac srcdir="src/cs48g02s18" destdir="build" includeantruntime="false" debug="true" debuglevel="lines,source" >
       <classpath refid="project.class.path"/>
     </javac>
   </target>
