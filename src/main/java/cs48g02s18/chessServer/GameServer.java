@@ -1,11 +1,10 @@
 package cs48g02s18.chessServer;
 
-import javax.xml.crypto.Data;
+import org.springframework.web.bind.annotation.RequestMapping;
+
 import java.io.Serializable;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.Iterator;
-import java.util.Timer;
 
 /*** ChessGameSever.java
    subclasses for all the GAME data
@@ -20,47 +19,53 @@ ChessClientServerInterface
 //may want Timer for future stuff
 
 class GameServer implements Serializable {
-    HashMap<String, Player> usersByUsername;
-    HashMap<String, GameInstance> gameLobby;
+    private HashMap<String, ServerPlayer> usersByUsername;
+    private HashMap<String, GameInstance> gameLobby;
 
     public GameServer() {
-        this.usersByUsername = new HashMap<String, Player>();
+        this.usersByUsername = new HashMap<>();
+        this.gameLobby = new HashMap<>();
     }
 
-    public String getLobby(){
-        String lobbyString = new String[];
-        Iterator<String> iterator = gameLobby.keySet().iterator();
-        int i = 0;
-        while (iterator.hasNext()){
-            lobbyString += iterator.next() + "\n";
+    public String getLobby() {
+        String lobbyString = new String();
+        StringBuilder lobbyStringBuilder = new StringBuilder();
+
+        for (String next: gameLobby.keySet()) {
+            lobbyStringBuilder.append(next);
+            lobbyStringBuilder.append("\n");
         }
+        return lobbyString;
     }
 
-    public void createGame(String name, Player player){
-        GameInstance newGame = new GameInstance(name, player);
-        player.setCurrentGame(newGame);
+    public void createGame(String name, ServerPlayer serverPlayer){
+        GameInstance newGame = new GameInstance(serverPlayer);
+        serverPlayer.setCurrentGame(newGame);
+        gameLobby.put(name, newGame);
     }
 
-    public void joinGame(String name, Player player){
+    public void joinGame(String name, ServerPlayer serverPlayer){
         GameInstance gameInstance = gameLobby.get(name);
-        gameInstance.addPlayer(player);
-        player.setCurrentGame(gameInstance);
+        gameInstance.addPlayer(serverPlayer);
+        serverPlayer.setCurrentGame(gameInstance);
     }
 
-    public void takeRequest(DataPass request){
-        Player player = accessPlayer(request);
+    public String takeRequest(DataPass request){
+        ServerPlayer serverPlayer = accessPlayer(request);
 
-        if (player != null){
+        if (serverPlayer != null){
             if (request instanceof DataPassCreateGame){
-                createGame();
+                createGame(((DataPassCreateGame) request).getGameName(), serverPlayer);
             }
             else if (request instanceof DataPassJoinGame){
-                joinGame();
+                joinGame(((DataPassJoinGame) request).getGameName(), serverPlayer);
             }
             else if (request instanceof DataPassMoveData){
-
+                serverPlayer.setNextMove(((DataPassMoveData) request).getMove());
             }
         }
+
+        return "data received";
     }
 
     public String addUser(DataPass userData){
@@ -68,13 +73,13 @@ class GameServer implements Serializable {
             return "username already taken.";
         }
         else {
-            Player newUser = new Player(userData.getUsername(), userData.getPassword());
+            ServerPlayer newUser = new ServerPlayer(userData.getUsername(), userData.getPassword());
             usersByUsername.put(newUser.getUsername(), newUser);
         }
     }
 
-    public Player accessPlayer(DataPass userData) {
-        Player accessed = usersByUsername.get(userData.getUsername());
+    public ServerPlayer accessPlayer(DataPass userData) {
+        ServerPlayer accessed = usersByUsername.get(userData.getUsername());
         if (userData.getPassword().equals(accessed.getPassword())){
             return accessed;
         }

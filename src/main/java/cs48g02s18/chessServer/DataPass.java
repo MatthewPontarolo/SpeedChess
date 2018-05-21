@@ -3,9 +3,11 @@ package cs48g02s18.chessServer;
 //chunk of data we will be passing back and forth
 //string is an initial stand-in
 
-import java.io.Serializable;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-public class DataPass implements Serializable {
+
+@JsonIgnoreProperties(ignoreUnknown = true)
+public class DataPass {
     private String username;
     private String password;
 
@@ -20,5 +22,13 @@ public class DataPass implements Serializable {
 
     public String getPassword() {
         return password;
+    }
+
+    @Override
+    public String toString() {
+        return "DataPass{" +
+                "username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                '}';
     }
 }

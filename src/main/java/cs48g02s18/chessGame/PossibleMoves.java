@@ -1,4 +1,4 @@
-package cs48g02s18.chessServer.cs48g02s18.chessGame;
+package cs48g02s18.chessGame;
 
 import java.awt.Point;
 import java.util.ArrayList;

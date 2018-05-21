@@ -1,5 +1,8 @@
 package cs48g02s18.chessServer;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+@JsonIgnoreProperties
 public class DataPassJoinGame extends DataPass {
     String gameName;
 

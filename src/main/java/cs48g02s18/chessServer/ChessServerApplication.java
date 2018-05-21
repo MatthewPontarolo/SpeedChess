@@ -4,9 +4,9 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class ChesserverApplication {
+public class ChessServerApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(ChesserverApplication.class, args);
+        SpringApplication.run(ChessServerApplication.class, args);
     }
 }

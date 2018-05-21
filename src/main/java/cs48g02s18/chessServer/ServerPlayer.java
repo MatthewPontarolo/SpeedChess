@@ -1,16 +1,14 @@
 package cs48g02s18.chessServer;
 
-import java.io.Serializable;
-
-class Player {
+class ServerPlayer {
     private String username;
     private String password;
     private GameInstance currentGame;
     //private ArrayList<PastGame> pastGames;
-    private MoveData nextMove;
+    private Move nextMove;
 
 
-    public Player(String username, String password) {
+    public ServerPlayer(String username, String password) {
         this.username = username;
         this.password = password;
     }

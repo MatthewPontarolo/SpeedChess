@@ -1,4 +1,4 @@
-package cs48g02s18.chessServer.cs48g02s18.chessGame;
+package cs48g02s18.chessGame;
 
 import java.awt.*;
 import java.awt.Graphics;
@@ -9,6 +9,8 @@ import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.io.*;
 import java.util.*;
+
+import cs48g02s18.chessServer.ClientConnector;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -28,8 +30,11 @@ import javafx.stage.Stage;
 import javafx.geometry.Pos;
 import javafx.geometry.Insets;
 
+import javax.swing.*;
+
 public class Main extends Application {
 	public static Stage mainStage;
+	public static cs48g02s18.chessServer.ClientConnector clientConnector;
 	
 	public static void main(String[] args) {
 		Application.launch(args);
@@ -37,6 +42,9 @@ public class Main extends Application {
 	
 	@Override 
 	public void start(Stage primaryStage) {
+		clientConnector.setLogin((String) JOptionPane.showInputDialog("Username:"));
+		clientConnector.setPass((String) JOptionPane.showInputDialog("Password:"));
+
 		mainStage = primaryStage;
 		primaryStage.setTitle("Speed Chess");
 		SpeedChess scene = new SpeedChess();

@@ -1,4 +1,4 @@
-package cs48g02s18.chessServer.cs48g02s18.chessGame;
+package cs48g02s18.chessGame;
 
 import java.awt.Point;
 import java.util.ArrayList;
@@ -8,6 +8,7 @@ public abstract class Piece {
 	protected int Yposition;
 	protected boolean status;
 	protected int player;
+	private Board gameBoard; // add so that we can just tell a piece to move itself or take itself off the board etc
 
 	// check if piece is still on board
 	public boolean isAlive()
@@ -23,7 +24,10 @@ public abstract class Piece {
 	public void setPosition(int x, int y) {
 		Xposition = x;
 		Yposition = y;
+		gameBoard.movePiece();
 	}
+
+	public Point getPosition() {return new Point(Xposition, Yposition)}
 
 	public int getXPosition()
 	{

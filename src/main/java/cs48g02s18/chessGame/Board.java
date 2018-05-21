@@ -1,7 +1,8 @@
-package cs48g02s18.chessServer.cs48g02s18.chessGame;
+package cs48g02s18.chessGame;
 
+import java.awt.*;
 import java.util.ArrayList;
-
+//todo move this to server package
 public class Board {
 	// 8x8 matrix to store board positions
 	private Piece[][] spots = new Piece[8][8];
@@ -25,6 +26,11 @@ public class Board {
 		return spots[x][y];
 	}
 
+	public Piece getPiece(Point point) {
+		return spots[point.x][point.y];
+	}
+
+
 	public void addPiece(Piece p) {
 		spots[p.getXPosition()][p.getYPosition()] = p;
 	}
@@ -33,7 +39,25 @@ public class Board {
 		spots[p.getXPosition()][p.getYPosition()] = null;
 		spots[x][y] = p;
 		p.move(x, y);
-
 	}
+
+	public Piece pickUpPieceAt(Point point){
+	    Piece pickedUp = getPiece(point);
+	    spots[point.x][point.y] = null;
+	    return pickedUp;
+    }
+
+    public void putPiece(Piece piece) {
+	    Point putAt = piece.getPosition();
+	    spots[putAt.x][putAt.y] = piece;
+    }
+
+	public void capturePieceAt(Point capturePoint) {
+	    Piece captureMe = getPiece(capturePoint);
+
+        if (captureMe != null) {
+            captureMe.capture();
+        }
+    }
 
 }

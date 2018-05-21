@@ -1,4 +1,4 @@
-package cs48g02s18.chessServer.cs48g02s18.chessGame;
+package cs48g02s18.chessGame;
 
 import java.awt.*;
 import java.awt.Graphics;
@@ -43,6 +43,7 @@ public class SpeedChess extends BorderPane {
 	Button[][] buttons = new Button[8][8];
 	Label[][] highlights = new Label[8][8];
 	Piece selectedPiece = null;
+
 
 	public SpeedChess() {
 		GameHost.initialize();

@@ -7,36 +7,47 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class RequestController {
+    private GameServer gameServer;
+
+
+    public RequestController(GameServer gameServer){
+        this.gameServer = gameServer;
+    }
+
 
     public RequestController(){
+        this.gameServer = new GameServer();
     }
-    
+
+
     @RequestMapping("/submitUsername")
-    public String submitUsername(  @RequestParam(value = "username", defaultValue = "") String username,
-                            @RequestParam(value = "tempPass", defaultValue = "password") String tempPass){
-        this.username = username;
-        this.password = tempPass;
-        System.out.print(username);
+    public String submitUsername(@RequestParam(value = "userData") DataPass userData){
+        return gameServer.addUser(userData);
     }
 
     @RequestMapping("/getLobby")
-    public String[] getLobby(){
-        return
+    public String getLobby(){
+        return gameServer.getLobby();
     }
 
 
     @RequestMapping("/submitMove")
-    public String submitMove(@RequestParam(name = "moveData") MoveDataPass moveData){
-        return new String();
+    public String submitMove(@RequestParam(name = "moveData") DataPassMoveData moveData){
+        return gameServer.takeRequest(moveData);
     }
-
+/*
     @RequestMapping("/lockInMove")
     public void lockInMove(){
 
     }
-
+*/
     @RequestMapping("/joinGame")
-    public void joinGame(){
+    public String joinGame(@RequestParam(value = "joinData") DataPassJoinGame joinData){
+        return gameServer.takeRequest(joinData);
+    }
 
+    @RequestMapping("/createGame")
+    public String createGame(@RequestParam(value = "createData") DataPassCreateGame createData){
+        return gameServer.takeRequest(createData);
     }
 }
