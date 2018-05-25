@@ -9,7 +9,7 @@
     <packaging>jar</packaging>
 
     <name>chessServer</name>
-    <description>Demo project for Spring Boot</description>
+    <description>serves http requests and handles game data</description>
 
     <parent>
         <groupId>org.springframework.boot</groupId>
