@@ -54,4 +54,26 @@ public class Player {
 		return pieces;
 	}
 
+	// get Piece in pieces arraylist at given spot on board
+	public Piece getPiece(int x, int y)
+	{
+		// get the piece from pieces array in player class
+
+	}
+
+	/**
+		Makes more sense to have the UI interact directly with the player because right
+		now the UI makes direct calls to the pieces and it actually never updates the pieces
+		the player holds.
+	**/
+	public void movePiece(Piece p, int x, int y)
+	{
+		int x_i = p.getXPosition();
+		int y_i = p.getYPosition();
+		// find in pieces array the Piece at x_i and y_i
+		Piece target = this.getPiece(x_i, y_i);
+		target.move(x, y);
+	}
+
+
 }

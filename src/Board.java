@@ -27,10 +27,14 @@ public class Board {
 		spots[p.getXPosition()][p.getYPosition()] = p;
 	}
 
-	public void movePiece(Piece p, int x, int y) {
+	// instead of board moving piece, seems to be more logical to make player
+	// or gameHost class move the piece instead/store the move for gameTurn
+	public void movePiece(Player player, Piece p, int x, int y) {
+		// if gameTurn == valid
 		spots[p.getXPosition()][p.getYPosition()] = null;
 		spots[x][y] = p;
-		p.move(x, y);
+		//p.move(x, y);
+		player.movePiece(p, int x, int y);
 
 	}
 
