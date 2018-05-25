@@ -55,7 +55,7 @@ public class Player {
 	}
 
 	// get Piece in pieces arraylist at given spot on board
-	public int getPieceIndex(int x, int y)
+	public int getPieceIdx(int x, int y)
 	{
 		// get the piece from pieces array in player class
 		int index = 0;
@@ -79,8 +79,9 @@ public class Player {
 		int x_i = p.getXPosition();
 		int y_i = p.getYPosition();
 		// find in pieces array the Piece at x_i and y_i
-		Piece target = this.getPiece(x_i, y_i);
-		target.move(x, y);
+		int target_idx = this.getPieceIdx(x_i, y_i);
+		// move Piece in pieces
+		this.pieces.get(target_idx).move(x, y);
 	}
 
 

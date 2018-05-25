@@ -3,21 +3,36 @@ import java.util.ArrayList;
 public class Board {
 	// 8x8 matrix to store board positions
 	private Piece[][] spots = new Piece[8][8];
+	private Player whitePlayer;
+	private Player blackPlayer;
 
-	public Board(Player player1, Player player2)
+	public Board(Player whitePlayer, Player blackPlayer)
 	{
-	setUp(player1, player2);
+		this.whitePlayer = whitePlayer;
+		this.blackPlayer = blackPlayer;
+		setUp(whitePlayer, blackPlayer);
 	}
 
-	public void setUp(Player player1, Player player2) {
-		for (Piece p : player1.getPieces()) {
+	public void setUp(Player whitePlayer, Player blackPlayer) {
+		for (Piece p : whitePlayer.getPieces()) {
 			addPiece(p);
 		}
-		for (Piece p : player2.getPieces()) {
+		for (Piece p : blackPlayer.getPieces()) {
 			addPiece(p);
 		}
 	}
 
+	public Player getPlayer(int playerType)
+	{
+		if (playerType == 1)
+		{
+			return this.whitePlayer;
+		}
+		else
+		{
+			return this.blackPlayer;
+		}
+	}
 	//return piece at some spot
 	public Piece getPiece(int x, int y) {
 		return spots[x][y];
@@ -34,7 +49,7 @@ public class Board {
 		spots[p.getXPosition()][p.getYPosition()] = null;
 		spots[x][y] = p;
 		//p.move(x, y);
-		player.movePiece(p, int x, int y);
+		player.movePiece(p, x, y);
 
 	}
 
