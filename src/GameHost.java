@@ -14,12 +14,12 @@ public class GameHost {
 
 	}
 
-
-	public static void gameTurn()
+	// UI should give this function the moves
+	public void gameTurn()
 	{
 		// timer
-		// if both players have selected moves, execute and move
-		//this.gameTurn = true;
+		// if two move selections received, determine who gets a move
+		// call gameBoard.movePiece()
 	}
 
 }

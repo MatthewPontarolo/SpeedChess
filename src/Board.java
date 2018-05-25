@@ -48,7 +48,6 @@ public class Board {
 		// if gameTurn == valid
 		spots[p.getXPosition()][p.getYPosition()] = null;
 		spots[x][y] = p;
-		//p.move(x, y);
 		player.movePiece(p, x, y);
 
 	}
