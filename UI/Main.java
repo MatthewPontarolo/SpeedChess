@@ -4,8 +4,6 @@ import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-import javax.swing.*;
-
 public class Main extends Application {
 	public static Stage mainStage;
 	public static ClientConnector clientConnector;
