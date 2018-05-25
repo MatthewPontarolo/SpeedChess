@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.awt.Point;
 
 public class Player {
 	// should default, hold starting # of pieces in arraylist
@@ -55,18 +56,21 @@ public class Player {
 	}
 
 	// get Piece in pieces arraylist at given spot on board
-	public int getPieceIdx(int x, int y)
+	public int getPieceIndex(int x, int y)
 	{
 		// get the piece from pieces array in player class
 		int index = 0;
 		for (Piece p : pieces)
 		{
-			if((int)p.getX() == x && (int)p.getY() == y)
+			int xPos = (int) p.getXPosition();
+			int yPos = (int) p.getYPosition();
+			if(xPos == x && yPos == y)
 			{
 				return index;
 			}
 			index++;
 		}
+		return 0;
 	}
 
 	/**
