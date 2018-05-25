@@ -14,8 +14,10 @@ public class GameHost {
 
 	}
 
-	// UI should give this function the moves
-	public void gameTurn()
+	// UI should make new Move objects to store move selections
+	// give it to GameHost::gameTurn so it can determine if move conflicts
+	// then decide who gets to move
+	public void gameTurn(Move whitePlayer, Move blackPlayer)
 	{
 		// timer
 		// if two move selections received, determine who gets a move
