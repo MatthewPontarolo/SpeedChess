@@ -55,10 +55,18 @@ public class Player {
 	}
 
 	// get Piece in pieces arraylist at given spot on board
-	public Piece getPiece(int x, int y)
+	public int getPieceIndex(int x, int y)
 	{
 		// get the piece from pieces array in player class
-
+		int index = 0;
+		foreach (Piece p : pieces)
+		{
+			if((int)p.getX() == x && (int)p.getY() == y)
+			{
+				return index;
+			}
+			index++;
+		}
 	}
 
 	/**
