@@ -59,7 +59,7 @@ public class Player {
 	{
 		// get the piece from pieces array in player class
 		int index = 0;
-		foreach (Piece p : pieces)
+		for (Piece p : pieces)
 		{
 			if((int)p.getX() == x && (int)p.getY() == y)
 			{
