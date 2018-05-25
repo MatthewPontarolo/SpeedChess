@@ -1,7 +1,7 @@
 package cs48g02s18.chessGame;
 
 import java.awt.*;
-import java.util.ArrayList;
+
 //todo move this to server package
 public class Board {
 	// 8x8 matrix to store board positions
@@ -60,4 +60,98 @@ public class Board {
         }
     }
 
+    @Override
+    public String toString() {
+        StringBuilder boardString = new StringBuilder();
+        Piece spot;
+        String spotName;
+        for (int i = 0; i < 64; i++) {
+            spot = spots[i / 8][i % 8];
+            if (spot == null) {
+                boardString.append("0");
+            } else {
+                if (spot instanceof Pawn) {
+                    spotName = "p";
+                } else if (spot instanceof Rook) {
+                    spotName = "r";
+                } else if (spot instanceof Queen) {
+                    spotName = "q";
+                } else if (spot instanceof King) {
+                    spotName = "k";
+                } else if (spot instanceof Bishop) {
+                    spotName = "b";
+                } else if (spot instanceof Knight) {
+                    spotName = "n";
+                } else {
+                    spotName = "!";
+                }
+                if (spot.getPlayer() == 0) {
+                    spotName.toUpperCase();
+                }
+                boardString.append(spotName);
+            }
+        }
+
+        return boardString.toString();
+    }
+
+    public Board(String boardString) {
+        int playerNumber;
+        Character currentChar;
+	    for (int i = 0; i < 64; i++) {
+            currentChar = boardString.charAt(i);
+            if (currentChar == '0'){
+                spots[i / 8][i % 8] = null;
+            }
+            else if (currentChar == 'p'){
+                spots[i / 8][i % 8] = new Pawn(i / 8, i % 8);
+                spots[i / 8][i % 8].setPlayer(1);
+            }
+            else if (currentChar == 'P'){
+                spots[i / 8][i % 8] = new Pawn(i / 8, i % 8);
+                spots[i / 8][i % 8].setPlayer(0);
+            }
+            else if (currentChar == 'r'){
+                spots[i / 8][i % 8] = new Rook(i / 8, i % 8);
+                spots[i / 8][i % 8].setPlayer(1);
+            }
+            else if (currentChar == 'R'){
+                spots[i / 8][i % 8] = new Rook(i / 8, i % 8);
+                spots[i / 8][i % 8].setPlayer(0);
+            }
+            else if (currentChar == 'q'){
+                spots[i / 8][i % 8] = new Queen(i / 8, i % 8);
+                spots[i / 8][i % 8].setPlayer(1);
+            }
+            else if (currentChar == 'Q'){
+                spots[i / 8][i % 8] = new Queen(i / 8, i % 8);
+                spots[i / 8][i % 8].setPlayer(0);
+            }
+            else if (currentChar == 'k'){
+                spots[i / 8][i % 8] = new King(i / 8, i % 8);
+                spots[i / 8][i % 8].setPlayer(1);
+            }
+            else if (currentChar == 'K'){
+                spots[i / 8][i % 8] = new King(i / 8, i % 8);
+                spots[i / 8][i % 8].setPlayer(0);
+            }
+            else if (currentChar == 'b'){
+                spots[i / 8][i % 8] = new Bishop(i / 8, i % 8);
+                spots[i / 8][i % 8].setPlayer(1);
+            }
+            else if (currentChar == 'B'){
+                spots[i / 8][i % 8] = new Bishop(i / 8, i % 8);
+                spots[i / 8][i % 8].setPlayer(0);
+            }
+            else if (currentChar == 'n'){
+                spots[i / 8][i % 8] = new Knight(i / 8, i % 8);
+                spots[i / 8][i % 8].setPlayer(1);
+            }
+            else if (currentChar == 'N'){
+                spots[i / 8][i % 8] = new Knight(i / 8, i % 8);
+                spots[i / 8][i % 8].setPlayer(0);
+            }
+
+        }
+    }
 }

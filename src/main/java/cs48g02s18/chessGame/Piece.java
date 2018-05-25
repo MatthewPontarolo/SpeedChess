@@ -24,10 +24,14 @@ public abstract class Piece {
 	public void setPosition(int x, int y) {
 		Xposition = x;
 		Yposition = y;
-		gameBoard.movePiece();
+		gameBoard.movePiece(this, x,y);
+	}
+	public void setPosition(Point point) {
+		gameBoard.movePiece(this, point.x, point.y);
 	}
 
-	public Point getPosition() {return new Point(Xposition, Yposition)}
+
+	public Point getPosition() {return new Point(Xposition, Yposition);}
 
 	public int getXPosition()
 	{

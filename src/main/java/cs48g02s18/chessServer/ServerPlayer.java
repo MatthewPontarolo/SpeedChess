@@ -43,6 +43,11 @@ class ServerPlayer {
     //    return this.pastGames;
     //}
 
+
+    public String getGameString(){
+        return  this.currentGame.getGameBoard().toString(); //todo make this mirror between players appropriately
+    }
+
     public Move getNextMove(){
         return this.nextMove;
     }

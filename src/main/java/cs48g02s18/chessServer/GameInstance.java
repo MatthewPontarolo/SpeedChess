@@ -21,14 +21,16 @@ public class GameInstance {
         if (this.guestServerPlayer == null){
             this.guestServerPlayer = guestServerPlayer;
             this.setUpBoard();
-            this.startGame();
         }
     //todo
     }
 
     public void submitNextMove(ServerPlayer player, Move nextMove) {
-        if (gameBoard.isLegalMove(Move nextMove, ServerPlayer player)) {
+        if (isValidMove(nextMove, player)) {
             player.setNextMove(nextMove);
+        }
+        else {
+            System.out.print("an invalid move was submitted");
         }
         //todo make return string
     }
@@ -47,20 +49,31 @@ public class GameInstance {
         if (!isValidMove(guestNextMove, this.guestServerPlayer)){
             guestNextMove = null;
         }
-        Piece hostPiece = gameBoard.getPiece(hostNextMove.getStartPosition());
-        Piece guestPiece = gameBoard.getPiece(hostNextMove.getStartPosition());
+        Piece hostPiece = gameBoard.pickUpPieceAt(hostNextMove.getStartPosition());
+        Piece guestPiece = gameBoard.pickUpPieceAt(hostNextMove.getStartPosition());
 
         if(hostNextMove.getEndPosition() == guestNextMove.getEndPosition()) {
-
+            //for if both pieces are going to the same location
+            //todo set up in detail
+            guestPiece.capture();
+            hostPiece.setPosition(hostNextMove.getEndPosition());
+        }
+        else {
+            gameBoard.capturePieceAt(hostNextMove.getEndPosition());
+            hostPiece.setPosition(hostNextMove.getEndPosition());
+            gameBoard.capturePieceAt(guestNextMove.getEndPosition());
+            guestPiece.setPosition(guestNextMove.getEndPosition());
         }
 
-
+        hostServerPlayer.setNextMove(null);
+        guestServerPlayer.setNextMove(null);
     }
 
     public Board getGameBoard() {
         return gameBoard;
     }
 
-    public boolean isValidMove(Move move, ServerPlayer player)
-
+    public boolean isValidMove(Move move, ServerPlayer player){
+        return true; //todo make actually check
+    }
 }

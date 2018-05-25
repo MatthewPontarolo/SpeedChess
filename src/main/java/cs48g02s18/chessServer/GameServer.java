@@ -1,10 +1,7 @@
 package cs48g02s18.chessServer;
 
-import org.springframework.web.bind.annotation.RequestMapping;
-
 import java.io.Serializable;
 import java.util.HashMap;
-import java.util.Iterator;
 
 /*** ChessGameSever.java
    subclasses for all the GAME data
@@ -28,14 +25,13 @@ class GameServer implements Serializable {
     }
 
     public String getLobby() {
-        String lobbyString = new String();
         StringBuilder lobbyStringBuilder = new StringBuilder();
 
         for (String next: gameLobby.keySet()) {
             lobbyStringBuilder.append(next);
             lobbyStringBuilder.append("\n");
         }
-        return lobbyString;
+        return lobbyStringBuilder.toString();
     }
 
     public void createGame(String name, ServerPlayer serverPlayer){
@@ -60,7 +56,7 @@ class GameServer implements Serializable {
             else if (request instanceof DataPassJoinGame){
                 joinGame(((DataPassJoinGame) request).getGameName(), serverPlayer);
             }
-            else if (request instanceof DataPassMoveData){
+            else if (request instanceof DataPassMoveData) {
                 serverPlayer.setNextMove(((DataPassMoveData) request).getMove());
             }
         }
@@ -76,12 +72,32 @@ class GameServer implements Serializable {
             ServerPlayer newUser = new ServerPlayer(userData.getUsername(), userData.getPassword());
             usersByUsername.put(newUser.getUsername(), newUser);
         }
+
+        return "user added";
     }
 
     public ServerPlayer accessPlayer(DataPass userData) {
         ServerPlayer accessed = usersByUsername.get(userData.getUsername());
         if (userData.getPassword().equals(accessed.getPassword())){
             return accessed;
+        }
+        else {
+            return null;
+        }
+    }
+
+    public String stepGameForward(DataPass userData){
+        ServerPlayer player = accessPlayer(userData);
+        player.getCurrentGame().resolveTurn();
+
+        return "game stepped forward";
+    }
+
+    public DataPassBoardState getBoardState(DataPass userData){
+        ServerPlayer player = accessPlayer(userData);
+        if (player != null){
+            DataPassBoardState boardState = new DataPassBoardState(player.getGameString()); //todo update to pass the new move made by opponent as well
+            return boardState;
         }
         else {
             return null;

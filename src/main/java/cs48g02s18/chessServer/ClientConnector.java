@@ -1,5 +1,6 @@
 package cs48g02s18.chessServer;
 
+import cs48g02s18.chessGame.Board;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.web.client.RestTemplate;
@@ -11,7 +12,7 @@ public class ClientConnector {
     public ClientConnector(String serverURL) {
         this.serverURL = serverURL;
     }
-
+/*
     public Board getBoard(){
 
     }
@@ -19,9 +20,15 @@ public class ClientConnector {
 
     }
 
-    setLogin(String login)
+    public String setLogin(String login){
 
-    setPass(String pass)
+    }
 
-    setMove(Move a)
+    public String setPass(String pass){
+
+    }
+
+    setNextMove(Move a){
+
+    }*/
 }

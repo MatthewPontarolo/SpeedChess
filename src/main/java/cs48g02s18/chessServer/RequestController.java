@@ -1,6 +1,5 @@
 package cs48g02s18.chessServer;
 
-import java.util.concurrent.atomic.AtomicLong;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -30,6 +29,10 @@ public class RequestController {
         return gameServer.getLobby();
     }
 
+    @RequestMapping("/getGameState")
+    public DataPassBoardState getGameState(@RequestParam(value = "userData") DataPass userData){
+        return gameServer.getBoardState(userData);
+    }
 
     @RequestMapping("/submitMove")
     public String submitMove(@RequestParam(name = "moveData") DataPassMoveData moveData){
@@ -49,5 +52,10 @@ public class RequestController {
     @RequestMapping("/createGame")
     public String createGame(@RequestParam(value = "createData") DataPassCreateGame createData){
         return gameServer.takeRequest(createData);
+    }
+
+    @RequestMapping("/nextGameStep")
+    public String nextGameStep(@RequestParam(value = "userData") DataPass userData) {
+        return gameServer.stepGameForward(userData);
     }
 }

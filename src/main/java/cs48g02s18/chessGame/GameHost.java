@@ -7,6 +7,5 @@ public class GameHost {
 
 	public static Board gameBoard;
 
-	public GameHost()
 
 }

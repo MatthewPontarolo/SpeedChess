@@ -1,9 +1,11 @@
 package cs48g02s18.chessServer;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import cs48g02s18.chessGame.Piece;
 
 import java.awt.Point;
 
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Move {
     private Point startPosition;
     private Point endPosition;
@@ -24,5 +26,13 @@ public class Move {
 
     public Point getEndPosition() {
         return endPosition;
+    }
+
+    public void setStartPosition(Point startPosition) {
+        this.startPosition = startPosition;
+    }
+
+    public void setEndPosition(Point endPosition) {
+        this.endPosition = endPosition;
     }
 }
