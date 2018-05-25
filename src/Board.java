@@ -4,7 +4,6 @@ public class Board {
 	// 8x8 matrix to store board positions
 	private Piece[][] spots = new Piece[8][8];
 
-
 	public Board(Player player1, Player player2)
 	{
 	setUp(player1, player2);
@@ -31,14 +30,8 @@ public class Board {
 	public void movePiece(Piece p, int x, int y) {
 		spots[p.getXPosition()][p.getYPosition()] = null;
 		spots[x][y] = p;
-		// moved into Piece::move()
-		//p.setPosition(x, y);
 		p.move(x, y);
 
-	}
-
-	public void addPlayer(Player player, int index) {
-		//idk i thought we should use this to keep track of players??
 	}
 
 }
