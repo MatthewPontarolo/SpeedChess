@@ -1,6 +1,8 @@
 import java.awt.Point;
 import java.util.ArrayList;
 
+/** COULD PROBABLY TAKE OUT THIS CLASS, UNUSED
+**/
 public class PossibleMoves
 {
   // white = 0

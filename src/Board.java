@@ -5,6 +5,7 @@ public class Board {
 	private Piece[][] spots = new Piece[8][8];
 	private Player whitePlayer;
 	private Player blackPlayer;
+	private boolean validGameTurn = false;
 
 	public Board(Player whitePlayer, Player blackPlayer)
 	{
@@ -42,14 +43,21 @@ public class Board {
 		spots[p.getXPosition()][p.getYPosition()] = p;
 	}
 
-	// instead of board moving piece, seems to be more logical to make player
-	// or gameHost class move the piece instead/store the move for gameTurn
-	public void movePiece(Player player, Piece p, int x, int y) {
-		// if gameTurn == valid
-		spots[p.getXPosition()][p.getYPosition()] = null;
-		spots[x][y] = p;
-		player.movePiece(p, x, y);
+	public void setGameTurn(boolean valid)
+	{
+		validGameTurn = valid;
+	}
 
+	// Should be called through gameHost after it allows it
+	// Precondition: GameHost validates and allows gameTurn to execute
+	// PostCondition: Board situation is updated, player's piece is updated, move is executed
+	public void movePiece(Player player, Piece p, int x, int y) {
+		if (validGameTurn == true)
+		{
+			spots[p.getXPosition()][p.getYPosition()] = null;
+			spots[x][y] = p;
+			player.movePiece(p, x, y);
+		}
 	}
 
 }

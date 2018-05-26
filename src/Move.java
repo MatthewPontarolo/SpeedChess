@@ -3,8 +3,9 @@ public class Move
   private int xPosition;
   private int yPosition;
   private Piece target;
+  private double time;
 
-  public void Move(Piece p, int x, int y)
+  public void Move(Piece p, int x, int y, double time)
   {
     xPosition = x;
     yPosition = y;
@@ -24,5 +25,11 @@ public class Move
   public int getYMove()
   {
     return yPosition;
+  }
+
+  // Server's timer timestamp
+  public double getTime()
+  {
+    return time;
   }
 }

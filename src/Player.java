@@ -13,6 +13,7 @@ public class Player {
 	private int king = 1;
 
 	private int playerType;
+	private Move moveSelection;
 	//1 = white
 	//0 = black
 
@@ -72,6 +73,22 @@ public class Player {
 		}
 		return 0;
 	}
+
+	public int getPlayerType()
+	{
+		return playerType;
+	}
+
+	public void setNextMove(Move moveSelection)
+	{
+		this.moveSelection = moveSelection;
+	}
+
+	public Move getNextMove()
+	{
+		return moveSelection;
+	}
+
 
 	/**
 		Makes more sense to have the UI interact directly with the player because right
