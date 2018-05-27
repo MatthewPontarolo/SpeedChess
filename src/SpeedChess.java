@@ -41,7 +41,7 @@ public class SpeedChess extends BorderPane {
 	Button[][] buttons = new Button[8][8];
 	Label[][] highlights = new Label[8][8];
 	Piece selectedPiece = null;
-	int playerPerspective = 1;
+	int playerPerspective = 0;
 
 	public SpeedChess() {
 		GameHost.initialize();

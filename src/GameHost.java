@@ -46,21 +46,21 @@ public class GameHost {
 		blackPlayer.setNextMove(null);
 
 		// check if same spot move conflict
-		if (whiteX == blackX && whiteY == blackY)
-		{
+		if (whiteX == blackX && whiteY == blackY) {
 			// check which player is faster
-			if(whiteMove.getTime() < blackMove.getTime())
-			{
+			if (whiteMove.getTime() < blackMove.getTime()) {
 				gameBoard.setGameTurn(true);
 				gameBoard.movePiece(whitePlayer, whiteMove.getTargetPiece(), whiteX, whiteY);
+				//Capture the black piece
+				blackMove.getTargetPiece().capture();
 				// end the turn so set it back to false
 				gameBoard.setGameTurn(false);
 				return;
-			}
-			else
-			{
+			} else {
 				gameBoard.setGameTurn(true);
 				gameBoard.movePiece(blackPlayer, blackMove.getTargetPiece(), blackX, blackY);
+				//Capture the white piece
+				whiteMove.getTargetPiece().capture();
 				// end the turn so set it back to false
 				gameBoard.setGameTurn(false);
 				return;
@@ -68,9 +68,7 @@ public class GameHost {
 			// RARE but if times are exactly the same?? how to handle
 		}
 		// not same spot move conflict, sort out scenarios
-		else
-		{
-
+		else {
 			// if target is of type pawn, check if going diagonally
 			// if yes, check if diagonal piece is moving
 			// if yes, pawn does not move. Diagonal piece moves
@@ -82,7 +80,16 @@ public class GameHost {
 			// passes all conflict tests
 			// execute original turns
 			gameBoard.setGameTurn(true);
+			//Attempt capturing a black piece if it isn't the moving piece
+			if (gameBoard.getPiece(whiteX, whiteY) != null && gameBoard.getPiece(whiteX, whiteY) != blackMove.getTargetPiece())
+				gameBoard.getPiece(whiteX, whiteY).capture();
+			//Move the white piece
 			gameBoard.movePiece(whitePlayer, whiteMove.getTargetPiece(), whiteX, whiteY);
+
+			//Attempt capturing a black piece if it isn't the moving piece
+			if (gameBoard.getPiece(blackX, blackY) != null && gameBoard.getPiece(blackX, blackY) != whiteMove.getTargetPiece())
+				gameBoard.getPiece(blackX, blackY).capture();
+			//Move the black piece
 			gameBoard.movePiece(blackPlayer, blackMove.getTargetPiece(), blackX, blackY);
 			// end the turn so set it back to false
 			gameBoard.setGameTurn(false);
