@@ -28,18 +28,41 @@ public class Pawn extends Piece {
 		// if this is pawn's first move, it can move two squares forward
 		if (firstMove == true)
 		{
-			Point firstMove = new Point(x + 0, y + 2);
-			if (board.getPiece(x,y + 2) != null)
+			// white moves forward with y++
+			if(this.getPlayer() == 1)
 			{
-				if (board.getPiece(x, y+2).getPlayer() != this.getPlayer())
+				Point firstMove = new Point(x + 0, y + 2);
+				if (board.getPiece(x, y + 2) != null)
+				{
+					if (board.getPiece(x, y + 2).getPlayer() != this.getPlayer())
+					{
+						moves.add(firstMove);
+					}
+				}
+				else
 				{
 					moves.add(firstMove);
 				}
+
 			}
+			// black moves forward with y--
 			else
 			{
-				moves.add(firstMove);
+				Point firstMove = new Point(x + 0, y - 2);
+				if (board.getPiece(x, y - 2) != null)
+				{
+					if (board.getPiece(x, y - 2).getPlayer() != this.getPlayer())
+					{
+						moves.add(firstMove);
+					}
+				}
+				else
+				{
+					moves.add(firstMove);
+				}
+
 			}
+
 		}
 
 		// if a piece is occupying a square diagonal from pawn, it can capture
