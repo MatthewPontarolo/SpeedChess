@@ -41,6 +41,7 @@ public class SpeedChess extends BorderPane {
 	Button[][] buttons = new Button[8][8];
 	Label[][] highlights = new Label[8][8];
 	Piece selectedPiece = null;
+	int playerPerspective = 1;
 
 	public SpeedChess() {
 		GameHost.initialize();
@@ -64,7 +65,10 @@ public class SpeedChess extends BorderPane {
 			grid.getRowConstraints().add(new RowConstraints(60));
 			for (int j = 0; j < 8; j++) {
 				Button button = new Button();
-				grid.add(button, i, j);
+				if (playerPerspective == 0)
+					grid.add(button, i, j);
+				else
+					grid.add(button, 7-i, 7-j);
 				buttons[i][j] = button;
 				button.setAlignment(Pos.CENTER);
 
@@ -111,7 +115,10 @@ public class SpeedChess extends BorderPane {
 			overlay.getRowConstraints().add(new RowConstraints(60));
 			for (int j = 0; j < 8; j++) {
 				Label label = new Label();
-				overlay.add(label, i, j);
+				if (playerPerspective == 0)
+					overlay.add(label, i, j);
+				else
+					overlay.add(label, 7-i, 7-j);
 				label.setAlignment(Pos.CENTER);
 				label.setMouseTransparent(true);
 				highlights[i][j] = label;
@@ -126,7 +133,7 @@ public class SpeedChess extends BorderPane {
 		redrawBoard();
 	}
 
-	public void redrawBoard(){
+	public void redrawBoard() {
 		for (Button[] bt : buttons) {
 			for (Button b : bt) {
 				b.setText("");
