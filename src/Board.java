@@ -51,11 +51,14 @@ public class Board {
 	// Should be called through gameHost after it allows it
 	// Precondition: GameHost validates and allows gameTurn to execute
 	// PostCondition: Board situation is updated, player's piece is updated, move is executed
+		// Board and Player pieces are in the same situation
 	public void movePiece(Player player, Piece p, int x, int y) {
 		if (validGameTurn == true)
 		{
+			// updates board's pieces
 			spots[p.getXPosition()][p.getYPosition()] = null;
 			spots[x][y] = p;
+			// updates player's pieces
 			player.movePiece(p, x, y);
 		}
 	}

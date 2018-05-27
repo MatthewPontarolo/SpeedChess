@@ -18,6 +18,7 @@ public class GameHost {
 		// no need to check valid turns bc UI doesn't allow for spot selections that
 		// is not in validMoves array
 	// PostCondition: GameHost acts as a referee and determines if moves can be executed.
+		// calls board::movePiece on the valid pieces that can be moved
 	public void executeGameTurn()
 	{
 		// get both player's moves
@@ -37,12 +38,16 @@ public class GameHost {
 			{
 				gameBoard.setGameTurn(true);
 				gameBoard.movePiece(whitePlayer, whiteMove.getTargetPiece(), whiteX, whiteY);
+				// end the turn so set it back to false
+				gameBoard.setGameTurn(false);
 				return;
 			}
 			else
 			{
 				gameBoard.setGameTurn(true);
 				gameBoard.movePiece(blackPlayer, blackMove.getTargetPiece(), blackX, blackY);
+				// end the turn so set it back to false
+				gameBoard.setGameTurn(false);
 				return;
 			}
 			// RARE but if times are exactly the same?? how to handle
@@ -64,6 +69,9 @@ public class GameHost {
 			gameBoard.setGameTurn(true);
 			gameBoard.movePiece(whitePlayer, whiteMove.getTargetPiece(), whiteX, whiteY);
 			gameBoard.movePiece(blackPlayer, blackMove.getTargetPiece(), blackX, blackY);
+			// end the turn so set it back to false
+			gameBoard.setGameTurn(false);
+			return;
 
 		}
 
