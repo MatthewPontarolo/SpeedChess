@@ -56,8 +56,8 @@ public class Board {
 		if (validGameTurn == true)
 		{
 			// updates board's pieces
-			spots[p.getXPosition()][p.getYPosition()] = null;
 			spots[x][y] = p;
+			spots[p.getXPosition()][p.getYPosition()] = null;
 			// updates player's pieces
 			player.movePiece(p, x, y);
 		}

@@ -5,7 +5,7 @@ public class Move
   private Piece target;
   private double time;
 
-  public void Move(Piece p, int x, int y, double time)
+  public Move(Piece p, int x, int y, double time)
   {
     xPosition = x;
     yPosition = y;
