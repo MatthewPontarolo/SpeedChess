@@ -143,26 +143,12 @@ public class Knight extends Piece {
 		}
 	}
 
-	// helper function
-	// for UI, call getPossibleMoves
-	// returns arrayList of Points for valid moves of current piece position
-	// NOTE: will possibly reconsider use of Points bc of return type double
 	public ArrayList<Point> getValidMoves(Board board, int playerType) {
 		this.setValidMoves(board, Xposition, Yposition, playerType);
 		return moves;
 	}
 
 	public void move(int x, int y) {
-		// check if the position the piece wants to move to is in array of possible moves
-		// if yes, update position -- setPosition(position)
-		// if no, give error message -- depending on implementation of UI
-		// function could just do nothing
-
 		this.setPosition(x, y);
-
-		// no valid moves found
-		// error message in UI
-
-
 	}
 }

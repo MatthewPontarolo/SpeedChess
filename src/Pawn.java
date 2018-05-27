@@ -106,10 +106,6 @@ public class Pawn extends Piece {
 		}
 	}
 
-	// helper function
-	// for UI, call getPossibleMoves
-	// returns arrayList of Points for valid moves of current piece position
-	// NOTE: will possibly reconsider use of Points bc of return type double
 	public ArrayList<Point> getValidMoves(Board board, int playerType)
 	{
 		this.setValidMoves(board, Xposition, Yposition, playerType);
@@ -117,19 +113,11 @@ public class Pawn extends Piece {
 	}
 
 	public void move(int x, int y) {
-		// check if the position the piece wants to move to is in array of possible moves
-		// if yes, update position -- setCurrentPosition(position)
-		// if no, give error message -- depending on implementation of UI
-		// function could just do nothing
 		if (firstMove == true)
 		{
 			firstMove = false;
 		}
 
 		this.setPosition(x, y);
-
-		// no valid moves found
-		// error message in UI
-
 	}
 }
