@@ -29,6 +29,7 @@ public class GameHost {
 		// is not in validMoves array
 	// PostCondition: GameHost acts as a referee and determines if moves can be executed.
 		// calls board::movePiece on the valid pieces that can be moved
+		// TODO: deal with capture situations
 	public static void executeGameTurn()
 	{
 		// get both player's moves

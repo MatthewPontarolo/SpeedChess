@@ -65,45 +65,91 @@ public class Pawn extends Piece {
 
 		}
 
-		// if a piece is occupying a square diagonal from pawn, it can capture
-		if (x + 1 < 8 && y + 1 < 8 && x + 1 >= 0 && y + 1 >= 0)
+		if (this.getPlayer() ==  1)
 		{
-			Point move = new Point(x + 1, y + 1);
-			if (board.getPiece(x + 1, y + 1) != null)
+			// if a piece is occupying a square diagonal from pawn, it can capture
+			if (x + 1 < 8 && y + 1 < 8 && x + 1 >= 0 && y + 1 >= 0)
 			{
-				if (board.getPiece(x+1,y+1).getPlayer() != this.getPlayer())
+				Point move = new Point(x + 1, y + 1);
+				if (board.getPiece(x + 1, y + 1) != null)
+				{
+					if (board.getPiece(x+1,y+1).getPlayer() != this.getPlayer())
+					{
+						moves.add(move);
+					}
+				}
+			}
+			if (x - 1 < 8 && y + 1 < 8 && x - 1 >= 0 && y + 1 >= 0)
+			{
+				Point move = new Point(x - 1, y + 1);
+				if (board.getPiece(x - 1, y + 1) != null)
+				{
+					if (board.getPiece(x - 1, y + 1).getPlayer() != this.getPlayer())
+					{
+						moves.add(move);
+					}
+				}
+			}
+				// if no piece is in front of pawn, it can move forward one square
+			if (x < 8 && y + 1 < 8 && x >= 0 && y + 1 >=0)
+			{
+				Point move = new Point(x + 0, y + 1);
+				if (board.getPiece(x, y + 1) != null)
+				{
+					if (board.getPiece(x, y + 1).getPlayer() != this.getPlayer())
+					{
+						moves.add(move);
+					}
+				}
+				else
 				{
 					moves.add(move);
 				}
 			}
 		}
-		if (x - 1 < 8 && y + 1 < 8 && x - 1 >= 0 && y + 1 >= 0)
+		else
 		{
-			Point move = new Point(x - 1, y + 1);
-			if (board.getPiece(x - 1, y + 1) != null)
+			// if a piece is occupying a square diagonal from pawn, it can capture
+			if (x + 1 < 8 && y - 1 < 8 && x + 1 >= 0 && y - 1 >= 0)
 			{
-				if (board.getPiece(x - 1, y + 1).getPlayer() != this.getPlayer())
+				Point move = new Point(x + 1, y - 1);
+				if (board.getPiece(x + 1, y - 1) != null)
+				{
+					if (board.getPiece(x + 1,y - 1).getPlayer() != this.getPlayer())
+					{
+						moves.add(move);
+					}
+				}
+			}
+			if (x - 1 < 8 && y - 1 < 8 && x - 1 >= 0 && y - 1 >= 0)
+			{
+				Point move = new Point(x - 1, y - 1);
+				if (board.getPiece(x - 1, y - 1) != null)
+				{
+					if (board.getPiece(x - 1, y - 1).getPlayer() != this.getPlayer())
+					{
+						moves.add(move);
+					}
+				}
+			}
+				// if no piece is in front of pawn, it can move forward one square
+			if (x < 8 && y - 1 < 8 && x >= 0 && y - 1 >=0)
+			{
+				Point move = new Point(x + 0, y - 1);
+				if (board.getPiece(x, y - 1) != null)
+				{
+					if (board.getPiece(x, y - 1).getPlayer() != this.getPlayer())
+					{
+						moves.add(move);
+					}
+				}
+				else
 				{
 					moves.add(move);
 				}
 			}
 		}
-			// if no piece is in front of pawn, it can move forward one square
-		if (x < 8 && y + 1 < 8 && x >= 0 && y + 1 >=0)
-		{
-			Point move = new Point(x + 0, y + 1);
-			if (board.getPiece(x, y + 1) != null)
-			{
-				if (board.getPiece(x, y + 1).getPlayer() != this.getPlayer())
-				{
-					moves.add(move);
-				}
-			}
-			else
-			{
-				moves.add(move);
-			}
-		}
+
 	}
 
 	public ArrayList<Point> getValidMoves(Board board, int playerType)
