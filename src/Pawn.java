@@ -94,17 +94,11 @@ public class Pawn extends Piece {
 			if (x < 8 && y + 1 < 8 && x >= 0 && y + 1 >=0)
 			{
 				Point move = new Point(x + 0, y + 1);
-				if (board.getPiece(x, y + 1) != null)
+				if (board.getPiece(x, y + 1) == null)
 				{
-					if (board.getPiece(x, y + 1).getPlayer() != this.getPlayer())
-					{
 						moves.add(move);
-					}
 				}
-				else
-				{
-					moves.add(move);
-				}
+
 			}
 		}
 		else
@@ -136,16 +130,9 @@ public class Pawn extends Piece {
 			if (x < 8 && y - 1 < 8 && x >= 0 && y - 1 >=0)
 			{
 				Point move = new Point(x + 0, y - 1);
-				if (board.getPiece(x, y - 1) != null)
+				if (board.getPiece(x, y - 1) == null)
 				{
-					if (board.getPiece(x, y - 1).getPlayer() != this.getPlayer())
-					{
 						moves.add(move);
-					}
-				}
-				else
-				{
-					moves.add(move);
 				}
 			}
 		}
