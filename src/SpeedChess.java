@@ -58,6 +58,20 @@ public class SpeedChess extends BorderPane {
 
 		northBox.getChildren().addAll(testLabel);
 
+		//Setting the bottom as text for now
+		HBox southBox = new HBox(10);
+		setBottom(southBox);
+		southBox.setPadding(new Insets(5, 5, 5, 5));
+		southBox.setAlignment(Pos.CENTER);
+		southBox.setStyle("-fx-background-color: #667788;");
+
+		Label timerLabel = new Label("   Timer: ");
+		timerLabel.setFont(new Font("Lucida Grande", 18));
+
+		Button confirmButton = new Button("Confirm");
+
+		southBox.getChildren().addAll(confirmButton, timerLabel);
+
 		//Setting up the chess grid in the center
 		GridPane grid = new GridPane();
 		for (int i = 0; i < 8; i++) {
