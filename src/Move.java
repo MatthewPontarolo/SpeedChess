@@ -27,6 +27,16 @@ public class Move
     return yPosition;
   }
 
+  public int getInitX()
+  {
+    return target.getXPosition();
+  }
+
+  public int getInitY()
+  {
+    return target.getYPosition();
+  }
+
   // Server's timer timestamp
   public double getTime()
   {

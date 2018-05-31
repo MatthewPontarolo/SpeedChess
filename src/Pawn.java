@@ -32,35 +32,19 @@ public class Pawn extends Piece {
 			if(this.getPlayer() == 1)
 			{
 				Point firstMove = new Point(x + 0, y + 2);
-				if (board.getPiece(x, y + 2) != null)
+				if (board.getPiece(x, y + 1) == null && board.getPiece(x, y + 2) == null)
 				{
-					if (board.getPiece(x, y + 2).getPlayer() != this.getPlayer())
-					{
 						moves.add(firstMove);
-					}
 				}
-				else
-				{
-					moves.add(firstMove);
-				}
-
 			}
 			// black moves forward with y--
 			else
 			{
 				Point firstMove = new Point(x + 0, y - 2);
-				if (board.getPiece(x, y - 2) != null)
+				if (board.getPiece(x, y - 1) == null && board.getPiece(x, y - 2) == null)
 				{
-					if (board.getPiece(x, y - 2).getPlayer() != this.getPlayer())
-					{
 						moves.add(firstMove);
-					}
 				}
-				else
-				{
-					moves.add(firstMove);
-				}
-
 			}
 
 		}
