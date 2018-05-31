@@ -173,15 +173,15 @@ public class GameHost {
 					gameBoard.setGameTurn(false);
 					return true;
 				}
-				// if its initial position isn't where white is moving, the piece white is trying to capture isn't moving
+				// if black initial position isn't where white is moving, the piece white is trying to capture isn't moving
 				else if (blackMove.getInitX() != whiteX && blackMove.getInitY() != whiteY)
 				{
 					gameBoard.setGameTurn(true);
-					gameBoard.getPiece(whiteX, whiteY).capture();
-					gameBoard.movePiece(whitePlayer, whiteTarget, whiteX, whiteY);
-					gameBoard.movePiece(blackPlayer, blackTarget, blackX, blackY);
+					//gameBoard.getPiece(whiteX, whiteY).capture();
+					//gameBoard.movePiece(whitePlayer, whiteTarget, whiteX, whiteY);
+					//gameBoard.movePiece(blackPlayer, blackTarget, blackX, blackY);
 					gameBoard.setGameTurn(false);
-					return true;
+					return false;
 				}
 				// piece white is trying to capture is moving, white cannot move
 				else if (blackMove.getInitX() == whiteX && blackMove.getInitY() == whiteY)
@@ -199,10 +199,10 @@ public class GameHost {
 				{
 					gameBoard.setGameTurn(true);
 
-					gameBoard.movePiece(whitePlayer, whiteTarget, whiteX, whiteY);
+					//gameBoard.movePiece(whitePlayer, whiteTarget, whiteX, whiteY);
 					gameBoard.setGameTurn(false);
 
-					return true;
+					return false;
 				}
 			}
 		}
@@ -232,19 +232,18 @@ public class GameHost {
 					//gameBoard.getPiece(blackX, blackY).capture();
 					//gameBoard.movePiece(whitePlayer, whiteTarget, whiteX, whiteY);
 					gameBoard.setGameTurn(false);
-					return true;
+					return false;
 				}
 				// if its initial position isn't where black is moving, the piece black is trying to capture isn't moving
 				else if (whiteMove.getInitX() != blackX && whiteMove.getInitY() != blackY)
 				{
 					gameBoard.setGameTurn(true);
 					// BUG: here when pawn is capturing pieces that aren't pawn?
-					System.out.println(whiteX + " + "  whiteY);
-					gameBoard.getPiece(whiteX, whiteY).capture();
-					gameBoard.movePiece(blackPlayer, blackTarget, blackX, blackY);
-					gameBoard.movePiece(whitePlayer, whiteTarget, whiteX, whiteY);
+					//gameBoard.getPiece(whiteX, whiteY).capture();
+					//gameBoard.movePiece(blackPlayer, blackTarget, blackX, blackY);
+					//gameBoard.movePiece(whitePlayer, whiteTarget, whiteX, whiteY);
 					gameBoard.setGameTurn(false);
-					return true;
+					return false;
 				}
 				// piece black is trying to capture is moving, black cannot move
 				else if (whiteMove.getInitX() == blackX && whiteMove.getInitY() == blackY)
@@ -262,10 +261,10 @@ public class GameHost {
 				{
 					gameBoard.setGameTurn(true);
 
-					gameBoard.movePiece(whitePlayer, whiteTarget, whiteX, whiteY);
+					//gameBoard.movePiece(whitePlayer, whiteTarget, whiteX, whiteY);
 					gameBoard.setGameTurn(false);
 
-					return true;
+					return false;
 				}
 			}
 		}
