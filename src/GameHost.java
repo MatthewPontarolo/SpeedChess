@@ -95,30 +95,42 @@ public class GameHost {
 			 * determine if pawn move is legal
 			**/
 
+			// White Pawn Diagonal Movement Check
 			if (whiteTarget.getName() == "Pawn")
 			{
 				// if white going diagonal
 				if (whiteX == (whiteMove.getInitX() - 1) && whiteY == (whiteMove.getInitY() + 1)
 				|| (whiteX == (whiteMove.getInitX() + 1) && whiteY == (whiteMove.getInitY() + 1)))
 				{
+					// both trying to capture each other, both cannot move
+					if ((whiteMove.getInitX() == blackX && whiteMove.getInitY() == blackY)
+					&& (blackMove.getInitX() == whiteX && blackMove.getInitY() == whiteY))
+					{
+						System.out.println("Illegal Pawn Move.");
+						System.out.println("Both players tried to capture each other's game piece. Both game turns forfeited!");
+						return;
+					}
 					// if its initial position isn't where white is moving, the piece white is trying to capture isn't moving
-					if (blackMove.getInitX() != whiteX && blackMove.getInitY() != whiteY)
+					else if (blackMove.getInitX() != whiteX && blackMove.getInitY() != whiteY)
 					{
 						gameBoard.setGameTurn(true);
 						gameBoard.getPiece(whiteX, whiteY).capture();
 						gameBoard.movePiece(whitePlayer, whiteTarget, whiteX, whiteY);
+						gameBoard.movePiece(blackPlayer, blackTarget, blackX, blackY);
 						gameBoard.setGameTurn(false);
 						return;
 					}
 					// piece white is trying to capture is moving, white cannot move
 					else if (blackMove.getInitX() == whiteX && blackMove.getInitY() == whiteY)
 					{
+						System.out.println("Illegal white Pawn Move.");
+						System.out.println("Game piece white player is trying to capture has moved away. Game Turn forfeited.");
 						gameBoard.setGameTurn(true);
 						gameBoard.movePiece(blackPlayer, blackTarget, blackX, blackY);
 						gameBoard.setGameTurn(false);
 						return;
 					}
-						// if black piece ends up moving to where white player anticipated (??), it can capture (?)
+					// if black piece ends up moving to where white player anticipated (??), it can capture (?)
 					else if (blackX == whiteX && blackY == whiteY)
 					{
 						gameBoard.setGameTurn(true);
@@ -130,6 +142,55 @@ public class GameHost {
 					}
 				}
 			}
+
+			// Black Pawn Diagonal Movement Check
+			if (blackTarget.getName() == "Pawn")
+			{
+				// if black going diagonal
+				if (blackX == (blackMove.getInitX() - 1) && blackY == (blackMove.getInitY() - 1)
+				|| (blackX == (blackMove.getInitX() + 1) && blackY == (blackMove.getInitY() - 1)))
+				{
+					// both trying to capture each other, both cannot move
+					if ((blackMove.getInitX() == whiteX && blackMove.getInitY() == whiteY)
+					&& (whiteMove.getInitX() == blackX && whiteMove.getInitY() == blackY))
+					{
+						System.out.println("Illegal Pawn Move.");
+						System.out.println("Both players tried to capture each other's game piece. Both game turns forfeited!");
+						return;
+					}
+					// if its initial position isn't where black is moving, the piece black is trying to capture isn't moving
+					else if (whiteMove.getInitX() != blackX && whiteMove.getInitY() != blackY)
+					{
+						gameBoard.setGameTurn(true);
+						gameBoard.getPiece(whiteX, whiteY).capture();
+						gameBoard.movePiece(blackPlayer, blackTarget, blackX, blackY);
+						gameBoard.movePiece(whitePlayer, whiteTarget, whiteX, whiteY);
+						gameBoard.setGameTurn(false);
+						return;
+					}
+					// piece black is trying to capture is moving, black cannot move
+					else if (whiteMove.getInitX() == blackX && whiteMove.getInitY() == blackY)
+					{
+						System.out.println("Illegal black Pawn Move.");
+						System.out.println("Game piece black player is trying to capture has moved away. Game Turn forfeited.");
+						gameBoard.setGameTurn(true);
+						gameBoard.movePiece(whitePlayer, whiteTarget, whiteX, whiteY);
+						gameBoard.setGameTurn(false);
+						return;
+					}
+					// if black piece ends up moving to where white player anticipated (??), it can capture (?)
+					else if (blackX == whiteX && blackY == whiteY)
+					{
+						gameBoard.setGameTurn(true);
+
+						gameBoard.movePiece(whitePlayer, whiteTarget, whiteX, whiteY);
+						gameBoard.setGameTurn(false);
+
+						return;
+					}
+				}
+			}
+
 			// PASSES CONFLICT TESTS
 			gameBoard.setGameTurn(true);
 
