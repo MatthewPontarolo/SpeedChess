@@ -138,6 +138,8 @@ public class GameHost {
 	 * if target is of type pawn, check if going diagonally to capture
 	 * if yes, check if piece will be there after turn is executed
 	 * determine if pawn move is legal
+	 * @return boolean true if this function handles conflict
+	 * @return boolean false if not a pawn conflict, lets general handle it
 	**/
 	public static boolean checkPawns(Piece whiteTarget, Move whiteMove, Piece blackTarget, Move blackMove)
 	{
@@ -176,11 +178,6 @@ public class GameHost {
 				// if black initial position isn't where white is moving, the piece white is trying to capture isn't moving
 				else if (blackMove.getInitX() != whiteX && blackMove.getInitY() != whiteY)
 				{
-					gameBoard.setGameTurn(true);
-					//gameBoard.getPiece(whiteX, whiteY).capture();
-					//gameBoard.movePiece(whitePlayer, whiteTarget, whiteX, whiteY);
-					//gameBoard.movePiece(blackPlayer, blackTarget, blackX, blackY);
-					gameBoard.setGameTurn(false);
 					return false;
 				}
 				// piece white is trying to capture is moving, white cannot move
@@ -237,12 +234,6 @@ public class GameHost {
 				// if its initial position isn't where black is moving, the piece black is trying to capture isn't moving
 				else if (whiteMove.getInitX() != blackX && whiteMove.getInitY() != blackY)
 				{
-					gameBoard.setGameTurn(true);
-					// BUG: here when pawn is capturing pieces that aren't pawn?
-					//gameBoard.getPiece(whiteX, whiteY).capture();
-					//gameBoard.movePiece(blackPlayer, blackTarget, blackX, blackY);
-					//gameBoard.movePiece(whitePlayer, whiteTarget, whiteX, whiteY);
-					gameBoard.setGameTurn(false);
 					return false;
 				}
 				// piece black is trying to capture is moving, black cannot move
