@@ -57,10 +57,13 @@ public class Board {
 		{
 			// updates board's pieces
 			spots[x][y] = p;
-			spots[p.getXPosition()][p.getYPosition()] = null;
 			// updates player's pieces
 			player.movePiece(p, x, y);
 		}
+	}
+
+	public void pickUpPiece(Piece p) {
+		spots[p.getXPosition()][p.getYPosition()] = null;
 	}
 
 }
