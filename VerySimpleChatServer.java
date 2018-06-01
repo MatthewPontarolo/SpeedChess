@@ -4,8 +4,7 @@ import java.net.*;
 import java.util.*;
 
 
-public class VerySimpleChatServer
-{
+public class VerySimpleChatServer {
     ArrayList<PrintWriter> clientOutputStreams; // WAS: ArrayList clientOutputStreams;
     
     public class ClientHandler implements Runnable {
