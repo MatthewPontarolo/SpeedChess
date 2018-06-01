@@ -9,6 +9,12 @@ public class RequestController {
     private GameServer gameServer;
 
 
+    @RequestMapping("/")
+    public String blankPage(){
+        return "index page";
+    }
+
+
     public RequestController(GameServer gameServer){
         this.gameServer = gameServer;
     }
