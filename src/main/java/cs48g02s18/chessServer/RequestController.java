@@ -9,6 +9,11 @@ import org.springframework.web.bind.annotation.RestController;
 public class RequestController {
     private GameServer gameServer;
 
+    @RequestMapping("/")
+    public String home(){
+        return "index yes";
+    }
+
 
     public RequestController(GameServer gameServer){
         this.gameServer = gameServer;
