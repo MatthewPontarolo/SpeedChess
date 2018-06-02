@@ -31,11 +31,17 @@ import javafx.geometry.Insets;
 public class Main extends Application {
 	public static Stage mainStage;
 
+	/**
+	 * Launches the application
+	 */
 	public static void main(String[] args) {
 		Application.launch(args);
 	}
 
 	@Override
+	/**
+	 * Starts the set of the game
+	 */
 	public void start(Stage primaryStage) {
 		mainStage = primaryStage;
 		primaryStage.setTitle("Speed Chess");

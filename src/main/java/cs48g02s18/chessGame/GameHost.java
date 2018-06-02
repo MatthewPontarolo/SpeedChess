@@ -7,16 +7,25 @@ public class GameHost {
 
 	public static Board gameBoard = new Board(whitePlayer, blackPlayer);
 
-
+	/**
+	 * empty constructor
+	 */
 	public GameHost()
 	{
 
 	}
+
+	/**
+	 * does nothing
+	 */
 	public static void initialize() {
 
 	}
 
 	//Decides if it's time to go ahead and run executeGameTurn()
+	/**
+	 * Decides if it's time to go ahead and run executeGameTurn()
+	 */
 	public static void checkIfReady()
 	{
 		Move whiteMove = whitePlayer.getNextMove();
@@ -35,6 +44,9 @@ public class GameHost {
 	// PostCondition: GameHost acts as a referee and determines if moves can be executed.
 		// calls board::movePiece on the valid pieces that can be moved
 		// TODO: deal with capture situations
+		/**
+		 * Calls board::movePiece on the valid pieces that can be moved
+		 */
 	public static void executeGameTurn()
 	{
 		// get both player's moves
