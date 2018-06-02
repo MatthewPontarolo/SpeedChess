@@ -1,3 +1,4 @@
+package speedchess; 
 public class GameHost {
 
 	public static Player whitePlayer = new Player(1);

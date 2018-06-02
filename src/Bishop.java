@@ -2,6 +2,7 @@
 * This class implements the Piece interface and defines the specific behavior
 * associated with game piece 'Bishop'
 */
+package speedchess;
 
 import java.util.ArrayList;
 import java.awt.Point;
@@ -24,6 +25,10 @@ public class Bishop extends Piece
 
   // Precondition: Piece is on board. get the position of current spot
   // Postcondition: sets array of viable move options and stores into 'moves' arraylist
+  /**
+   * @param Board board
+   * @param int x, y, playerType
+   */
   public void setValidMoves(Board board, int x, int y, int playerType) {
 	moves.clear();
 

@@ -1,3 +1,5 @@
+package speedchess;
+
 import java.awt.*;
 import java.awt.Graphics;
 import java.awt.Image;
@@ -28,12 +30,12 @@ import javafx.geometry.Insets;
 
 public class Main extends Application {
 	public static Stage mainStage;
-	
+
 	public static void main(String[] args) {
 		Application.launch(args);
 	}
-	
-	@Override 
+
+	@Override
 	public void start(Stage primaryStage) {
 		mainStage = primaryStage;
 		primaryStage.setTitle("Speed Chess");

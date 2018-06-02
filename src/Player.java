@@ -1,3 +1,5 @@
+package speedchess;
+
 import java.util.ArrayList;
 import java.awt.Point;
 

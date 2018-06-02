@@ -1,3 +1,5 @@
+package speedchess;
+
 public class Move
 {
   private int xPosition;

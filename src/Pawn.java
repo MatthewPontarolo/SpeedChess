@@ -2,6 +2,7 @@
 * This class implements the Piece interface and defines the specific behavior
 * associated with game piece 'Pawn'
 */
+package speedchess;
 
 import java.util.ArrayList;
 import java.awt.Point;
