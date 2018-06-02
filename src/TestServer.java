@@ -58,7 +58,7 @@ class ChatServer implements Runnable {
 			} catch(IOException ioe) {
 				System.out.println("Error closing thread: " + ioe);
 			}
-			toTerminate.stop();
+			//toTerminate.stop();
 		}
 	}
 	private void addThread(Socket socket) {
@@ -98,7 +98,7 @@ class ChatServerThread extends Thread {
 		} catch(IOException ioe) {
 			System.out.println(ID + " ERROR sending: " + ioe.getMessage());
 			server.remove(ID);
-			stop();
+			//stop();
 		}
 	}
 	public int getID() {
@@ -112,7 +112,7 @@ class ChatServerThread extends Thread {
 			} catch(IOException ioe) {
 				System.out.println(ID + " ERROR reading: " + ioe.getMessage());
 				server.remove(ID);
-				stop();
+				//stop();
 			}
 		}
 	}
@@ -129,11 +129,11 @@ class ChatServerThread extends Thread {
 
 
 class ChatClient implements Runnable {
-	private Socket socket              = null;
-	private Thread thread              = null;
-	private DataInputStream  console   = null;
-	private DataOutputStream streamOut = null;
-	private ChatClientThread client    = null;
+	private Socket socket				= null;
+	private Thread thread				= null;
+	private Console console				= null;
+	private DataOutputStream streamOut	= null;
+	private ChatClientThread client		= null;
 
 	public ChatClient(String serverName, int serverPort) {
 		System.out.println("Establishing connection. Please wait ...");
@@ -166,7 +166,7 @@ class ChatClient implements Runnable {
 			System.out.println(msg);
 	}
 	public void start() throws IOException {
-		console   = new DataInputStream(System.in);
+		console   = System.console();//new DataInputStream(System.in);
 		streamOut = new DataOutputStream(socket.getOutputStream());
 		if (thread == null) {
 			client = new ChatClientThread(this, socket);
@@ -176,11 +176,11 @@ class ChatClient implements Runnable {
 	}
 	public void stop() {
 		if (thread != null) {
-			thread.stop();
+			//thread.stop();
 			thread = null;
 		}
 		try {
-			if (console   != null)  console.close();
+			//if (console   != null)  console.close();
 			if (streamOut != null)  streamOut.close();
 			if (socket    != null)  socket.close();
 		}
@@ -188,7 +188,7 @@ class ChatClient implements Runnable {
 			System.out.println("Error closing ...");
 		}
 		client.close();
-		client.stop();
+		//client.stop();
 	}
 	public static void main(String args[]) {
 		ChatClient client = null;
