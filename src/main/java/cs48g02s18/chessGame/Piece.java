@@ -1,4 +1,5 @@
-package speedchess;
+package cs48g02s18.chessGame;
+
 
 import java.awt.Point;
 import java.util.ArrayList;

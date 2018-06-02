@@ -1,4 +1,4 @@
-package speedchess;
+package cs48g02s18.chessGame;
 
 public class Move
 {

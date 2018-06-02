@@ -1,4 +1,5 @@
-package speedchess; 
+package cs48g02s18.chessGame;
+
 public class GameHost {
 
 	public static Player whitePlayer = new Player(1);

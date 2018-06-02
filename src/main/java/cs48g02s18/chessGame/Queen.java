@@ -1,8 +1,8 @@
+package cs48g02s18.chessGame;
 /**
 * This class implements the Piece interface and defines the specific behavior
 * associated with game piece 'Queen'
 */
-package speedchess;
 
 import java.util.ArrayList;
 import java.awt.Point;
