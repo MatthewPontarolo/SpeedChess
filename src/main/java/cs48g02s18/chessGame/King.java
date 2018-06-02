@@ -1,4 +1,4 @@
-package cs48g02s18.chessGame;
+package cs48g02s18.chessgame;
 /**
 * This class implements the Piece interface and defines the specific behavior
 */

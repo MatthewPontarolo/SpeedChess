@@ -4,7 +4,7 @@
   <property environment="env"/>
   <property name="project" value="SpeedChess"/>
 
-  <property name="mainClass" value="Main"/>
+  <property name="mainClass" value="cs48g02s18.chessgame.Main"/>
 
   <path id="project.class.path">
     <pathelement path="build"/>
