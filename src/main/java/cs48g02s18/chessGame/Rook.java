@@ -128,8 +128,4 @@ public class Rook extends Piece {
 		return moves;
 	}
 
-
-	public void move(int x, int y) {
-		this.setPosition(x, y);
-	}
 }

@@ -92,10 +92,16 @@ public abstract class Piece {
 		setPosition(-1, -1);
 	}
 
+<<<<<<< HEAD
 	/**
 	 * sets the piece to a new position
 	 */
 	public abstract void move(int x, int y);
+=======
+	public void move(int x, int y) {
+		this.setPosition(x, y);
+	}
+>>>>>>> 86a1dba52f1d01d25479506eca43bf1799f0a302
 
 
 	@Override
