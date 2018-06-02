@@ -1,6 +1,5 @@
-package cs48g02s18.chessGame;
-
 import java.util.ArrayList;
+import java.awt.Point;
 
 public class Player {
 	// should default, hold starting # of pieces in arraylist
@@ -14,6 +13,7 @@ public class Player {
 	private int king = 1;
 
 	private int playerType;
+	private Move moveSelection;
 	//1 = white
 	//0 = black
 
@@ -55,5 +55,55 @@ public class Player {
 	public ArrayList<Piece> getPieces() {
 		return pieces;
 	}
+
+	// get Piece in pieces arraylist at given spot on board
+	public int getPieceIdx(int x, int y)
+	{
+		// get the piece from pieces array in player class
+		int index = 0;
+		for (Piece p : pieces)
+		{
+			int xPos = (int) p.getXPosition();
+			int yPos = (int) p.getYPosition();
+			if(xPos == x && yPos == y)
+			{
+				return index;
+			}
+			index++;
+		}
+		return 0;
+	}
+
+	public int getPlayerType()
+	{
+		return playerType;
+	}
+
+	public void setNextMove(Move moveSelection)
+	{
+		this.moveSelection = moveSelection;
+	}
+
+	public Move getNextMove()
+	{
+		return moveSelection;
+	}
+
+
+	/**
+		Makes more sense to have the UI interact directly with the player because right
+		now the UI makes direct calls to the pieces and it actually never updates the pieces
+		the player holds.
+	**/
+	public void movePiece(Piece p, int x, int y)
+	{
+		int x_i = p.getXPosition();
+		int y_i = p.getYPosition();
+		// find in pieces array the Piece at x_i and y_i
+		int target_idx = this.getPieceIdx(x_i, y_i);
+		// move Piece in pieces
+		this.pieces.get(target_idx).move(x, y);
+	}
+
 
 }

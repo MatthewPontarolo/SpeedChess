@@ -1,5 +1,3 @@
-package cs48g02s18.chessGame;
-
 /**
 * This class implements the Piece interface and defines the specific behavior
 * associated with game piece 'Pawn'
@@ -30,65 +28,101 @@ public class Pawn extends Piece {
 		// if this is pawn's first move, it can move two squares forward
 		if (firstMove == true)
 		{
-			Point firstMove = new Point(x + 0, y + 2);
-			if (board.getPiece(x,y + 2) != null)
+			// white moves forward with y++
+			if(this.getPlayer() == 1)
 			{
-				if (board.getPiece(x, y+2).getPlayer() != this.getPlayer())
+				Point firstMove = new Point(x + 0, y + 2);
+				if (board.getPiece(x, y + 1) == null && board.getPiece(x, y + 2) == null)
 				{
-					moves.add(firstMove);
+						moves.add(firstMove);
 				}
 			}
+			// black moves forward with y--
 			else
 			{
-				moves.add(firstMove);
+				Point firstMove = new Point(x + 0, y - 2);
+				if (board.getPiece(x, y - 1) == null && board.getPiece(x, y - 2) == null)
+				{
+						moves.add(firstMove);
+				}
+			}
+
+		}
+
+		if (this.getPlayer() ==  1)
+		{
+			// if a piece is occupying a square diagonal from pawn, it can capture
+			if (x + 1 < 8 && y + 1 < 8 && x + 1 >= 0 && y + 1 >= 0)
+			{
+				Point move = new Point(x + 1, y + 1);
+				if (board.getPiece(x + 1, y + 1) != null)
+				{
+					if (board.getPiece(x+1,y+1).getPlayer() != this.getPlayer())
+					{
+						moves.add(move);
+					}
+				}
+			}
+			if (x - 1 < 8 && y + 1 < 8 && x - 1 >= 0 && y + 1 >= 0)
+			{
+				Point move = new Point(x - 1, y + 1);
+				if (board.getPiece(x - 1, y + 1) != null)
+				{
+					if (board.getPiece(x - 1, y + 1).getPlayer() != this.getPlayer())
+					{
+						moves.add(move);
+					}
+				}
+			}
+				// if no piece is in front of pawn, it can move forward one square
+			if (x < 8 && y + 1 < 8 && x >= 0 && y + 1 >=0)
+			{
+				Point move = new Point(x + 0, y + 1);
+				if (board.getPiece(x, y + 1) == null)
+				{
+						moves.add(move);
+				}
+
+			}
+		}
+		else
+		{
+			// if a piece is occupying a square diagonal from pawn, it can capture
+			if (x + 1 < 8 && y - 1 < 8 && x + 1 >= 0 && y - 1 >= 0)
+			{
+				Point move = new Point(x + 1, y - 1);
+				if (board.getPiece(x + 1, y - 1) != null)
+				{
+					if (board.getPiece(x + 1,y - 1).getPlayer() != this.getPlayer())
+					{
+						moves.add(move);
+					}
+				}
+			}
+			if (x - 1 < 8 && y - 1 < 8 && x - 1 >= 0 && y - 1 >= 0)
+			{
+				Point move = new Point(x - 1, y - 1);
+				if (board.getPiece(x - 1, y - 1) != null)
+				{
+					if (board.getPiece(x - 1, y - 1).getPlayer() != this.getPlayer())
+					{
+						moves.add(move);
+					}
+				}
+			}
+				// if no piece is in front of pawn, it can move forward one square
+			if (x < 8 && y - 1 < 8 && x >= 0 && y - 1 >=0)
+			{
+				Point move = new Point(x + 0, y - 1);
+				if (board.getPiece(x, y - 1) == null)
+				{
+						moves.add(move);
+				}
 			}
 		}
 
-		// if a piece is occupying a square diagonal from pawn, it can capture
-		if (x + 1 < 8 && y + 1 < 8 && x + 1 >= 0 && y + 1 >= 0)
-		{
-			Point move = new Point(x + 1, y + 1);
-			if (board.getPiece(x + 1, y + 1) != null)
-			{
-				if (board.getPiece(x+1,y+1).getPlayer() != this.getPlayer())
-				{
-					moves.add(move);
-				}
-			}
-		}
-		if (x - 1 < 8 && y + 1 < 8 && x - 1 >= 0 && y + 1 >= 0)
-		{
-			Point move = new Point(x - 1, y + 1);
-			if (board.getPiece(x - 1, y + 1) != null)
-			{
-				if (board.getPiece(x - 1, y + 1).getPlayer() != this.getPlayer())
-				{
-					moves.add(move);
-				}
-			}
-		}
-			// if no piece is in front of pawn, it can move forward one square
-		if (x < 8 && y + 1 < 8 && x >= 0 && y + 1 >=0)
-		{
-			Point move = new Point(x + 0, y + 1);
-			if (board.getPiece(x, y + 1) != null)
-			{
-				if (board.getPiece(x, y + 1).getPlayer() != this.getPlayer())
-				{
-					moves.add(move);
-				}
-			}
-			else
-			{
-				moves.add(move);
-			}
-		}
 	}
 
-	// helper function
-	// for UI, call getPossibleMoves
-	// returns arrayList of Points for valid moves of current piece position
-	// NOTE: will possibly reconsider use of Points bc of return type double
 	public ArrayList<Point> getValidMoves(Board board, int playerType)
 	{
 		this.setValidMoves(board, Xposition, Yposition, playerType);
@@ -96,19 +130,11 @@ public class Pawn extends Piece {
 	}
 
 	public void move(int x, int y) {
-		// check if the position the piece wants to move to is in array of possible moves
-		// if yes, update position -- setCurrentPosition(position)
-		// if no, give error message -- depending on implementation of UI
-		// function could just do nothing
 		if (firstMove == true)
 		{
 			firstMove = false;
 		}
 
 		this.setPosition(x, y);
-
-		// no valid moves found
-		// error message in UI
-
 	}
 }

@@ -1,8 +1,8 @@
-package cs48g02s18.chessGame;
-
 import java.awt.Point;
 import java.util.ArrayList;
 
+/** COULD PROBABLY TAKE OUT THIS CLASS, UNUSED
+**/
 public class PossibleMoves
 {
   // white = 0

@@ -1,5 +1,3 @@
-package cs48g02s18.chessGame;
-
 /**
 * This class implements the Piece interface and defines the specific behavior
 * associated with game piece 'Bishop'
@@ -158,10 +156,6 @@ public class Bishop extends Piece
 
 	}
 
-	// helper function
-  // for UI, call getPossibleMoves
-	// returns arrayList of Points for valid moves of current piece position
-  // NOTE: will possibly reconsider use of Points bc of return type double
 	public ArrayList<Point> getValidMoves(Board board, int playerType)
 	{
 		this.setValidMoves(board, Xposition, Yposition, playerType);
@@ -169,13 +163,6 @@ public class Bishop extends Piece
 	}
 
   public void move(int x, int y) {
-    // check if the position the piece wants to move to is in array of possible moves
-    // if yes, update position -- setCurrentPosition(position)
-    // if no, give error message -- depending on implementation of UI
-    // function could just do nothing
-
-    // no valid moves found
-    // error message in UI
     this.setPosition(x, y);
 
   }

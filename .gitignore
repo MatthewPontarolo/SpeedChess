@@ -2,3 +2,8 @@ target
 .env
 .idea/
 *.iml
+
+build/
+*.class
+*~
+*.DS_Store

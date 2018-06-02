@@ -1,5 +1,3 @@
-package cs48g02s18.chessGame;
-
 /**
 * This class implements the Piece interface and defines the specific behavior
 * associated with game piece 'Rook'
@@ -24,9 +22,6 @@ public class Rook extends Piece {
 	public void setValidMoves(Board board, int x, int y, int playerType)
 	{
 		moves.clear();
-
-		//if (playerType == 0)
-		//{
 			// move vertically, if anything blocking, stop immediately
 			int vForward = y;
 			int vBackward = y;
@@ -123,20 +118,9 @@ public class Rook extends Piece {
         }
 				hBackward++;
 			}
-
-
-		//}
-		//else if (playerType == 1)
-		//{
-			// need to reconsider bc of d/f board perspective
-		//}
-
 	}
 
-	// helper function
-	// for UI, call getPossibleMoves
-	// returns arrayList of Points for valid moves of current piece position
-	// NOTE: will possibly reconsider use of Points bc of return type double
+
 	public ArrayList<Point> getValidMoves(Board board, int playerType)
 	{
 		this.setValidMoves(board, Xposition, Yposition, playerType);
@@ -145,14 +129,6 @@ public class Rook extends Piece {
 
 
 	public void move(int x, int y) {
-		// check if the position the piece wants to move to is in array of possible moves
-		// if yes, update position -- setCurrentPosition(position)
-		// if no, give error message -- depending on implementation of UI
-		// function could just do nothing
 		this.setPosition(x, y);
-
-		// no valid moves found
-		// error message in UI
-
 	}
 }
