@@ -33,7 +33,7 @@
     <mkdir dir="docs" />
     <mkdir dir="docs/javadoc" />
     <javadoc destdir="docs/javadoc">
-      <fileset dir="src" >
+      <fileset dir="src/main/java/cs48g02s18/chessgame" >
 	<include name="*.java"/>
       </fileset>
       <classpath refid="project.class.path" />
