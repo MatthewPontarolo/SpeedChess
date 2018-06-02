@@ -1,38 +1,18 @@
 package cs48g02s18.chessgame;
 
-import java.awt.*;
-import java.awt.Graphics;
-import java.awt.Toolkit;
-import java.awt.event.ActionListener;
-import java.awt.FlowLayout;
-import java.awt.BorderLayout;
-import java.awt.Dimension;
-import java.io.*;
-import java.util.*;
-import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-import javafx.scene.Scene;
-import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.TextArea;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.Background;
-import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.RowConstraints;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.VBox;
-import javafx.scene.layout.Region;
-import javafx.scene.layout.CornerRadii;
-import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
-import javafx.stage.Stage;
 import javafx.geometry.Pos;
 import javafx.geometry.Insets;
 import java.util.ArrayList;
@@ -140,7 +120,7 @@ public class SpeedChess extends BorderPane {
 			for (Button b : bt) {
 				b.setText("");
 				//Later I can use the coords to determine if it should be a black or white tile
-				Image im = new Image(getClass().getResourceAsStream("BlankSlot.png"));
+				Image im = new Image(getClass().getResourceAsStream("/images/BlankSlot.png"));
 				b.setGraphic(new ImageView(im));
 			}
 		}
@@ -149,7 +129,7 @@ public class SpeedChess extends BorderPane {
 		for (Piece p : p1.getPieces()) {
 			if (p.isAlive()) {
 				Button b = buttons[p.getXPosition()][p.getYPosition()];
-				Image im = new Image(getClass().getResourceAsStream(p.getName() + "WhitePiece.png"));
+				Image im = new Image(getClass().getResourceAsStream("/images/" + p.getName() + "WhitePiece.png"));
 				b.setGraphic(new ImageView(im));
 			}
 		}
@@ -157,7 +137,7 @@ public class SpeedChess extends BorderPane {
 		for (Piece p : p2.getPieces()) {
 			if (p.isAlive()) {
 				Button b = buttons[p.getXPosition()][p.getYPosition()];
-				Image im = new Image(getClass().getResourceAsStream(p.getName() + "BlackPiece.png"));
+				Image im = new Image(getClass().getResourceAsStream("/images/" + p.getName() + "BlackPiece.png"));
 				b.setGraphic(new ImageView(im));
 			}
 		}
@@ -171,9 +151,9 @@ public class SpeedChess extends BorderPane {
 				for (int j = 0; j < 8; j++) {
 					if (moves.contains(new Point(i, j))) {
 						if (GameHost.gameBoard.getPiece(i, j) != null && GameHost.gameBoard.getPiece(i, j).getPlayer() != selectedPiece.getPlayer()) {
-							im = new Image(getClass().getResourceAsStream("HighlightCapture.png"));
+							im = new Image(getClass().getResourceAsStream("images/HighlightCapture.png"));
 						} else {
-							im = new Image(getClass().getResourceAsStream("HighlightValid.png"));
+							im = new Image(getClass().getResourceAsStream("images/HighlightValid.png"));
 						}
 						highlights[i][j].setGraphic(new ImageView(im));
 					} else {
@@ -181,7 +161,7 @@ public class SpeedChess extends BorderPane {
 					}
 				}
 			}
-			im = new Image(getClass().getResourceAsStream("HighlightSelected.png"));
+			im = new Image(getClass().getResourceAsStream("images/HighlightSelected.png"));
 			highlights[selectedPiece.getXPosition()][selectedPiece.getYPosition()].setGraphic(new ImageView(im));
 		} else {
 			for (int i = 0; i < 8; i++)
