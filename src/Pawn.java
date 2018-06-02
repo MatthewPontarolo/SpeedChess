@@ -57,7 +57,7 @@ public class Pawn extends Piece {
 				Point move = new Point(x + 1, y + 1);
 				if (board.getPiece(x + 1, y + 1) != null)
 				{
-					if (board.getPiece(x+1,y+1).getPlayer() != this.getPlayer())
+					if (board.getPiece(x + 1,y + 1).getPlayer() != this.getPlayer())
 					{
 						moves.add(move);
 					}

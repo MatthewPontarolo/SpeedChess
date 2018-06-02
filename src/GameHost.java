@@ -188,20 +188,10 @@ public class GameHost {
 					System.out.println("Illegal white Pawn Move.");
 					System.out.println("Game piece white player is trying to capture has moved away. Game Turn forfeited.");
 					gameBoard.setGameTurn(true);
+					gameBoard.pickUpPiece(blackTarget);
 					gameBoard.movePiece(blackPlayer, blackTarget, blackX, blackY);
 					gameBoard.setGameTurn(false);
 					return true;
-				}
-				// if black piece ends up moving to where white player anticipated (??), it can capture (?)
-				// NOTE: TBD
-				else if (blackX == whiteX && blackY == whiteY)
-				{
-					gameBoard.setGameTurn(true);
-
-					//gameBoard.movePiece(whitePlayer, whiteTarget, whiteX, whiteY);
-					gameBoard.setGameTurn(false);
-
-					return false;
 				}
 			}
 		}
@@ -227,7 +217,6 @@ public class GameHost {
 					// if other piece is not pawn, can pawn be captured?
 					// NOTE: DISCUSS THIS could be interesting, but also a disadvantage!
 					gameBoard.setGameTurn(true);
-					// comment this out if we don't want that
 					//gameBoard.getPiece(blackX, blackY).capture();
 					//gameBoard.movePiece(whitePlayer, whiteTarget, whiteX, whiteY);
 					gameBoard.setGameTurn(false);
@@ -244,20 +233,10 @@ public class GameHost {
 					System.out.println("Illegal black Pawn Move.");
 					System.out.println("Game piece black player is trying to capture has moved away. Game Turn forfeited.");
 					gameBoard.setGameTurn(true);
+					gameBoard.pickUpPiece(whiteTarget);
 					gameBoard.movePiece(whitePlayer, whiteTarget, whiteX, whiteY);
 					gameBoard.setGameTurn(false);
 					return true;
-				}
-				// if white piece ends up moving to where black player anticipated (??), it can capture (?)
-				// NOTE: TBD
-				else if (blackX == whiteX && blackY == whiteY)
-				{
-					gameBoard.setGameTurn(true);
-
-					//gameBoard.movePiece(whitePlayer, whiteTarget, whiteX, whiteY);
-					gameBoard.setGameTurn(false);
-
-					return false;
 				}
 			}
 		}
