@@ -164,6 +164,12 @@ public class Bishop extends Piece {
 
 	}
 
+    /**
+     * Returns the list of valid moves
+     * @param board             The game board
+     * @param playerType        The playerType (0 or 1)
+     * @return moves            The list of valid moves
+     */
 	public ArrayList<Point> getValidMoves(Board board, int playerType) {
 		this.setValidMoves(board, Xposition, Yposition, playerType);
 		return moves;
