@@ -52,8 +52,8 @@ public class Main extends Application {
 			System.out.println(e.getMessage());
 			try {
 				Client.setup();
-			} catch (IOException e) {
-				System.out.println(e.getMessage());
+			} catch (IOException ex) {
+				System.out.println(ex.getMessage());
 			}
 		}
 
