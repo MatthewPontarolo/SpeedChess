@@ -3,7 +3,7 @@ import java.net.*;
 
 public class Client {
 	public static void setup() throws IOException {
-		String hostName = ""+InetAddress.getLoopbackAddress();
+		String hostName = "128.111.43.38";
 		int portNumber = 1050;
 
 		try (
