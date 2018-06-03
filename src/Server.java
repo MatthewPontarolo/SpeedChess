@@ -15,7 +15,7 @@ public class Server {
 				PrintWriter out = new PrintWriter(clientSocket.getOutputStream(), true);
 				BufferedReader in = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
 		) {
-			String inputLine;
+			/*String inputLine;
 			while ((inputLine = in.readLine()) != null) {
 				GameHost.processMove(inputLine);
 			}
@@ -24,7 +24,7 @@ public class Server {
 				String parsed = moveToSend.packageToString();
 				out.println(parsed);
 				moveToSend = null;
-			}
+			}*/
 		} catch (IOException e) {
 			System.out.println("Exception caught when trying to listen on port "
 					+ portNumber + " or listening for a connection");

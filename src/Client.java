@@ -14,7 +14,7 @@ public class Client {
 				PrintWriter out = new PrintWriter(echoSocket.getOutputStream(), true);
 				BufferedReader in = new BufferedReader(new InputStreamReader(echoSocket.getInputStream()));
 		) {
-			String inputLine;
+			/*String inputLine;
 			while ((inputLine = in.readLine()) != null) {
 				GameHost.processMove(inputLine);
 			}
@@ -23,7 +23,7 @@ public class Client {
 				String parsed = moveToSend.packageToString();
 				out.println(parsed);
 				moveToSend = null;
-			}
+			}*/
 		} catch (UnknownHostException e) {
 			System.err.println("Don't know about host " + hostName);
 			System.exit(1);
