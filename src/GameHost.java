@@ -2,13 +2,15 @@ public class GameHost {
 
 	public static Player whitePlayer = new Player(1);
 	public static Player blackPlayer = new Player(0);
+	public static Player[] players = new Player[2];
 
 	public static Board gameBoard = new Board(whitePlayer, blackPlayer);
 
 
 	public GameHost()
 	{
-
+		players[0] = blackPlayer;
+		players[1] = whitePlayer;
 	}
 	public static void initialize() {
 
@@ -264,4 +266,10 @@ public class GameHost {
 		return false;
 
 	}
+
+
+	public static void processMove(String m) {
+		System.out.println("MOVE MADE IS: " + m);
+	}
+
 }

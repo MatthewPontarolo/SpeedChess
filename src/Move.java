@@ -12,6 +12,12 @@ public class Move
     target = p;
   }
 
+
+  public Move(String m)
+  {
+
+  }
+
   public Piece getTargetPiece()
   {
     return target;
@@ -37,9 +43,16 @@ public class Move
     return target.getYPosition();
   }
 
-  // Server's timer timestamp
-  public double getTime()
-  {
-    return time;
-  }
+	// Server's timer timestamp
+	public double getTime() {
+		return time;
+	}
+
+	public String packageToString() {
+		return target.getXPosition() + " "
+				+ target.getYPosition() + " "
+				+ xPosition + " "
+				+ yPosition + " "
+				+ time;
+	}
 }

@@ -60,12 +60,14 @@ public class SpeedChess extends BorderPane {
 		serverButton.setOnAction(new EventHandler<ActionEvent>() {
 			public void handle(ActionEvent event) {
 				Main.tryToBeServer();
+				//Black
 			}
 		});
 		Button clientButton = new Button("Client");
 		clientButton.setOnAction(new EventHandler<ActionEvent>() {
 			public void handle(ActionEvent event) {
 				Main.tryToBeClient();
+				playerPerspective = 1;//White
 			}
 		});
 
@@ -82,6 +84,16 @@ public class SpeedChess extends BorderPane {
 		timerLabel.setFont(new Font("Lucida Grande", 18));
 
 		Button confirmButton = new Button("Confirm");
+		confirmButton.setOnAction(new EventHandler<ActionEvent>() {
+			public void handle(ActionEvent event) {
+				Move m = GameHost.players[playerPerspective].getNextMove();
+				if (playerPerspective == 0) {
+					Server.setMoveToSend(m);
+				} else {
+					Client.setMoveToSend(m);
+				}
+			}
+		});
 
 		southBox.getChildren().addAll(confirmButton, timerLabel);
 
