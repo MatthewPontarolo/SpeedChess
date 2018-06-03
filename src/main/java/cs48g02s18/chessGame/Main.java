@@ -1,3 +1,5 @@
+package cs48g02s18.chessGame;
+
 import java.awt.*;
 import java.awt.Graphics;
 import java.awt.Image;

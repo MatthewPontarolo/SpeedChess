@@ -25,8 +25,8 @@ public class RequestController {
     }
 
 
-    @RequestMapping("/submitUsername")
-    public String submitUsername(@RequestParam(value = "userData") DataPass userData){
+    @RequestMapping("/register")
+    public String register(@RequestParam(value = "userData") DataPass userData){
         return gameServer.addUser(userData);
     }
 

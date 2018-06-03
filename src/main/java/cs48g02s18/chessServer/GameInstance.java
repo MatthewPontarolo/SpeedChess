@@ -5,7 +5,7 @@ import cs48g02s18.chessGame.Piece;
 import cs48g02s18.chessGame.Player;
 
 public class GameInstance {
-    private ServerPlayer hostServerPlayer; //future change to more generalized form (doesn't need to be host/guest
+   private ServerPlayer hostServerPlayer; //future change to more generalized form (doesn't need to be host/guest
     private ServerPlayer guestServerPlayer;             //eg if we wanted to have a game queue
     private Player whitePlayer;
     private Player blackPlayer;
@@ -56,13 +56,11 @@ public class GameInstance {
             //for if both pieces are going to the same location
             //todo set up in detail
             guestPiece.capture();
-            hostPiece.setPosition(hostNextMove.getEndPosition());
+            //hostPiece.setPosition(hostNextMove.getEndPosition());
         }
         else {
-            gameBoard.capturePieceAt(hostNextMove.getEndPosition());
-            hostPiece.setPosition(hostNextMove.getEndPosition());
-            gameBoard.capturePieceAt(guestNextMove.getEndPosition());
-            guestPiece.setPosition(guestNextMove.getEndPosition());
+           // hostPiece.setPosition(hostNextMove.getEndPosition());
+            //guestPiece.setPosition(guestNextMove.getEndPosition());
         }
 
         hostServerPlayer.setNextMove(null);

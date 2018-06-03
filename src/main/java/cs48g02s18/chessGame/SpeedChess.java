@@ -1,3 +1,5 @@
+package cs48g02s18.chessGame;
+
 import java.awt.*;
 import java.awt.Graphics;
 import java.awt.Toolkit;
@@ -42,8 +44,10 @@ public class SpeedChess extends BorderPane {
 	Label[][] highlights = new Label[8][8];
 	Piece selectedPiece = null;
 	int playerPerspective = 0;
+	ClientConnector clientConnector;
 
 	public SpeedChess() {
+
 		GameHost.initialize();
 
 		//Setting the top as text for now

@@ -1,3 +1,5 @@
+package cs48g02s18.chessGame;
+
 import java.awt.Point;
 import java.util.ArrayList;
 
@@ -22,6 +24,8 @@ public abstract class Piece {
 		Xposition = x;
 		Yposition = y;
 	}
+
+	public Point getPosition() {return new Point(Xposition, Yposition);}
 
 	public int getXPosition()
 	{
