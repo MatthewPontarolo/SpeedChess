@@ -44,5 +44,18 @@ public class Main extends Application {
 		SpeedChess scene = new SpeedChess();
 		primaryStage.setScene(new Scene(scene, 800, 600));
 		primaryStage.show();
+
+
+		try {
+			Server.setup();
+		} catch (IOException e) {
+			System.out.println(e.getMessage());
+		}
+		/*
+		try {
+			Client.setup();
+		} catch (IOException e) {
+			System.out.println(e.getMessage());
+		}*/
 	}
 }

@@ -27,4 +27,13 @@
     <delete dir="build" quiet="true" />
   </target>
 
+  <target name = "jar">
+    <delete file = "TestJar.jar"/>
+    <delete file = "MANIFEST.MF"/>
+    <manifest file = "MANIFEST.MF">
+      <attribute name = "Main-Class" value = "Main"/>
+      <attribute name = "Class-Path" value = "src"/>
+    </manifest>
+    <jar destfile = "TestJar.jar" basedir = "src" includes = "*.class"  manifest = "MANIFEST.MF"/>
+  </target>
 </project>
