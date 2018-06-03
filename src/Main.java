@@ -47,6 +47,7 @@ public class Main extends Application {
 
 
 		try {
+			System.out.println("is it even making it this far?");
 			Server.setup();
 			System.out.println("THIS ONE IS TRYING TO BE THE SERVER!");
 		} catch (IOException e) {
