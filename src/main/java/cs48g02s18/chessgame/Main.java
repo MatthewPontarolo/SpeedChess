@@ -37,6 +37,11 @@ public class Main extends Application {
 
 	@Override
 	public void start(Stage primaryStage) {
+		ClientConnector clientConnector = new ClientConnector();
+		clientConnector.setLogin("testname");
+		clientConnector.setPass("testpass");
+		clientConnector.registerAccount();
+
 		mainStage = primaryStage;
 		primaryStage.setTitle("Speed Chess");
 		SpeedChess scene = new SpeedChess();
