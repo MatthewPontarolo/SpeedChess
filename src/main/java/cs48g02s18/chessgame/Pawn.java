@@ -13,11 +13,20 @@ public class Pawn extends Piece {
 	private ArrayList<Point> moves = new ArrayList<Point>();
 	private boolean firstMove = true;
 
+	/**
+	 * Constructs Pawn
+	 * @param x
+	 * @param y
+	 */
 	public Pawn(int x, int y) {
 		this.setAlive(true);
 		this.setPosition(x, y);
 	}
 
+	/**
+	 *
+	 * @return "Pawn"
+	 */
 	public String getName() {
 		return "Pawn";
 	}
@@ -25,6 +34,13 @@ public class Pawn extends Piece {
 	// must be given a board to check game situation from
 	// either have it called explicitly or through helper function
 
+	/**
+	 * Sets the valid moves
+	 * @param board				The game board
+	 * @param x					X pos
+	 * @param y					Y pos
+	 * @param playerType		0 or 1
+	 */
 	public void setValidMoves(Board board, int x, int y, int playerType) {
 		moves.clear();
 		// if this is pawn's first move, it can move two squares forward
@@ -82,7 +98,7 @@ public class Pawn extends Piece {
 				Point move = new Point(x + 0, y + 1);
 				if (board.getPiece(x, y + 1) == null)
 				{
-						moves.add(move);
+					moves.add(move);
 				}
 			}
 		}
@@ -124,12 +140,23 @@ public class Pawn extends Piece {
 
 	}
 
+	/**
+	 *
+	 * @param board				Game board
+	 * @param playerType		0 or 1
+	 * @return moves			List of valid moves
+	 */
 	public ArrayList<Point> getValidMoves(Board board, int playerType)
 	{
 		this.setValidMoves(board, Xposition, Yposition, playerType);
 		return moves;
 	}
 
+	/**
+	 * Moves according to pawn rules
+	 * @param x			Move to X
+	 * @param y			Move to Y
+	 */
 	public void move(int x, int y) {
 		if (firstMove == true)
 		{

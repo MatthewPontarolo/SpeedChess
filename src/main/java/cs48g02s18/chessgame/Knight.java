@@ -12,15 +12,31 @@ public class Knight extends Piece {
 	// Assuming that we are storing board positions as something like 'C2'
 	private ArrayList<Point> moves = new ArrayList<Point>();
 
+	/**
+	 * Knight setup
+	 * @param x		Start x
+	 * @param y		Start y
+	 */
 	public Knight(int x, int y) {
 		this.setAlive(true);
 		this.setPosition(x, y);
 	}
 
+	/**
+	 * Returns the name
+	 * @return "Knight"
+	 */
 	public String getName() {
 		return "Knight";
 	}
 
+	/**
+	 * Determines which moves are valid
+	 * @param board				The game board
+	 * @param x					The x pos
+	 * @param y					The y pos
+	 * @param playerType		The player type (0 or 1)
+	 */
 	public void setValidMoves(Board board, int x, int y, int playerType) {
 		moves.clear();
 		if (x + 2 < 8 && y + 1 < 8 && x + 2 >=0 && y + 1 >=0)
@@ -145,12 +161,15 @@ public class Knight extends Piece {
 		}
 	}
 
+	/**
+	 * Returns the list of valid moves
+	 * @param board             The game board
+	 * @param playerType        The playerType (0 or 1)
+	 * @return moves            The list of valid moves
+	 */
 	public ArrayList<Point> getValidMoves(Board board, int playerType) {
 		this.setValidMoves(board, Xposition, Yposition, playerType);
 		return moves;
 	}
 
-	public void move(int x, int y) {
-		this.setPosition(x, y);
-	}
 }
