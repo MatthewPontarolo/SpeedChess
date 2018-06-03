@@ -50,12 +50,12 @@ public class Main extends Application {
 			Server.setup();
 		} catch (IOException e) {
 			System.out.println(e.getMessage());
+			try {
+				Client.setup();
+			} catch (IOException e) {
+				System.out.println(e.getMessage());
+			}
 		}
-		/*
-		try {
-			Client.setup();
-		} catch (IOException e) {
-			System.out.println(e.getMessage());
-		}*/
+
 	}
 }
