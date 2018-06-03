@@ -71,6 +71,22 @@ public class GameHost {
 		// check if same spot move conflict
 		if (whiteX == blackX && whiteY == blackY) {
 			// if white is faster than black
+			if !((whiteTarget.getName() == "King" && blackTarget.getName() == "King"))
+			{
+				if (whiteTarget.getName() == "King")
+				{
+					gameBoard.setGameTurn(true);
+					gameBoard.movePiece(whitePlayer, whiteTarget, whiteX, whiteY);
+					return;
+				}
+				else if (blackTarget.getName() == "King")
+				{
+					gameBoard.setGameTurn(true);
+					gameBoard.movePiece(blackPlayer, blackTarget, blackX, blackY);
+					return;
+				}
+			}
+
 			if (whiteMove.getTime() < blackMove.getTime())
 			{
 				gameBoard.setGameTurn(true);
