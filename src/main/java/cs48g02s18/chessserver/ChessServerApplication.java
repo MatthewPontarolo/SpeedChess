@@ -1,9 +1,7 @@
-package cs48g02s18.chessServer;
+package cs48g02s18.chessserver;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.web.bind.annotation.*;
-import org.springframework.stereotype.*;
 
 @SpringBootApplication
 public class ChessServerApplication {

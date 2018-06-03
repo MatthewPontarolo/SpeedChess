@@ -1,32 +1,48 @@
-package cs48g02s18.chessGame;
-
+package cs48g02s18.chessgame;
 
 /**
 * This class implements the Piece interface and defines the specific behavior
 * associated with game piece 'Bishop'
 */
 
+import java.awt.*;
 import java.util.ArrayList;
-import java.awt.Point;
 
-public class Bishop extends Piece
-{
-  // Assuming that we are storing board positions as something like 'C2' (??)
-  // possibly changes
-  private ArrayList<Point> moves = new ArrayList<Point>();
+public class Bishop extends Piece {
+    // Assuming that we are storing board positions as something like 'C2' (??)
+    // possibly changes
+    private ArrayList<Point> moves = new ArrayList<Point>();
 
-  // CONSTRUCTOR
-  public Bishop(int x, int y) {
-    this.setAlive(true);
-    this.setPosition(x, y);
-  }
+    /**
+    * Sets position and being alive
+    * @param x     the starting X coordinate
+    * @param y     the starting Y coordinate
+    */
+    public Bishop(int x, int y) {
+        this.setAlive(true);
+        this.setPosition(x, y);
+    }
+    
+    public void move(int x, int y) {
+        this.setPosition(x, y);
+    }
 
-  public String getName() {
-  	return "Bishop";
-  }
+    /**
+     * Returns name
+     * @return Returns "Bishop"
+     */
+    public String getName() {
+        return "Bishop";
+    }
 
-  // Precondition: Piece is on board. get the position of current spot
-  // Postcondition: sets array of viable move options and stores into 'moves' arraylist
+  /**
+   * Precondition: Piece is on board.</p>
+   * Postcondition: Sets array of viable move options and stores into 'moves' arraylist
+   * @param Board board     The gameboard
+   * @param int x           Start x pos
+   * @param int y           Start y pos
+   * @param int playerType  The player (0 or 1)
+   */
   public void setValidMoves(Board board, int x, int y, int playerType) {
 	moves.clear();
 
@@ -150,24 +166,17 @@ public class Bishop extends Piece
         yBackward--;
       }
 
-    //}
-    //else if (playerType == 1)
-    //{
-      // need to reconsider bc of board perspective
-    //}
-
-
 	}
 
-	public ArrayList<Point> getValidMoves(Board board, int playerType)
-	{
+    /**
+     * Returns the list of valid moves
+     * @param board             The game board
+     * @param playerType        The playerType (0 or 1)
+     * @return moves            The list of valid moves
+     */
+	public ArrayList<Point> getValidMoves(Board board, int playerType) {
 		this.setValidMoves(board, Xposition, Yposition, playerType);
 		return moves;
 	}
-
-  public void move(int x, int y) {
-    this.setPosition(x, y);
-
-  }
 
 }

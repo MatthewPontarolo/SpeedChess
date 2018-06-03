@@ -1,8 +1,8 @@
-package cs48g02s18.chessServer;
+package cs48g02s18.chessserver;
 
-import cs48g02s18.chessGame.Board;
-import cs48g02s18.chessGame.Piece;
-import cs48g02s18.chessGame.Player;
+import cs48g02s18.chessgame.Board;
+import cs48g02s18.chessgame.Piece;
+import cs48g02s18.chessgame.Player;
 
 public class GameInstance {
    private ServerPlayer hostServerPlayer; //future change to more generalized form (doesn't need to be host/guest
@@ -49,8 +49,8 @@ public class GameInstance {
         if (!isValidMove(guestNextMove, this.guestServerPlayer)){
             guestNextMove = null;
         }
-        Piece hostPiece = gameBoard.pickUpPieceAt(hostNextMove.getStartPosition());
-        Piece guestPiece = gameBoard.pickUpPieceAt(hostNextMove.getStartPosition());
+        Piece hostPiece = gameBoard.getPiece(hostNextMove.getStartPosition().x, hostNextMove.getStartPosition().y);
+        Piece guestPiece = gameBoard.getPiece(guestNextMove.getStartPosition().x, guestNextMove.getStartPosition().y);
 
         if(hostNextMove.getEndPosition() == guestNextMove.getEndPosition()) {
             //for if both pieces are going to the same location

@@ -1,4 +1,4 @@
-package cs48g02s18.chessServer;
+package cs48g02s18.chessserver;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;

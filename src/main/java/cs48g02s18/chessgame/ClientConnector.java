@@ -1,12 +1,10 @@
-package cs48g02s18.chessGame;
+package cs48g02s18.chessgame;
 
-//import cs48g02s18.chessGame.Board;
-import cs48g02s18.chessServer.DataPass;
-//import cs48g02s18.chessServer.DataPassMoveData;
+//import cs48g02s18.chessgame.Board;
+
 import org.springframework.web.client.RestTemplate;
 
-
-import cs48g02s18.chessServer.Move;
+//import cs48g02s18.chessserver.DataPassMoveData;
 
 public class ClientConnector {
     String serverURL;
@@ -16,9 +14,11 @@ public class ClientConnector {
 
     public ClientConnector(String serverURL) {
         this.serverURL = serverURL;
+        this.restTemplate = new RestTemplate();
     }
     public ClientConnector() {
         this.serverURL = "speedchess.herokuapp.com";
+        this.restTemplate = new RestTemplate();
     }
 
 /*    public Board getBoard(){

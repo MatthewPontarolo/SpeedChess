@@ -1,4 +1,4 @@
-package cs48g02s18.chessServer;
+package cs48g02s18.chessserver;
 
 public class DataPassMoveData extends DataPass {
     private Move move;

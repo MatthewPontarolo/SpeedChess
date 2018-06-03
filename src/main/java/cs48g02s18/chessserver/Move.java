@@ -1,7 +1,7 @@
-package cs48g02s18.chessServer;
+package cs48g02s18.chessserver;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import cs48g02s18.chessGame.Piece;
+import cs48g02s18.chessgame.Piece;
 
 import java.awt.Point;
 

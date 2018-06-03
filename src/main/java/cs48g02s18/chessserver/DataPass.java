@@ -1,4 +1,4 @@
-package cs48g02s18.chessServer;
+package cs48g02s18.chessserver;
 
 //chunk of data we will be passing back and forth
 //string is an initial stand-in

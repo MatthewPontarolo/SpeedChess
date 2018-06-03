@@ -4,7 +4,7 @@
   <property environment="env"/>
   <property name="project" value="SpeedChess"/>
 
-  <property name="mainClass" value="Main"/>
+  <property name="mainClass" value="cs48g02s18.chessgame.Main"/>
 
   <path id="project.class.path">
     <pathelement path="build"/>
@@ -12,7 +12,7 @@
   </path>
 
   <target name="compile" description="compile the code">
-    <mkdir dir="build"/> 
+    <mkdir dir="build"/>
     <javac srcdir="src" destdir="build" includeantruntime="false" debug="true" debuglevel="lines,source" >
       <classpath refid="project.class.path"/>
     </javac>
@@ -24,6 +24,21 @@
 
   <target name="clean" description="delete unnecessary files and directories">
     <delete dir="build" quiet="true" />
+  </target>
+
+  <target name="javadoc" depends="compile" description="generate javadoc">
+    <delete quiet="true">
+      <fileset dir="docs" includes="**/*" />
+    </delete>
+    <mkdir dir="docs" />
+    <mkdir dir="docs/javadoc" />
+    <javadoc destdir="docs/javadoc">
+      <fileset dir="src/main/java/cs48g02s18/chessgame" >
+	<include name="*.java"/>
+      </fileset>
+      <classpath refid="project.class.path" />
+      <link href="http://docs.oracle.com/javase/8/docs/api/" />
+    </javadoc>
   </target>
 
 </project>
