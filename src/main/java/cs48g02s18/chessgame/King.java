@@ -7,20 +7,34 @@ import java.util.ArrayList;
 import java.awt.Point;
 
 public class King extends Piece {
-	// Assuming that we are storing board positions as something like 'C2'
-	// ??? will change?
+
 	private ArrayList<Point> moves  = new ArrayList<Point>();
 
-	// CONSTRUCTOR
+	/**
+	 * King setup
+	 * @param x		Start x
+	 * @param y		Start y
+	 */
 	public King(int x, int y) {
 		this.setAlive(true);
 		this.setPosition(x, y);
 	}
 
+	/**
+	 * Returns the name
+	 * @return "King"
+	 */
 	public String getName() {
 		return "King";
 	}
 
+	/**
+	 * Determines which moves are valid
+	 * @param board				The game board
+	 * @param x					The x pos
+	 * @param y					The y pos
+	 * @param playerType		The player type (0 or 1)
+	 */
 	public void setValidMoves(Board board, int x, int y, int playerType)
 	{
 		moves.clear();
@@ -151,6 +165,12 @@ public class King extends Piece {
 		}
 	}
 
+	/**
+	 * Returns the list of valid moves
+	 * @param board             The game board
+	 * @param playerType        The playerType (0 or 1)
+	 * @return moves            The list of valid moves
+	 */
 	public ArrayList<Point> getValidMoves(Board board, int playerType) {
 		this.setValidMoves(board, Xposition, Yposition, playerType);
 		return moves;

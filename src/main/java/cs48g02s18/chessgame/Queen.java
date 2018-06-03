@@ -11,17 +11,32 @@ public class Queen extends Piece {
 	// Assuming that we are storing board positions as something like 'C2'
 	private ArrayList<Point> moves  = new ArrayList<Point>();
 
+	/**
+	 * Constructor
+	 * @param x		Initial X
+	 * @param y		Initial Y
+	 */
 	public Queen(int x, int y) {
 		this.setAlive(true);
 		this.setPosition(x, y);
 	}
 
+	/**
+	 *
+	 * @return "Queen"
+	 */
 	public String getName() {
 		return "Queen";
 	}
 
-	public void setValidMoves(Board board, int x, int y, int playerType)
-	{
+	/**
+	 * Sets the valid moves
+	 * @param board				The game board
+	 * @param x					The X pos
+	 * @param y					The Y pos
+	 * @param playerType		Player type (0 or 1)
+	 */
+	public void setValidMoves(Board board, int x, int y, int playerType) {
 		moves.clear();
 		//diagonals - similar to the bishops algoirthm
 		// left side bishop -- figure out how to distinguish later
@@ -236,6 +251,12 @@ public class Queen extends Piece {
 
 	}
 
+	/**
+	 * Returns the valid moves after setting them
+	 * @param board				The game board
+	 * @param playerType		Player type (0 or 1)
+	 * @return The list of valid moves
+	 */
 	public ArrayList<Point> getValidMoves(Board board, int playerType) {
 		this.setValidMoves(board, Xposition, Yposition, playerType);
 		return moves;
