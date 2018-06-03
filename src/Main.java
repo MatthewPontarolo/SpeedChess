@@ -48,10 +48,12 @@ public class Main extends Application {
 
 		try {
 			Server.setup();
+			System.out.println("THIS ONE IS TRYING TO BE THE SERVER!");
 		} catch (IOException e) {
 			System.out.println(e.getMessage());
 			try {
 				Client.setup();
+				System.out.println("THIS ONE FAILED TO BE THE SERVER AND IS NOW THE CLIENT!");
 			} catch (IOException ex) {
 				System.out.println(ex.getMessage());
 			}
