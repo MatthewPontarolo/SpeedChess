@@ -56,7 +56,20 @@ public class SpeedChess extends BorderPane {
 		Label testLabel = new Label("Speed Chess");
 		testLabel.setFont(new Font("Lucida Grande", 18));
 
-		northBox.getChildren().addAll(testLabel);
+		Button serverButton = new Button("Server");
+		serverButton.setOnAction(new EventHandler<ActionEvent>() {
+			public void handle(ActionEvent event) {
+				Main.tryToBeServer();
+			}
+		});
+		Button clientButton = new Button("Client");
+		clientButton.setOnAction(new EventHandler<ActionEvent>() {
+			public void handle(ActionEvent event) {
+				Main.tryToBeClient();
+			}
+		});
+
+		northBox.getChildren().addAll(testLabel, serverButton, clientButton);
 
 		//Setting the bottom as text for now
 		HBox southBox = new HBox(10);

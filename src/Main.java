@@ -44,21 +44,25 @@ public class Main extends Application {
 		SpeedChess scene = new SpeedChess();
 		primaryStage.setScene(new Scene(scene, 800, 600));
 		primaryStage.show();
+	}
 
-
+	public static void tryToBeServer() {
 		try {
-			System.out.println("is it even making it this far?");
+			System.out.println("about to try to be a server");
 			Server.setup();
-			System.out.println("THIS ONE IS TRYING TO BE THE SERVER!");
+			System.out.println("made it past the setup");
 		} catch (IOException e) {
 			System.out.println(e.getMessage());
-			try {
-				Client.setup();
-				System.out.println("THIS ONE FAILED TO BE THE SERVER AND IS NOW THE CLIENT!");
-			} catch (IOException ex) {
-				System.out.println(ex.getMessage());
-			}
 		}
+	}
 
+	public static void tryToBeClient() {
+		try {
+			System.out.println("about to try to be a client");
+			Client.setup();
+			System.out.println("made it past the setup");
+		} catch (IOException ex) {
+			System.out.println(ex.getMessage());
+		}
 	}
 }
