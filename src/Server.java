@@ -22,10 +22,16 @@ public class Server {
 				GameHost.processMove(inputLine);
 			}
 
+			System.out.println("stop 1");
 			String parsed = moveToSend.packageToString();
+			System.out.println("Sending move " + parsed);
+			System.out.println("stop 2");
 			out.println(parsed);
+			System.out.println("stop 3");
 			moveToSend = null;
+			System.out.println("stop 4");
 			SpeedChess.readyToSend = false;
+			System.out.println("stop 5");
 		} catch (IOException e) {
 			System.out.println("Exception caught when trying to listen on port "
 					+ portNumber + " or listening for a connection");
