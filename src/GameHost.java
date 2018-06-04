@@ -171,12 +171,6 @@ public class GameHost {
 						System.out.println("Both players tried to capture each other's game piece. Both game turns forfeited!");
 						return true;
 					}
-					// if other piece is not pawn, can pawn be captured?
-					// NOTE: DISCUSS THIS could be interesting, but also a disadvantage!
-					gameBoard.setGameTurn(true);
-					//gameBoard.getPiece(whiteX, whiteY).capture();
-					//gameBoard.movePiece(blackPlayer, blackTarget, blackX, blackY);
-					gameBoard.setGameTurn(false);
 					return true;
 				}
 				// if black initial position isn't where white is moving, the piece white is trying to capture isn't moving
@@ -198,10 +192,6 @@ public class GameHost {
 				// NOTE: TBD
 				else if (blackX == whiteX && blackY == whiteY)
 				{
-					gameBoard.setGameTurn(true);
-
-					//gameBoard.movePiece(whitePlayer, whiteTarget, whiteX, whiteY);
-					gameBoard.setGameTurn(false);
 
 					return false;
 				}
@@ -246,10 +236,6 @@ public class GameHost {
 				// NOTE: TBD
 				else if (blackX == whiteX && blackY == whiteY)
 				{
-					gameBoard.setGameTurn(true);
-
-					//gameBoard.movePiece(whitePlayer, whiteTarget, whiteX, whiteY);
-					gameBoard.setGameTurn(false);
 
 					return false;
 				}

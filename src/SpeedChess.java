@@ -95,9 +95,6 @@ public class SpeedChess extends BorderPane {
 		southBox.setAlignment(Pos.CENTER);
 		southBox.setStyle("-fx-background-color: #667788;");
 
-		Label timerLabel = new Label("   Timer: ");
-		timerLabel.setFont(new Font("Lucida Grande", 18));
-
 		Button confirmButton = new Button("Confirm");
 		confirmButton.setOnAction(new EventHandler<ActionEvent>() {
 			public void handle(ActionEvent event) {
@@ -125,7 +122,7 @@ public class SpeedChess extends BorderPane {
 			}
 		});
 
-		southBox.getChildren().addAll(confirmButton, timerLabel);
+		southBox.getChildren().addAll(confirmButton);
 	}
 
 	public void setupBoard() {
@@ -195,6 +192,13 @@ public class SpeedChess extends BorderPane {
 
 		masterOverlay = new Pane();
 		masterOverlay.setMouseTransparent(true);
+		masterOverlay.setVisible(false);
+
+		Label waitLabel = new Label("Waiting for other player to make their move...");
+		waitLabel.setFont(new Font("Lucida Grande", 18));
+		waitLabel.setAlignment(Pos.CENTER);
+		//masterOverlay.setAlignment(Pos.CENTER);
+		masterOverlay.getChildren().addAll(waitLabel);
 
 		StackPane stack = new StackPane();
 		setCenter(stack);
