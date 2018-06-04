@@ -25,10 +25,12 @@ public class Client {
 				out.println(parsed);
 				moveToSend = null;
 
-				System.out.println("About to try to read the line");
-				while (in.ready()) {
-					inputLine = in.readLine();
+				System.out.println("About to wait for it to be ready");
+				while (!in.ready()) {
+
 				}
+				System.out.println("About to try to read the line");
+				inputLine = in.readLine();
 				System.out.println("It read the line");
 				GameHost.processMove(inputLine);
 				System.out.println("It processed the move");
