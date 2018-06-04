@@ -130,7 +130,7 @@ public class SpeedChess extends BorderPane {
 						//System.out.println("Clicked at " + x + " " + y);
 						//System.out.println("selected piece: " + selectedPiece);
 
-						if (selectedPiece != null) {
+						if (selectedPiece != null && selectedPiece.getPlayer() == playerPerspective) {
 							if (selectedPiece == b.getPiece(x, y)) {
 								selectedPiece = null;
 							} else {
