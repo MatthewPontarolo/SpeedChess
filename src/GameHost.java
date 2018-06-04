@@ -7,8 +7,7 @@ public class GameHost {
 	public static Board gameBoard = new Board(whitePlayer, blackPlayer);
 
 
-	public GameHost()
-	{
+	public GameHost() {
 
 	}
 	public static void initialize() {
