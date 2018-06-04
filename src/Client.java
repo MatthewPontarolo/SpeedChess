@@ -16,20 +16,15 @@ public class Client {
 		) {
 			String inputLine;
 			while (moveToSend != null) {
+				while (!in.ready()) { }
+
 				String parsed = moveToSend.packageToString();
 				System.out.println("Sending move " + parsed);
 				out.println(parsed);
 				moveToSend = null;
 
-				//System.out.println("About to wait for it to be ready");
-				while (!in.ready()) {
-
-				}
-				//System.out.println("About to try to read the line");
 				inputLine = in.readLine();
-				//System.out.println("It read the line");
 				GameHost.processMove(inputLine);
-				//System.out.println("It processed the move");
 			}
 		} catch (UnknownHostException e) {
 			System.err.println("Don't know about host " + hostName);

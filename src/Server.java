@@ -15,18 +15,13 @@ public class Server {
 				PrintWriter out = new PrintWriter(clientSocket.getOutputStream(), true);
 				BufferedReader in = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
 		) {
-			while (!in.ready()) {
-
-			}
+			while (!in.ready()) { }
 			String inputLine;
 			while (in.ready()) {
 				inputLine = in.readLine();
-				System.out.println("received inputLine " + inputLine);
 				GameHost.processMove(inputLine);
 			}
-			//System.out.println("Checkpoint 1");
 			String parsed = moveToSend.packageToString();
-			System.out.println("about to send " + parsed);
 			out.println(parsed);
 			moveToSend = null;
 			//System.out.println("Checkpoint 2");
