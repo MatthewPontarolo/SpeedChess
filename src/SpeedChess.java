@@ -62,6 +62,7 @@ public class SpeedChess extends BorderPane {
 				Main.tryToBeServer();
 				//Black
 				setupBoard();
+				redrawBoard();
 			}
 		});
 		Button clientButton = new Button("Client");
@@ -70,6 +71,7 @@ public class SpeedChess extends BorderPane {
 				Main.tryToBeClient();
 				playerPerspective = 1;//White
 				setupBoard();
+				redrawBoard();
 			}
 		});
 
@@ -98,8 +100,6 @@ public class SpeedChess extends BorderPane {
 		});
 
 		southBox.getChildren().addAll(confirmButton, timerLabel);
-
-		redrawBoard();
 	}
 
 	public void setupBoard() {
