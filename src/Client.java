@@ -22,6 +22,7 @@ public class Client {
 			while (moveToSend != null) {
 				//out.println("0 1 7 1 5 34525543");
 				String parsed = moveToSend.packageToString();
+				System.out.println("Sending move " + parsed);
 				out.println(parsed);
 				moveToSend = null;
 			}
