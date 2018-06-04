@@ -41,7 +41,7 @@ public class SpeedChess extends BorderPane {
 	Button[][] buttons = new Button[8][8];
 	Label[][] highlights = new Label[8][8];
 	Piece selectedPiece = null;
-	int playerPerspective = 0;
+	public static int playerPerspective = 0;
 	public static boolean readyToSend = false;
 
 	public SpeedChess() {
