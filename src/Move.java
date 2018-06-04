@@ -1,9 +1,10 @@
+
 public class Move
 {
   private int xPosition;
   private int yPosition;
   private Piece target;
-  private double time;
+  private long time;
 
   public Move(Piece p, int x, int y, double time)
   {
@@ -44,9 +45,14 @@ public class Move
   }
 
 	// Server's timer timestamp
-	public double getTime() {
+	public long getTime() {
 		return time;
 	}
+
+  public void setTime(long timestamp)
+  {
+    time = timestamp;
+  }
 
 	public String packageToString() {
 		return target.getXPosition() + " "
