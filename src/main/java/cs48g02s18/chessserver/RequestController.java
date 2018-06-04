@@ -40,17 +40,17 @@ public class RequestController {
 
 
     @RequestMapping("/register")
-    public String register(@RequestParam(value = "userData") String userDataString) {
+    public String register(@RequestParam(value = "userData") DataPass userData) {
         String serverResponse;
-        DataPass userData;
-        ObjectMapper objectMapper = new ObjectMapper();
-        try {
-            userData = objectMapper.readValue(userDataString, DataPass.class);
+        //DataPass userData;
+        //ObjectMapper objectMapper = new ObjectMapper();
+        //try {
+          //  userData = objectMapper.readValue(userDataString, DataPass.class);
             serverResponse = gameServer.addUser(userData);
-        }
-        catch (IOException ex) {
-            serverResponse = "json processing failure" + ex.toString();
-        }
+        //}
+        //catch (IOException ex) {
+          //  serverResponse = "json processing failure" + ex.toString();
+        //}
 
         System.out.print("sent:" + serverResponse + "\n");
         return serverResponse;
