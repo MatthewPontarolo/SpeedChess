@@ -104,10 +104,11 @@ public class SpeedChess extends BorderPane {
 
 				Move m = GameHost.players[playerPerspective].getNextMove();
 
-				Timestamp timestamp = new Timestamp(System.currentTimeMillis());
-				m.setTime(timestamp.getTime());
-				System.out.println(timestamp.getTime());
 				if (m != null) {
+					Timestamp timestamp = new Timestamp(System.currentTimeMillis());
+					m.setTime(timestamp.getTime());
+					System.out.println(timestamp.getTime());
+					
 					readyToSend = true;
 					masterOverlay.setVisible(true);
 					if (playerPerspective == 0) {
