@@ -91,16 +91,18 @@ public class SpeedChess extends BorderPane {
 		Button confirmButton = new Button("Confirm");
 		confirmButton.setOnAction(new EventHandler<ActionEvent>() {
 			public void handle(ActionEvent event) {
-				Move m = GameHost.players[playerPerspective].getNextMove();
-				if (playerPerspective == 0) {
-					Server.setMoveToSend(m);
-					Main.tryToBeServer();
-				} else {
-					Client.setMoveToSend(m);
-					Main.tryToBeClient();
+				if (!readyToSend) {
+					Move m = GameHost.players[playerPerspective].getNextMove();
+					if (playerPerspective == 0) {
+						Server.setMoveToSend(m);
+						Main.tryToBeServer();
+					} else {
+						Client.setMoveToSend(m);
+						Main.tryToBeClient();
+					}
+					readyToSend = true;
+					GameHost.checkIfReady();
 				}
-				readyToSend = true;
-				GameHost.checkIfReady();
 			}
 		});
 
