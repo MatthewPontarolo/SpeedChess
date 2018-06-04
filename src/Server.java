@@ -16,9 +16,11 @@ public class Server {
 				BufferedReader in = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
 		) {
 			String inputLine;
-			inputLine = in.readLine();
-			System.out.println("server inreadline? " + inputLine);
-			GameHost.processMove(inputLine);
+			while ((inputLine = in.readLine()) != null) {
+				System.out.println("server inreadline? " + inputLine);
+				GameHost.processMove(inputLine);
+			}
+
 			String parsed = moveToSend.packageToString();
 			out.println(parsed);
 			moveToSend = null;
