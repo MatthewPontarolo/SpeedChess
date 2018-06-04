@@ -16,7 +16,8 @@ public class Server {
 				BufferedReader in = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
 		) {
 			String inputLine;
-			while ((inputLine = in.readLine()) != null) {
+			while (in.ready()) {
+				inputLine = in.readLine();
 				GameHost.processMove(inputLine);
 			}
 			System.out.println("Checkpoint 1");
