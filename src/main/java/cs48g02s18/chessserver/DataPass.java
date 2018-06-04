@@ -11,6 +11,11 @@ public class DataPass {
     private String username;
     private String password;
 
+    public DataPass() {
+        username = "u";
+        password = "p";
+    }
+
     public DataPass(String username, String password) {
         this.username = username;
         this.password = password;
