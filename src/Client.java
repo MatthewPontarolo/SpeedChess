@@ -16,7 +16,7 @@ public class Client {
 		) {
 			String inputLine;
 			while (moveToSend != null) {
-				while (!in.ready()) { }
+				while (out == null) { }
 
 				String parsed = moveToSend.packageToString();
 				System.out.println("Sending move " + parsed);
