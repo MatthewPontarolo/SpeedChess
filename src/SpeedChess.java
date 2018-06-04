@@ -102,12 +102,19 @@ public class SpeedChess extends BorderPane {
 				Move m = GameHost.players[playerPerspective].getNextMove();
 
 				if (m != null) {
+					masterOverlay.setVisible(true);
+
+					try {
+						Thread.sleep(150);
+					} catch (InterruptedException e) {
+
+					}
+
 					Timestamp timestamp = new Timestamp(System.currentTimeMillis());
 					m.setTime(timestamp.getTime());
 					System.out.println(timestamp.getTime());
 
 					readyToSend = true;
-					masterOverlay.setVisible(true);
 					if (playerPerspective == 0) {
 						Server.setMoveToSend(m);
 						Main.tryToBeServer();
@@ -117,7 +124,7 @@ public class SpeedChess extends BorderPane {
 					}
 					GameHost.checkIfReady();
 					readyToSend = false;
-					masterOverlay.setVisible(false);
+					//masterOverlay.setVisible(false);
 				}
 			}
 		});
