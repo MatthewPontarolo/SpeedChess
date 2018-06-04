@@ -48,7 +48,7 @@ public class Main extends Application {
 
 	public static void tryToBeServer() {
 		try {
-			System.out.println("about to try to be a server");
+			System.out.println("about to setup server");
 			Server.setup();
 			System.out.println("made it past the setup");
 		} catch (IOException e) {
@@ -58,7 +58,7 @@ public class Main extends Application {
 
 	public static void tryToBeClient() {
 		try {
-			System.out.println("about to try to be a client");
+			System.out.println("about to setup client");
 			Client.setup();
 			System.out.println("made it past the setup");
 		} catch (IOException ex) {

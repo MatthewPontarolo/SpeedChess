@@ -15,27 +15,23 @@ public class Client {
 				BufferedReader in = new BufferedReader(new InputStreamReader(echoSocket.getInputStream()));
 		) {
 			String inputLine;
-			/*System.out.println("client inreadline? " + in.readLine());
-			while ((inputLine = in.readLine()) != null) {
-				//GameHost.processMove(inputLine);
-			}*/
 			while (moveToSend != null) {
 				String parsed = moveToSend.packageToString();
 				System.out.println("Sending move " + parsed);
 				out.println(parsed);
 				moveToSend = null;
 
-				System.out.println("About to wait for it to be ready");
+				//System.out.println("About to wait for it to be ready");
 				while (!in.ready()) {
 
 				}
-				System.out.println("About to try to read the line");
+				//System.out.println("About to try to read the line");
 				inputLine = in.readLine();
-				System.out.println("It read the line");
+				//System.out.println("It read the line");
 				GameHost.processMove(inputLine);
-				System.out.println("It processed the move");
+				//System.out.println("It processed the move");
 			}
-			System.out.println("Made it out of the overall while loop");
+			//System.out.println("Made it out of the overall while loop");
 			SpeedChess.readyToSend = false;
 		} catch (UnknownHostException e) {
 			System.err.println("Don't know about host " + hostName);

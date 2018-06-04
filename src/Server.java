@@ -18,15 +18,15 @@ public class Server {
 			String inputLine;
 			while (in.ready()) {
 				inputLine = in.readLine();
+				System.out.println("received inputLine " + inputLine);
 				GameHost.processMove(inputLine);
 			}
-			System.out.println("Checkpoint 1");
-			while (moveToSend != null) {
-				String parsed = moveToSend.packageToString();
-				out.println(parsed);
-				moveToSend = null;
-			}
-			System.out.println("Checkpoint 2");
+			//System.out.println("Checkpoint 1");
+			String parsed = moveToSend.packageToString();
+			System.out.println("about to send " + parsed);
+			out.println(parsed);
+			moveToSend = null;
+			//System.out.println("Checkpoint 2");
 			SpeedChess.readyToSend = false;
 		} catch (IOException e) {
 			System.out.println("Exception caught when trying to listen on port "
