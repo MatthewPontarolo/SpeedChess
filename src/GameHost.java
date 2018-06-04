@@ -273,9 +273,9 @@ public class GameHost {
 		String[] data = m.split("\\s+");
 		Move mv = new Move(gameBoard.getPiece(Integer.parseInt(data[0]), Integer.parseInt(data[1])), Integer.parseInt(data[2]), Integer.parseInt(data[3]), Double.parseDouble(data[4]));
 		if (SpeedChess.playerPerspective == 0) {
-			SpeedChess.players[1].setNextMove(mv);
+			players[1].setNextMove(mv);
 		} else {
-			SpeedChess.players[0].setNextMove(mv);
+			players[0].setNextMove(mv);
 		}
 	}
 
