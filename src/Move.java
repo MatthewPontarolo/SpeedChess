@@ -1,16 +1,15 @@
 
-public class Move
-{
+public class Move {
   private int xPosition;
   private int yPosition;
   private Piece target;
   private long time;
 
-  public Move(Piece p, int x, int y, double time)
-  {
+  public Move(Piece p, int x, int y, long time) {
     xPosition = x;
     yPosition = y;
     target = p;
+    this.time = time;
   }
 
 
