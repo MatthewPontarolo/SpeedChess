@@ -10,6 +10,11 @@ public class DataPassJoinGame extends DataPass {
         super(username, password);
         this.gameName = gameName;
     }
+    public DataPassJoinGame() {
+        super();
+        this.gameName = null;
+    }
+
 
     public String getGameName() {
         return gameName;

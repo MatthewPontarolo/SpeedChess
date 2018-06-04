@@ -8,6 +8,11 @@ public class DataPassMoveData extends DataPass {
         this.move = move;
     }
 
+    public DataPassMoveData() {
+        super();
+        this.move = null;
+    }
+
     public Move getMove() {
         return move;
     }

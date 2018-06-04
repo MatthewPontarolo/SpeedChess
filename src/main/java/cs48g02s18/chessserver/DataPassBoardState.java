@@ -12,6 +12,10 @@ public class DataPassBoardState {
     public DataPassBoardState(String boardData) {
         this.boardData = boardData;
     }
+    public DataPassBoardState() {
+        this.boardData = null;
+    }
+
 
     public String getBoardData() {
         return boardData;

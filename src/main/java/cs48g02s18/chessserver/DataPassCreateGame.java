@@ -10,6 +10,10 @@ public class DataPassCreateGame extends DataPass {
         super(username, password);
         gameName = newGameName;
     }
+    public DataPassCreateGame() {
+        super();
+        gameName = null;
+    }
 
     public String getGameName() {
         return gameName;
