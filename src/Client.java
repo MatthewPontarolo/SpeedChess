@@ -20,16 +20,18 @@ public class Client {
 				//GameHost.processMove(inputLine);
 			}*/
 			while (moveToSend != null) {
-				//out.println("0 1 7 1 5 34525543");
 				String parsed = moveToSend.packageToString();
 				System.out.println("Sending move " + parsed);
 				out.println(parsed);
 				moveToSend = null;
 
+				System.out.println("About to enter nested while loop");
 				while ((inputLine = in.readLine()) != null) {
 					GameHost.processMove(inputLine);
 				}
+				System.out.println("Made it out of the nested while loop");
 			}
+			System.out.println("Made it out of the overall while loop");
 			SpeedChess.readyToSend = false;
 		} catch (UnknownHostException e) {
 			System.err.println("Don't know about host " + hostName);

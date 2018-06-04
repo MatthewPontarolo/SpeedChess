@@ -19,11 +19,13 @@ public class Server {
 			while ((inputLine = in.readLine()) != null) {
 				GameHost.processMove(inputLine);
 			}
+			System.out.println("Checkpoint 1");
 			while (moveToSend != null) {
 				String parsed = moveToSend.packageToString();
 				out.println(parsed);
 				moveToSend = null;
 			}
+			System.out.println("Checkpoint 2");
 			SpeedChess.readyToSend = false;
 		} catch (IOException e) {
 			System.out.println("Exception caught when trying to listen on port "
