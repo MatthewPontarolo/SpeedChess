@@ -63,6 +63,7 @@ public class Main extends Application {
 			while (!clientCheck) {
 				Client.setup();
 			}
+			clientCheck = false;
 			System.out.println("made it past the setup");
 		} catch (IOException ex) {
 			System.out.println(ex.getMessage());
