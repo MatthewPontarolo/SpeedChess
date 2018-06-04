@@ -183,6 +183,7 @@ public class GameHost {
 					System.out.println("Illegal white Pawn Move.");
 					System.out.println("Game piece white player is trying to capture has moved away. Game Turn forfeited.");
 					gameBoard.setGameTurn(true);
+					gameBoard.pickUpPiece(blackTarget);
 					gameBoard.movePiece(blackPlayer, blackTarget, blackX, blackY);
 					gameBoard.setGameTurn(false);
 					return true;
@@ -223,6 +224,7 @@ public class GameHost {
 					System.out.println("Illegal black Pawn Move.");
 					System.out.println("Game piece black player is trying to capture has moved away. Game Turn forfeited.");
 					gameBoard.setGameTurn(true);
+					gameBoard.pickUpPiece(whiteTarget);
 					gameBoard.movePiece(whitePlayer, whiteTarget, whiteX, whiteY);
 					gameBoard.setGameTurn(false);
 					return true;
