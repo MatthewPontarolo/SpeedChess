@@ -1,9 +1,12 @@
 import java.net.*;
 import java.io.*;
+import java.util.Timer;
 
 public class Server {
 
 	private static Move moveToSend = null;
+	private static boolean isIt = false;
+	private static int counter = 10;
 
 	public static void setup() throws IOException {
 
@@ -15,7 +18,29 @@ public class Server {
 				PrintWriter out = new PrintWriter(clientSocket.getOutputStream(), true);
 				BufferedReader in = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
 		) {
-			while (!in.ready()) { }
+			while (!in.ready()) {
+				//TIMER COUNTDOWN
+				Timer = timer = new Timer();
+				counter = 10;
+				TimerTask task = new TimerTask()
+				{
+					public void run()
+					{
+						System.out.println(Integer.toString(counter));
+						counter--;
+						if (counter == -1)
+						{
+							timer.cancel();
+						}
+						else if(isIt)
+						{
+							timer.cancel();
+							isIt = false;
+						}
+					}
+				};
+				timer.scheduleAtFixedRate(task, 1000, 1000);
+			}
 			String inputLine;
 			while (in.ready()) {
 				inputLine = in.readLine();

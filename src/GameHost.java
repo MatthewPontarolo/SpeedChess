@@ -9,6 +9,7 @@ public class GameHost {
 
 	public static Board gameBoard = new Board(whitePlayer, blackPlayer);
 
+	public static boolean endTurn = false;
 	public GameHost() {
 
 	}
@@ -252,7 +253,7 @@ public class GameHost {
 		ArrayList<Piece> pieces = player.getPieces();
 		int pieceIdx = (int) (Math.random() * (double) pieces.size());
 		Piece targetPiece = pieces.get(pieceIdx);
-		
+
 		ArrayList<Point> moves = targetPiece.getValidMoves(gameBoard, playerType);
 		int moveIdx = (int) (Math.random() * (double) moves.size());
 		Point targetMove = moves.get(moveIdx);

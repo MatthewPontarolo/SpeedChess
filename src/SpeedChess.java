@@ -98,7 +98,7 @@ public class SpeedChess extends BorderPane {
 		Button confirmButton = new Button("Confirm");
 		confirmButton.setOnAction(new EventHandler<ActionEvent>() {
 			public void handle(ActionEvent event) {
-
+				GameHost.endTurn = true;
 				Move m = GameHost.players[playerPerspective].getNextMove();
 
 				if (m != null) {
