@@ -15,10 +15,20 @@ public class Client {
 				BufferedReader in = new BufferedReader(new InputStreamReader(echoSocket.getInputStream()));
 		) {
 			String inputLine;
-			System.out.println("RIGHT BEFORE WHILE LOOP");
+			System.out.println("client inreadline? " + in.readLine());
 			while ((inputLine = in.readLine()) != null) {
 				GameHost.processMove(inputLine);
-				System.out.println("inputLine client? " + inputLine);
+			}
+			while (moveToSend != null) {
+				//out.println("0 1 7 1 5 34525543");
+				String parsed = moveToSend.packageToString();
+				System.out.println("Sending move " + parsed);
+				out.println(parsed);
+				moveToSend = null;
+
+				while ((inputLine = in.readLine()) != null) {
+					GameHost.processMove(inputLine);
+				}
 			}
 
 			String parsed = moveToSend.packageToString();
