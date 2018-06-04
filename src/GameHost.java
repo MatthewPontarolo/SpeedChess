@@ -1,3 +1,6 @@
+import java.awt.Point;
+import java.util.ArrayList;
+import java.util.Random;
 public class GameHost {
 
 	public static Player whitePlayer = new Player(1);
@@ -5,7 +8,6 @@ public class GameHost {
 	public static Player[] players = new Player[2];
 
 	public static Board gameBoard = new Board(whitePlayer, blackPlayer);
-
 
 	public GameHost() {
 
@@ -241,6 +243,25 @@ public class GameHost {
 		} else {
 			players[0].setNextMove(mv);
 		}
+	}
+
+	public static Move randomMove(Player player)
+	{
+		int playerType = player.getPlayerType();
+
+		ArrayList<Piece> pieces = player.getPieces();
+		int pieceIdx = (int) (Math.random() * (double) pieces.size());
+		Piece targetPiece = pieces.get(pieceIdx);
+		
+		ArrayList<Point> moves = targetPiece.getValidMoves(gameBoard, playerType);
+		int moveIdx = (int) (Math.random() * (double) moves.size());
+		Point targetMove = moves.get(moveIdx);
+
+		Move nextMove = new Move(targetPiece, (int) targetMove.getX(), (int) targetMove.getY());
+
+		//players[playerType].setNextMove(nextMove);
+		return nextMove;
+
 	}
 
 }
