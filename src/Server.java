@@ -1,6 +1,7 @@
 import java.net.*;
 import java.io.*;
 import java.util.Timer;
+import java.util.TimerTask;
 
 public class Server {
 
@@ -20,7 +21,7 @@ public class Server {
 		) {
 			while (!in.ready()) {
 				//TIMER COUNTDOWN
-				Timer = timer = new Timer();
+				Timer timer = new Timer();
 				counter = 10;
 				TimerTask task = new TimerTask()
 				{
