@@ -5,7 +5,7 @@ public class Move {
   private Piece target;
   private long time;
 
-  public Move(Piece p, int x, int y, double time) {
+  public Move(Piece p, int x, int y, long time) {
     xPosition = x;
     yPosition = y;
     target = p;

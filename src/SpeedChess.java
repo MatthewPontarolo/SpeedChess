@@ -156,7 +156,7 @@ public class SpeedChess extends BorderPane {
 							} else {
 								if (selectedPiece.getValidMoves(b, selectedPiece.getPlayer()).contains(new Point(x, y))) {
 									int playerType = selectedPiece.getPlayer();
-									b.getPlayer(playerType).setNextMove(new Move(selectedPiece, x, y, 0));
+									b.getPlayer(playerType).setNextMove(new Move(selectedPiece, x, y, (long)0));
 									selectedPiece = null;
 								} else {
 									System.out.println("Invalid move!");
