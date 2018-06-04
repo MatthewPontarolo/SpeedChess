@@ -124,7 +124,7 @@ public class SpeedChess extends BorderPane {
 			}
 		});
 
-		southBox.getChildren().addAll(confirmButton);
+		southBox.getChildren().addAll(confirmButton);		
 	}
 
 	public void setupBoard() {

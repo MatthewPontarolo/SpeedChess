@@ -35,6 +35,7 @@ public class Main extends Application {
 	public static Boolean clientCheck = false;
 
 	public static void main(String[] args) {
+		new TurnTimer();
 		Application.launch(args);
 	}
 
@@ -45,6 +46,8 @@ public class Main extends Application {
 		SpeedChess scene = new SpeedChess();
 		primaryStage.setScene(new Scene(scene, 600, 600));
 		primaryStage.show();
+
+
 	}
 
 	public static void tryToBeServer() {
