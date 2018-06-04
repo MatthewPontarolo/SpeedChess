@@ -120,7 +120,7 @@ public class SpeedChess extends BorderPane {
 					readyToSend = false;
 
 					try {
-						Thread.sleep(150);
+						Thread.sleep(5000);
 					} catch (InterruptedException e) {
 
 					}
