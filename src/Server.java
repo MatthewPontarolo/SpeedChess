@@ -7,7 +7,7 @@ public class Server {
 
 	public static void setup() throws IOException {
 
-		int portNumber = 1050;
+		int portNumber = 1058;
 
 		try (
 				ServerSocket serverSocket = new ServerSocket(portNumber);

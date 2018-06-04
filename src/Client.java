@@ -7,7 +7,7 @@ public class Client {
 
 	public static void setup() throws IOException {
 		String hostName = "128.111.43.38";
-		int portNumber = 1050;
+		int portNumber = 1058;
 
 		try (
 				Socket echoSocket = new Socket(hostName, portNumber);
