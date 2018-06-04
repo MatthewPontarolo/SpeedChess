@@ -44,4 +44,7 @@ public class Client {
 	public static void setMoveToSend(Move m) {
 		moveToSend = m;
 	}
+	public static Move getMoveToSend() {
+		return moveToSend;
+	}
 }

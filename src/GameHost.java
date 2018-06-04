@@ -220,19 +220,11 @@ public class GameHost {
 				&& (whiteMove.getInitX() == blackX && whiteMove.getInitY() == blackY))
 				{
 					// if both pawns, cannot move
-					if (whiteTarget.getName() == "Pawn")
-					{
+					if (whiteTarget.getName() == "Pawn") {
 						System.out.println("Illegal Pawn Move.");
 						System.out.println("Both players tried to capture each other's game piece. Both game turns forfeited!");
 						return true;
 					}
-					// if other piece is not pawn, can pawn be captured?
-					// NOTE: DISCUSS THIS could be interesting, but also a disadvantage!
-					gameBoard.setGameTurn(true);
-					// comment this out if we don't want that
-					//gameBoard.getPiece(blackX, blackY).capture();
-					//gameBoard.movePiece(whitePlayer, whiteTarget, whiteX, whiteY);
-					gameBoard.setGameTurn(false);
 					return false;
 				}
 				// if its initial position isn't where black is moving, the piece black is trying to capture isn't moving
@@ -264,9 +256,7 @@ public class GameHost {
 			}
 		}
 		return false;
-
 	}
-
 
 	public static void processMove(String m) {
 		System.out.println("MOVE MADE IS: " + m);
