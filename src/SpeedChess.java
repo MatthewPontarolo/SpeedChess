@@ -58,21 +58,26 @@ public class SpeedChess extends BorderPane {
 		testLabel.setFont(new Font("Lucida Grande", 18));
 
 		Button serverButton = new Button("Black Player");
+		Button clientButton = new Button("White Player");
+
 		serverButton.setOnAction(new EventHandler<ActionEvent>() {
 			public void handle(ActionEvent event) {
 				//Main.tryToBeServer();
 				//Black
 				setupBoard();
 				redrawBoard();
+				northBox.getChildren().remove(1);
+				northBox.getChildren().remove(1);
 			}
 		});
-		Button clientButton = new Button("White Player");
 		clientButton.setOnAction(new EventHandler<ActionEvent>() {
 			public void handle(ActionEvent event) {
 				//Main.tryToBeClient();
 				playerPerspective = 1;//White
 				setupBoard();
 				redrawBoard();
+				northBox.getChildren().remove(1);
+				northBox.getChildren().remove(1);
 			}
 		});
 
