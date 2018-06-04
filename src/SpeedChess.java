@@ -35,6 +35,9 @@ import javafx.geometry.Pos;
 import javafx.geometry.Insets;
 import java.util.ArrayList;
 import java.awt.Point;
+import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class SpeedChess extends BorderPane {
 
@@ -96,7 +99,11 @@ public class SpeedChess extends BorderPane {
 		Button confirmButton = new Button("Confirm");
 		confirmButton.setOnAction(new EventHandler<ActionEvent>() {
 			public void handle(ActionEvent event) {
+
 				Move m = GameHost.players[playerPerspective].getNextMove();
+
+				Timestamp timestamp = new Timestamp(System.currentTimeMillis());
+				m.setTime(timestamp.getTime());
 				if (m != null) {
 					readyToSend = true;
 					if (playerPerspective == 0) {
