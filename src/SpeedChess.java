@@ -98,6 +98,7 @@ public class SpeedChess extends BorderPane {
 			public void handle(ActionEvent event) {
 				if (!readyToSend) {
 					Move m = GameHost.players[playerPerspective].getNextMove();
+					readyToSend = true;
 					if (playerPerspective == 0) {
 						Server.setMoveToSend(m);
 						Main.tryToBeServer();
@@ -105,7 +106,6 @@ public class SpeedChess extends BorderPane {
 						Client.setMoveToSend(m);
 						Main.tryToBeClient();
 					}
-					readyToSend = true;
 					GameHost.checkIfReady();
 				}
 			}
