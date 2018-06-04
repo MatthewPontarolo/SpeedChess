@@ -104,12 +104,6 @@ public class SpeedChess extends BorderPane {
 				if (m != null) {
 					masterOverlay.setVisible(true);
 
-					try {
-						Thread.sleep(150);
-					} catch (InterruptedException e) {
-
-					}
-
 					Timestamp timestamp = new Timestamp(System.currentTimeMillis());
 					m.setTime(timestamp.getTime());
 					System.out.println(timestamp.getTime());
@@ -124,7 +118,13 @@ public class SpeedChess extends BorderPane {
 					}
 					GameHost.checkIfReady();
 					readyToSend = false;
-					//masterOverlay.setVisible(false);
+
+					try {
+						Thread.sleep(150);
+					} catch (InterruptedException e) {
+
+					}
+					masterOverlay.setVisible(false);
 				}
 			}
 		});
