@@ -21,8 +21,8 @@ public class GameHost {
 	{
 		Move whiteMove = whitePlayer.getNextMove();
 		Move blackMove = blackPlayer.getNextMove();
-		System.out.println("wM: " + whiteMove);
-		System.out.println("bM: " + blackMove);
+		//System.out.println("wM: " + whiteMove);
+		//System.out.println("bM: " + blackMove);
 		if (whiteMove != null && blackMove != null)
 		{
 			executeGameTurn();

@@ -61,6 +61,7 @@ public class SpeedChess extends BorderPane {
 			public void handle(ActionEvent event) {
 				Main.tryToBeServer();
 				//Black
+				setupBoard();
 			}
 		});
 		Button clientButton = new Button("Client");
@@ -68,6 +69,7 @@ public class SpeedChess extends BorderPane {
 			public void handle(ActionEvent event) {
 				Main.tryToBeClient();
 				playerPerspective = 1;//White
+				setupBoard();
 			}
 		});
 
@@ -97,6 +99,10 @@ public class SpeedChess extends BorderPane {
 
 		southBox.getChildren().addAll(confirmButton, timerLabel);
 
+		redrawBoard();
+	}
+
+	public void setupBoard() {
 		//Setting up the chess grid in the center
 		GridPane grid = new GridPane();
 		for (int i = 0; i < 8; i++) {
@@ -116,8 +122,8 @@ public class SpeedChess extends BorderPane {
 				button.setOnAction(new EventHandler<ActionEvent>() {
 					public void handle(ActionEvent event) {
 						Board b = GameHost.gameBoard;
-						System.out.println("Clicked at " + x + " " + y);
-						System.out.println("selected piece: " + selectedPiece);
+						//System.out.println("Clicked at " + x + " " + y);
+						//System.out.println("selected piece: " + selectedPiece);
 
 						if (selectedPiece != null) {
 							if (selectedPiece == b.getPiece(x, y)) {
@@ -137,7 +143,7 @@ public class SpeedChess extends BorderPane {
 							selectedPiece = b.getPiece(x, y);
 						}
 
-						System.out.println("selected piece is now: " + selectedPiece);
+						//System.out.println("selected piece is now: " + selectedPiece);
 						GameHost.checkIfReady();
 						redrawBoard();
 						drawHighlights();
@@ -168,8 +174,6 @@ public class SpeedChess extends BorderPane {
 		StackPane stack = new StackPane();
 		setCenter(stack);
 		stack.getChildren().addAll(grid, overlay);
-
-		redrawBoard();
 	}
 
 	public void redrawBoard() {
