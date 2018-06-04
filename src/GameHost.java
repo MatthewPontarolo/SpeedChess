@@ -88,12 +88,6 @@ public class GameHost {
 				return;
 			}
 			// if both are equally fast, NOTE: TBD
-			else
-			{
-				// depending on implementation of timer,
-				// this might be unnecessary to implement especially if likelihood of such
-				// event occurring is low
-			}
 		}
 		// not same spot move conflict, sort out scenarios
 		else
@@ -176,7 +170,7 @@ public class GameHost {
 						System.out.println("Both players tried to capture each other's game piece. Both game turns forfeited!");
 						return true;
 					}
-					return true;
+					return false;
 				}
 				// if black initial position isn't where white is moving, the piece white is trying to capture isn't moving
 				else if (blackMove.getInitX() != whiteX && blackMove.getInitY() != whiteY)
@@ -195,11 +189,7 @@ public class GameHost {
 				}
 				// if black piece ends up moving to where white player anticipated (??), it can capture (?)
 				// NOTE: TBD
-				else if (blackX == whiteX && blackY == whiteY)
-				{
 
-					return false;
-				}
 			}
 		}
 
@@ -239,11 +229,6 @@ public class GameHost {
 				}
 				// if white piece ends up moving to where black player anticipated (??), it can capture (?)
 				// NOTE: TBD
-				else if (blackX == whiteX && blackY == whiteY)
-				{
-
-					return false;
-				}
 			}
 		}
 		return false;
