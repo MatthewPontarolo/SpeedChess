@@ -18,7 +18,7 @@ public class Server {
 			String inputLine;
 			System.out.println("server inreadline? " + in.readLine());
 			while ((inputLine = in.readLine()) != null) {
-				GameHost.processMove(inputLine);
+				//GameHost.processMove(inputLine);
 			}/*
 			while (moveToSend != null) {
 				//out.println("0 1 7 1 5 34525543");
