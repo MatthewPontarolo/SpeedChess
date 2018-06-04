@@ -1,8 +1,22 @@
 package cs48g02s18.chessserver;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.core.JsonParseException;
+import com.fasterxml.jackson.core.JsonParser;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.core.ObjectCodec;
+import com.fasterxml.jackson.databind.*;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.util.JSONPObject;
+import com.fasterxml.jackson.databind.util.JSONWrappedObject;
+import jdk.nashorn.internal.parser.JSONParser;
+import org.springframework.boot.jackson.JsonObjectDeserializer;
+import org.springframework.http.HttpEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.io.IOException;
 
 
 @RestController
@@ -26,7 +40,15 @@ public class RequestController {
 
 
     @RequestMapping("/register")
-    public String register(@RequestParam(value = "userData") DataPass userData){
+    public String register(@RequestParam(value = "userData") String userDataString) {
+        DataPass userData;
+        ObjectMapper objectMapper = new ObjectMapper();
+        try {
+            userData = objectMapper.readValue(userDataString, DataPass.class);
+        }
+        catch (IOException ex) {
+            return "json processing failure" + ex.toString();
+        }
         return gameServer.addUser(userData);
     }
 
@@ -36,8 +58,8 @@ public class RequestController {
     }
 
     @RequestMapping("/getGameState")
-    public DataPassBoardState getGameState(@RequestParam(value = "userData") DataPass userData){
-        return gameServer.getBoardState(userData);
+    public DataPassBoardState getGameState(@RequestParam(value = "userData") HttpEntity<DataPass> userData){
+        return gameServer.getBoardState(userData.getBody());
     }
 
     @RequestMapping("/submitMove")
