@@ -21,6 +21,7 @@ public class Server {
 		) {
 			while (!in.ready()) {
 				//TIMER COUNTDOWN
+				System.out.println("wtf kevin");
 				Timer timer = new Timer();
 				counter = 10;
 				TimerTask task = new TimerTask()
