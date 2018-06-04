@@ -29,7 +29,7 @@ public class Server {
 			System.out.println("about to send " + parsed);
 			out.println(parsed);
 			moveToSend = null;
-			//System.out.println("Checkpoint 2");
+			System.out.println("Checkpoint 2");
 			SpeedChess.readyToSend = false;
 		} catch (IOException e) {
 			System.out.println("Exception caught when trying to listen on port "
