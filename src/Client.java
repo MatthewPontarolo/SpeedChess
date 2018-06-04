@@ -26,7 +26,7 @@ public class Client {
 				out.println(parsed);
 				moveToSend = null;
 
-				if ((inputLine = in.readLine()) != null) {
+				while ((inputLine = in.readLine()) != null) {
 					GameHost.processMove(inputLine);
 				}
 			}
