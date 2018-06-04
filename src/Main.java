@@ -32,6 +32,7 @@ import javafx.event.EventHandler;
 
 public class Main extends Application {
 	public static Stage mainStage;
+	public static Boolean clientCheck = false;
 
 	public static void main(String[] args) {
 		Application.launch(args);
@@ -59,7 +60,9 @@ public class Main extends Application {
 	public static void tryToBeClient() {
 		try {
 			System.out.println("about to setup client");
-			Client.setup();
+			while (!clientCheck) {
+				Client.setup();
+			}
 			System.out.println("made it past the setup");
 		} catch (IOException ex) {
 			System.out.println(ex.getMessage());

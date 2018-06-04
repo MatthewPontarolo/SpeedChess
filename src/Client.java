@@ -27,6 +27,7 @@ public class Client {
 				inputLine = in.readLine();
 				GameHost.processMove(inputLine);
 			}
+			Main.clientCheck = true;
 		} catch (UnknownHostException e) {
 			System.err.println("Don't know about host " + hostName);
 			System.exit(1);
