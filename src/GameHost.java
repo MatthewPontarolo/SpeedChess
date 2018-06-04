@@ -56,6 +56,9 @@ public class GameHost {
 		long whiteTime = whiteMove.getTime();
 		long blackTime = blackMove.getTime();
 
+		System.out.println("whiteTime: " + whiteTime);
+		System.out.println("blackTime: " + blackTime);
+
 		whitePlayer.setNextMove(null);
 		blackPlayer.setNextMove(null);
 
