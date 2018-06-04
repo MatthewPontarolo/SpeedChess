@@ -14,8 +14,7 @@ public class Move
   }
 
 
-  public Move(String m)
-  {
+  public Move(String m) {
 
   }
 
