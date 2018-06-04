@@ -68,6 +68,7 @@ public class GameHost {
 			if (whiteTime < blackTime)
 			{
 				gameBoard.setGameTurn(true);
+				gameBoard.pickUpPiece(whiteTarget);
 				gameBoard.movePiece(whitePlayer, whiteTarget, whiteX, whiteY);
 				//Capture the black piece
 				blackTarget.capture();
@@ -79,6 +80,7 @@ public class GameHost {
 			else if (whiteTime > blackTime)
 			{
 				gameBoard.setGameTurn(true);
+				gameBoard.pickUpPiece(blackTarget);
 				gameBoard.movePiece(blackPlayer, blackTarget, blackX, blackY);
 				//Capture the white piece
 				whiteTarget.capture();
@@ -120,18 +122,7 @@ public class GameHost {
 
 			// end the turn so set it back to false
 			gameBoard.setGameTurn(false);
-
-
-		// capturing sequence must be implemented/specified clearly to make sure
-		// piece that moves away isn't captured by other player's turn
-
-		// passes all conflict tests
-		// execute original turns
-
 			return;
-
-
-
 		}
 	}
 
