@@ -101,21 +101,20 @@ public class GameHost {
 			// PASSES CONFLICT TESTS
 			gameBoard.setGameTurn(true);
 
-			gameBoard.pickUpPiece(whiteTarget);
-			gameBoard.pickUpPiece(blackTarget);
 
 			//Attempt capturing a black piece if it isn't the moving piece
-			if (gameBoard.getPiece(whiteX, whiteY) != null && gameBoard.getPiece(whiteX, whiteY) != blackTarget)
-			{
+			if (gameBoard.getPiece(whiteX, whiteY) != null && gameBoard.getPiece(whiteX, whiteY) != blackTarget) {
 				gameBoard.getPiece(whiteX, whiteY).capture();
 			}
-			//Move the white piece
-			gameBoard.movePiece(whitePlayer, whiteTarget, whiteX, whiteY);
-
 			//Attempt capturing a white piece if it isn't the moving piece
 			if (gameBoard.getPiece(blackX, blackY) != null && gameBoard.getPiece(blackX, blackY) != whiteTarget) {
 				gameBoard.getPiece(blackX, blackY).capture();
 			}
+
+			gameBoard.pickUpPiece(whiteTarget);
+			gameBoard.pickUpPiece(blackTarget);
+			//Move the white piece
+			gameBoard.movePiece(whitePlayer, whiteTarget, whiteX, whiteY);
 			//Move the black piece
 			gameBoard.movePiece(blackPlayer, blackTarget, blackX, blackY);
 
