@@ -107,6 +107,7 @@ public class SpeedChess extends BorderPane {
 						Main.tryToBeClient();
 					}
 					GameHost.checkIfReady();
+					readyToSend = false;
 				}
 			}
 		});

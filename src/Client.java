@@ -31,8 +31,6 @@ public class Client {
 				GameHost.processMove(inputLine);
 				//System.out.println("It processed the move");
 			}
-			System.out.println("Made it out of the overall while loop");
-			SpeedChess.readyToSend = false;
 		} catch (UnknownHostException e) {
 			System.err.println("Don't know about host " + hostName);
 			System.exit(1);
