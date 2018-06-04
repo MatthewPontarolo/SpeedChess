@@ -62,13 +62,37 @@ public class RequestController {
     }
 
     @RequestMapping("/getGameState")
-    public DataPassBoardState getGameState(@RequestParam(value = "userData") HttpEntity<DataPass> userData){
-        return gameServer.getBoardState(userData.getBody());
+    public DataPassBoardState getGameState(@RequestParam(value = "userData") String userDataString) {
+        DataPassBoardState serverResponse;
+        DataPass userData;
+        ObjectMapper objectMapper = new ObjectMapper();
+        try {
+            userData = objectMapper.readValue(userDataString, DataPass.class);
+            serverResponse = gameServer.getBoardState(userData);
+        } catch (IOException ex) {
+            serverResponse = null;
+        }
+
+        System.out.print("sent:" + serverResponse.toString() + "\n");
+        return serverResponse;
     }
 
     @RequestMapping("/submitMove")
-    public String submitMove(@RequestParam(name = "moveData") DataPassMoveData moveData){
-        return gameServer.takeRequest(moveData);
+    public String submitMove(@RequestParam(name = "moveData") String moveDataString){
+        String serverResponse;
+        DataPassMoveData moveData;
+        ObjectMapper objectMapper = new ObjectMapper();
+        try {
+            moveData = objectMapper.readValue(moveDataString, DataPassMoveData.class);
+            serverResponse = gameServer.takeRequest(moveData);
+        }
+        catch (IOException ex) {
+            serverResponse = "json processing failure" + ex.toString();
+        }
+
+        System.out.print("sent:" + serverResponse + "\n");
+
+        return serverResponse;
     }
 /*
     @RequestMapping("/lockInMove")
@@ -77,17 +101,53 @@ public class RequestController {
     }
 */
     @RequestMapping("/joinGame")
-    public String joinGame(@RequestParam(value = "joinData") DataPassJoinGame joinData){
-        return gameServer.takeRequest(joinData);
+    public String joinGame(@RequestParam(value = "joinData") String joinDataString){
+        String serverResponse;
+        DataPassJoinGame joinData;
+        ObjectMapper objectMapper = new ObjectMapper();
+        try {
+            joinData = objectMapper.readValue(joinDataString, DataPassJoinGame.class);
+            serverResponse = gameServer.takeRequest(joinData);
+        }
+        catch (IOException ex) {
+            serverResponse = "json processing failure" + ex.toString();
+        }
+
+        System.out.print("sent:" + serverResponse + "\n");
+        return serverResponse;
     }
 
     @RequestMapping("/createGame")
-    public String createGame(@RequestParam(value = "createData") DataPassCreateGame createData){
-        return gameServer.takeRequest(createData);
+    public String createGame(@RequestParam(value = "createData") String createDataString){
+        String serverResponse;
+        DataPassCreateGame createGameData;
+        ObjectMapper objectMapper = new ObjectMapper();
+        try {
+            createGameData = objectMapper.readValue(createDataString, DataPassCreateGame.class);
+            serverResponse = gameServer.takeRequest(createGameData);
+        }
+        catch (IOException ex) {
+            serverResponse = "json processing failure" + ex.toString();
+        }
+
+        System.out.print("sent:" + serverResponse + "\n");
+        return serverResponse;
     }
 
     @RequestMapping("/nextGameStep")
-    public String nextGameStep(@RequestParam(value = "userData") DataPass userData) {
-        return gameServer.stepGameForward(userData);
+    public String nextGameStep(@RequestParam(value = "userData") String userDataString) {
+        String serverResponse;
+        DataPass userData;
+        ObjectMapper objectMapper = new ObjectMapper();
+        try {
+            userData = objectMapper.readValue(userDataString, DataPass.class);
+            serverResponse = gameServer.stepGameForward(userData);
+        }
+        catch (IOException ex) {
+            serverResponse = "json processing failure" + ex.toString();
+        }
+
+        System.out.print("sent:" + serverResponse + "\n");
+        return serverResponse;
     }
 }
