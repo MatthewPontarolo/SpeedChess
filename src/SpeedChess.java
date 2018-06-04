@@ -264,23 +264,31 @@ public class SpeedChess extends BorderPane {
 	}
 
 	public static void kingCheck() {
-		System.out.println("kings? " + GameHost.players[0].hasKing() + " " + GameHost.players[1].hasKing()));
+		System.out.println("kings? " + GameHost.players[0].hasKing() + " " + GameHost.players[1].hasKing());
+		boolean gameEnded = false;
 		if (!GameHost.players[0].hasKing() && !GameHost.players[1].hasKing()) {
 			overlayLabel.setText("Tie game...");
-			masterOverlay.setVisible(true);
+			gameEnded = true;
 		} else if (!GameHost.players[0].hasKing()) {
 			if (playerPerspective == 0) {
 				overlayLabel.setText("You have been defeated...");
 			} else {
 				overlayLabel.setText("You have won!");
 			}
-			masterOverlay.setVisible(true);
+			gameEnded = true;
 		} else if (GameHost.players[1].hasKing()) {
 			if (playerPerspective == 1) {
 				overlayLabel.setText("You have been defeated...");
 			} else {
 				overlayLabel.setText("You have won!");
 			}
+			gameEnded = true;
+		}
+
+		if (gameEnded) {
+			for (Button[] bt : buttons)
+				for (Button b : bt)
+				b.setDisable(true);
 			masterOverlay.setVisible(true);
 		}
 	}
