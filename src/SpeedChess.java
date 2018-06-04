@@ -103,7 +103,7 @@ public class SpeedChess extends BorderPane {
 				Move m = GameHost.players[playerPerspective].getNextMove();
 
 				if (m != null) {
-					masterOverlay.setVisible(true);
+					//masterOverlay.setVisible(true);
 
 					Timestamp timestamp = new Timestamp(System.currentTimeMillis());
 					m.setTime(timestamp.getTime());
@@ -120,7 +120,7 @@ public class SpeedChess extends BorderPane {
 					GameHost.checkIfReady();
 					readyToSend = false;
 
-					masterOverlay.setVisible(false);
+					//masterOverlay.setVisible(false);
 				}
 			}
 		});
@@ -276,7 +276,7 @@ public class SpeedChess extends BorderPane {
 				overlayLabel.setText("You have won!");
 			}
 			gameEnded = true;
-		} else if (GameHost.players[1].hasKing()) {
+		} else if (!GameHost.players[1].hasKing()) {
 			if (playerPerspective == 1) {
 				overlayLabel.setText("You have been defeated...");
 			} else {
