@@ -108,7 +108,7 @@ public class SpeedChess extends BorderPane {
 					Timestamp timestamp = new Timestamp(System.currentTimeMillis());
 					m.setTime(timestamp.getTime());
 					System.out.println(timestamp.getTime());
-					
+
 					readyToSend = true;
 					masterOverlay.setVisible(true);
 					if (playerPerspective == 0) {
@@ -194,6 +194,7 @@ public class SpeedChess extends BorderPane {
 		overlay.setAlignment(Pos.CENTER);
 
 		masterOverlay = new Pane();
+		masterOverlay.setMouseTransparent(true);
 
 		StackPane stack = new StackPane();
 		setCenter(stack);
