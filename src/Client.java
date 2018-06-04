@@ -14,9 +14,9 @@ public class Client {
 				PrintWriter out = new PrintWriter(echoSocket.getOutputStream(), true);
 				BufferedReader in = new BufferedReader(new InputStreamReader(echoSocket.getInputStream()));
 		) {
-			/*String inputLine;
+			String inputLine;
 			System.out.println("client inreadline? " + in.readLine());
-			while ((inputLine = in.readLine()) != null) {
+			/*while ((inputLine = in.readLine()) != null) {
 				//GameHost.processMove(inputLine);
 			}*/
 			while (moveToSend != null) {
