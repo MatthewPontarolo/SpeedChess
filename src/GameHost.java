@@ -53,13 +53,16 @@ public class GameHost {
 		int blackX = blackMove.getXMove();
 		int blackY = blackMove.getYMove();
 
+		long whiteTime = whiteMove.getTime();
+		long blackTime = blackMove.getTime();
+
 		whitePlayer.setNextMove(null);
 		blackPlayer.setNextMove(null);
 
 		// check if same spot move conflict
 		if (whiteX == blackX && whiteY == blackY) {
 			// if white is faster than black
-			if (whiteMove.getTime() < blackMove.getTime())
+			if (whiteTime < blackTime)
 			{
 				gameBoard.setGameTurn(true);
 				gameBoard.movePiece(whitePlayer, whiteTarget, whiteX, whiteY);
@@ -70,7 +73,7 @@ public class GameHost {
 				return;
 			}
 			// if black is faster than white
-			else if (whiteMove.getTime() > blackMove.getTime())
+			else if (whiteTime > blackTime)
 			{
 				gameBoard.setGameTurn(true);
 				gameBoard.movePiece(blackPlayer, blackTarget, blackX, blackY);
