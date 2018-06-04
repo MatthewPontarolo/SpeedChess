@@ -25,7 +25,7 @@ public class GameHost {
 		if (whiteMove != null && blackMove != null)
 		{
 			executeGameTurn();
-			redrawBoard();
+			SpeedChess.redrawBoard();
 		}
 	}
 
