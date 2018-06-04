@@ -16,16 +16,12 @@ public class Server {
 				BufferedReader in = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
 		) {
 			String inputLine;
-			System.out.println("server inreadline? " + in.readLine());
-			while ((inputLine = in.readLine()) != null) {
-				GameHost.processMove(inputLine);
-			}
-			while (moveToSend != null) {
-				//out.println("0 1 7 1 5 34525543");
-				String parsed = moveToSend.packageToString();
-				out.println(parsed);
-				moveToSend = null;
-			}
+			inputLine = in.readLine();
+			System.out.println("server inreadline? " + inputLine);
+			GameHost.processMove(inputLine);
+			String parsed = moveToSend.packageToString();
+			out.println(parsed);
+			moveToSend = null;
 			SpeedChess.readyToSend = false;
 		} catch (IOException e) {
 			System.out.println("Exception caught when trying to listen on port "
