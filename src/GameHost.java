@@ -27,6 +27,8 @@ public class GameHost {
 			executeGameTurn();
 			SpeedChess.redrawBoard();
 		}
+
+		SpeedChess.kingCheck();
 	}
 
 	// Precondition: Timer runs out OR both players clicked "CONFIRM" on UI

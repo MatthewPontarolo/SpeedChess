@@ -47,7 +47,8 @@ public class SpeedChess extends BorderPane {
 	Piece selectedPiece = null;
 	public static int playerPerspective = 0;
 	public static boolean readyToSend = false;
-	public static Pane masterOverlay;
+	public static BorderPane masterOverlay;
+	public static Label overlayLabel;
 
 	public SpeedChess() {
 		GameHost.initialize();
@@ -192,15 +193,15 @@ public class SpeedChess extends BorderPane {
 		}
 		overlay.setAlignment(Pos.CENTER);
 
-		masterOverlay = new Pane();
+		masterOverlay = new BorderPane();
 		masterOverlay.setMouseTransparent(true);
 		masterOverlay.setVisible(false);
 
-		Label waitLabel = new Label("Waiting for other player to make their move...");
-		waitLabel.setFont(new Font("Lucida Grande", 18));
-		waitLabel.setAlignment(Pos.CENTER);
+		overlayLabel = new Label("Waiting for other player to make their move...");
+		overlayLabel.setFont(new Font("Lucida Grande", 18));
+		overlayLabel.setAlignment(Pos.CENTER);
 		//masterOverlay.setAlignment(Pos.CENTER);
-		masterOverlay.getChildren().addAll(waitLabel);
+		masterOverlay.setCenter(overlayLabel);
 
 		StackPane stack = new StackPane();
 		setCenter(stack);
@@ -259,6 +260,27 @@ public class SpeedChess extends BorderPane {
 			for (int i = 0; i < 8; i++)
 				for (int j = 0; j < 8; j++)
 					highlights[i][j].setGraphic(null);
+		}
+	}
+
+	public static void kingCheck() {
+		if (!GameHost.players[0].hasKing() && !GameHost.players[1].hasKing()) {
+			overlayLabel.setText("Tie game...");
+			masterOverlay.setVisible(true);
+		} else if (!GameHost.players[0].hasKing()) {
+			if (playerPerspective == 0) {
+				overlayLabel.setText("You have been defeated...");
+			} else {
+				overlayLabel.setText("You have won!");
+			}
+			masterOverlay.setVisible(true);
+		} else if (GameHost.players[1].hasKing()) {
+			if (playerPerspective == 1) {
+				overlayLabel.setText("You have been defeated...");
+			} else {
+				overlayLabel.setText("You have won!");
+			}
+			masterOverlay.setVisible(true);
 		}
 	}
 
