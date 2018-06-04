@@ -16,6 +16,7 @@ public class Server {
 				BufferedReader in = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
 		) {
 			String inputLine;
+			System.out.println("server RIGHT BEFORE WHILE LOOP");
 			while ((inputLine = in.readLine()) != null) {
 				System.out.println("server inreadline? " + inputLine);
 				GameHost.processMove(inputLine);
