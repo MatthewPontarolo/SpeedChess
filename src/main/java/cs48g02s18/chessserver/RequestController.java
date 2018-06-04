@@ -41,15 +41,19 @@ public class RequestController {
 
     @RequestMapping("/register")
     public String register(@RequestParam(value = "userData") String userDataString) {
+        String serverResponse;
         DataPass userData;
         ObjectMapper objectMapper = new ObjectMapper();
         try {
             userData = objectMapper.readValue(userDataString, DataPass.class);
+            serverResponse = gameServer.addUser(userData);
         }
         catch (IOException ex) {
-            return "json processing failure" + ex.toString();
+            serverResponse = "json processing failure" + ex.toString();
         }
-        return gameServer.addUser(userData);
+
+        System.out.print("sent:" + serverResponse + "\n");
+        return serverResponse;
     }
 
     @RequestMapping("/getLobby")
