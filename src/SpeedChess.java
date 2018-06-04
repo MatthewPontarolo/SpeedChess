@@ -100,6 +100,7 @@ public class SpeedChess extends BorderPane {
 					Main.tryToBeClient();
 				}
 				readyToSend = true;
+				redrawBoard();
 			}
 		});
 
