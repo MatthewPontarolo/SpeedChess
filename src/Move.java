@@ -51,7 +51,6 @@ public class Move
 
   public void setTime(long timestamp)
   {
-
     time = timestamp;
   }
 
