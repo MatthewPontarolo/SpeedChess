@@ -264,6 +264,7 @@ public class SpeedChess extends BorderPane {
 	}
 
 	public static void kingCheck() {
+		System.out.println("kings? " + GameHost.players[0].hasKing() + " " + GameHost.players[1].hasKing()));
 		if (!GameHost.players[0].hasKing() && !GameHost.players[1].hasKing()) {
 			overlayLabel.setText("Tie game...");
 			masterOverlay.setVisible(true);
