@@ -15,6 +15,8 @@ public class GameInstance {
 
     public GameInstance(ServerPlayer hostServerPlayer) {
         this.hostServerPlayer = hostServerPlayer;
+        whitePlayer = new Player(1);
+        blackPlayer = new Player(0);
     }
 
     public void addPlayer(ServerPlayer guestServerPlayer){
@@ -36,7 +38,7 @@ public class GameInstance {
     }
 
     private void setUpBoard(){
-        this.gameBoard.setUp(whitePlayer, blackPlayer);
+        this.gameBoard = new Board(whitePlayer, blackPlayer);
     }
 
     public void resolveTurn() {
