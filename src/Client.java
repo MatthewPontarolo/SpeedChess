@@ -15,6 +15,7 @@ public class Client {
 				BufferedReader in = new BufferedReader(new InputStreamReader(echoSocket.getInputStream()));
 		) {
 			String inputLine;
+			System.out.println("client inreadline? " + in.readLine());
 			while ((inputLine = in.readLine()) != null) {
 				GameHost.processMove(inputLine);
 			}/*
