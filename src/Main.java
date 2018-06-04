@@ -43,15 +43,13 @@ public class Main extends Application {
 		mainStage = primaryStage;
 		primaryStage.setTitle("Speed Chess");
 		SpeedChess scene = new SpeedChess();
-		primaryStage.setScene(new Scene(scene, 800, 600));
+		primaryStage.setScene(new Scene(scene, 600, 600));
 		primaryStage.show();
 	}
 
 	public static void tryToBeServer() {
 		try {
-			System.out.println("about to setup server");
 			Server.setup();
-			System.out.println("made it past the setup");
 		} catch (IOException e) {
 			System.out.println(e.getMessage());
 		}
@@ -59,12 +57,10 @@ public class Main extends Application {
 
 	public static void tryToBeClient() {
 		try {
-			System.out.println("about to setup client");
 			while (!clientCheck) {
 				Client.setup();
 			}
 			clientCheck = false;
-			System.out.println("made it past the setup");
 		} catch (IOException ex) {
 			System.out.println(ex.getMessage());
 		}
