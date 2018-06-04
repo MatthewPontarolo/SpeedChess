@@ -30,6 +30,7 @@ public class Client {
 					GameHost.processMove(inputLine);
 				}
 			}
+			SpeedChess.readyToSend = false;
 		} catch (UnknownHostException e) {
 			System.err.println("Don't know about host " + hostName);
 			System.exit(1);

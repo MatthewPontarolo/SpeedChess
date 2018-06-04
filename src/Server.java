@@ -26,6 +26,7 @@ public class Server {
 				out.println(parsed);
 				moveToSend = null;
 			}
+			SpeedChess.readyToSend = false;
 		} catch (IOException e) {
 			System.out.println("Exception caught when trying to listen on port "
 					+ portNumber + " or listening for a connection");

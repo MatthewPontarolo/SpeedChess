@@ -42,6 +42,7 @@ public class SpeedChess extends BorderPane {
 	Label[][] highlights = new Label[8][8];
 	Piece selectedPiece = null;
 	int playerPerspective = 0;
+	public static boolean readyToSend = false;
 
 	public SpeedChess() {
 		GameHost.initialize();
@@ -56,19 +57,19 @@ public class SpeedChess extends BorderPane {
 		Label testLabel = new Label("Speed Chess");
 		testLabel.setFont(new Font("Lucida Grande", 18));
 
-		Button serverButton = new Button("Server");
+		Button serverButton = new Button("Black Player");
 		serverButton.setOnAction(new EventHandler<ActionEvent>() {
 			public void handle(ActionEvent event) {
-				Main.tryToBeServer();
+				//Main.tryToBeServer();
 				//Black
 				setupBoard();
 				redrawBoard();
 			}
 		});
-		Button clientButton = new Button("Client");
+		Button clientButton = new Button("White Player");
 		clientButton.setOnAction(new EventHandler<ActionEvent>() {
 			public void handle(ActionEvent event) {
-				Main.tryToBeClient();
+				//Main.tryToBeClient();
 				playerPerspective = 1;//White
 				setupBoard();
 				redrawBoard();
@@ -93,9 +94,12 @@ public class SpeedChess extends BorderPane {
 				Move m = GameHost.players[playerPerspective].getNextMove();
 				if (playerPerspective == 0) {
 					Server.setMoveToSend(m);
+					Main.tryToBeServer();
 				} else {
 					Client.setMoveToSend(m);
+					Main.tryToBeClient();
 				}
+				readyToSend = true;
 			}
 		});
 
