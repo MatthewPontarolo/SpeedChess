@@ -9,11 +9,11 @@ public class GameHost {
 
 	public GameHost()
 	{
-		players[0] = blackPlayer;
-		players[1] = whitePlayer;
+
 	}
 	public static void initialize() {
-
+		players[0] = blackPlayer;
+		players[1] = whitePlayer;
 	}
 
 	//Decides if it's time to go ahead and run executeGameTurn()
