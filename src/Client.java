@@ -25,6 +25,10 @@ public class Client {
 				System.out.println("Sending move " + parsed);
 				out.println(parsed);
 				moveToSend = null;
+
+				if ((inputLine = in.readLine()) != null) {
+					GameHost.processMove(inputLine);
+				}
 			}
 		} catch (UnknownHostException e) {
 			System.err.println("Don't know about host " + hostName);
