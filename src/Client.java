@@ -25,11 +25,11 @@ public class Client {
 				out.println(parsed);
 				moveToSend = null;
 
-				System.out.println("About to enter nested while loop");
-				while ((inputLine = in.readLine()) != null) {
-					GameHost.processMove(inputLine);
-				}
-				System.out.println("Made it out of the nested while loop");
+				System.out.println("About to try to read the line");
+				inputLine = in.readLine();
+				System.out.println("It read the line");
+				GameHost.processMove(inputLine);
+				System.out.println("It processed the move");
 			}
 			System.out.println("Made it out of the overall while loop");
 			SpeedChess.readyToSend = false;
