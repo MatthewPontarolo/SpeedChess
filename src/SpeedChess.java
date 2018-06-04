@@ -43,6 +43,7 @@ public class SpeedChess extends BorderPane {
 	Piece selectedPiece = null;
 	public static int playerPerspective = 0;
 	public static boolean readyToSend = false;
+	public static Pane masterOverlay;
 
 	public SpeedChess() {
 		GameHost.initialize();
@@ -99,6 +100,7 @@ public class SpeedChess extends BorderPane {
 				Move m = GameHost.players[playerPerspective].getNextMove();
 				if (m != null) {
 					readyToSend = true;
+					masterOverlay.setVisible(true);
 					if (playerPerspective == 0) {
 						Server.setMoveToSend(m);
 						Main.tryToBeServer();
@@ -108,6 +110,7 @@ public class SpeedChess extends BorderPane {
 					}
 					GameHost.checkIfReady();
 					readyToSend = false;
+					masterOverlay.setVisible(false);
 				}
 			}
 		});
@@ -143,9 +146,7 @@ public class SpeedChess extends BorderPane {
 								selectedPiece = null;
 							} else {
 								if (selectedPiece.getValidMoves(b, selectedPiece.getPlayer()).contains(new Point(x, y))) {
-									//check whether or not it's a capture move (need to check for friendly piece)
 									int playerType = selectedPiece.getPlayer();
-									//b.movePiece(b.getPlayer(playerType), selectedPiece, x, y);
 									b.getPlayer(playerType).setNextMove(new Move(selectedPiece, x, y, 0));
 									selectedPiece = null;
 								} else {
@@ -182,9 +183,11 @@ public class SpeedChess extends BorderPane {
 		}
 		overlay.setAlignment(Pos.CENTER);
 
+		masterOverlay = new Pane();
+
 		StackPane stack = new StackPane();
 		setCenter(stack);
-		stack.getChildren().addAll(grid, overlay);
+		stack.getChildren().addAll(grid, overlay, masterOverlay);
 	}
 
 	public static void redrawBoard() {
