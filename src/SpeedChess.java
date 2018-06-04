@@ -119,7 +119,7 @@ public class SpeedChess extends BorderPane {
 					GameHost.checkIfReady();
 					readyToSend = false;
 
-					//masterOverlay.setVisible(false);
+					masterOverlay.setVisible(false);
 				}
 			}
 		});
