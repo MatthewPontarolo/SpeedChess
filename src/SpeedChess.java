@@ -276,19 +276,19 @@ public class SpeedChess extends BorderPane {
 
 			readyToSend = true;
 			if (playerPerspective == 0) {
-				Server.setMoveToSend(m);
 				Platform.runLater(new Runnable() {
 					@Override
 					public void run() {
+						Server.setMoveToSend(m);
 						Main.tryToBeServer();
 					}
 				});
 				//Main.tryToBeServer();
 			} else {
-				Client.setMoveToSend(m);
 				Platform.runLater(new Runnable() {
 					@Override
 					public void run() {
+						Client.setMoveToSend(m);
 						Main.tryToBeClient();
 					}
 				});
