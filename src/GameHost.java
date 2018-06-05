@@ -306,7 +306,7 @@ public class GameHost {
 		ArrayList<Point> moves = targetPiece.getValidMoves(gameBoard, playerType);
 		int moveIdx = (int) (Math.random() * (double) moves.size());
 
-		System.out.println(moveIdx);
+		System.out.println("move:" + moveIdx);
 
 		Point targetMove = moves.get(moveIdx);
 
