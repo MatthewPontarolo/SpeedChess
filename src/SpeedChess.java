@@ -132,13 +132,14 @@ public class SpeedChess extends BorderPane {
 					GameHost.startTimer();
 					// exits timer if reaches 0
 					// forfeit randomly chooses move for player and sets it
+					System.out.println("befire");
 					if (GameHost.forfeit == true)
 					{
 						System.out.println("HERE");
 						GameHost.forfeit();
 						// ???????
 						// TODO: Needs a way to call "Confirm" button internally to execute move
-						confirmButton.fire();
+
 					}
 
 
