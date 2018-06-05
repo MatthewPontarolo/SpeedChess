@@ -283,14 +283,16 @@ public class SpeedChess extends BorderPane {
 						Main.tryToBeServer();
 					}
 				});
+				//Main.tryToBeServer();
 			} else {
+				Client.setMoveToSend(m);
 				Platform.runLater(new Runnable() {
 					@Override
 					public void run() {
-						Client.setMoveToSend(m);
 						Main.tryToBeClient();
 					}
 				});
+				//Main.tryToBeClient();
 			}
 			GameHost.checkIfReady();
 			readyToSend = false;
