@@ -30,6 +30,7 @@ public class GameHost {
 	// stops timer, sets timestamp to where timer stopped, ends turn
 	public static void stopTimer()
 	{
+		System.out.println("Did it even go in here");
 		timer.stop();
 		timestamp = timer.getTimeStamp();
 		GameHost.endTurn = true;
