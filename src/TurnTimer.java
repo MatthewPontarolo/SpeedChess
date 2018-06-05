@@ -39,6 +39,7 @@ public class TurnTimer {
       timestamp = timeCounter;
       timer.stop();
       GameHost.endTurn = true;
+      timeCounter = 10;
     }
     public int getTimeStamp()
     {
