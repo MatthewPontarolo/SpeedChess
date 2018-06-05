@@ -16,8 +16,7 @@ public class TurnTimer {
       {
         text = "Time's Up!";
         System.out.println(text);
-        timer.stop();
-        GameHost.endTurn = true;
+        stop();
       }
       else
       {
@@ -36,9 +35,9 @@ public class TurnTimer {
       timer.start();
     }
     public void stop()
-    {
-      timestamp = timeCounter;
+    {  
       timer.stop();
+      timestamp = timeCounter;
       GameHost.endTurn = true;
     }
     public int getTimeStamp()
