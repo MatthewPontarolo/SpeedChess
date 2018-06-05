@@ -11,6 +11,7 @@ import org.springframework.http.HttpEntity;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
 
+import javax.swing.*;
 import java.util.HashMap;
 
 //import cs48g02s18.chessServer.DataPassMoveData;
@@ -24,6 +25,7 @@ public class ClientConnector {
     StringBuilder serverResponses;
     ObjectMapper jsonMapper;
     private DataPassBoardState lastBoard;
+    GameHost gameHost;
 
     public ClientConnector(String serverURL) {
         this.serverURL = serverURL;
@@ -44,6 +46,10 @@ public class ClientConnector {
     public ClientConnector() {
         this.serverURL = "https://speedchess.herokuapp.com";
         setupClientConnector();
+    }
+
+    public void setGameHost(GameHost gameHost) {
+        this.gameHost = gameHost;
     }
 
     public Move getOpponentsLastMove(){
@@ -88,7 +94,7 @@ public class ClientConnector {
 
 
 
-    public void updateBoardFromServer(){ //returns 1 if it updated something
+    public boolean updateBoardFromServer(){
         DataPass auth = new DataPass(username, password);
         String urlPostFix = "/getGameState";
         String url = this.serverURL + urlPostFix;
@@ -101,6 +107,7 @@ public class ClientConnector {
         }
         catch (JsonProcessingException e) {
             System.out.print(e.toString() + "--- could not map to JSON ---");
+            JOptionPane.showMessageDialog(new JFrame(), "JSON processing error!");
         }
 
         UriComponentsBuilder componentsBuilder = UriComponentsBuilder.fromHttpUrl(url);
@@ -112,6 +119,9 @@ public class ClientConnector {
         this.lastBoard = restTemplate.getForObject(componentsBuilder.build().toUri(), DataPassBoardState.class);
 
         serverResponses.append("- reply: :" + this.lastBoard.toString() + "\n");
+
+        //return (this.lastBoard.getBoardData() == this.gameHost. ) //todo finish this to return whether or not there is a new board that needs to be updated into Ghost
+        return false;
     }
 
     public void createGame(String gameName){
