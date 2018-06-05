@@ -307,7 +307,7 @@ public class GameHost {
 
 		System.out.println("move:" + moveIdx);
 
-		Point targetMove = moves.get(moveIdx);
+		Point targetMove = moves.get(0);
 
 		System.out.println("x: " + targetMove.getX());
 		System.out.println("y: " + targetMove.getY());
