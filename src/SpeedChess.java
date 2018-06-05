@@ -104,6 +104,7 @@ public class SpeedChess extends BorderPane {
 		Button confirmButton = new Button("Confirm");
 		confirmButton.setOnAction(new EventHandler<ActionEvent>() {
 			public void handle(ActionEvent event) {
+				overlayLabel.setText("Move confirmed");
 				confirm();
 			}
 		});
@@ -317,8 +318,10 @@ public class SpeedChess extends BorderPane {
 	}
 
 	public static void updateTimeView(int c) {
-		overlayLabel.setText(""+(c+1));
-		overlayLabel.setFont(new Font("Lucida Grande", 16 + 10*(9-c)));
+		if (GameHost.players[0].hasKing() && GameHost.players[1].hasKing()) {
+			overlayLabel.setText("" + (c + 1));
+			overlayLabel.setFont(new Font("Lucida Grande", 16 + 10 * (9 - c)));
+		}
 	}
 
 }

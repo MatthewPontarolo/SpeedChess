@@ -41,6 +41,7 @@ public class GameHost {
 	public static void forfeit() {
 		//timer.stop();
 		endTurn = true;
+		forfeit = true;
 		// select player's move
 		Player player = players[SpeedChess.playerPerspective];
 		Move randomMove = randomMove();

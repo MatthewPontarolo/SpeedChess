@@ -40,13 +40,11 @@ public class TurnTimer {
       timer = new Timer(1000, this::update);
       timer.start();
     }
-    public void stop()
-    {
+    public void stop() {
       timer.stop();
       timestamp = timeCounter;
       System.out.println("stop");
-      if (timestamp == 0)
-      {
+      if (timestamp == 0) {
         GameHost.forfeit();
         System.out.println("forfeit");
       }
