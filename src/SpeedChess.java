@@ -134,31 +134,9 @@ public class SpeedChess extends BorderPane {
 					if (GameHost.forfeit == true)
 					{
 						GameHost.forfeit();
-						Move k = GameHost.players[playerPerspective].getNextMove();
-
-						if (k != null) {
-							masterOverlay.setVisible(true);
-
-							Timestamp timestammp = new Timestamp(System.currentTimeMillis());
-							k.setTime(timestammp.getTime());
-							//System.out.println(timestamp.getTime());
-
-							readyToSend = true;
-							if (playerPerspective == 0) {
-								Server.setMoveToSend(m);
-								Main.tryToBeServer();
-							} else {
-								Client.setMoveToSend(m);
-								Main.tryToBeClient();
-							}
-							GameHost.checkIfReady();
-							readyToSend = false;
-
-							masterOverlay.setVisible(false);
-						}
+						confirmButton.fire();
 					}
 					// TODO: Needs a way to call "Confirm" button internally to execute move
-					confirmButton.fire();
 
 				}
 			}
