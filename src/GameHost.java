@@ -293,7 +293,7 @@ public class GameHost {
 	{
 		Player player = players[SpeedChess.playerPerspective];
 		int playerType = player.getPlayerType();
-		System.out.println('here?');
+		System.out.println("here?");
 		ArrayList<Piece> pieces = player.getPieces();
 		System.out.println("size: " + pieces.size());
 		int pieceIdx = (int) (Math.random() * (double) pieces.size());
