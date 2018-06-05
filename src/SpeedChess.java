@@ -104,6 +104,7 @@ public class SpeedChess extends BorderPane {
 			public void handle(ActionEvent event) {
 				GameHost.endTurn = true;
 				GameHost.stopTimer();
+				System.out.println("Timer Stopped at:" + GameHost.getTimeStamp());
 				Move m = GameHost.players[playerPerspective].getNextMove();
 
 				if (m != null) {
@@ -111,7 +112,7 @@ public class SpeedChess extends BorderPane {
 
 					Timestamp timestamp = new Timestamp(System.currentTimeMillis());
 					m.setTime(timestamp.getTime());
-					System.out.println(timestamp.getTime());
+					//System.out.println(timestamp.getTime());
 
 					readyToSend = true;
 					if (playerPerspective == 0) {
