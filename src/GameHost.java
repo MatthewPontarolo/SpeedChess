@@ -292,7 +292,9 @@ public class GameHost {
 	public static Move randomMove()
 	{
 		Player player = players[SpeedChess.playerPerspective];
+		System.out.println(SpeedChess.playerPerspective);
 		int playerType = player.getPlayerType();
+		System.out.println(playerType);
 		System.out.println("here?");
 		ArrayList<Piece> pieces = player.getPieces();
 		System.out.println("size: " + pieces.size());
