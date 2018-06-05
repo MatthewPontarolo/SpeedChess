@@ -158,7 +158,7 @@ public class SpeedChess extends BorderPane {
 						}
 					}
 					// TODO: Needs a way to call "Confirm" button internally to execute move
-					confirmButton.doClick();
+					confirmButton.fire();
 
 				}
 			}
