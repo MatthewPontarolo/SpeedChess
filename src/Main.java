@@ -35,7 +35,6 @@ public class Main extends Application {
 	public static Boolean clientCheck = false;
 
 	public static void main(String[] args) {
-		new TurnTimer();
 		Application.launch(args);
 	}
 

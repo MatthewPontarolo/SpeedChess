@@ -71,6 +71,8 @@ public class SpeedChess extends BorderPane {
 				//Black
 				setupBoard();
 				redrawBoard();
+				// NOTE: put the timer here to run when game starts (??)
+				GameHost.startTimer();
 				northBox.getChildren().remove(1);
 				northBox.getChildren().remove(1);
 			}
@@ -81,6 +83,8 @@ public class SpeedChess extends BorderPane {
 				playerPerspective = 1;//White
 				setupBoard();
 				redrawBoard();
+				// NOTE: put the timer here to run when game starts (??)
+				GameHost.startTimer();
 				northBox.getChildren().remove(1);
 				northBox.getChildren().remove(1);
 			}
@@ -120,11 +124,13 @@ public class SpeedChess extends BorderPane {
 					readyToSend = false;
 
 					masterOverlay.setVisible(false);
+					GameHost.startTimer();
+
 				}
 			}
 		});
 
-		southBox.getChildren().addAll(confirmButton);		
+		southBox.getChildren().addAll(confirmButton);
 	}
 
 	public void setupBoard() {
@@ -141,7 +147,6 @@ public class SpeedChess extends BorderPane {
 					grid.add(button, 7-i, 7-j);
 				buttons[i][j] = button;
 				button.setAlignment(Pos.CENTER);
-
 				final int x = i;
 				final int y = j;
 				button.setOnAction(new EventHandler<ActionEvent>() {

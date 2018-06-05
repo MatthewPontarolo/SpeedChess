@@ -10,12 +10,30 @@ public class GameHost {
 	public static Board gameBoard = new Board(whitePlayer, blackPlayer);
 
 	public static boolean endTurn = false;
+	public static int timestamp;
+	public static TurnTimer timer = new TurnTimer();
+
 	public GameHost() {
 
 	}
 	public static void initialize() {
 		players[0] = blackPlayer;
 		players[1] = whitePlayer;
+	}
+
+	public static void startTimer()
+	{
+		timer.start();
+	}
+	public static void stopTimer()
+	{
+		timer.stop();
+		timestamp = timer.getTimeStamp();
+	}
+
+	public static int getTimeStamp()
+	{
+		return timestamp;
 	}
 
 	//Decides if it's time to go ahead and run executeGameTurn()
@@ -77,6 +95,7 @@ public class GameHost {
 				blackTarget.capture();
 				// end the turn so set it back to false
 				gameBoard.setGameTurn(false);
+				endTurn = false;
 				return;
 			}
 			// if black is faster than white
@@ -89,7 +108,7 @@ public class GameHost {
 				whiteTarget.capture();
 				// end the turn so set it back to false
 				gameBoard.setGameTurn(false);
-
+				endTurn = false;
 				return;
 			}
 			// if both are equally fast, NOTE: TBD
@@ -100,6 +119,7 @@ public class GameHost {
 			// Move Conflict involving Pawns being handled
 			if (checkPawns(whiteTarget, whiteMove, blackTarget, blackMove))
 			{
+				endTurn = false;
 				return;
 			}
 
@@ -125,6 +145,7 @@ public class GameHost {
 
 			// end the turn so set it back to false
 			gameBoard.setGameTurn(false);
+			endTurn = false;
 			return;
 		}
 	}
@@ -246,6 +267,9 @@ public class GameHost {
 		}
 	}
 
+	/**
+	 * When timer runs out, call this function to get a random move
+	 */
 	public static Move randomMove(Player player)
 	{
 		int playerType = player.getPlayerType();
