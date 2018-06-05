@@ -155,6 +155,7 @@ public class SpeedChess extends BorderPane {
 							readyToSend = false;
 
 							masterOverlay.setVisible(false);
+						}
 					}
 					// TODO: Needs a way to call "Confirm" button internally to execute move
 
