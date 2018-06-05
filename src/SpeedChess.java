@@ -133,7 +133,7 @@ public class SpeedChess extends BorderPane {
 					// exits timer if reaches 0
 					// forfeit randomly chooses move for player and sets it
 					System.out.println("befire");
-					if (GameHost.forfeit == true)
+					if (GameHost.forfeit == false)
 					{
 						System.out.println("HERE");
 						GameHost.forfeit();
