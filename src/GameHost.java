@@ -295,9 +295,10 @@ public class GameHost {
 		int playerType = player.getPlayerType();
 
 		ArrayList<Piece> pieces = player.getPieces();
+		System.out.println("size: " + pieces.size());
 		int pieceIdx = (int) (Math.random() * (double) pieces.size());
 
-		System.out.println(pieceIdx);
+		System.out.println("Idx: " + pieceIdx);
 
 		Piece targetPiece = pieces.get(pieceIdx);
 		ArrayList<Point> moves = targetPiece.getValidMoves(gameBoard, playerType);
