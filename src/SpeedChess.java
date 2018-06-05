@@ -108,7 +108,7 @@ public class SpeedChess extends BorderPane {
 		});
 
 		southBox.getChildren().addAll(confirmButton);
-		
+
 		Platform.setImplicitExit(false);
 	}
 
@@ -194,27 +194,40 @@ public class SpeedChess extends BorderPane {
 	public static void redrawBoard() {
 		for (Button[] bt : buttons) {
 			for (Button b : bt) {
-				b.setText("");
-				//Later I can use the coords to determine if it should be a black or white tile
-				Image im = new Image(SpeedChess.class.getResourceAsStream("BlankSlot.png"));
-				b.setGraphic(new ImageView(im));
+				Platform.runLater(new Runnable() {
+					@Override public void run() {
+						b.setText("");
+						Image im = new Image(SpeedChess.class.getResourceAsStream("BlankSlot.png"));
+						b.setGraphic(new ImageView(im));
+					}
+				});
 			}
 		}
 		//Place pieces
 		Player p1 = GameHost.whitePlayer;
 		for (Piece p : p1.getPieces()) {
 			if (p.isAlive()) {
-				Button b = buttons[p.getXPosition()][p.getYPosition()];
-				Image im = new Image(SpeedChess.class.getResourceAsStream(p.getName() + "WhitePiece.png"));
-				b.setGraphic(new ImageView(im));
+				Platform.runLater(new Runnable() {
+					@Override
+					public void run() {
+						Button b = buttons[p.getXPosition()][p.getYPosition()];
+						Image im = new Image(SpeedChess.class.getResourceAsStream(p.getName() + "WhitePiece.png"));
+						b.setGraphic(new ImageView(im));
+					}
+				});
 			}
 		}
 		Player p2 = GameHost.blackPlayer;
 		for (Piece p : p2.getPieces()) {
 			if (p.isAlive()) {
-				Button b = buttons[p.getXPosition()][p.getYPosition()];
-				Image im = new Image(SpeedChess.class.getResourceAsStream(p.getName() + "BlackPiece.png"));
-				b.setGraphic(new ImageView(im));
+				Platform.runLater(new Runnable() {
+					@Override
+					public void run() {
+						Button b = buttons[p.getXPosition()][p.getYPosition()];
+						Image im = new Image(SpeedChess.class.getResourceAsStream(p.getName() + "BlackPiece.png"));
+						b.setGraphic(new ImageView(im));
+					}
+				});
 			}
 		}
 	}

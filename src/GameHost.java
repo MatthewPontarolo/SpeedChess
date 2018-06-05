@@ -28,8 +28,7 @@ public class GameHost {
 		timer.start();
 	}
 	// stops timer, sets timestamp to where timer stopped, ends turn
-	public static void stopTimer()
-	{
+	public static void stopTimer() {
 		System.out.println("go in here");
 		timer.stop();
 		timestamp = timer.getTimeStamp();
@@ -57,14 +56,10 @@ public class GameHost {
 	}
 
 	//Decides if it's time to go ahead and run executeGameTurn()
-	public static void checkIfReady()
-	{
+	public static void checkIfReady() {
 		Move whiteMove = whitePlayer.getNextMove();
 		Move blackMove = blackPlayer.getNextMove();
-		//System.out.println("wM: " + whiteMove);
-		//System.out.println("bM: " + blackMove);
-		if (whiteMove != null && blackMove != null)
-		{
+		if (whiteMove != null && blackMove != null) {
 			executeGameTurn();
 			SpeedChess.redrawBoard();
 		}
