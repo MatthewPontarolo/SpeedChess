@@ -24,6 +24,7 @@ public class GameHost {
 
 	public static void startTimer()
 	{
+		forfeit = false;
 		timer.start();
 	}
 	// stops timer, sets timestamp to where timer stopped, ends turn
