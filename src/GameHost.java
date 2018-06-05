@@ -33,7 +33,7 @@ public class GameHost {
 		System.out.println("go in here");
 		timer.stop();
 		timestamp = timer.getTimeStamp();
-		GameHost.endTurn = true;
+		endTurn = true;
 	}
 	/**
 	 * Use forfeit instead of stopTimer when the timer reaches 0
@@ -42,12 +42,14 @@ public class GameHost {
 	public static void forfeit()
 	{
 		//timer.stop();
-		GameHost.endTurn = true;
+		endTurn = true;
 		// select player's move
 		Player player = players[SpeedChess.playerPerspective];
 		Move randomMove = randomMove();
 
 		player.setNextMove(randomMove);
+
+		SpeedChess.confirm();
 	}
 
 	public static int getTimeStamp()

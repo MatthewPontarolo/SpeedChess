@@ -102,49 +102,7 @@ public class SpeedChess extends BorderPane {
 		Button confirmButton = new Button("Confirm");
 		confirmButton.setOnAction(new EventHandler<ActionEvent>() {
 			public void handle(ActionEvent event) {
-				GameHost.endTurn = true;
-				//Move random = GameHost.randomMove(GameHost.players[playerPerspective]);
-				// when Confirm is clicked, stop timer and get timestamp at timer
-				GameHost.stopTimer();
-				System.out.println("Timer Stopped at:" + GameHost.getTimeStamp());
-				Move m = GameHost.players[playerPerspective].getNextMove();
-
-				if (m != null) {
-					masterOverlay.setVisible(true);
-
-					Timestamp timestamp = new Timestamp(System.currentTimeMillis());
-					m.setTime(timestamp.getTime());
-					//System.out.println(timestamp.getTime());
-
-					readyToSend = true;
-					if (playerPerspective == 0) {
-						Server.setMoveToSend(m);
-						Main.tryToBeServer();
-					} else {
-						Client.setMoveToSend(m);
-						Main.tryToBeClient();
-					}
-					GameHost.checkIfReady();
-					readyToSend = false;
-
-					masterOverlay.setVisible(false);
-					// start timer
-					GameHost.startTimer();
-					// exits timer if reaches 0
-					// forfeit randomly chooses move for player and sets it
-
-					/*
-					if (GameHost.forfeit == true)
-					{
-						System.out.println("HERE");
-						GameHost.forfeit();
-						// ???????
-						// TODO: Needs a way to call "Confirm" button internally to execute move
-
-					}*/
-
-
-				}
+				confirm();
 			}
 		});
 
@@ -282,6 +240,34 @@ public class SpeedChess extends BorderPane {
 			for (int i = 0; i < 8; i++)
 				for (int j = 0; j < 8; j++)
 					highlights[i][j].setGraphic(null);
+		}
+	}
+
+	public static void confirm() {
+		GameHost.endTurn = true;
+		GameHost.stopTimer();
+		System.out.println("Timer Stopped at:" + GameHost.getTimeStamp());
+		Move m = GameHost.players[playerPerspective].getNextMove();
+
+		System.out.println("move? " + m);
+		if (m != null) {
+			Timestamp timestamp = new Timestamp(System.currentTimeMillis());
+			m.setTime(timestamp.getTime());
+			//System.out.println(timestamp.getTime());
+
+			readyToSend = true;
+			if (playerPerspective == 0) {
+				Server.setMoveToSend(m);
+				Main.tryToBeServer();
+			} else {
+				Client.setMoveToSend(m);
+				Main.tryToBeClient();
+			}
+			GameHost.checkIfReady();
+			readyToSend = false;
+
+			// start timer
+			GameHost.startTimer();
 		}
 	}
 
