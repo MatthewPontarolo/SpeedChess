@@ -16,6 +16,7 @@ public class TurnTimer {
       {
         text = "Time's Up!";
         System.out.println(text);
+        GameHost.forfeit = true;
         stop();
       }
       else
