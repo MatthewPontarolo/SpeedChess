@@ -48,7 +48,8 @@ public class SpeedChess extends BorderPane {
 	Piece selectedPiece = null;
 	public static int playerPerspective = 0;
 	public static boolean readyToSend = false;
-	public static Pane masterOverlay;
+	public static BorderPane masterOverlay;
+	public static Label overlayLabel;
 
 	public SpeedChess() {
 		GameHost.initialize();
@@ -176,15 +177,12 @@ public class SpeedChess extends BorderPane {
 		}
 		overlay.setAlignment(Pos.CENTER);
 
-		masterOverlay = new Pane();
+		masterOverlay = new BorderPane();
 		masterOverlay.setMouseTransparent(true);
-		masterOverlay.setVisible(false);
 
-		Label waitLabel = new Label("Waiting for other player to make their move...");
-		waitLabel.setFont(new Font("Lucida Grande", 18));
-		waitLabel.setAlignment(Pos.CENTER);
-		//masterOverlay.setAlignment(Pos.CENTER);
-		masterOverlay.getChildren().addAll(waitLabel);
+		overlayLabel = new Label("");
+		overlayLabel.setFont(new Font("Lucida Grande", 18));
+		masterOverlay.setCenter(overlayLabel);
 
 		StackPane stack = new StackPane();
 		setCenter(stack);
@@ -287,6 +285,40 @@ public class SpeedChess extends BorderPane {
 			// start timer
 			GameHost.startTimer();
 		}
+	}
+
+	public static void kingCheck() {
+		System.out.println("kings? " + GameHost.players[0].hasKing() + " " + GameHost.players[1].hasKing());
+		boolean gameEnded = false;
+		if (!GameHost.players[0].hasKing() && !GameHost.players[1].hasKing()) {
+			overlayLabel.setText("Tie game...");
+			gameEnded = true;
+		} else if (!GameHost.players[0].hasKing()) {
+			if (playerPerspective == 0) {
+				overlayLabel.setText("You have been defeated...");
+			} else {
+				overlayLabel.setText("You have won!");
+			}
+			gameEnded = true;
+		} else if (!GameHost.players[1].hasKing()) {
+			if (playerPerspective == 1) {
+				overlayLabel.setText("You have been defeated...");
+			} else {
+				overlayLabel.setText("You have won!");
+			}
+			gameEnded = true;
+		}
+
+		if (gameEnded) {
+			for (Button[] bt : buttons)
+				for (Button b : bt)
+					b.setDisable(true);
+		}
+	}
+
+	public static void updateTimeView(int c) {
+		overlayLabel.setText(""+(c+1));
+		overlayLabel.setFont(new Font("Lucida Grande", 16 + 10*(9-c)));
 	}
 
 }

@@ -1,33 +1,38 @@
 import javax.swing.*;
+import javafx.application.Platform;
+
 public class TurnTimer {
+
     String text;
     int timeCounter = 10;
     Timer timer;
     int timestamp;
-    TurnTimer() {
-        //frame.add(timeText);
-        //frame.pack();
-        //frame.setLocationRelativeTo(null);
-        //frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        //frame.setVisible(true);
+
+    public TurnTimer() {
+
     }
+
     public void update(java.awt.event.ActionEvent e) {
-      if (timeCounter == 0)
-      {
+      if (timeCounter == 0) {
         text = "Time's Up!";
         System.out.println(text);
         GameHost.forfeit = true;
         stop();
-      }
-      else
-      {
+      } else {
         timeCounter--;
         text = "" + timeCounter;
         System.out.println(text);
+
+		Platform.runLater(new Runnable() {
+			@Override
+			public void run() {
+				SpeedChess.updateTimeView(timeCounter);
+			}
+		});
       }
     }
-    public void start()
-    {
+
+    public void start() {
       timestamp = 0;
       timeCounter = 10;
       System.out.println("Timer Starts!");

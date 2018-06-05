@@ -11,6 +11,7 @@ public class Player {
 	private int bishops = 2;
 	private int queen = 1;
 	private int king = 1;
+	private Piece kingPiece;
 
 	private int playerType;
 	private Move moveSelection;
@@ -45,7 +46,8 @@ public class Player {
 		pieces.add(new Bishop(5, offset));
 
 		pieces.add(new Queen(3, offset));
-		pieces.add(new King(4, offset));
+		kingPiece = new King(4, offset);
+		pieces.add(kingPiece);
 
 		for (int i = 0; i < 16; i++) {
 			pieces.get(i).setPlayer(playerType);
@@ -54,6 +56,10 @@ public class Player {
 
 	public ArrayList<Piece> getPieces() {
 		return pieces;
+	}
+
+	public boolean hasKing() {
+		return kingPiece.isAlive();
 	}
 
 	// get Piece in pieces arraylist at given spot on board

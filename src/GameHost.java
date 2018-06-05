@@ -63,6 +63,7 @@ public class GameHost {
 			executeGameTurn();
 			SpeedChess.redrawBoard();
 		}
+		SpeedChess.kingCheck();
 	}
 
 	// Precondition: Timer runs out OR both players clicked "CONFIRM" on UI
@@ -91,9 +92,6 @@ public class GameHost {
 
 		long whiteTime = whiteMove.getTime();
 		long blackTime = blackMove.getTime();
-
-		System.out.println("whiteTime: " + whiteTime);
-		System.out.println("blackTime: " + blackTime);
 
 		whitePlayer.setNextMove(null);
 		blackPlayer.setNextMove(null);
