@@ -1,7 +1,7 @@
 import javax.swing.*;
 public class TurnTimer {
     String text;
-    int timeCounter = 10;
+    int timeCounter = 20;
     Timer timer;
     int timestamp;
     TurnTimer() {
@@ -28,7 +28,7 @@ public class TurnTimer {
     public void start()
     {
       timestamp = 0;
-      timeCounter = 10;
+      timeCounter = 20;
       System.out.println("Timer Starts!");
       System.out.println(timeCounter);
       timer = new Timer(1000, this::update);
