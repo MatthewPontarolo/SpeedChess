@@ -15,7 +15,6 @@ public class Client {
 				BufferedReader in = new BufferedReader(new InputStreamReader(echoSocket.getInputStream()));
 		) {
 			String inputLine;
-			System.out.println("Made it here!");
 			while (moveToSend != null) {
 				while (out == null) { }
 

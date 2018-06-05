@@ -63,7 +63,12 @@ public class Board {
 	}
 
 	public void pickUpPiece(Piece p) {
-		spots[p.getXPosition()][p.getYPosition()] = null;
+		if (p.getXPosition() >= 0 && p.getXPosition() < 8 &&
+			p.getYPosition() >= 0 && p.getYPosition() < 8) {
+			spots[p.getXPosition()][p.getYPosition()] = null;
+		} else {
+			System.out.println("invalid pickup at " + p.getXPosition() + " " + p.getYPosition());
+		}
 	}
 
 }
