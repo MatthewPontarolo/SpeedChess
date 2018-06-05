@@ -45,7 +45,7 @@ public class GameHost {
 		GameHost.endTurn = true;
 		// select player's move
 		Player player = players[SpeedChess.playerPerspective];
-		Move randomMove = randomMove(player);
+		Move randomMove = randomMove();
 
 		player.setNextMove(randomMove);
 	}
@@ -289,8 +289,9 @@ public class GameHost {
 	/**
 	 * When timer runs out, call this function to get a random move
 	 */
-	public static Move randomMove(Player player)
+	public static Move randomMove()
 	{
+		Player player = SpeedChess.players[playerPerspective];
 		int playerType = player.getPlayerType();
 
 		ArrayList<Piece> pieces = player.getPieces();
