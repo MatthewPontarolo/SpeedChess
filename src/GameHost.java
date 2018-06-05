@@ -292,7 +292,7 @@ public class GameHost {
 	public static Move randomMove()
 	{
 		Player player = players[SpeedChess.playerPerspective];
-		System.out.println("perspective" + SpeedChess.playerPerspective);
+		System.out.println("perspective: " + SpeedChess.playerPerspective);
 		int playerType = player.getPlayerType();
 		System.out.println("playerType: " + playerType);
 		ArrayList<Piece> pieces = player.getPieces();
@@ -305,7 +305,7 @@ public class GameHost {
 		ArrayList<Point> moves = targetPiece.getValidMoves(gameBoard, playerType);
 		int moveIdx = (int) (Math.random() * moves.size());
 
-		System.out.println("move:" + moveIdx);
+		System.out.println("move: " + moveIdx);
 
 		if (moves.isEmpty())
 		{
