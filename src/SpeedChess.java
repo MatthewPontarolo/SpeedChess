@@ -134,9 +134,11 @@ public class SpeedChess extends BorderPane {
 					if (GameHost.forfeit == true)
 					{
 						GameHost.forfeit();
-						confirmButton.fire();
+						// ???????
+						// TODO: Needs a way to call "Confirm" button internally to execute move
+						//confirmButton.fire();
 					}
-					// TODO: Needs a way to call "Confirm" button internally to execute move
+
 
 				}
 			}
