@@ -94,12 +94,8 @@ public class RequestController {
 
         return serverResponse;
     }
-/*
-    @RequestMapping("/lockInMove")
-    public void lockInMove(){
 
-    }
-*/
+
     @RequestMapping("/joinGame")
     public String joinGame(@RequestParam(value = "joinData") String joinDataString){
         String serverResponse;
