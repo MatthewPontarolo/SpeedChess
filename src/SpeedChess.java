@@ -106,7 +106,7 @@ public class SpeedChess extends BorderPane {
 			public void handle(ActionEvent event) {
 				overlayLabel.setFont(new Font("Lucida Grande", 18));
 				overlayLabel.setTextFill(Color.BLACK);
-				overlayLabel.setText("Move confirmed, waiting for opponent");
+				overlayLabel.setText("");
 				confirm();
 			}
 		});
