@@ -39,8 +39,7 @@ public class GameHost {
 	 * Use forfeit instead of stopTimer when the timer reaches 0
 	 * gets a random move and then sets next move for player with that move
 	 */
-	public static void forfeit()
-	{
+	public static void forfeit() {
 		//timer.stop();
 		endTurn = true;
 		// select player's move

@@ -245,7 +245,9 @@ public class SpeedChess extends BorderPane {
 
 	public static void confirm() {
 		GameHost.endTurn = true;
-		GameHost.stopTimer();
+		if (!GameHost.forfeit) {
+			GameHost.stopTimer();
+		}
 		System.out.println("Timer Stopped at:" + GameHost.getTimeStamp());
 		Move m = GameHost.players[playerPerspective].getNextMove();
 
