@@ -1,4 +1,4 @@
-package cs48g02s18.chessgame;
+package cs48g02s18.chessserver;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
@@ -9,6 +9,11 @@ public class DataPassJoinGame extends DataPass {
     public DataPassJoinGame(String username, String password, String gameName) {
         super(username, password);
         this.gameName = gameName;
+    }
+
+    public DataPassJoinGame() {
+        super();
+        this.gameName = null;
     }
 
     public String getGameName() {

@@ -1,4 +1,4 @@
-package cs48g02s18.chessgame;
+package cs48g02s18.chessserver;
 
 //chunk of data we will be passing back and forth
 //string is an initial stand-in
@@ -10,6 +10,11 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 public class DataPass {
     private String username;
     private String password;
+
+    public DataPass() {
+        username = "u";
+        password = "p";
+    }
 
     public DataPass(String username, String password) {
         this.username = username;

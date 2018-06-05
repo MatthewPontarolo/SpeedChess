@@ -15,6 +15,9 @@ import javafx.scene.layout.HBox;
 import javafx.scene.text.Font;
 import javafx.geometry.Pos;
 import javafx.geometry.Insets;
+
+import javax.security.auth.login.CredentialException;
+import javax.swing.*;
 import java.util.ArrayList;
 import java.awt.Point;
 
@@ -24,6 +27,7 @@ public class SpeedChess extends BorderPane {
 	Label[][] highlights = new Label[8][8];
 	Piece selectedPiece = null;
 	int playerPerspective = 0;
+	ClientConnector clientConnector;
 
 	public SpeedChess() {
 		GameHost.initialize();
@@ -71,6 +75,7 @@ public class SpeedChess extends BorderPane {
 									int playerType = selectedPiece.getPlayer();
 									//b.movePiece(b.getPlayer(playerType), selectedPiece, x, y);
 									b.getPlayer(playerType).setNextMove(new Move(selectedPiece, x, y, 0));
+									clientConnector.submitMove(new Move(selectedPiece, x, y, 0));
 									selectedPiece = null;
 								} else {
 									System.out.println("Invalid move!");
@@ -82,6 +87,8 @@ public class SpeedChess extends BorderPane {
 
 						System.out.println("selected piece is now: " + selectedPiece);
 						GameHost.checkIfReady();
+						clientConnector.updateBoardFromServer();
+						GameHost.gameBoard = clientConnector.getNewBoard();
 						redrawBoard();
 						drawHighlights();
 					}
