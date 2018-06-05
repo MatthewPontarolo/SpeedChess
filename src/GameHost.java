@@ -297,13 +297,13 @@ public class GameHost {
 		System.out.println("playerType: " + playerType);
 		ArrayList<Piece> pieces = player.getPieces();
 		System.out.println("size: " + pieces.size());
-		int pieceIdx = (int) (Math.random() * (double) pieces.size());
+		int pieceIdx = (int) (Math.random() * pieces.size());
 
 		System.out.println("Idx: " + pieceIdx);
 
 		Piece targetPiece = pieces.get(pieceIdx);
 		ArrayList<Point> moves = targetPiece.getValidMoves(gameBoard, playerType);
-		int moveIdx = (int) (Math.random() * (double) moves.size());
+		int moveIdx = (int) (Math.random() * moves.size());
 
 		System.out.println("move:" + moveIdx);
 
