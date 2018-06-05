@@ -139,8 +139,8 @@ public class SpeedChess extends BorderPane {
 						if (k != null) {
 							masterOverlay.setVisible(true);
 
-							Timestamp timestamp = new Timestamp(System.currentTimeMillis());
-							k.setTime(timestamp.getTime());
+							Timestamp timestammp = new Timestamp(System.currentTimeMillis());
+							k.setTime(timestammp.getTime());
 							//System.out.println(timestamp.getTime());
 
 							readyToSend = true;
