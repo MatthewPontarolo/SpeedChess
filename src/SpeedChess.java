@@ -8,6 +8,7 @@ import java.awt.Dimension;
 import java.io.*;
 import java.util.*;
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
@@ -189,6 +190,8 @@ public class SpeedChess extends BorderPane {
 	}
 
 	public static void redrawBoard() {
+		Platform.setImplicitExit(false);
+
 		for (Button[] bt : buttons) {
 			for (Button b : bt) {
 				b.setText("");
