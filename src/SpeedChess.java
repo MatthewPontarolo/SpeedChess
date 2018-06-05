@@ -200,6 +200,7 @@ public class SpeedChess extends BorderPane {
 				b.setGraphic(new ImageView(im));
 			}
 		}
+		Platform.setImplicitExit(false);
 		//Place pieces
 		Player p1 = GameHost.whitePlayer;
 		for (Piece p : p1.getPieces()) {
@@ -209,6 +210,7 @@ public class SpeedChess extends BorderPane {
 				b.setGraphic(new ImageView(im));
 			}
 		}
+		Platform.setImplicitExit(false);
 		Player p2 = GameHost.blackPlayer;
 		for (Piece p : p2.getPieces()) {
 			if (p.isAlive()) {
