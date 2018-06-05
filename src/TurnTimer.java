@@ -41,6 +41,11 @@ public class TurnTimer {
       timer.stop();
       timestamp = timeCounter;
       System.out.println("stop");
+      if (timestamp == 0)
+      {
+        GameHost.forfeit();
+        System.out.println("forfeit");
+      }
     }
 
     public int getTimeStamp()
