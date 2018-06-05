@@ -35,11 +35,11 @@ public class TurnTimer {
       timer.start();
     }
     public void stop()
-    {  
+    {
       timer.stop();
       timestamp = timeCounter;
-      GameHost.endTurn = true;
     }
+
     public int getTimeStamp()
     {
       return timestamp;

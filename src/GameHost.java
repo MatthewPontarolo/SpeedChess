@@ -10,6 +10,7 @@ public class GameHost {
 	public static Board gameBoard = new Board(whitePlayer, blackPlayer);
 
 	public static boolean endTurn = false;
+	public static boolean forfeit = false;
 	public static int timestamp;
 	public static TurnTimer timer = new TurnTimer();
 
@@ -29,6 +30,20 @@ public class GameHost {
 	{
 		timer.stop();
 		timestamp = timer.getTimeStamp();
+		GameHost.endTurn = true;
+	}
+	/**
+	 * Use forfeit instead of stopTimer when the timer reaches
+	 */
+	public static void forfeit()
+	{
+		timer.stop();
+		forfeit = true;
+		GameHost.endTurn = true;
+		// select player's move
+		Move randomMove = randomMove(players[SpeedChess.playerPerspective]);
+		Player player = players[playerPerspective];
+		player.setNextMove(randomMove);
 	}
 
 	public static int getTimeStamp()

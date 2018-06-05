@@ -103,6 +103,7 @@ public class SpeedChess extends BorderPane {
 		confirmButton.setOnAction(new EventHandler<ActionEvent>() {
 			public void handle(ActionEvent event) {
 				GameHost.endTurn = true;
+				// when Confirm is clicked, stop timer and get timestamp at timer
 				GameHost.stopTimer();
 				System.out.println("Timer Stopped at:" + GameHost.getTimeStamp());
 				Move m = GameHost.players[playerPerspective].getNextMove();
@@ -126,7 +127,15 @@ public class SpeedChess extends BorderPane {
 					readyToSend = false;
 
 					masterOverlay.setVisible(false);
+					// start timer
 					GameHost.startTimer();
+					// exits timer if reaches 0
+					// forfeit randomly chooses move for player and sets it 
+					if (GameHost.forfeit == true)
+					{
+						GameHost.forfeit();
+					}
+					// TODO: Needs a way to call "Confirm" button internally to execute move
 
 				}
 			}
