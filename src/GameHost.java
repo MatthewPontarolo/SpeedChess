@@ -26,6 +26,7 @@ public class GameHost {
 	{
 		timer.start();
 	}
+	// stops timer, sets timestamp to where timer stopped, ends turn
 	public static void stopTimer()
 	{
 		timer.stop();
@@ -33,7 +34,8 @@ public class GameHost {
 		GameHost.endTurn = true;
 	}
 	/**
-	 * Use forfeit instead of stopTimer when the timer reaches
+	 * Use forfeit instead of stopTimer when the timer reaches 0
+	 * gets a random move and then sets next move for player with that move
 	 */
 	public static void forfeit()
 	{
