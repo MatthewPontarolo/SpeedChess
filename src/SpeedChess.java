@@ -104,7 +104,9 @@ public class SpeedChess extends BorderPane {
 		Button confirmButton = new Button("Confirm");
 		confirmButton.setOnAction(new EventHandler<ActionEvent>() {
 			public void handle(ActionEvent event) {
-				overlayLabel.setText("Move confirmed");
+				overlayLabel.setFont(new Font("Lucida Grande", 18));
+				overlayLabel.setTextFill(Color.BLACK);
+				overlayLabel.setText("Move confirmed, waiting for opponent");
 				confirm();
 			}
 		});
@@ -275,10 +277,20 @@ public class SpeedChess extends BorderPane {
 			readyToSend = true;
 			if (playerPerspective == 0) {
 				Server.setMoveToSend(m);
-				Main.tryToBeServer();
+				Platform.runLater(new Runnable() {
+					@Override
+					public void run() {
+						Main.tryToBeServer();
+					}
+				});
 			} else {
-				Client.setMoveToSend(m);
-				Main.tryToBeClient();
+				Platform.runLater(new Runnable() {
+					@Override
+					public void run() {
+						Client.setMoveToSend(m);
+						Main.tryToBeClient();
+					}
+				});
 			}
 			GameHost.checkIfReady();
 			readyToSend = false;
@@ -311,6 +323,8 @@ public class SpeedChess extends BorderPane {
 		}
 
 		if (gameEnded) {
+			overlayLabel.setFont(new Font("Lucida Grande", 20));
+
 			for (Button[] bt : buttons)
 				for (Button b : bt)
 					b.setDisable(true);
@@ -320,7 +334,13 @@ public class SpeedChess extends BorderPane {
 	public static void updateTimeView(int c) {
 		if (GameHost.players[0].hasKing() && GameHost.players[1].hasKing()) {
 			overlayLabel.setText("" + (c + 1));
-			overlayLabel.setFont(new Font("Lucida Grande", 16 + 10 * (9 - c)));
+			overlayLabel.setFont(new Font("Lucida Grande", 16 + 12 * (9 - c)));
+			if (c < 4) {
+				Color[] colors = new Color[] { Color.RED, Color.DARKORANGE, Color.ORANGE, Color.YELLOW };
+				overlayLabel.setTextFill(colors[c]);
+			} else {
+				overlayLabel.setTextFill(Color.BLACK);
+			}
 		}
 	}
 
