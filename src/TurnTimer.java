@@ -29,6 +29,7 @@ public class TurnTimer {
     public void start()
     {
       timestamp = 0;
+      timeCounter = 10;
       System.out.println("Timer Starts!");
       System.out.println(timeCounter);
       timer = new Timer(1000, this::update);
@@ -39,7 +40,6 @@ public class TurnTimer {
       timestamp = timeCounter;
       timer.stop();
       GameHost.endTurn = true;
-      timeCounter = 10;
     }
     public int getTimeStamp()
     {
