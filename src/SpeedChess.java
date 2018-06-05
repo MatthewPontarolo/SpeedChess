@@ -103,7 +103,7 @@ public class SpeedChess extends BorderPane {
 		confirmButton.setOnAction(new EventHandler<ActionEvent>() {
 			public void handle(ActionEvent event) {
 				GameHost.endTurn = true;
-				Move random = GameHost.randomMove(GameHost.players[playerPerspective]);
+				//Move random = GameHost.randomMove(GameHost.players[playerPerspective]);
 				// when Confirm is clicked, stop timer and get timestamp at timer
 				GameHost.stopTimer();
 				System.out.println("Timer Stopped at:" + GameHost.getTimeStamp());
