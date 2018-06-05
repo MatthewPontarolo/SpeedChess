@@ -17,6 +17,10 @@ public class DataPassMoveData extends DataPass {
         return move;
     }
 
+    public void setMove(Move move) {
+        this.move = move;
+    }
+
     @Override
     public String toString() {
         return "DataPassMoveData{" +
