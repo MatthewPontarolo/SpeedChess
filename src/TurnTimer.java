@@ -39,6 +39,7 @@ public class TurnTimer {
     {
       timer.stop();
       timestamp = timeCounter;
+      System.out.println("stop");
     }
 
     public int getTimeStamp()
