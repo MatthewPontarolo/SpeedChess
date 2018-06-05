@@ -18,7 +18,6 @@ public class TurnTimer {
         System.out.println(text);
         GameHost.forfeit = true;
         stop();
-        return;
       }
       else
       {
