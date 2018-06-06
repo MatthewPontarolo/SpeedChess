@@ -340,7 +340,15 @@ public class SpeedChess extends BorderPane {
 		}
 		else if (!GameHost.players[1].hasKing()) {
 			if (playerPerspective == 1) {
-				overlayLabel.setText("You have been defeated...");
+				try
+				{
+					overlayLabel.setText("You have been defeated...");
+
+				}
+				catch (Exception e)
+				{
+					
+				}
 				System.out.println("-------- KING HAS BEEN CAPTURED ---------");
 
 			}
