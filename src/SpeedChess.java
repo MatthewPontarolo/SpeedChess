@@ -219,12 +219,11 @@ public class SpeedChess extends BorderPane {
 				Platform.runLater(new Runnable() {
 					@Override
 					public void run() {
-						if (GameHost.gameEnded == false)
-						{
+						//if (GameHost.gameEnded == false) {
 							Button b = buttons[p.getXPosition()][p.getYPosition()];
 							Image im = new Image(SpeedChess.class.getResourceAsStream(p.getName() + "WhitePiece.png"));
 							b.setGraphic(new ImageView(im));
-						}
+						//}
 					}
 				});
 			}
@@ -235,12 +234,11 @@ public class SpeedChess extends BorderPane {
 				Platform.runLater(new Runnable() {
 					@Override
 					public void run() {
-						if (GameHost.gameEnded == false)
-						{
+						//if (GameHost.gameEnded == false) {
 							Button b = buttons[p.getXPosition()][p.getYPosition()];
 							Image im = new Image(SpeedChess.class.getResourceAsStream(p.getName() + "BlackPiece.png"));
 							b.setGraphic(new ImageView(im));
-						}
+						//}
 					}
 				});
 			}
