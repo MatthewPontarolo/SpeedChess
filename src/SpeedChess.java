@@ -309,27 +309,23 @@ public class SpeedChess extends BorderPane {
 		if (!GameHost.players[0].hasKing() && !GameHost.players[1].hasKing()) {
 			overlayLabel.setText("Tie game...");
 			gameEnded = true;
-			GameHost.stopTimer();
-		} else if (!GameHost.players[0].hasKing()) {
+		}
+		else if (!GameHost.players[0].hasKing()) {
 			if (playerPerspective == 0) {
 				overlayLabel.setText("You have been defeated...");
-				GameHost.stopTimer();
-
-			} else {
+			}
+			else {
 				overlayLabel.setText("You have won!");
-				GameHost.stopTimer();
-
 			}
 			gameEnded = true;
-		} else if (!GameHost.players[1].hasKing()) {
+
+		}
+		else if (!GameHost.players[1].hasKing()) {
 			if (playerPerspective == 1) {
 				overlayLabel.setText("You have been defeated...");
-				GameHost.stopTimer();
-
-
-			} else {
+			}
+			else {
 				overlayLabel.setText("You have won!");
-				GameHost.stopTimer();
 
 			}
 			gameEnded = true;
@@ -339,8 +335,13 @@ public class SpeedChess extends BorderPane {
 			overlayLabel.setFont(new Font("Lucida Grande", 20));
 
 			for (Button[] bt : buttons)
+			{
 				for (Button b : bt)
+				{
 					b.setDisable(true);
+				}
+			}
+			GameHost.stopTimer();
 		}
 	}
 
