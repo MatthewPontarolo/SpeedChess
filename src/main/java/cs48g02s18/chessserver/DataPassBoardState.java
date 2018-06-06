@@ -1,37 +1,37 @@
 package cs48g02s18.chessserver;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import cs48g02s18.chessserver.MoveData;
+import cs48g02s18.chessgame.Move;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class DataPassBoardState {
     String boardData;
-    MoveData opponentLastMove;
+    Move opponentLastMove;
 
 
     public DataPassBoardState() {
         this.boardData = null;
+        opponentLastMove = null;
     }
 
     public DataPassBoardState(String boardData) {
         this.boardData = boardData;
-        opponentLastMove = null;
+        this.opponentLastMove = null;
     }
 
     public String getBoardData() {
         return boardData;
     }
 
-    public MoveData getOpponentLastMove() {
+    public Move getOpponentLastMove() {
         return opponentLastMove;
     }
-
 
     public void setBoardData(String boardData) {
         this.boardData = boardData;
     }
 
-    public void setOpponentLastMove(MoveData opponentLastMove) {
+    public void setOpponentLastMove(Move opponentLastMove) {
         this.opponentLastMove = opponentLastMove;
     }
 

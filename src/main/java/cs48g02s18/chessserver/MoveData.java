@@ -15,6 +15,11 @@ public class MoveData {
         this.endPosition = endPosition;
     }
 
+    public MoveData(int a, int b, int c, int d){
+        this.startPosition = new Point(a,b);
+        this.endPosition = new Point(c,d);
+    }
+
     public MoveData(Piece pieceToMove, Point endPosition) {
         this.startPosition = new Point(pieceToMove.getXPosition(), pieceToMove.getYPosition());
         this.endPosition = endPosition;

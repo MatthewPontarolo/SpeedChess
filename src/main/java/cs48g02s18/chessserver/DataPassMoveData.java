@@ -1,30 +1,42 @@
 package cs48g02s18.chessserver;
 
-public class DataPassMoveData extends DataPass {
-    private MoveData moveData;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import cs48g02s18.chessgame.Move;
 
-    public DataPassMoveData(String username, String password, MoveData moveData) {
+@JsonIgnoreProperties(ignoreUnknown = true)
+public class DataPassMoveData extends DataPass {
+    private MoveData move;
+
+    public DataPassMoveData(String username, String password, MoveData move) {
         super(username, password);
-        this.moveData = moveData;
+        this.move = move;
+    }
+
+    public DataPassMoveData(String username, String password, Move gameMove) {
+        super(username, password);
+        MoveData moveData;
+        moveData = new MoveData(gameMove.getInitX(), gameMove.getInitY(),
+                gameMove.getXMove(), gameMove.getYMove());
+        this.move = moveData;
     }
 
     public DataPassMoveData() {
         super();
-        this.moveData = null;
+        this.move = null;
     }
 
-    public MoveData getMoveData() {
-        return moveData;
+    public MoveData getMove() {
+        return move;
     }
 
-    public void setMoveData(MoveData moveData) {
-        this.moveData = moveData;
+    public void setMove(MoveData move) {
+        this.move = move;
     }
 
     @Override
     public String toString() {
         return "DataPassMoveData{" +
-                "moveData=" + moveData +
+                "move=" + move +
                 '}';
     }
 }
