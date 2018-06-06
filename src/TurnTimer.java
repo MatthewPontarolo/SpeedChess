@@ -2,7 +2,7 @@ import javax.swing.*;
 import javafx.application.Platform;
 
 public class TurnTimer {
-    public static final int TIME_LIMIT = 5;
+    public static final int TIME_LIMIT = 10;
     String text;
     int timeCounter = TIME_LIMIT;
     Timer timer;
@@ -28,7 +28,7 @@ public class TurnTimer {
 			public void run() {
         if (GameHost.gameEnded == false)
         {
-          SpeedChess.updateTimeView(timeCounter);  
+          SpeedChess.updateTimeView(timeCounter);
         }
 			}
 		});
