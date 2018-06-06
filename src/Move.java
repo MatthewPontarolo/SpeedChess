@@ -52,6 +52,11 @@ public class Move {
   }
 
 	public String packageToString() {
+    System.out.println("target x position: " + target.getXPosition());
+    System.out.println("target y position: " + target.getYPosition());
+    System.out.println("xposition: " + xPosition);
+    System.out.println("yposition: " + yPosition);
+    System..out.println("time: " + time);
 		return target.getXPosition() + " "
 				+ target.getYPosition() + " "
 				+ xPosition + " "
