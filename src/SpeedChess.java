@@ -107,8 +107,10 @@ public class SpeedChess extends BorderPane {
 				overlayLabel.setFont(new Font("Lucida Grande", 18));
 				overlayLabel.setTextFill(Color.BLACK);
 				overlayLabel.setText("");
-				
-				confirm();
+				if (gameHost.endTurn == false)
+				{
+					confirm();
+				}
 			}
 		});
 
