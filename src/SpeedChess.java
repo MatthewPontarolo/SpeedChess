@@ -317,7 +317,7 @@ public class SpeedChess extends BorderPane {
 			}
 			else {
 				overlayLabel.setText("You have won!");
-				System.out.printlin("-------- YOU WON BITCH ---------");
+				System.out.println("-------- YOU WON BITCH ---------");
 			}
 			gameEnded = true;
 
@@ -330,7 +330,7 @@ public class SpeedChess extends BorderPane {
 			}
 			else {
 				overlayLabel.setText("You have won!");
-				System.out.printlin("-------- YOU WON BITCH ---------");
+				System.out.println("-------- YOU WON BITCH ---------");
 
 			}
 			gameEnded = true;
