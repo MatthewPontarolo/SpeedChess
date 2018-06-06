@@ -290,43 +290,52 @@ public class GameHost {
 	 */
 	public static Move randomMove()
 	{
-		Player player = players[SpeedChess.playerPerspective];
-		System.out.println("perspective: " + SpeedChess.playerPerspective);
-		int playerType = player.getPlayerType();
-		System.out.println("playerType: " + playerType);
-		ArrayList<Piece> pieces = player.getPieces();
-
-		int count = 0;
-		for (Piece p : pieces)
+		ArrayList<Point> moves = new ArrayList<Point>();
+		int pieceIdx;
+		int moveIdx;
+		do
 		{
-			System.out.println("VALID PIECES(" + count +  ") Name: " + p.getName() + " X: " + p.getXPosition() + " Y: " + p.getYPosition());
-			count++;
+
+			Player player = players[SpeedChess.playerPerspective];
+			int playerType = player.getPlayerType();
+
+			// get Pieces
+			ArrayList<Piece> pieces = player.getPieces();
+
+			int count = 0;
+			for (Piece p : pieces)
+			{
+				System.out.println("VALID PIECES(" + count +  ") Name: " + p.getName() + " X: " + p.getXPosition() + " Y: " + p.getYPosition());
+				count++;
+			}
+			System.out.println("size: " + pieces.size());
+
+			// Pick Piece idx
+			pieceIdx = (int) (Math.random() * pieces.size());
+
+			System.out.println("Idx CHOSEN: " + pieceIdx);
+
+			// get Piece
+			Piece targetPiece = pieces.get(pieceIdx);
+
+			System.out.println("PIECE CHOSEN: " + targetPiece.getName());
+
+			// Get Moves
+			moves = targetPiece.getValidMoves(gameBoard, playerType);
+			for (Point m : moves)
+			{
+				//Piece target = gameBoard.getPiece((int) m.getX(), (int) m.getY());
+				System.out.println("VALID MOVE --" + "X: " + m.getX() + "Y: " + m.getY());
+			}
+
+			System.out.println("move: " + moveIdx);
 		}
-		System.out.println("size: " + pieces.size());
-		int pieceIdx = (int) (Math.random() * pieces.size());
+		while (moves.isEmpty());
 
-		System.out.println("Idx CHOSEN: " + pieceIdx);
 
-		Piece targetPiece = pieces.get(pieceIdx);
-		System.out.println("PIECE CHOSEN: " + targetPiece.getName());
-		ArrayList<Point> moves = targetPiece.getValidMoves(gameBoard, playerType);
-		for (Point m : moves)
-		{
-			//Piece target = gameBoard.getPiece((int) m.getX(), (int) m.getY());
-			System.out.println("VALID MOVE --" + "X: " + m.getX() + "Y: " + m.getY());
-		}
-		int moveIdx = (int) (Math.random() * moves.size());
-
-		System.out.println("move: " + moveIdx);
-
-		if (moves.isEmpty())
-		{
-			Move nextMove = new Move(targetPiece, targetPiece.getXPosition(), targetPiece.getYPosition());
-			return nextMove;
-
-		}
-
-			Point targetMove = moves.get(moveIdx);
+		// Pick Move from an nonempty moves arraylist
+		moveIdx = (int) (Math.random() * moves.size());
+		Point targetMove = moves.get(moveIdx);
 
 
 		System.out.println("x: " + targetMove.getX());
