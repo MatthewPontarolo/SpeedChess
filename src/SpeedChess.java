@@ -282,7 +282,6 @@ public class SpeedChess extends BorderPane {
 		System.out.println("Timer Stopped at:" + GameHost.getTimeStamp());
 		Move m = GameHost.players[playerPerspective].getNextMove();
 
-		System.out.println("MY MOVE: " + m.packageToString());
 		if (m != null) {
 			Timestamp timestamp = new Timestamp(System.currentTimeMillis());
 			m.setTime(timestamp.getTime());
@@ -292,19 +291,9 @@ public class SpeedChess extends BorderPane {
 			if (playerPerspective == 0) {
 				Server.setMoveToSend(m);
 				Main.tryToBeServer();
-				/*Platform.runLater(new Runnable() {
-					@Override
-					public void run() {
-					}
-				});*/
 			} else {
 				Client.setMoveToSend(m);
 				Main.tryToBeClient();
-				/*Platform.runLater(new Runnable() {
-					@Override
-					public void run() {
-					}
-				});*/
 			}
 			GameHost.checkIfReady();
 			readyToSend = false;
@@ -322,16 +311,32 @@ public class SpeedChess extends BorderPane {
 		System.out.println("kings? " + GameHost.players[0].hasKing() + " " + GameHost.players[1].hasKing());
 		GameHost.gameEnded = false;
 		if (!GameHost.players[0].hasKing() && !GameHost.players[1].hasKing()) {
-			overlayLabel.setText("Tie game...");
+			Platform.runLater(new Runnable() {
+				@Override
+				public void run() {
+					overlayLabel.setText("Tie game...");
+				}
+			});
 			GameHost.gameEnded = true;
 		}
 		else if (!GameHost.players[0].hasKing()) {
 			if (playerPerspective == 0) {
-				overlayLabel.setText("You have been defeated...");
+				Platform.runLater(new Runnable() {
+									  @Override
+									  public void run() {
+										  overlayLabel.setText("You have been defeated...");
+									  }
+								  });
+
 				System.out.println("-------- KING HAS BEEN CAPTURED ---------");
 			}
 			else {
-				overlayLabel.setText("You have won!");
+				Platform.runLater(new Runnable() {
+					@Override
+					public void run() {
+						overlayLabel.setText("You have won!");
+					}
+				});
 				System.out.println("-------- YOU WON BITCH ---------");
 			}
 			GameHost.gameEnded = true;
@@ -339,12 +344,22 @@ public class SpeedChess extends BorderPane {
 		}
 		else if (!GameHost.players[1].hasKing()) {
 			if (playerPerspective == 1) {
-				overlayLabel.setText("You have been defeated...");
+				Platform.runLater(new Runnable() {
+					@Override
+					public void run() {
+						overlayLabel.setText("You have been defeated...");
+					}
+				});
 				System.out.println("-------- KING HAS BEEN CAPTURED ---------");
 
 			}
 			else {
-				overlayLabel.setText("You have won!");
+				Platform.runLater(new Runnable() {
+					@Override
+					public void run() {
+						overlayLabel.setText("You have won!");
+					}
+				});
 				System.out.println("-------- YOU WON BITCH ---------");
 
 			}
