@@ -308,7 +308,7 @@ public class GameHost {
 
 		Piece targetPiece = pieces.get(pieceIdx);
 		ArrayList<Point> moves = targetPiece.getValidMoves(gameBoard, playerType);
-		for (Move m : moves)
+		for (Point m : moves)
 		{
 			Piece target = m.getTargetPiece();
 			System.out.println("MOVE -- Name: " + target.getName() + "X: " + m.getX() + "Y: " + m.getY());
