@@ -329,13 +329,14 @@ public class GameHost {
 				System.out.println("VALID MOVE --" + "X: " + m.getX() + "Y: " + m.getY());
 			}
 
-			System.out.println("move: " + moveIdx);
+
 		}
 		while (moves.isEmpty());
 
 
 		// Pick Move from an nonempty moves arraylist
 		moveIdx = (int) (Math.random() * moves.size());
+		System.out.println("move IDX: " + moveIdx);
 		Point targetMove = moves.get(moveIdx);
 
 
