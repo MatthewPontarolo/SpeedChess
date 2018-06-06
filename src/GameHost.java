@@ -11,6 +11,7 @@ public class GameHost {
 
 	public static boolean endTurn = false;
 	public static boolean forfeit = false;
+	public static boolean gameEnded = false;
 	public static int timestamp;
 	public static TurnTimer timer = new TurnTimer();
 

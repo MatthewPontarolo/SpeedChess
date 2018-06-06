@@ -201,9 +201,12 @@ public class SpeedChess extends BorderPane {
 				Platform.runLater(new Runnable() {
 					@Override public void run() {
 						System.out.println("RUN AGAIN ---------------");
-						b.setText("");
-						Image im = new Image(SpeedChess.class.getResourceAsStream("BlankSlot.png"));
-						b.setGraphic(new ImageView(im));
+						if (GameHost.gameEnded != true)
+						{
+							b.setText("");
+							Image im = new Image(SpeedChess.class.getResourceAsStream("BlankSlot.png"));
+							b.setGraphic(new ImageView(im));
+						}
 					}
 				});
 			}
@@ -306,10 +309,10 @@ public class SpeedChess extends BorderPane {
 
 	public static void kingCheck() {
 		System.out.println("kings? " + GameHost.players[0].hasKing() + " " + GameHost.players[1].hasKing());
-		boolean gameEnded = false;
+		GameHost.gameEnded = false;
 		if (!GameHost.players[0].hasKing() && !GameHost.players[1].hasKing()) {
 			overlayLabel.setText("Tie game...");
-			gameEnded = true;
+			GameHost.gameEnded = true;
 		}
 		else if (!GameHost.players[0].hasKing()) {
 			if (playerPerspective == 0) {
@@ -320,7 +323,7 @@ public class SpeedChess extends BorderPane {
 				overlayLabel.setText("You have won!");
 				System.out.println("-------- YOU WON BITCH ---------");
 			}
-			gameEnded = true;
+			GameHost.gameEnded = true;
 
 		}
 		else if (!GameHost.players[1].hasKing()) {
@@ -334,10 +337,10 @@ public class SpeedChess extends BorderPane {
 				System.out.println("-------- YOU WON BITCH ---------");
 
 			}
-			gameEnded = true;
+			GameHost.gameEnded = true;
 		}
 
-		if (gameEnded) {
+		if (GameHost.gameEnded) {
 			overlayLabel.setFont(new Font("Lucida Grande", 20));
 
 			for (Button[] bt : buttons)
