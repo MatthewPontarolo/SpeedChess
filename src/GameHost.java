@@ -296,10 +296,11 @@ public class GameHost {
 		System.out.println("playerType: " + playerType);
 		ArrayList<Piece> pieces = player.getPieces();
 
+		int count = 0;
 		for (Piece p : pieces)
 		{
-			//System.out.println("Name: " + p.getName() + " X: " + p.getXPosition() + " Y: " + p.getYPosition());
-
+			System.out.println("VALID PIECES(" + count +  ") Name: " + p.getName() + " X: " + p.getXPosition() + " Y: " + p.getYPosition());
+			count++;
 		}
 		System.out.println("size: " + pieces.size());
 		int pieceIdx = (int) (Math.random() * pieces.size());
@@ -307,6 +308,7 @@ public class GameHost {
 		System.out.println("Idx CHOSEN: " + pieceIdx);
 
 		Piece targetPiece = pieces.get(pieceIdx);
+		System.out.println("PIECE CHOSEN: " + targetPiece.getName());
 		ArrayList<Point> moves = targetPiece.getValidMoves(gameBoard, playerType);
 		for (Point m : moves)
 		{

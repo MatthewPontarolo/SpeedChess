@@ -54,7 +54,20 @@ public class Player {
 		}
 	}
 
+	public void filterPieces()
+	{
+		for (Piece p : pieces)
+		{
+			if (p.getXPosition() == -1 || p.getYPosition() == -1)
+			{
+				int idx = pieces.IndexOf(p);
+				pieces.remove(idx);
+			}
+		}
+	}
+
 	public ArrayList<Piece> getPieces() {
+		filterPieces();
 		return pieces;
 	}
 
