@@ -291,6 +291,7 @@ public class GameHost {
 	public static Move randomMove()
 	{
 		ArrayList<Point> moves = new ArrayList<Point>();
+		Piece targetPiece;
 		int pieceIdx;
 		int moveIdx;
 		do
@@ -316,7 +317,7 @@ public class GameHost {
 			System.out.println("Idx CHOSEN: " + pieceIdx);
 
 			// get Piece
-			Piece targetPiece = pieces.get(pieceIdx);
+			targetPiece = pieces.get(pieceIdx);
 
 			System.out.println("PIECE CHOSEN: " + targetPiece.getName());
 
