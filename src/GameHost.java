@@ -298,7 +298,7 @@ public class GameHost {
 
 		for (Piece p : pieces)
 		{
-			System.out.println("Name: " + p.getName() + "X: " + p.getXPosition() + "Y: " + p.getYPosition());
+			System.out.println("Name: " + p.getName() + " X: " + p.getXPosition() + " Y: " + p.getYPosition());
 
 		}
 		System.out.println("size: " + pieces.size());
