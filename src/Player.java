@@ -96,7 +96,7 @@ public class Player {
 	}
 	public void removePiece(Piece p)
 	{
-		int idx = pieces.IndexOf(p);
+		int idx = pieces.indexOf(p);
 		pieces.remove(idx);
 	}
 
