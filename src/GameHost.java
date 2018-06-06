@@ -61,11 +61,14 @@ public class GameHost {
 	public static void checkIfReady() {
 		Move whiteMove = whitePlayer.getNextMove();
 		Move blackMove = blackPlayer.getNextMove();
-		if (whiteMove != null && blackMove != null) {
-			executeGameTurn();
-			SpeedChess.redrawBoard();
+		if (gameEnded == false)
+		{
+			if (whiteMove != null && blackMove != null) {
+				executeGameTurn();
+				SpeedChess.redrawBoard();
+			}
+			SpeedChess.kingCheck();
 		}
-		SpeedChess.kingCheck();
 	}
 
 	// Precondition: Timer runs out OR both players clicked "CONFIRM" on UI
