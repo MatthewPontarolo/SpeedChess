@@ -61,6 +61,7 @@ public class GameHost {
 	public static void checkIfReady() {
 		Move whiteMove = whitePlayer.getNextMove();
 		Move blackMove = blackPlayer.getNextMove();
+		System.out.println("CHECKING HEREEEEEEEEE");
 		if (gameEnded == false)
 		{
 			if (whiteMove != null && blackMove != null) {
