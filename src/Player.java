@@ -56,8 +56,9 @@ public class Player {
 
 	public void filterPieces()
 	{
-		for (Piece p : pieces)
+		for (int i = 0; i < pieces.size(); i++)
 		{
+			Piece p = pieces.get(i);
 			if (p.getXPosition() == -1 || p.getYPosition() == -1)
 			{
 				int idx = pieces.indexOf(p);
