@@ -313,9 +313,11 @@ public class SpeedChess extends BorderPane {
 		else if (!GameHost.players[0].hasKing()) {
 			if (playerPerspective == 0) {
 				overlayLabel.setText("You have been defeated...");
+				System.out.println("-------- KING HAS BEEN CAPTURED ---------");
 			}
 			else {
 				overlayLabel.setText("You have won!");
+				System.out.printlin("-------- YOU WON BITCH ---------");
 			}
 			gameEnded = true;
 
@@ -323,9 +325,12 @@ public class SpeedChess extends BorderPane {
 		else if (!GameHost.players[1].hasKing()) {
 			if (playerPerspective == 1) {
 				overlayLabel.setText("You have been defeated...");
+				System.out.println("-------- KING HAS BEEN CAPTURED ---------");
+
 			}
 			else {
 				overlayLabel.setText("You have won!");
+				System.out.printlin("-------- YOU WON BITCH ---------");
 
 			}
 			gameEnded = true;
