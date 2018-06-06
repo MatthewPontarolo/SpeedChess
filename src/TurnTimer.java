@@ -2,7 +2,7 @@ import javax.swing.*;
 import javafx.application.Platform;
 
 public class TurnTimer {
-    public static final int TIME_LIMIT = 10;
+    public static final int TIME_LIMIT = 5;
     String text;
     int timeCounter = TIME_LIMIT;
     Timer timer;
