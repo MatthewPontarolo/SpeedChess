@@ -62,6 +62,14 @@ public class Board {
 		}
 	}
 
+	public void removePiece(Player player, Piece p)
+	{
+		if (p.isAlive() == false)
+		{
+			p
+		}
+	}
+
 	public void pickUpPiece(Piece p) {
 		if (p.getXPosition() >= 0 && p.getXPosition() < 8 &&
 			p.getYPosition() >= 0 && p.getYPosition() < 8) {

@@ -94,6 +94,11 @@ public class Player {
 	{
 		return moveSelection;
 	}
+	public void removePiece(Piece p)
+	{
+		int idx = pieces.IndexOf(p);
+		pieces.remove(idx);
+	}
 
 
 	/**
