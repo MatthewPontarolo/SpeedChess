@@ -107,6 +107,7 @@ public class GameHost {
 				gameBoard.movePiece(whitePlayer, whiteTarget, whiteX, whiteY);
 				//Capture the black piece
 				blackTarget.capture();
+				gameBoard.removePiece(blackPlayer, blackTarget);
 				// end the turn so set it back to false
 				gameBoard.setGameTurn(false);
 				endTurn = false;
@@ -120,6 +121,7 @@ public class GameHost {
 				gameBoard.movePiece(blackPlayer, blackTarget, blackX, blackY);
 				//Capture the white piece
 				whiteTarget.capture();
+				gameBoard.removePiece(whitePlayer, whiteTarget);
 				// end the turn so set it back to false
 				gameBoard.setGameTurn(false);
 				endTurn = false;
@@ -143,11 +145,13 @@ public class GameHost {
 
 			//Attempt capturing a black piece if it isn't the moving piece
 			if (gameBoard.getPiece(whiteX, whiteY) != null && gameBoard.getPiece(whiteX, whiteY) != blackTarget) {
-				gameBoard.getPiece(whiteX, whiteY).capture();
+			  gameBoard.getPiece(whiteX, whiteY).capture();
+				gameBoard.removePiece(gameBoard.getPiece(whiteX, whiteY));
 			}
 			//Attempt capturing a white piece if it isn't the moving piece
 			if (gameBoard.getPiece(blackX, blackY) != null && gameBoard.getPiece(blackX, blackY) != whiteTarget) {
 				gameBoard.getPiece(blackX, blackY).capture();
+				gameBoard.removePiece(gameBoard.getPiece(blackX, blackY));
 			}
 
 			gameBoard.pickUpPiece(whiteTarget);

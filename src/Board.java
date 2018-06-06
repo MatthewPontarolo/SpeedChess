@@ -66,7 +66,7 @@ public class Board {
 	{
 		if (p.isAlive() == false)
 		{
-			p
+			player.removePiece(p);
 		}
 	}
 
