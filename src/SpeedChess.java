@@ -306,7 +306,10 @@ public class SpeedChess extends BorderPane {
 
 			// start timer
 			System.out.println("TIMER AT 306");
-			GameHost.startTimer();
+			if (GameHost.gameEnded == false)
+			{
+				GameHost.startTimer();
+			}
 		}
 	}
 
