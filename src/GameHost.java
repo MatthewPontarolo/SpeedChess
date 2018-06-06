@@ -270,7 +270,7 @@ public class GameHost {
 	}
 
 	public static void processMove(String m) {
-		System.out.println("MOVE MADE IS: " + m);
+		System.out.println("OTHER PLAYER'S MOVE: " + m);
 
 		String[] data = m.split("\\s+");
 
@@ -295,6 +295,12 @@ public class GameHost {
 		int playerType = player.getPlayerType();
 		System.out.println("playerType: " + playerType);
 		ArrayList<Piece> pieces = player.getPieces();
+
+		for (Piece p : pieces)
+		{
+			System.out.println("Name: " + p.getName() + "X: " + p.getXPosition() + "Y: " + p.getYPosition());
+
+		}
 		System.out.println("size: " + pieces.size());
 		int pieceIdx = (int) (Math.random() * pieces.size());
 
@@ -302,6 +308,11 @@ public class GameHost {
 
 		Piece targetPiece = pieces.get(pieceIdx);
 		ArrayList<Point> moves = targetPiece.getValidMoves(gameBoard, playerType);
+		for (Move m : moves)
+		{
+			Piece target = m.getTargetPiece();
+			System.out.println("MOVE -- Name: " + target.getName() + "X: " + m.getX() + "Y: " + m.getY());
+		}
 		int moveIdx = (int) (Math.random() * moves.size());
 
 		System.out.println("move: " + moveIdx);

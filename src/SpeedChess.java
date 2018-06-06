@@ -268,7 +268,7 @@ public class SpeedChess extends BorderPane {
 		System.out.println("Timer Stopped at:" + GameHost.getTimeStamp());
 		Move m = GameHost.players[playerPerspective].getNextMove();
 
-		System.out.println("move? " + m.packageToString());
+		System.out.println("MY MOVE: " + m.packageToString());
 		if (m != null) {
 			Timestamp timestamp = new Timestamp(System.currentTimeMillis());
 			m.setTime(timestamp.getTime());
