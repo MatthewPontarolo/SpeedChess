@@ -74,6 +74,7 @@ public class SpeedChess extends BorderPane {
 				setupBoard();
 				redrawBoard();
 				// NOTE: put the timer here to run when game starts (??)
+				System.out.println("TIMER AT 77");
 				GameHost.startTimer();
 				northBox.getChildren().remove(1);
 				northBox.getChildren().remove(1);
@@ -86,6 +87,7 @@ public class SpeedChess extends BorderPane {
 				setupBoard();
 				redrawBoard();
 				// NOTE: put the timer here to run when game starts (??)
+				System.out.println("TIMER AT 90");
 				GameHost.startTimer();
 				northBox.getChildren().remove(1);
 				northBox.getChildren().remove(1);
@@ -303,6 +305,7 @@ public class SpeedChess extends BorderPane {
 			readyToSend = false;
 
 			// start timer
+			System.out.println("TIMER AT 306");
 			GameHost.startTimer();
 		}
 	}
