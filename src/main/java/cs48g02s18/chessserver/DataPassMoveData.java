@@ -1,30 +1,30 @@
 package cs48g02s18.chessserver;
 
 public class DataPassMoveData extends DataPass {
-    private Move move;
+    private MoveData moveData;
 
-    public DataPassMoveData(String username, String password, Move move) {
+    public DataPassMoveData(String username, String password, MoveData moveData) {
         super(username, password);
-        this.move = move;
+        this.moveData = moveData;
     }
 
     public DataPassMoveData() {
         super();
-        this.move = null;
+        this.moveData = null;
     }
 
-    public Move getMove() {
-        return move;
+    public MoveData getMoveData() {
+        return moveData;
     }
 
-    public void setMove(Move move) {
-        this.move = move;
+    public void setMoveData(MoveData moveData) {
+        this.moveData = moveData;
     }
 
     @Override
     public String toString() {
         return "DataPassMoveData{" +
-                "move=" + move +
+                "moveData=" + moveData +
                 '}';
     }
 }

@@ -46,7 +46,7 @@ public class ClientConnector {
         setupClientConnector();
     }
 
-    public Move getOpponentsLastMove(){
+    public MoveData getOpponentsLastMove(){
         return lastBoard.getOpponentLastMove();
     }
 
@@ -81,7 +81,7 @@ public class ClientConnector {
 
 
 
-    public void submitMove(Move move){
+    public void submitMove(MoveData move){
         DataPassMoveData data = new DataPassMoveData(username, password, move);
         this.communicate("/submitMove", "moveData", data);
     }

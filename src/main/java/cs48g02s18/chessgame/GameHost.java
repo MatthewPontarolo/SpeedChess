@@ -2,22 +2,21 @@ package cs48g02s18.chessgame;
 
 public class GameHost {
 
-	public static Player whitePlayer = new Player(1);
-	public static Player blackPlayer = new Player(0);
+	public Player whitePlayer;
+	public Player blackPlayer;
 
-	public static Board gameBoard = new Board(whitePlayer, blackPlayer);
+	public Board gameBoard;
 
 
 	public GameHost()
 	{
-
-	}
-	public static void initialize() {
-
+		whitePlayer = new  Player(1);
+		blackPlayer = new Player(0);
+		gameBoard =	new Board(whitePlayer, blackPlayer);
 	}
 
 	//Decides if it's time to go ahead and run executeGameTurn()
-	public static void checkIfReady()
+	public boolean checkIfReady()
 	{
 		Move whiteMove = whitePlayer.getNextMove();
 		Move blackMove = blackPlayer.getNextMove();
@@ -25,7 +24,11 @@ public class GameHost {
 		System.out.println("bM: " + blackMove);
 		if (whiteMove != null && blackMove != null)
 		{
-			executeGameTurn();
+			this.executeGameTurn();
+			return true;
+		}
+		else {
+			return false;
 		}
 	}
 
@@ -35,11 +38,11 @@ public class GameHost {
 	// PostCondition: GameHost acts as a referee and determines if moves can be executed.
 		// calls board::movePiece on the valid pieces that can be moved
 		// TODO: deal with capture situations
-	public static void executeGameTurn()
+	public void executeGameTurn()
 	{
 		// get both player's moves
-		Move whiteMove = whitePlayer.getNextMove();
-		Move blackMove = blackPlayer.getNextMove();
+		Move whiteMove = this.whitePlayer.getNextMove();
+		Move blackMove = this.blackPlayer.getNextMove();
 
 		// get both player's target pieces that are moving
 		Piece whiteTarget = whiteMove.getTargetPiece();
@@ -92,7 +95,7 @@ public class GameHost {
 		// not same spot move conflict, sort out scenarios
 		else
 		{
-			// Move Conflict involving Pawns being handled
+			// MoveData Conflict involving Pawns being handled
 			if (checkPawns(whiteTarget, whiteMove, blackTarget, blackMove))
 			{
 				return;
@@ -109,14 +112,14 @@ public class GameHost {
 			{
 				gameBoard.getPiece(whiteX, whiteY).capture();
 			}
-			//Move the white piece
+			//MoveData the white piece
 			gameBoard.movePiece(whitePlayer, whiteTarget, whiteX, whiteY);
 
 			//Attempt capturing a white piece if it isn't the moving piece
 			if (gameBoard.getPiece(blackX, blackY) != null && gameBoard.getPiece(blackX, blackY) != whiteTarget) {
 				gameBoard.getPiece(blackX, blackY).capture();
 			}
-			//Move the black piece
+			//MoveData the black piece
 			gameBoard.movePiece(blackPlayer, blackTarget, blackX, blackY);
 
 			// end the turn so set it back to false
@@ -145,7 +148,7 @@ public class GameHost {
 	 * @return boolean true if this function handles conflict
 	 * @return boolean false if not a pawn conflict, lets general handle it
 	**/
-	public static boolean checkPawns(Piece whiteTarget, Move whiteMove, Piece blackTarget, Move blackMove)
+	public boolean checkPawns(Piece whiteTarget, Move whiteMove, Piece blackTarget, Move blackMove)
 	{
 		int whiteX = whiteMove.getXMove();
 		int whiteY = whiteMove.getYMove();
@@ -167,7 +170,7 @@ public class GameHost {
 				{
 					if (blackTarget.getName() == "Pawn")
 					{
-						System.out.println("Illegal Pawn Move.");
+						System.out.println("Illegal Pawn MoveData.");
 						System.out.println("Both players tried to capture each other's game piece. Both game turns forfeited!");
 						return true;
 					}
@@ -187,7 +190,7 @@ public class GameHost {
 				// piece white is trying to capture is moving, white cannot move
 				else if (blackMove.getInitX() == whiteX && blackMove.getInitY() == whiteY)
 				{
-					System.out.println("Illegal white Pawn Move.");
+					System.out.println("Illegal white Pawn MoveData.");
 					System.out.println("Game piece white player is trying to capture has moved away. Game Turn forfeited.");
 					gameBoard.setGameTurn(true);
 					gameBoard.movePiece(blackPlayer, blackTarget, blackX, blackY);
@@ -222,7 +225,7 @@ public class GameHost {
 					// if both pawns, cannot move
 					if (whiteTarget.getName() == "Pawn")
 					{
-						System.out.println("Illegal Pawn Move.");
+						System.out.println("Illegal Pawn MoveData.");
 						System.out.println("Both players tried to capture each other's game piece. Both game turns forfeited!");
 						return true;
 					}
@@ -243,7 +246,7 @@ public class GameHost {
 				// piece black is trying to capture is moving, black cannot move
 				else if (whiteMove.getInitX() == blackX && whiteMove.getInitY() == blackY)
 				{
-					System.out.println("Illegal black Pawn Move.");
+					System.out.println("Illegal black Pawn MoveData.");
 					System.out.println("Game piece black player is trying to capture has moved away. Game Turn forfeited.");
 					gameBoard.setGameTurn(true);
 					gameBoard.movePiece(whitePlayer, whiteTarget, whiteX, whiteY);

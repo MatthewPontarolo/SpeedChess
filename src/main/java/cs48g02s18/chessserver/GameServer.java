@@ -2,6 +2,7 @@ package cs48g02s18.chessserver;
 
 import java.io.Serializable;
 import java.util.HashMap;
+import java.util.Timer;
 
 /*** ChessGameSever.java
    subclasses for all the GAME data
@@ -18,10 +19,12 @@ ChessClientServerInterface
 class GameServer implements Serializable {
     private HashMap<String, ServerPlayer> usersByUsername;
     private HashMap<String, GameInstance> gameLobby;
+    private Timer timer;
 
     public GameServer() {
         this.usersByUsername = new HashMap<>();
         this.gameLobby = new HashMap<>();
+        this.timer = new Timer("SpeedChess Timer");
     }
 
     public String getLobby() {
@@ -35,7 +38,7 @@ class GameServer implements Serializable {
     }
 
     public void createGame(String name, ServerPlayer serverPlayer){
-        GameInstance newGame = new GameInstance(serverPlayer);
+        GameInstance newGame = new GameInstance(serverPlayer, timer);
         serverPlayer.setCurrentGame(newGame);
         gameLobby.put(name, newGame);
     }
@@ -57,7 +60,12 @@ class GameServer implements Serializable {
                 joinGame(((DataPassJoinGame) request).getGameName(), serverPlayer);
             }
             else if (request instanceof DataPassMoveData) {
-                serverPlayer.setNextMove(((DataPassMoveData) request).getMove());
+                if (serverPlayer.setNextMoveData(((DataPassMoveData) request).getMoveData())){
+                    return "move submit success";
+                }
+                else {
+                    return "move submit failure";
+                }
             }
         }
 

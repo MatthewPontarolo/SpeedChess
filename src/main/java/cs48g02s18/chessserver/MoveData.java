@@ -6,16 +6,16 @@ import cs48g02s18.chessgame.Piece;
 import java.awt.Point;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class Move {
+public class MoveData {
     private Point startPosition;
     private Point endPosition;
 
-    public Move(Point startPosition, Point endPosition) {
+    public MoveData(Point startPosition, Point endPosition) {
         this.startPosition = startPosition;
         this.endPosition = endPosition;
     }
 
-    public Move(Piece pieceToMove, Point endPosition) {
+    public MoveData(Piece pieceToMove, Point endPosition) {
         this.startPosition = new Point(pieceToMove.getXPosition(), pieceToMove.getYPosition());
         this.endPosition = endPosition;
     }
