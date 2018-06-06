@@ -311,7 +311,7 @@ public class GameHost {
 		for (Point m : moves)
 		{
 			Piece target = gameBoard.getPiece((int) m.getX(), (int) m.getY());
-			System.out.println("MOVE -- Name: " + target.getName() + "X: " + m.getX() + "Y: " + m.getY());
+			//System.out.println("MOVE -- Name: " + target.getName() + "X: " + m.getX() + "Y: " + m.getY());
 		}
 		int moveIdx = (int) (Math.random() * moves.size());
 
