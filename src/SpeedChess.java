@@ -368,6 +368,7 @@ public class SpeedChess extends BorderPane {
 
 		if (GameHost.gameEnded) {
 			overlayLabel.setFont(new Font("Lucida Grande", 20));
+			redrawBoard();
 
 			for (Button[] bt : buttons)
 			{
