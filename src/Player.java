@@ -60,7 +60,7 @@ public class Player {
 		{
 			if (p.getXPosition() == -1 || p.getYPosition() == -1)
 			{
-				int idx = pieces.IndexOf(p);
+				int idx = pieces.indexOf(p);
 				pieces.remove(idx);
 			}
 		}
