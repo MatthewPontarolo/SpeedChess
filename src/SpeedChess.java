@@ -200,6 +200,7 @@ public class SpeedChess extends BorderPane {
 			for (Button b : bt) {
 				Platform.runLater(new Runnable() {
 					@Override public void run() {
+						System.out.println("RUN AGAIN ---------------");
 						b.setText("");
 						Image im = new Image(SpeedChess.class.getResourceAsStream("BlankSlot.png"));
 						b.setGraphic(new ImageView(im));
