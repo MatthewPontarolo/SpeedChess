@@ -26,7 +26,10 @@ public class TurnTimer {
 		Platform.runLater(new Runnable() {
 			@Override
 			public void run() {
-				SpeedChess.updateTimeView(timeCounter);
+        if (GameHost.gameEnded == false)
+        {
+          SpeedChess.updateTimeView(timeCounter);  
+        }
 			}
 		});
       }

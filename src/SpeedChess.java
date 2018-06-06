@@ -202,8 +202,7 @@ public class SpeedChess extends BorderPane {
 			for (Button b : bt) {
 				Platform.runLater(new Runnable() {
 					@Override public void run() {
-						System.out.println("RUN AGAIN ---------------");
-						if (GameHost.gameEnded != true)
+						if (GameHost.gameEnded == false)
 						{
 							b.setText("");
 							Image im = new Image(SpeedChess.class.getResourceAsStream("BlankSlot.png"));
@@ -340,15 +339,7 @@ public class SpeedChess extends BorderPane {
 		}
 		else if (!GameHost.players[1].hasKing()) {
 			if (playerPerspective == 1) {
-				try
-				{
-					overlayLabel.setText("You have been defeated...");
-
-				}
-				catch (Exception e)
-				{
-					
-				}
+				overlayLabel.setText("You have been defeated...");
 				System.out.println("-------- KING HAS BEEN CAPTURED ---------");
 
 			}
