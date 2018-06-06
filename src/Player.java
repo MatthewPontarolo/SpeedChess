@@ -110,7 +110,7 @@ public class Player {
 	public void removePiece(Piece p)
 	{
 		int idx = pieces.indexOf(p);
-		System.out.println("idx: " + idx);
+		System.out.println("Remove idx: " + idx);
 		pieces.remove(idx);
 	}
 
