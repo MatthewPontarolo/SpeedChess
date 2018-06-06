@@ -44,6 +44,34 @@ public class GameHost {
 		Move whiteMove = this.whitePlayer.getNextMove();
 		Move blackMove = this.blackPlayer.getNextMove();
 
+		//in case timer ran out and not all players submitted
+		if (blackMove == null || whiteMove == null) {
+			Move onlyMove = null;
+			Player onlyPlayer = null;
+
+
+			if (blackMove != null){
+				onlyPlayer = blackPlayer;
+				onlyMove = blackMove;
+			}
+			if (whiteMove != null){
+				onlyPlayer = whitePlayer;
+				onlyMove = whiteMove;
+			}
+
+			if (onlyMove != null) ;
+			{
+				Piece target = onlyMove.getTargetPiece();
+				gameBoard.setGameTurn(true);
+				gameBoard.pickUpPiece(onlyMove.getTargetPiece());
+				gameBoard.movePiece(onlyPlayer, onlyMove.getTargetPiece(), onlyMove.getXMove(), onlyMove.getYMove());
+				gameBoard.setGameTurn(false);
+
+			}
+
+			return;
+		}
+
 		// get both player's target pieces that are moving
 		Piece whiteTarget = whiteMove.getTargetPiece();
 		Piece blackTarget = blackMove.getTargetPiece();
@@ -62,7 +90,7 @@ public class GameHost {
 		// check if same spot move conflict
 		if (whiteX == blackX && whiteY == blackY) {
 			// if white is faster than black
-			if (whiteMove.getTime() < blackMove.getTime())
+			if (whiteMove.wasFirst())
 			{
 				gameBoard.setGameTurn(true);
 				gameBoard.movePiece(whitePlayer, whiteTarget, whiteX, whiteY);
@@ -73,7 +101,7 @@ public class GameHost {
 				return;
 			}
 			// if black is faster than white
-			else if (whiteMove.getTime() > blackMove.getTime())
+			else if (blackMove.wasFirst())
 			{
 				gameBoard.setGameTurn(true);
 				gameBoard.movePiece(blackPlayer, blackTarget, blackX, blackY);

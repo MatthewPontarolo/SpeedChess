@@ -42,6 +42,13 @@ public class GameInstance {
             this.turnNumber++;
         }
         else {
+            if (blackPlayer.getNextMove() != null) {
+                blackPlayer.getNextMove().setSubmittedFirst(true);
+            }
+            else if (whitePlayer.getNextMove() != null) {
+                whitePlayer.getNextMove().setSubmittedFirst(true);
+            }
+
             GameInstance g = this;
             int turn = turnNumber;
             TimerTask task = new TimerTask() {

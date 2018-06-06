@@ -5,12 +5,14 @@ public class Move
   private int xPosition;
   private int yPosition;
   private Piece target;
+  private boolean submittedFirst;
 
   public Move(Piece p, int x, int y)
   {
     xPosition = x;
     yPosition = y;
     target = p;
+    submittedFirst = false;
   }
 
   public Piece getTargetPiece()
@@ -37,4 +39,12 @@ public class Move
   {
     return target.getYPosition();
   }
+
+  public void setSubmittedFirst(boolean submittedFirst) {
+    this.submittedFirst = submittedFirst;
+  }
+
+  public boolean wasFirst(){
+    return this.submittedFirst;
+  };
 }

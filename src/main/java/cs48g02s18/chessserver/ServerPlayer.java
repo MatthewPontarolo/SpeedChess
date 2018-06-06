@@ -38,9 +38,10 @@ class ServerPlayer {
         Piece movePiece = gamePlayer.getPieceAt(moveData.getStartPosition().x, moveData.getStartPosition().y);
         if (movePiece == null) return false;
 
-        if (movePiece.getValidMoves(currentGame.getGameBoard(), gamePlayer.getPlayerType())
-                .contains(moveData.getEndPosition())){
+        if ( movePiece.getValidMoves(currentGame.getGameBoard(), gamePlayer.getPlayerType())
+                .contains(moveData.getEndPosition()) ) {
             gamePlayer.setNextMove(this.getNextMove());
+            currentGame.resolveTurn();
         }
 
         System.out.print(this.username + "submitted illegal move");
