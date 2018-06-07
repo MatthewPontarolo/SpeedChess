@@ -84,6 +84,7 @@ public class RequestController {
         ObjectMapper objectMapper = new ObjectMapper();
         try {
             moveData = objectMapper.readValue(moveDataString, DataPassMoveData.class);
+            System.out.print("move received: " + moveData);
             serverResponse = gameServer.takeRequest(moveData);
         }
         catch (IOException ex) {
