@@ -85,4 +85,14 @@ public class MoveData {
     public int getToY() {
         return toY;
     }
+
+    @Override
+    public String toString() {
+        return "MoveData{" +
+                "fromX=" + fromX +
+                ", fromY=" + fromY +
+                ", toX=" + toX +
+                ", toY=" + toY +
+                '}';
+    }
 }
