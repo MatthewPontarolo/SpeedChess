@@ -35,5 +35,11 @@ public class DataPassBoardState {
         this.opponentLastMove = opponentLastMove;
     }
 
-
+    @Override
+    public String toString() {
+        return "DataPassBoardState{" +
+                "boardData='" + boardData + '\'' +
+                ", opponentLastMove=" + opponentLastMove +
+                '}';
+    }
 }

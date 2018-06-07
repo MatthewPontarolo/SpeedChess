@@ -43,6 +43,7 @@ class ServerPlayer {
 
             gamePlayer.setNextMove(new Move(movePiece, moveData.getFromX(), moveData.getFromY()));
             currentGame.resolveTurn();
+            return true;
         }
         System.out.print("needed" + movePiece.getValidMoves(currentGame.getGameBoard(), gamePlayer.getPlayerType()) +
                 "\n" + "had: " + moveData.getEndPosition());
