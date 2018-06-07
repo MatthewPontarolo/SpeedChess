@@ -19,13 +19,6 @@ public class MoveData {
         this.toY = -1;
     }
 
-    public MoveData(Point startPosition, Point endPosition) {
-        this.fromX = startPosition.x;
-        this.fromY = startPosition.y;
-        this.toX = endPosition.x;
-        this.toY = endPosition.y;
-    }
-
     public MoveData(int a, int b, int c, int d){
         this.fromX = a;
         this.fromY = b;
@@ -39,6 +32,38 @@ public class MoveData {
         this.toY = pieceToMove.getYPosition();
         this.toX = endPosition.x;
         this.toY = endPosition.y;
+    }
+
+    public int getFromX() {
+        return fromX;
+    }
+
+    public int getFromY() {
+        return fromY;
+    }
+
+    public int getToX() {
+        return toX;
+    }
+
+    public int getToY() {
+        return toY;
+    }
+
+    public void setFromX(int fromX) {
+        this.fromX = fromX;
+    }
+
+    public void setFromY(int fromY) {
+        this.fromY = fromY;
+    }
+
+    public void setToX(int toX) {
+        this.toX = toX;
+    }
+
+    public void setToY(int toY) {
+        this.toY = toY;
     }
 
     public Point getStartPosition() {
@@ -58,4 +83,5 @@ public class MoveData {
         this.fromX = endPosition.x;
         this.fromY = endPosition.y;
     }
+
 }
