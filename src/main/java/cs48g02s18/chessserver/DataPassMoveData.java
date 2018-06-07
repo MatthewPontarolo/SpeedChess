@@ -5,38 +5,87 @@ import cs48g02s18.chessgame.Move;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class DataPassMoveData extends DataPass {
-    private MoveData move;
+    private int fromX;
+    private int fromY;
+    private int toX;
+    private int toY;
+
 
     public DataPassMoveData(String username, String password, MoveData move) {
         super(username, password);
-        this.move = move;
+        this.fromX = move.getFromX();
+        this.fromY = move.getFromY();
+        this.toX = move.getToX();
+        this.toY = move.getToY();
     }
 
     public DataPassMoveData(String username, String password, Move gameMove) {
         super(username, password);
-        MoveData moveData;
-        moveData = new MoveData(gameMove.getInitX(), gameMove.getInitY(),
-                gameMove.getXMove(), gameMove.getYMove());
-        this.move = moveData;
+        this.fromX = gameMove.getInitX();
+        this.fromY = gameMove.getInitY();
+        this.toY = gameMove.getXMove();
+        this.toY = gameMove.getYMove();
     }
 
     public DataPassMoveData() {
         super();
-        this.move = null;
+        this.fromX = -1;
+        this.fromY = -1;
+        this.toX = -1;
+        this.toY = -1;
     }
 
     public MoveData getMove() {
-        return move;
+        return new MoveData(fromX, fromY, toX, toY);
     }
 
     public void setMove(MoveData move) {
-        this.move = move;
+
+        this.fromX = move.getFromX();
+        this.fromY = move.getFromY();
+        this.toX = move.getToX();
+        this.toY = move.getToY();
+    }
+
+    public int getFromX() {
+        return fromX;
+    }
+
+    public int getFromY() {
+        return fromY;
+    }
+
+    public int getToX() {
+        return toX;
+    }
+
+    public int getToY() {
+        return toY;
+    }
+
+    public void setFromX(int fromX) {
+        this.fromX = fromX;
+    }
+
+    public void setFromY(int fromY) {
+        this.fromY = fromY;
+    }
+
+    public void setToX(int toX) {
+        this.toX = toX;
+    }
+
+    public void setToY(int toY) {
+        this.toY = toY;
     }
 
     @Override
     public String toString() {
         return "DataPassMoveData{" +
-                "move=" + move +
+                "fromX=" + fromX +
+                ", fromY=" + fromY +
+                ", toX=" + toX +
+                ", toY=" + toY +
                 '}';
     }
 }
