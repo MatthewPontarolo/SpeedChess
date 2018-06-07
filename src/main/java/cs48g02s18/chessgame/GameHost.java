@@ -128,7 +128,7 @@ public class GameHost {
 			// MoveData Conflict involving Pawns being handled
 			if (checkPawns(whiteTarget, whiteMove, blackTarget, blackMove))
 			{
-				System.out.print("pawn conflict");
+				System.out.print("pawn conflict!");
 				return;
 			}
 

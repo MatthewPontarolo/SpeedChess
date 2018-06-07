@@ -47,4 +47,14 @@ public class Move
   public boolean wasFirst(){
     return this.submittedFirst;
   };
+
+  @Override
+  public String toString() {
+    return "Move{" +
+            "xPosition=" + xPosition +
+            ", yPosition=" + yPosition +
+            ", target=" + target +
+            ", submittedFirst=" + submittedFirst +
+            '}';
+  }
 }

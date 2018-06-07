@@ -54,11 +54,8 @@ class ServerPlayer {
     public Move getNextMove(){
         if (nextMoveData == null) return null;
 
-        Point location = nextMoveData.getStartPosition();
-        Piece piece = gamePlayer.getPieceAt(location.x, location.y);
-
-        location = nextMoveData.getEndPosition();
-        Move move = new Move(piece, location.x, location.y);
+        Piece piece = gamePlayer.getPieceAt(nextMoveData.getFromX(), nextMoveData.getFromY());
+        Move move = new Move(piece, nextMoveData.getToX(), nextMoveData.getToY());
         return move;
     }
 
