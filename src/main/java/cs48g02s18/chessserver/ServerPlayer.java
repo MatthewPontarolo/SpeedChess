@@ -44,7 +44,8 @@ class ServerPlayer {
             gamePlayer.setNextMove(new Move(movePiece, moveData.getFromX(), moveData.getFromY()));
             currentGame.resolveTurn();
         }
-
+        System.out.print("needed" + movePiece.getValidMoves(currentGame.getGameBoard(), gamePlayer.getPlayerType()) +
+                "\n" + "had: " + moveData.getEndPosition());
         System.out.print(this.username + "submitted illegal move");
         return false;
     }
