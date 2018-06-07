@@ -35,7 +35,7 @@ class ServerPlayer {
     public boolean setNextMoveData(MoveData moveData){
         if (moveData == null) return false;
 
-        Piece movePiece = gamePlayer.getPieceAt(moveData.getStartPosition().x, moveData.getStartPosition().y);
+        Piece movePiece = gamePlayer.getPieceAt(moveData.getFromX(), moveData.getFromY());
         if (movePiece == null) return false;
 
         if ( movePiece.getValidMoves(currentGame.getGameBoard(), gamePlayer.getPlayerType())
