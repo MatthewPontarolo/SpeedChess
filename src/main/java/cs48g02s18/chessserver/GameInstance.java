@@ -15,7 +15,6 @@ public class GameInstance {
 
 
     public GameInstance(ServerPlayer hostServerPlayer, Timer timer) {
-        this.hostServerPlayer = hostServerPlayer;
         this.turnNumber = 0;
         this.timer = timer;
         turnLength = 15000; //15s turns
@@ -68,9 +67,11 @@ public class GameInstance {
     }
 
     public void timeUp(int turnNumber){
+        System.out.print("timeUp called " + this.turnNumber);
         if (turnNumber == this.turnNumber){
             this.turnNumber++;
             this.gameHost.executeGameTurn();
+            System.out.print("timeUp caused execution");
         }
 
     }

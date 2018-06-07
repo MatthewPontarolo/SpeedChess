@@ -61,5 +61,12 @@ public abstract class Piece {
 
 
 	@Override
-	public String toString() { return getName(); }
+	public String toString() {
+		return "Piece{" +
+				"Xposition=" + Xposition +
+				", Yposition=" + Yposition +
+				", status=" + status +
+				", player=" + player +
+				'}';
+	}
 }

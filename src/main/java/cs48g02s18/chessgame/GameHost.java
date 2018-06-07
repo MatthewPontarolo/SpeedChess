@@ -133,6 +133,8 @@ public class GameHost {
 			}
 
 			// PASSES CONFLICT TESTS
+			System.out.print("moving pieces");
+
 			gameBoard.setGameTurn(true);
 
 			gameBoard.pickUpPiece(whiteTarget);
