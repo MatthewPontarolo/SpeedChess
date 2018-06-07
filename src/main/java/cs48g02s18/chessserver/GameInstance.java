@@ -73,6 +73,8 @@ public class GameInstance {
     }
 
     public Board getGameBoard() {
-        return gameHost.gameBoard;
+        if (gameHost != null)
+            return gameHost.gameBoard;
+        else return null;
     }
 }
