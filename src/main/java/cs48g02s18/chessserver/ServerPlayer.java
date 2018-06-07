@@ -41,7 +41,7 @@ class ServerPlayer {
         if ( movePiece.getValidMoves(this.currentGame.getGameBoard(), this.gamePlayer.getPlayerType())
                 .contains(moveData.getEndPosition()) ) {
             this.nextMoveData = moveData;
-            this.gamePlayer.setNextMove(new Move(movePiece, moveData.getFromX(), moveData.getFromY()));
+            this.gamePlayer.setNextMove(new Move(movePiece, moveData.getToX(), moveData.getToY()));
             this.currentGame.resolveTurn();
             return true;
         }
