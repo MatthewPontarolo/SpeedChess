@@ -21,6 +21,7 @@ public class GameInstance {
         turnLength = 15000; //15s turns
         this.hostServerPlayer = hostServerPlayer;
         this.guestServerPlayer = hostServerPlayer;
+        this.setUpBoard();
     }
 
     public void addPlayer(ServerPlayer guestServerPlayer){
