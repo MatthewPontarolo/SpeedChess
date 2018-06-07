@@ -29,7 +29,7 @@ public class MoveData {
     public MoveData(Piece pieceToMove, Point endPosition) {
         this.toX = pieceToMove.getXPosition();
 
-        this.toY = pieceToMove.getYPosition());
+        this.toY = pieceToMove.getYPosition();
         this.toX = endPosition.x;
         this.toY = endPosition.y;
     }
