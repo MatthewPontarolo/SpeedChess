@@ -105,12 +105,7 @@ public class Player {
 	**/
 	public void movePiece(Piece p, int x, int y)
 	{
-		int x_i = p.getXPosition();
-		int y_i = p.getYPosition();
-		// find in pieces array the Piece at x_i and y_i
-		int target_idx = this.getPieceIdx(x_i, y_i);
-		// move Piece in pieces
-		this.pieces.get(target_idx).move(x, y);
+		p.move(x,y);
 	}
 
 

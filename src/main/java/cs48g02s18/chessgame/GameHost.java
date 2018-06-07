@@ -64,7 +64,8 @@ public class GameHost {
 				Piece target = onlyMove.getTargetPiece();
 				gameBoard.setGameTurn(true);
 				gameBoard.pickUpPiece(onlyMove.getTargetPiece());
-				gameBoard.movePiece(onlyPlayer, onlyMove.getTargetPiece(), onlyMove.getXMove(), onlyMove.getYMove());
+				target.move(onlyMove.getXMove(),onlyMove.getYMove());
+				gameBoard.addPiece(target);
 				gameBoard.setGameTurn(false);
 
 			}
