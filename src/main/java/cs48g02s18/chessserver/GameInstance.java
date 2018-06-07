@@ -19,12 +19,12 @@ public class GameInstance {
         this.turnNumber = 0;
         this.timer = timer;
         turnLength = 15000; //15s turns
-        this.setUpBoard();
-        hostServerPlayer.setGamePlayer(gameHost.whitePlayer);
+        this.hostServerPlayer = hostServerPlayer;
+        this.guestServerPlayer = hostServerPlayer;
     }
 
     public void addPlayer(ServerPlayer guestServerPlayer){
-        if (this.guestServerPlayer == null){
+        if (this.guestServerPlayer == this.hostServerPlayer){
             this.guestServerPlayer = guestServerPlayer;
             this.setUpBoard();
         }
@@ -33,8 +33,8 @@ public class GameInstance {
 
     private void setUpBoard(){
         this.gameHost = new GameHost();
-        this.hostServerPlayer.setGamePlayer(gameHost.whitePlayer);
         this.guestServerPlayer.setGamePlayer(gameHost.blackPlayer);
+        this.hostServerPlayer.setGamePlayer(gameHost.whitePlayer);
     }
 
     public void resolveTurn() {
