@@ -9,8 +9,6 @@ public class GameInstance {
    private ServerPlayer hostServerPlayer; //future change to more generalized form (doesn't need to be host/guest
     private ServerPlayer guestServerPlayer;             //eg if we wanted to have a game queue
     private GameHost gameHost;
-    private Player whitePlayer;
-    private Player blackPlayer;
     private int turnNumber;
     private Timer timer;
     long turnLength;
@@ -22,6 +20,7 @@ public class GameInstance {
         this.timer = timer;
         turnLength = 15000; //15s turns
         this.setUpBoard();
+        hostServerPlayer.setGamePlayer(gameHost.whitePlayer);
     }
 
     public void addPlayer(ServerPlayer guestServerPlayer){
@@ -34,8 +33,8 @@ public class GameInstance {
 
     private void setUpBoard(){
         this.gameHost = new GameHost();
-        this.whitePlayer = this.gameHost.whitePlayer;
-        this.blackPlayer = this.gameHost.blackPlayer;
+        this.hostServerPlayer.setGamePlayer(gameHost.whitePlayer);
+        this.guestServerPlayer.setGamePlayer(gameHost.blackPlayer);
     }
 
     public void resolveTurn() {
@@ -43,11 +42,11 @@ public class GameInstance {
             this.turnNumber++;
         }
         else {
-            if (blackPlayer.getNextMove() != null) {
-                blackPlayer.getNextMove().setSubmittedFirst(true);
+            if (gameHost.blackPlayer.getNextMove() != null) {
+                gameHost.blackPlayer.getNextMove().setSubmittedFirst(true);
             }
-            else if (whitePlayer.getNextMove() != null) {
-                whitePlayer.getNextMove().setSubmittedFirst(true);
+            else if (gameHost.whitePlayer.getNextMove() != null) {
+                gameHost.whitePlayer.getNextMove().setSubmittedFirst(true);
             }
 
             GameInstance g = this;
