@@ -60,7 +60,9 @@ class GameServer implements Serializable {
                 joinGame(((DataPassJoinGame) request).getGameName(), serverPlayer);
             }
             else if (request instanceof DataPassMoveData) {
-                if (serverPlayer.setNextMoveData(((DataPassMoveData) request).getMove())){
+                MoveData moveData = ((DataPassMoveData) request).getMove();
+                System.out.print("MoveData: " + moveData);
+                if (serverPlayer.setNextMoveData(moveData)){
                     return "move submit success";
                 }
                 else {

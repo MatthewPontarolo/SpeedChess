@@ -59,7 +59,9 @@ public class Player {
 	}
 
 	public Piece getPieceAt(int x, int y){
-		return this.getPieces().get(this.getPieceIdx(x, y));
+		int pieceID = this.getPieceIdx(x, y);
+		if (pieceID == -1) return null;
+		return this.getPieces().get(pieceID);
 	}
 
 	// get Piece in pieces arraylist at given spot on board
