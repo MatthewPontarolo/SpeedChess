@@ -54,7 +54,7 @@ class ServerPlayer {
     public Move getNextMove(){
         if (nextMoveData == null) return null;
 
-        Piece piece = gamePlayer.getPieceAt(nextMoveData.getFromX(), nextMoveData.getFromY());
+        Piece piece = currentGame.getGameBoard().getPiece(nextMoveData.getFromX(), nextMoveData.getFromY());
         Move move = new Move(piece, nextMoveData.getToX(), nextMoveData.getToY());
         return move;
     }
