@@ -12,6 +12,13 @@ public class MoveData {
     private int toX;
     private int toY;
 
+    public MoveData() {
+        this.fromX = -1;
+        this.fromY = -1;
+        this.toX = -1;
+        this.toY = -1;
+    }
+
     public MoveData(Point startPosition, Point endPosition) {
         this.fromX = startPosition.x;
         this.fromY = startPosition.y;
