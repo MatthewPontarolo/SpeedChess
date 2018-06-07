@@ -49,6 +49,8 @@ class ServerPlayer {
     }
 
     public Move getNextMove(){
+        if (nextMoveData == null) return null;
+
         Point location = nextMoveData.getStartPosition();
         Piece piece = gamePlayer.getPieceAt(location.x, location.y);
 
