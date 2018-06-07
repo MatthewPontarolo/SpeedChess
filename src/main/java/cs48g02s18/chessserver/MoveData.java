@@ -7,37 +7,48 @@ import java.awt.Point;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class MoveData {
-    private Point startPosition;
-    private Point endPosition;
+    private int fromX;
+    private int fromY;
+    private int toX;
+    private int toY;
 
     public MoveData(Point startPosition, Point endPosition) {
-        this.startPosition = startPosition;
-        this.endPosition = endPosition;
+        this.fromX = startPosition.x;
+        this.fromY = startPosition.y;
+        this.toX = endPosition.x;
+        this.toY = endPosition.y;
     }
 
     public MoveData(int a, int b, int c, int d){
-        this.startPosition = new Point(a,b);
-        this.endPosition = new Point(c,d);
+        this.fromX = a;
+        this.fromY = b;
+        this.toX = c;
+        this.toY = d;
     }
 
     public MoveData(Piece pieceToMove, Point endPosition) {
-        this.startPosition = new Point(pieceToMove.getXPosition(), pieceToMove.getYPosition());
-        this.endPosition = endPosition;
+        this.toX = pieceToMove.getXPosition();
+
+        this.toY = pieceToMove.getYPosition());
+        this.toX = endPosition.x;
+        this.toY = endPosition.y;
     }
 
     public Point getStartPosition() {
-        return startPosition;
+        return new Point(fromX, fromY);
     }
 
     public Point getEndPosition() {
-        return endPosition;
+        return new Point(toX, toY);
     }
 
     public void setStartPosition(Point startPosition) {
-        this.startPosition = startPosition;
+        this.fromX = startPosition.x;
+        this.fromY = startPosition.y;
     }
 
     public void setEndPosition(Point endPosition) {
-        this.endPosition = endPosition;
+        this.fromX = endPosition.x;
+        this.fromY = endPosition.y;
     }
 }
