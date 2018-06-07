@@ -25,7 +25,7 @@ public class DataPassMoveData extends DataPass {
         super(username, password);
         this.fromX = gameMove.getInitX();
         this.fromY = gameMove.getInitY();
-        this.toY = gameMove.getXMove();
+        this.toX = gameMove.getXMove();
         this.toY = gameMove.getYMove();
     }
 

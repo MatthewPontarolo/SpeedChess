@@ -24,6 +24,7 @@ public class GameHost {
 		System.out.println("bM: " + blackMove);
 		if (whiteMove != null && blackMove != null)
 		{
+			System.out.print("executing game turn");
 			this.executeGameTurn();
 			return true;
 		}
@@ -127,6 +128,7 @@ public class GameHost {
 			// MoveData Conflict involving Pawns being handled
 			if (checkPawns(whiteTarget, whiteMove, blackTarget, blackMove))
 			{
+				System.out.print("pawn conflict");
 				return;
 			}
 

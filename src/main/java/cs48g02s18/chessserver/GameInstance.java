@@ -41,6 +41,7 @@ public class GameInstance {
     public void resolveTurn() {
         if (gameHost.checkIfReady()){ //if it did a turn, it will return 1
             this.turnNumber++;
+            System.out.print("turn: " + this.turnNumber);
         }
         else {
             if (gameHost.blackPlayer.getNextMove() != null) {
@@ -62,6 +63,7 @@ public class GameInstance {
             };
 
             timer.schedule(task, this.turnLength);
+            System.out.print("timer scheduled");
         }
     }
 
