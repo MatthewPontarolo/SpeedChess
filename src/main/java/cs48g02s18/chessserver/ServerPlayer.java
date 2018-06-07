@@ -35,14 +35,14 @@ class ServerPlayer {
     public boolean setNextMoveData(MoveData moveData){
         if (moveData == null) return false;
 
-        Piece movePiece = currentGame.getGameBoard().getPiece(moveData.getFromX(), moveData.getFromY());
+        Piece movePiece = this.currentGame.getGameBoard().getPiece(moveData.getFromX(), moveData.getFromY());
         if (movePiece == null) return false;
 
-        if ( movePiece.getValidMoves(currentGame.getGameBoard(), gamePlayer.getPlayerType())
+        if ( movePiece.getValidMoves(this.currentGame.getGameBoard(), this.gamePlayer.getPlayerType())
                 .contains(moveData.getEndPosition()) ) {
             this.nextMoveData = moveData;
-            gamePlayer.setNextMove(new Move(movePiece, moveData.getFromX(), moveData.getFromY()));
-            currentGame.resolveTurn();
+            this.gamePlayer.setNextMove(new Move(movePiece, moveData.getFromX(), moveData.getFromY()));
+            this.currentGame.resolveTurn();
             return true;
         }
         System.out.print("needed" + movePiece.getValidMoves(currentGame.getGameBoard(), gamePlayer.getPlayerType()) +

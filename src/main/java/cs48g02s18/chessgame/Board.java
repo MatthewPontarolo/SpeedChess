@@ -105,10 +105,8 @@ public class Board {
 	public void movePiece(Player player, Piece p, int x, int y) {
 		if (validGameTurn == true)
 		{
-			// updates board's pieces
-			spots[x][y] = p;
-			// updates player's pieces
-			player.movePiece(p, x, y);
+			p.move(x,y);
+			this.addPiece(p);
 		}
 	}
 	/**

@@ -145,14 +145,14 @@ public class GameHost {
 			{
 				gameBoard.getPiece(whiteX, whiteY).capture();
 			}
-			//MoveData the white piece
+			//Move the white piece
 			gameBoard.movePiece(whitePlayer, whiteTarget, whiteX, whiteY);
 
 			//Attempt capturing a white piece if it isn't the moving piece
 			if (gameBoard.getPiece(blackX, blackY) != null && gameBoard.getPiece(blackX, blackY) != whiteTarget) {
 				gameBoard.getPiece(blackX, blackY).capture();
 			}
-			//MoveData the black piece
+			//Move the black piece
 			gameBoard.movePiece(blackPlayer, blackTarget, blackX, blackY);
 
 			// end the turn so set it back to false

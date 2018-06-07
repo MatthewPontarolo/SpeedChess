@@ -18,12 +18,14 @@ public class GameInstance {
         this.turnNumber = 0;
         this.timer = timer;
         turnLength = 15000; //15s turns
+        this.hostServerPlayer.setCurrentGame(this);
         this.hostServerPlayer = hostServerPlayer;
         this.guestServerPlayer = hostServerPlayer;
         this.setUpBoard();
     }
 
     public void addPlayer(ServerPlayer guestServerPlayer){
+        this.guestServerPlayer.setCurrentGame(this);
         if (this.guestServerPlayer == this.hostServerPlayer){
             this.guestServerPlayer = guestServerPlayer;
             this.setUpBoard();
