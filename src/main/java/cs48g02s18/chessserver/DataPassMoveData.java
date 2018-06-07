@@ -1,5 +1,6 @@
 package cs48g02s18.chessserver;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import cs48g02s18.chessgame.Move;
 
@@ -10,7 +11,7 @@ public class DataPassMoveData extends DataPass {
     private int toX;
     private int toY;
 
-
+    @JsonIgnore
     public DataPassMoveData(String username, String password, MoveData move) {
         super(username, password);
         this.fromX = move.getFromX();
@@ -19,6 +20,7 @@ public class DataPassMoveData extends DataPass {
         this.toY = move.getToY();
     }
 
+    @JsonIgnore
     public DataPassMoveData(String username, String password, Move gameMove) {
         super(username, password);
         this.fromX = gameMove.getInitX();
@@ -35,10 +37,12 @@ public class DataPassMoveData extends DataPass {
         this.toY = -1;
     }
 
+    @JsonIgnore
     public MoveData getMove() {
         return new MoveData(fromX, fromY, toX, toY);
     }
 
+    @JsonIgnore
     public void setMove(MoveData move) {
 
         this.fromX = move.getFromX();
