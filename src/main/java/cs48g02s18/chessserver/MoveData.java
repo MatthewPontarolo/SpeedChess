@@ -50,8 +50,8 @@ public class MoveData {
     }
 
     public void setEndPosition(Point endPosition) {
-        this.fromX = endPosition.x;
-        this.fromY = endPosition.y;
+        this.toX = endPosition.x;
+        this.toY = endPosition.y;
     }
 
     public void setFromX(int fromX) {
