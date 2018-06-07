@@ -92,13 +92,9 @@ public abstract class Piece {
 		setPosition(-1, -1);
 	}
 
-	/**
-	 * sets the piece to a new position
-	 */
 	public void move(int x, int y) {
 		this.setPosition(x, y);
 	}
-
 
 	@Override
 	public String toString() { return getName(); }

@@ -127,7 +127,7 @@ public class SpeedChess extends BorderPane {
 			for (Button b : bt) {
 				b.setText("");
 				//Later I can use the coords to determine if it should be a black or white tile
-				Image im = new Image(getClass().getResourceAsStream("/images/BlankSlot.png"));
+				Image im = new Image(getClass().getResourceAsStream("images/BlankSlot.png"));
 				b.setGraphic(new ImageView(im));
 			}
 		}
@@ -136,7 +136,7 @@ public class SpeedChess extends BorderPane {
 		for (Piece p : p1.getPieces()) {
 			if (p.isAlive()) {
 				Button b = buttons[p.getXPosition()][p.getYPosition()];
-				Image im = new Image(getClass().getResourceAsStream("/images/" + p.getName() + "WhitePiece.png"));
+				Image im = new Image(getClass().getResourceAsStream("images/" + p.getName() + "WhitePiece.png"));
 				b.setGraphic(new ImageView(im));
 			}
 		}
@@ -144,7 +144,7 @@ public class SpeedChess extends BorderPane {
 		for (Piece p : p2.getPieces()) {
 			if (p.isAlive()) {
 				Button b = buttons[p.getXPosition()][p.getYPosition()];
-				Image im = new Image(getClass().getResourceAsStream("/images/" + p.getName() + "BlackPiece.png"));
+				Image im = new Image(getClass().getResourceAsStream("images/" + p.getName() + "BlackPiece.png"));
 				b.setGraphic(new ImageView(im));
 			}
 		}
