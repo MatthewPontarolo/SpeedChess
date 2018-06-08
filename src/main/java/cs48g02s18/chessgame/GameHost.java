@@ -7,6 +7,8 @@ public class GameHost {
 
 	public static Board gameBoard = new Board(whitePlayer, blackPlayer);
 	public static boolean endTurn = false;
+	public static boolean forfeit = false;
+	public static boolean gameEnded = false;
 
 	/**
 	 * empty constructor
