@@ -71,8 +71,9 @@ public class SpeedChess extends BorderPane {
 			public void handle(ActionEvent event) {
 				//Main.tryToBeServer();
 				//Black
-				String IP = Server.initializeIP();
+				String IP = Server.getIP();
 				System.out.println("IP: " + IP);
+				// NOTE: Pop Up Window with IP that client can enter to connect
 				setupBoard();
 				redrawBoard();
 				GameHost.startTimer();
@@ -84,6 +85,8 @@ public class SpeedChess extends BorderPane {
 			public void handle(ActionEvent event) {
 				//Main.tryToBeClient();
 				playerPerspective = 1;//White
+				// NOTE: Pop up window requesting IP address of server be passed in.
+				// Store it in IP of client class with Client.setIP(String ip);
 				setupBoard();
 				redrawBoard();
 				GameHost.startTimer();

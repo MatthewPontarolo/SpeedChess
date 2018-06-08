@@ -23,10 +23,6 @@ public class Server {
 			while (!in.ready()) { }
 			String inputLine;
 			while (in.ready()) {
-				String host = InetAddress.getLocalHost().toString();
-  			String[] parse = host.split("/");
-				IP = parse[1];
-				System.out.println("IP: " + IP);
 				inputLine = in.readLine();
 				GameHost.processMove(inputLine);
 			}
@@ -47,13 +43,14 @@ public class Server {
 	public static Move getMoveToSend() {
 		return moveToSend;
 	}
-	public static String initializeIP()
+
+	public static String getIP()
 	{
 		try
 		{
 			String host = InetAddress.getLocalHost().toString();
 			String[] parse = host.split("/");
-			String IP = parse[1];
+			IP = parse[1];
 			System.out.println("IP: " + IP);
 		}
 		catch (Exception e)
