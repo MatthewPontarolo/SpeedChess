@@ -76,6 +76,12 @@ public class ClientConnector {
         else if (choice == 2) {
             this.joinGame(gameName);
         }
+        else {
+            String games;
+            games = restTemplate.getForObject(this.serverURL + "/getLobby", String.class);
+
+            JOptionPane.showMessageDialog(new JFrame(), games);
+        }
     }
 
     public void lockInMove(){
@@ -89,8 +95,8 @@ public class ClientConnector {
 
     public Board getNewBoard(){
         if (lastBoard == null) return new Board(new Player(1), new Player(0));
-
         return new Board(lastBoard.getBoardData());
+
     }
 
     private void communicate(String urlPostfix, String argName, DataPass data){

@@ -44,11 +44,10 @@ public class DataPassMoveData extends DataPass {
 
     @JsonIgnore
     public void setMove(MoveData move) {
-
-    this.fromX = move.getFromX();
-            this.fromY = move.getFromY();
-            this.toX = move.getToX();
-            this.toY = move.getToY();
+        this.fromX = move.getFromX();
+        this.fromY = move.getFromY();
+        this.toX = move.getToX();
+        this.toY = move.getToY();
     }
 
     public int getFromX() {
