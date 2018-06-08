@@ -133,6 +133,38 @@ public class GameHost {
 				endTurn = false;
 				return;
 			}
+			else if (whiteTime == blackTime)
+			{
+				int player = (int) (Math.random() * 2);
+				if (player == 0)
+				{
+					gameBoard.setGameTurn(true);
+					gameBoard.pickUpPiece(blackTarget);
+					gameBoard.movePiece(blackPlayer, blackTarget, blackX, blackY);
+					//Capture the white piece
+					gameBoard.removePiece(whitePlayer, whiteTarget);
+					whiteTarget.capture();
+					// end the turn so set it back to false
+					gameBoard.setGameTurn(false);
+					endTurn = false;
+					return;
+
+				}
+				else if (player == 1)
+				{
+					gameBoard.setGameTurn(true);
+					gameBoard.pickUpPiece(whiteTarget);
+					gameBoard.movePiece(whitePlayer, whiteTarget, whiteX, whiteY);
+					//Capture the black piece
+					gameBoard.removePiece(blackPlayer, blackTarget);
+
+					blackTarget.capture();
+					// end the turn so set it back to false
+					gameBoard.setGameTurn(false);
+					endTurn = false;
+					return;
+				}
+			}
 			// if both are equally fast, NOTE: TBD
 		}
 		// not same spot move conflict, sort out scenarios
