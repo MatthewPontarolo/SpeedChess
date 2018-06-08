@@ -23,6 +23,7 @@ public class Server {
 			String inputLine;
 			while (in.ready()) {
 				inputLine = in.readLine();
+				System.out.println("IP: " + InetAddress.getLocalHost());
 				GameHost.processMove(inputLine);
 			}
 			String parsed = moveToSend.packageToString();
