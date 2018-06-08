@@ -326,8 +326,6 @@ public class SpeedChess extends BorderPane {
 										  overlayLabel.setText("You have been defeated...");
 									  }
 								  });
-
-				System.out.println("-------- KING HAS BEEN CAPTURED ---------");
 			}
 			else {
 				Platform.runLater(new Runnable() {
@@ -336,7 +334,6 @@ public class SpeedChess extends BorderPane {
 						overlayLabel.setText("You have won!");
 					}
 				});
-				System.out.println("-------- YOU WON BITCH ---------");
 			}
 			GameHost.gameEnded = true;
 
@@ -349,8 +346,6 @@ public class SpeedChess extends BorderPane {
 						overlayLabel.setText("You have been defeated...");
 					}
 				});
-				System.out.println("-------- KING HAS BEEN CAPTURED ---------");
-
 			}
 			else {
 				Platform.runLater(new Runnable() {
@@ -359,8 +354,6 @@ public class SpeedChess extends BorderPane {
 						overlayLabel.setText("You have won!");
 					}
 				});
-				System.out.println("-------- YOU WON BITCH ---------");
-
 			}
 			GameHost.gameEnded = true;
 		}
