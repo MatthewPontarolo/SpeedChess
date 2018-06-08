@@ -15,6 +15,10 @@ public class Server {
 		int portNumber = 1058;
 
 		try (
+				String host = InetAddress.getLocalHost().toString();
+				String[] parse = host.split("/");
+				IP = parse[1];
+				System.out.println("IP: " + IP);
 				ServerSocket serverSocket = new ServerSocket(portNumber);
 				Socket clientSocket = serverSocket.accept();
 				PrintWriter out = new PrintWriter(clientSocket.getOutputStream(), true);
@@ -24,11 +28,6 @@ public class Server {
 			String inputLine;
 			while (in.ready()) {
 				inputLine = in.readLine();
-				String host = InetAddress.getLocalHost().toString();
-				String[] parse = host.split("/");
-				IP = parse[1];
-
-				System.out.println("IP: " + IP);
 				GameHost.processMove(inputLine);
 			}
 			String parsed = moveToSend.packageToString();
