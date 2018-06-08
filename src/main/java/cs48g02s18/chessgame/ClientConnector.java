@@ -172,6 +172,11 @@ public class ClientConnector {
         communicate("/createGame", "createData", data);
     }
 
+    public int secondsLeft(){
+        if (this.lastBoard == null) return -1;
+        return lastBoard.getTimeLeft();
+    }
+
     public void joinGame(String gameName){
         DataPassJoinGame data = new DataPassJoinGame(username, password, gameName);
         communicate("/joinGame", "joinData", data);

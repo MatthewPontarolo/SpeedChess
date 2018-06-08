@@ -8,17 +8,40 @@ public class DataPassBoardState {
     String boardData;
     Move opponentLastMove;
     int playerNumber;
+    int timeLeft;
 
 
     public DataPassBoardState() {
         this.boardData = null;
         opponentLastMove = null;
         playerNumber = -1;
+        this.timeLeft = 0;
+    }
+
+    public int getTimeLeft() {
+        return timeLeft;
+    }
+
+    public void setTimeLeft(int timeLeft) {
+        this.timeLeft = timeLeft;
     }
 
     public DataPassBoardState(String boardData) {
         this.boardData = boardData;
         this.opponentLastMove = null;
+    }
+
+    public DataPassBoardState(String boardData, int playerNumber) {
+        this.boardData = boardData;
+        this.opponentLastMove = null;
+        this.playerNumber = playerNumber;
+    }
+
+    public DataPassBoardState(String boardData, int playerNumber, int timeLeft) {
+        this.boardData = boardData;
+        this.opponentLastMove = null;
+        this.playerNumber = playerNumber;
+        this.timeLeft = timeLeft;
     }
 
     public String getBoardData() {
@@ -34,12 +57,6 @@ public class DataPassBoardState {
     }
 
     public void setPlayerNumber(int playerNumber) {
-        this.playerNumber = playerNumber;
-    }
-
-    public DataPassBoardState(String boardData, int playerNumber) {
-        this.boardData = boardData;
-        this.opponentLastMove = null;
         this.playerNumber = playerNumber;
     }
 

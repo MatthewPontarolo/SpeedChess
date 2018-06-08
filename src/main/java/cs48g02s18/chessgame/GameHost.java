@@ -33,13 +33,13 @@ public class GameHost {
 	public void startTimer()
 	{
 		forfeit = false;
-		timer.start();
+		//timer.start();
 	}
 
 	public void stopTimer()
 	{
-		timer.stop();
-		timestamp = timer.getTimeStamp();
+		//timer.stop();
+		//timestamp = timer.getTimeStamp();
 		endTurn = true;
 	}
 
@@ -361,9 +361,7 @@ public class GameHost {
 		Piece targetPiece;
 		int pieceIdx;
 		int moveIdx;
-		do
-		{
-
+		do {
 			Player player = null;
 			if (Main.scene.playerPerspective == 0)
 				player = blackPlayer;
