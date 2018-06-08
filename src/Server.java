@@ -8,17 +8,13 @@ public class Server {
 	private static Move moveToSend = null;
 	private static boolean isIt = false;
 	private static int counter = 10;
-	private static String IP;
+	private static String IP = "";
 
 	public static void setup() throws IOException {
 
 		int portNumber = 1058;
 
 		try (
-				String host = InetAddress.getLocalHost().toString();
-				String[] parse = host.split("/");
-				IP = parse[1];
-				System.out.println("IP: " + IP);
 				ServerSocket serverSocket = new ServerSocket(portNumber);
 				Socket clientSocket = serverSocket.accept();
 				PrintWriter out = new PrintWriter(clientSocket.getOutputStream(), true);
@@ -27,6 +23,10 @@ public class Server {
 			while (!in.ready()) { }
 			String inputLine;
 			while (in.ready()) {
+				String host = InetAddress.getLocalHost().toString();
+  			String[] parse = host.split("/");
+				IP = parse[1];
+				System.out.println("IP: " + IP);
 				inputLine = in.readLine();
 				GameHost.processMove(inputLine);
 			}
