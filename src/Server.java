@@ -8,6 +8,7 @@ public class Server {
 	private static Move moveToSend = null;
 	private static boolean isIt = false;
 	private static int counter = 10;
+	private static String IP;
 
 	public static void setup() throws IOException {
 
@@ -25,8 +26,9 @@ public class Server {
 				inputLine = in.readLine();
 				String host = InetAddress.getLocalHost().toString();
 				String[] parse = host.split("/");
+				IP = parse[1];
 
-				System.out.println("IP: " + parse[1]);
+				System.out.println("IP: " + IP);
 				GameHost.processMove(inputLine);
 			}
 			String parsed = moveToSend.packageToString();
