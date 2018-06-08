@@ -41,6 +41,7 @@ public class SpeedChess extends BorderPane {
 	public SpeedChess() {
 		GameHost gameHost = new GameHost();
 		gameHost.initialize();
+		gameHost.startTimer();
 		this.clientConnector = new ClientConnector();
 		clientConnector.setUpAndConnect();
 		clientConnector.updateBoardFromServer();
@@ -310,7 +311,7 @@ public class SpeedChess extends BorderPane {
 	}
 
 	public void updateTimeView(int c) {
-		if (players[0].hasKing() && GameHost.players[1].hasKing()) {
+		if (gameHost.blackPlayer.hasKing() && gameHost.whitePlayer.hasKing()) {
 			overlayLabel.setText("" + (c + 1));
 			overlayLabel.setFont(new Font("Lucida Grande", 16 + 12 * (9 - c)));
 			if (c < 4) {
