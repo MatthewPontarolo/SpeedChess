@@ -66,7 +66,6 @@ public class Move
           + yPosition + " "
           + time;
     }
-    }
 
     public void setSubmittedFirst(boolean submittedFirst) {
         this.submittedFirst = submittedFirst;
@@ -74,5 +73,5 @@ public class Move
 
     public boolean wasFirst(){
         return this.submittedFirst;
-    };
+    }
 }
