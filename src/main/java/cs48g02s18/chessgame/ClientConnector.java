@@ -136,7 +136,7 @@ public class ClientConnector {
         DataPass auth = new DataPass(username, password);
         String urlPostFix = "/getGameState";
         String url = this.serverURL + urlPostFix;
-        serverResponses.append("call to:" + urlPostFix);
+      //  serverResponses.append("call to:" + urlPostFix);
 
         String jsonString = new String();
         try {
@@ -152,7 +152,7 @@ public class ClientConnector {
         String argName = "userData";
         componentsBuilder.queryParam(argName, jsonString);
 
-        System.out.print(componentsBuilder.build().toUri() + " --- uri + \n");
+//        System.out.print(componentsBuilder.build().toUri() + " --- uri + \n");
 
         this.lastBoard = restTemplate.getForObject(componentsBuilder.build().toUri(), DataPassBoardState.class);
 
