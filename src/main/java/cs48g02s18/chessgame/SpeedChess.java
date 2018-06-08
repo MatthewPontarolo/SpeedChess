@@ -1,5 +1,6 @@
 package cs48g02s18.chessgame;
 
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.Button;
@@ -19,6 +20,8 @@ import javafx.geometry.Insets;
 import javax.security.auth.login.CredentialException;
 import java.util.ArrayList;
 import java.awt.Point;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class SpeedChess extends BorderPane {
 
@@ -31,6 +34,7 @@ public class SpeedChess extends BorderPane {
 	Point lastClickPosition;//todo using this make requests get sent coherently
 	public static BorderPane masterOverlay;
 	public static Label overlayLabel;
+	Timer boardUpdateScheduler;
 
 	public Move selectedMove;
 
@@ -41,6 +45,27 @@ public class SpeedChess extends BorderPane {
 		clientConnector.setUpAndConnect();
 		clientConnector.updateBoardFromServer();
 		playerPerspective = clientConnector.getPlayerNumber();
+
+		final ClientConnector connector = this.clientConnector;
+		final GameHost host = this.gameHost;
+		final SpeedChess thisGame = this;
+		boardUpdateScheduler = new Timer("speedchess board updater");
+		TimerTask timerTask = new TimerTask() {
+			@Override
+			public void run() {
+				Platform.runLater(new Runnable() {
+					@Override
+					public void run(){
+					connector.updateBoardFromServer();
+					host.gameBoard = connector.getNewBoard();
+					host.updatePlayersForUI();
+					thisGame.redrawBoard();
+					}
+				});
+			}
+		};
+		boardUpdateScheduler.schedule(timerTask, 500, 500);
+
 		//Setting the top as text for now
 		HBox northBox = new HBox(10);
 		setTop(northBox);
@@ -172,9 +197,6 @@ public class SpeedChess extends BorderPane {
 				b.setGraphic(new ImageView(im));
 			}
 		}
-		//Place pieces
-		gameHost.gameBoard = clientConnector.getNewBoard();
-		gameHost.updatePlayersForUI();
 		Player p1 = gameHost.whitePlayer;
 		for (Piece p : p1.getPieces()) {
 			if (p.isAlive()) {
