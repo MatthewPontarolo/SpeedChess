@@ -64,7 +64,7 @@ public class SpeedChess extends BorderPane {
 				});
 			}
 		};
-		boardUpdateScheduler.schedule(timerTask, 500, 500);
+		boardUpdateScheduler.schedule(timerTask, 1000, 1000);
 
 		//Setting the top as text for now
 		HBox northBox = new HBox(10);
@@ -111,6 +111,7 @@ public class SpeedChess extends BorderPane {
 									selectedMove = move;
 									selectedPiece = null;
 								} else {
+								    selectedPiece = null;
 									System.out.println("Invalid move!");
 								}
 							}
