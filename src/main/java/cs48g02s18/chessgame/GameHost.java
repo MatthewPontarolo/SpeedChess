@@ -361,9 +361,7 @@ public class GameHost {
 		Piece targetPiece;
 		int pieceIdx;
 		int moveIdx;
-		do
-		{
-
+		do {
 			Player player = null;
 			if (Main.scene.playerPerspective == 0)
 				player = blackPlayer;
