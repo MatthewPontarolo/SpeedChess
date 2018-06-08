@@ -1,5 +1,3 @@
-package cs48g02s18.chessgame;
-
 import java.util.ArrayList;
 import java.awt.Point;
 
@@ -13,6 +11,7 @@ public class Player {
 	private int bishops = 2;
 	private int queen = 1;
 	private int king = 1;
+	private Piece kingPiece;
 
 	private int playerType;
 	private Move moveSelection;
@@ -23,19 +22,6 @@ public class Player {
 	public Player(int playerType) {
 		setUp(playerType);
 		this.playerType = playerType;
-	}
-
-	public Player(int playerType, Board board) {
-		for (int x = 0; x < 8; x++){
-			for (int y = 0; y < 8; y++){
-				Piece piece = board.getPiece(x, y);
-				if (piece != null){
-					if (piece.getPlayer() == playerType){
-						this.pieces.add(piece);
-					}
-				}
-			}
-		}
 	}
 
 	public void setUp(int playerType) {
@@ -60,15 +46,34 @@ public class Player {
 		pieces.add(new Bishop(5, offset));
 
 		pieces.add(new Queen(3, offset));
-		pieces.add(new King(4, offset));
+		kingPiece = new King(4, offset);
+		pieces.add(kingPiece);
 
 		for (int i = 0; i < 16; i++) {
 			pieces.get(i).setPlayer(playerType);
 		}
 	}
 
+	public void filterPieces()
+	{
+		for (int i = 0; i < pieces.size(); i++)
+		{
+			Piece p = pieces.get(i);
+			if (p.getXPosition() == -1 || p.getYPosition() == -1)
+			{
+				int idx = pieces.indexOf(p);
+				pieces.remove(idx);
+			}
+		}
+	}
+
 	public ArrayList<Piece> getPieces() {
+		filterPieces();
 		return pieces;
+	}
+
+	public boolean hasKing() {
+		return kingPiece.isAlive();
 	}
 
 	// get Piece in pieces arraylist at given spot on board
@@ -102,6 +107,12 @@ public class Player {
 	public Move getNextMove()
 	{
 		return moveSelection;
+	}
+	public void removePiece(Piece p)
+	{
+		int idx = pieces.indexOf(p);
+		System.out.println("Remove idx: " + idx);
+		pieces.remove(idx);
 	}
 
 
