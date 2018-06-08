@@ -56,8 +56,8 @@ public class ClientConnector {
 
     public void setUpAndConnect(){
         String username = (String)JOptionPane.showInputDialog("username");
-        String password = (String)JOptionPane.showInputDialog("password");
-
+        //String password = (String)JOptionPane.showInputDialog("password");
+        String password = username;
         this.setLogin(username);
         this.setPass(password);
         this.registerAccount();
@@ -67,6 +67,12 @@ public class ClientConnector {
         do {
             choice = JOptionPane.showOptionDialog(new JFrame(), "Choose one:", "SpeedChess",
                     JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[1]);
+
+            if (choice == 1){
+                String games;
+                games = restTemplate.getForObject(this.serverURL + "/getLobby", String.class);
+                JOptionPane.showMessageDialog(new JFrame(), games);
+            }
         } while (choice == 1);
 
         String gameName = (String)JOptionPane.showInputDialog("gameName");
@@ -75,12 +81,6 @@ public class ClientConnector {
         }
         else if (choice == 2) {
             this.joinGame(gameName);
-        }
-        else {
-            String games;
-            games = restTemplate.getForObject(this.serverURL + "/getLobby", String.class);
-
-            JOptionPane.showMessageDialog(new JFrame(), games);
         }
     }
 

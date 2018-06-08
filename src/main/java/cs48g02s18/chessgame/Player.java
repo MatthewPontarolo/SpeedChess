@@ -27,7 +27,6 @@ public class Player {
 		this.playerType = playerType;
 	}
 	public Player(int playerType, Board b) {
-		setUp(playerType);
 		this.playerType = playerType;
 		board = b;
 		for (int x = 0; x < 8; x++){
