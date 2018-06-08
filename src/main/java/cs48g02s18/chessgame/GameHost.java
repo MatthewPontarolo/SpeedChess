@@ -33,13 +33,13 @@ public class GameHost {
 	public void startTimer()
 	{
 		forfeit = false;
-		timer.start();
+		//timer.start();
 	}
 
 	public void stopTimer()
 	{
-		timer.stop();
-		timestamp = timer.getTimeStamp();
+		//timer.stop();
+		//timestamp = timer.getTimeStamp();
 		endTurn = true;
 	}
 

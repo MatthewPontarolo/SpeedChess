@@ -41,6 +41,7 @@ public class SpeedChess extends BorderPane {
 	public SpeedChess() {
 		GameHost gameHost = new GameHost();
 		gameHost.initialize();
+		gameHost.startTimer();
 		this.clientConnector = new ClientConnector();
 		clientConnector.setUpAndConnect();
 		clientConnector.updateBoardFromServer();
@@ -167,8 +168,9 @@ public class SpeedChess extends BorderPane {
 
 		masterOverlay = new BorderPane();
 		masterOverlay.setMouseTransparent(true);
+		stack.getChildren().addAll(masterOverlay);
 
-		overlayLabel = new Label("");
+		overlayLabel = new Label("TEST");
 		overlayLabel.setFont(new Font("Lucida Grande", 18));
 		masterOverlay.setCenter(overlayLabel);
 
@@ -190,6 +192,8 @@ public class SpeedChess extends BorderPane {
 	}
 
 	public void redrawBoard() {
+		updateTimeView();
+
 		for (Button[] bt : buttons) {
 			for (Button b : bt) {
 				b.setText("");
@@ -307,6 +311,31 @@ public class SpeedChess extends BorderPane {
 				}
 			}
 			gameHost.stopTimer();
+		}
+	}
+
+	public void updateTimeView() {
+		int c = clientConnector.secondsLeft();
+
+		if (c == 0) {
+			overlayLabel.setText("");
+			return;
+		}
+
+		if (gameHost.blackPlayer.hasKing() && gameHost.whitePlayer.hasKing()) {
+			overlayLabel.setText("" + c);
+			int size;
+			if (c <= 9)
+				size = 16 + 12 * (9 - c);
+			else
+				size = 16;
+			overlayLabel.setFont(new Font("Lucida Grande", size));
+			if (c < 4) {
+				Color[] colors = new Color[] { Color.RED, Color.DARKORANGE, Color.ORANGE, Color.YELLOW };
+				overlayLabel.setTextFill(colors[c]);
+			} else {
+				overlayLabel.setTextFill(Color.BLACK);
+			}
 		}
 	}
 
