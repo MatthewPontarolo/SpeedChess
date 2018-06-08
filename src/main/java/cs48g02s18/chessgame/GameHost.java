@@ -2,16 +2,17 @@ package cs48g02s18.chessgame;
 
 public class GameHost {
 
-	public Player whitePlayer = new Player(1);
-	public Player blackPlayer = new Player(0);
+	public static Player whitePlayer = new Player(1);
+	public static Player blackPlayer = new Player(0);
 
-	public Board gameBoard = new Board(whitePlayer, blackPlayer);
+	public static Board gameBoard = new Board(whitePlayer, blackPlayer);
+
+	public static boolean endTurn = false;
 
 	/**
 	 * empty constructor
 	 */
-	public GameHost()
-	{
+	public GameHost() {
 
 	}
 
@@ -26,8 +27,7 @@ public class GameHost {
 	/**
 	 * Decides if it's time to go ahead and run executeGameTurn()
 	 */
-	public void checkIfReady()
-	{
+	public void checkIfReady() {
 		Move whiteMove = whitePlayer.getNextMove();
 		Move blackMove = blackPlayer.getNextMove();
 		System.out.println("wM: " + whiteMove);
@@ -52,8 +52,7 @@ public class GameHost {
 		/**
 		 * Calls board::movePiece on the valid pieces that can be moved
 		 */
-	public void executeGameTurn()
-	{
+	public void executeGameTurn() {
 		// get both player's moves
 		Move whiteMove = whitePlayer.getNextMove();
 		Move blackMove = blackPlayer.getNextMove();
@@ -72,14 +71,12 @@ public class GameHost {
 				onlyMove = whiteMove;
 			}
 
-			if (onlyMove != null) ;
-			{
+			if (onlyMove != null) ;{
 				Piece target = onlyMove.getTargetPiece();
 				gameBoard.setGameTurn(true);
-				gameBoard.pickUpPiece(onlyMove.getTargetPiece());
-				gameBoard.movePiece(onlyPlayer, onlyMove.getTargetPiece(), onlyMove.getXMove(), onlyMove.getYMove());
+				gameBoard.pickUpPiece(target);
+				gameBoard.movePiece(onlyPlayer, target, onlyMove.getXMove(), onlyMove.getYMove());
 				gameBoard.setGameTurn(false);
-
 			}
 
 			return;
