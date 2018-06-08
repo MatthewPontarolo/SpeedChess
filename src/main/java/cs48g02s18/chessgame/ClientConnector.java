@@ -29,7 +29,7 @@ public class ClientConnector {
         this.serverURL = serverURL;
         setupClientConnector();
     }
-    private void setupClientConnector(){
+    private void setupClientConnector() {
         this.restTemplate = new RestTemplate();
         serverResponses = new StringBuilder();
         setUpJsonMapper();
@@ -50,7 +50,7 @@ public class ClientConnector {
         this.gameHost = gameHost;
     }
 
-    public int getPlayerNumber(){
+    public int getPlayerNumber() {
         return lastBoard.getPlayerNumber();
     }
 
@@ -125,12 +125,8 @@ public class ClientConnector {
         this.communicate("/submitMove", "moveData", data);
     }
 
-    public int getPlayerNum(){
-        return lastBoard.getPlayerNumber();
-    }
 
-
-    public boolean updateBoardFromServer(){
+    public boolean updateBoardFromServer() {
         DataPass auth = new DataPass(username, password);
         String urlPostFix = "/getGameState";
         String url = this.serverURL + urlPostFix;
