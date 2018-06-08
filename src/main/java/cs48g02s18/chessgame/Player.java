@@ -1,3 +1,5 @@
+package cs48g02s18.chessgame;
+
 import java.util.ArrayList;
 import java.awt.Point;
 
@@ -121,8 +123,7 @@ public class Player {
 		now the UI makes direct calls to the pieces and it actually never updates the pieces
 		the player holds.
 	**/
-	public void movePiece(Piece p, int x, int y)
-	{
+	public void movePiece(Piece p, int x, int y) {
 		int x_i = p.getXPosition();
 		int y_i = p.getYPosition();
 		// find in pieces array the Piece at x_i and y_i
