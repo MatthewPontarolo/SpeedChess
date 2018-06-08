@@ -90,6 +90,9 @@ public class Player {
 	}
 
 	public boolean hasKing() {
+		for (Piece p : pieces)
+			if (p.getName() == "King")
+				kingPiece = p;
 		return kingPiece.isAlive();
 	}
 

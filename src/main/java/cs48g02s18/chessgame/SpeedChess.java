@@ -308,4 +308,5 @@ public class SpeedChess extends BorderPane {
 			gameHost.stopTimer();
 		}
 	}
+
 }
