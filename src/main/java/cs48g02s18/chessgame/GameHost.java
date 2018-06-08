@@ -2,16 +2,18 @@ package cs48g02s18.chessgame;
 
 public class GameHost {
 
-	public Player whitePlayer = new Player(1);
-	public Player blackPlayer = new Player(0);
-
+	public static Player whitePlayer = new Player(1);
+	public static Player blackPlayer = new Player(0);
 	public Board gameBoard = new Board(whitePlayer, blackPlayer);
+
+	public static boolean endTurn = false;
+	public static boolean forfeit = false;
+	public static boolean gameEnded = false;
 
 	/**
 	 * empty constructor
 	 */
-	public GameHost()
-	{
+	public GameHost() {
 
 	}
 
@@ -186,17 +188,14 @@ public class GameHost {
 		}
 	}
 
-
 	/**
 	 * Pawn Capture Scenario
 	 * if target is of type pawn, check if going diagonally to capture
 	 * if yes, check if piece will be there after turn is executed
 	 * determine if pawn move is legal
-	 * @return boolean true if this function handles conflict
-	 * @return boolean false if not a pawn conflict, lets general handle it
+	 * @return boolean true if this function handles conflict, false if not a pawn conflict, lets general handle it
 	**/
-	public boolean checkPawns(Piece whiteTarget, Move whiteMove, Piece blackTarget, Move blackMove)
-	{
+	public boolean checkPawns(Piece whiteTarget, Move whiteMove, Piece blackTarget, Move blackMove) {
 		int whiteX = whiteMove.getXMove();
 		int whiteY = whiteMove.getYMove();
 

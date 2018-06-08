@@ -111,13 +111,28 @@ public class Board {
 			player.movePiece(p, x, y);
 		}
 	}
+	public void removePiece(Player player, Piece p)
+	{
+		if (p.isAlive() == false)
+		{
+			player.removePiece(p);
+		}
+	}
+
 	/**
 	 * Set the position where the piece was originally to null
-	 * @param Piece piece chosen 
+	 * @param Piece piece chosen
 	 */
 	public void pickUpPiece(Piece p) {
-		spots[p.getXPosition()][p.getYPosition()] = null;
+		if (p.getXPosition() >= 0 && p.getXPosition() < 8 &&
+			p.getYPosition() >= 0 && p.getYPosition() < 8) {
+			spots[p.getXPosition()][p.getYPosition()] = null;
+		} else {
+			System.out.println("invalid pickup at " + p.getXPosition() + " " + p.getYPosition());
+		}
 	}
+
+
 	@Override
 	public String toString() {
 		StringBuilder boardString = new StringBuilder();

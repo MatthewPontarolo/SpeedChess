@@ -12,12 +12,11 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.layout.RowConstraints;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.HBox;
+import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.geometry.Pos;
 import javafx.geometry.Insets;
-
 import javax.security.auth.login.CredentialException;
-import javax.swing.*;
 import java.util.ArrayList;
 import java.awt.Point;
 
@@ -30,6 +29,8 @@ public class SpeedChess extends BorderPane {
 	ClientConnector clientConnector;
 	GameHost gameHost = new GameHost();
 	Point lastClickPosition;//todo using this make requests get sent coherently
+	public static BorderPane masterOverlay;
+	public static Label overlayLabel;
 
 	public SpeedChess() {
 		GameHost gameHost = new GameHost();
@@ -128,6 +129,34 @@ public class SpeedChess extends BorderPane {
 		setCenter(stack);
 		stack.getChildren().addAll(grid, overlay);
 
+		//Setting the bottom as text for now
+		HBox southBox = new HBox(10);
+		setBottom(southBox);
+		southBox.setPadding(new Insets(5, 5, 5, 5));
+		southBox.setAlignment(Pos.CENTER);
+		southBox.setStyle("-fx-background-color: #667788;");
+
+		masterOverlay = new BorderPane();
+		masterOverlay.setMouseTransparent(true);
+
+		overlayLabel = new Label("");
+		overlayLabel.setFont(new Font("Lucida Grande", 18));
+		masterOverlay.setCenter(overlayLabel);
+
+		Button confirmButton = new Button("Confirm");
+		confirmButton.setOnAction(new EventHandler<ActionEvent>() {
+			public void handle(ActionEvent event) {
+				overlayLabel.setFont(new Font("Lucida Grande", 18));
+				overlayLabel.setTextFill(Color.BLACK);
+				overlayLabel.setText("");
+				if (GameHost.endTurn == false) {
+					confirm();
+				}
+			}
+		});
+
+		southBox.getChildren().addAll(confirmButton);
+
 		redrawBoard();
 	}
 
@@ -186,6 +215,10 @@ public class SpeedChess extends BorderPane {
 				for (int j = 0; j < 8; j++)
 					highlights[i][j].setGraphic(null);
 		}
+	}
+
+	public void confirm() {
+
 	}
 
 }
