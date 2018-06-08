@@ -71,10 +71,11 @@ public class SpeedChess extends BorderPane {
 			public void handle(ActionEvent event) {
 				//Main.tryToBeServer();
 				//Black
+				String IP = Server.getIP();
+				System.out.println("IP: " + IP);
+				// NOTE: Pop Up Window with IP that client can enter to connect
 				setupBoard();
 				redrawBoard();
-				// NOTE: put the timer here to run when game starts (??)
-				System.out.println("TIMER AT 77");
 				GameHost.startTimer();
 				northBox.getChildren().remove(1);
 				northBox.getChildren().remove(1);
@@ -84,10 +85,10 @@ public class SpeedChess extends BorderPane {
 			public void handle(ActionEvent event) {
 				//Main.tryToBeClient();
 				playerPerspective = 1;//White
+				// NOTE: Pop up window requesting IP address of server be passed in.
+				// Store it in IP of client class with Client.setIP(String ip);
 				setupBoard();
 				redrawBoard();
-				// NOTE: put the timer here to run when game starts (??)
-				System.out.println("TIMER AT 90");
 				GameHost.startTimer();
 				northBox.getChildren().remove(1);
 				northBox.getChildren().remove(1);
@@ -325,8 +326,6 @@ public class SpeedChess extends BorderPane {
 										  overlayLabel.setText("You have been defeated...");
 									  }
 								  });
-
-				System.out.println("-------- KING HAS BEEN CAPTURED ---------");
 			}
 			else {
 				Platform.runLater(new Runnable() {
@@ -335,7 +334,6 @@ public class SpeedChess extends BorderPane {
 						overlayLabel.setText("You have won!");
 					}
 				});
-				System.out.println("-------- YOU WON BITCH ---------");
 			}
 			GameHost.gameEnded = true;
 
@@ -348,8 +346,6 @@ public class SpeedChess extends BorderPane {
 						overlayLabel.setText("You have been defeated...");
 					}
 				});
-				System.out.println("-------- KING HAS BEEN CAPTURED ---------");
-
 			}
 			else {
 				Platform.runLater(new Runnable() {
@@ -358,8 +354,6 @@ public class SpeedChess extends BorderPane {
 						overlayLabel.setText("You have won!");
 					}
 				});
-				System.out.println("-------- YOU WON BITCH ---------");
-
 			}
 			GameHost.gameEnded = true;
 		}
