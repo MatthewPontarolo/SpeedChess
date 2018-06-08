@@ -247,4 +247,66 @@ public class SpeedChess extends BorderPane {
 		redrawBoard();
 	}
 
+	public void kingCheck() {
+		GameHost.gameEnded = false;
+		if (!gameHost.blackPlayer.hasKing() && !gameHost.whitePlayer.hasKing()) {
+			Platform.runLater(new Runnable() {
+				@Override
+				public void run() {
+					overlayLabel.setText("Tie game...");
+				}
+			});
+			GameHost.gameEnded = true;
+		}
+		else if (!gameHost.blackPlayer.hasKing()) {
+			if (playerPerspective == 0) {
+				Platform.runLater(new Runnable() {
+					@Override
+					public void run() {
+						overlayLabel.setText("You have been defeated...");
+					}
+				});
+			}
+			else {
+				Platform.runLater(new Runnable() {
+					@Override
+					public void run() {
+						overlayLabel.setText("You have won!");
+					}
+				});
+			}
+			GameHost.gameEnded = true;
+		} else if (!gameHost.whitePlayer.hasKing()) {
+			if (playerPerspective == 1) {
+				Platform.runLater(new Runnable() {
+					@Override
+					public void run() {
+						overlayLabel.setText("You have been defeated...");
+					}
+				});
+			} else {
+				Platform.runLater(new Runnable() {
+					@Override
+					public void run() {
+						overlayLabel.setText("You have won!");
+					}
+				});
+
+			}
+			GameHost.gameEnded = true;
+		}
+
+		if (GameHost.gameEnded) {
+			overlayLabel.setFont(new Font("Lucida Grande", 20));
+			redrawBoard();
+
+			for (Button[] bt : buttons) {
+				for (Button b : bt) {
+					b.setDisable(true);
+				}
+			}
+			GameHost.stopTimer();
+		}
+	}
+
 }

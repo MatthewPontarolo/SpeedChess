@@ -31,6 +31,8 @@ import javafx.geometry.Insets;
 public class Main extends Application {
 	public static Stage mainStage;
 
+	public static SpeedChess scene;
+
 	/**
 	 * Launches the application
 	 */
@@ -45,7 +47,7 @@ public class Main extends Application {
 	public void start(Stage primaryStage) {
 		mainStage = primaryStage;
 		primaryStage.setTitle("Speed Chess");
-		SpeedChess scene = new SpeedChess();
+		scene = new SpeedChess();
 		primaryStage.setScene(new Scene(scene, 600, 600));
 		primaryStage.show();
 	}
