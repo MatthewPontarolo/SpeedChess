@@ -18,14 +18,14 @@ import java.util.HashMap;
 
 @SpringBootApplication
 public class ClientConnector {
-    String serverURL;
-    String username;
-    String password;
-    RestTemplate restTemplate;
-    StringBuilder serverResponses;
-    ObjectMapper jsonMapper;
+    private String serverURL;
+    private String username;
+    private String password;
+    private RestTemplate restTemplate;
+    private StringBuilder serverResponses;
+    private ObjectMapper jsonMapper;
     private DataPassBoardState lastBoard;
-    GameHost gameHost;
+    private GameHost gameHost;
 
     public ClientConnector(String serverURL) {
         this.serverURL = serverURL;
@@ -52,11 +52,42 @@ public class ClientConnector {
         this.gameHost = gameHost;
     }
 
+    public void setUpAndConnect(){
+        String username = (String)JOptionPane.showInputDialog("username");
+        String password = (String)JOptionPane.showInputDialog("password");
+
+        this.setLogin(username);
+        this.setPass(password);
+        this.registerAccount();
+
+        int choice;
+        Object[] options = {"Create New Game", "Game Lobby", "Join Game"};
+        do {
+            choice = JOptionPane.showOptionDialog(new JFrame(), "Choose one:", "SpeedChess",
+                    JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[1]);
+        } while (choice == 1);
+
+        String gameName = (String)JOptionPane.showInputDialog("gameName");
+        if (choice == 0) { //new game
+            this.createGame(gameName);
+        }
+        else if (choice == 2) {
+            this.joinGame(gameName);
+        }
+    }
+
+    public void lockInMove(){
+        DataPass data = new DataPass(username, password);
+        this.communicate("/nextGameStep", "userData", data);
+    }
+
     public Move getOpponentsLastMove(){
         return lastBoard.getOpponentLastMove();
     }
 
     public Board getNewBoard(){
+        if (lastBoard == null) return new Board(new Player(1), new Player(0));
+
         return new Board(lastBoard.getBoardData());
     }
 

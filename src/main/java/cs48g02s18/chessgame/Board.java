@@ -210,7 +210,8 @@ public class Board {
 				spots[i / 8][i % 8] = new Knight(i / 8, i % 8);
 				spots[i / 8][i % 8].setPlayer(0);
 			}
-
+			whitePlayer = new Player(1, this);
+			blackPlayer = new Player(0, this);
 		}
 	}
 }

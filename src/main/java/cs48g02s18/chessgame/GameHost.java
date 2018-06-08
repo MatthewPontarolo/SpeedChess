@@ -2,10 +2,10 @@ package cs48g02s18.chessgame;
 
 public class GameHost {
 
-	public static Player whitePlayer = new Player(1);
-	public static Player blackPlayer = new Player(0);
+	public Player whitePlayer = new Player(1);
+	public Player blackPlayer = new Player(0);
 
-	public static Board gameBoard = new Board(whitePlayer, blackPlayer);
+	public Board gameBoard = new Board(whitePlayer, blackPlayer);
 
 	/**
 	 * empty constructor
@@ -18,7 +18,7 @@ public class GameHost {
 	/**
 	 * does nothing
 	 */
-	public static void initialize() {
+	public void initialize() {
 
 	}
 
@@ -26,7 +26,7 @@ public class GameHost {
 	/**
 	 * Decides if it's time to go ahead and run executeGameTurn()
 	 */
-	public static void checkIfReady()
+	public void checkIfReady()
 	{
 		Move whiteMove = whitePlayer.getNextMove();
 		Move blackMove = blackPlayer.getNextMove();
@@ -38,6 +38,11 @@ public class GameHost {
 		}
 	}
 
+	public void updatePlayersForUI(){
+		whitePlayer = gameBoard.getPlayer(1);
+		blackPlayer = gameBoard.getPlayer(0);
+	}
+
 	// Precondition: Timer runs out OR both players clicked "CONFIRM" on UI
 		// no need to check valid turns bc UI doesn't allow for spot selections that
 		// is not in validMoves array
@@ -47,12 +52,38 @@ public class GameHost {
 		/**
 		 * Calls board::movePiece on the valid pieces that can be moved
 		 */
-	public static void executeGameTurn()
+	public void executeGameTurn()
 	{
 		// get both player's moves
 		Move whiteMove = whitePlayer.getNextMove();
 		Move blackMove = blackPlayer.getNextMove();
 
+		if (blackMove == null || whiteMove == null) {
+			Move onlyMove = null;
+			Player onlyPlayer = null;
+
+
+			if (blackMove != null){
+				onlyPlayer = blackPlayer;
+				onlyMove = blackMove;
+			}
+			if (whiteMove != null){
+				onlyPlayer = whitePlayer;
+				onlyMove = whiteMove;
+			}
+
+			if (onlyMove != null) ;
+			{
+				Piece target = onlyMove.getTargetPiece();
+				gameBoard.setGameTurn(true);
+				gameBoard.pickUpPiece(onlyMove.getTargetPiece());
+				gameBoard.movePiece(onlyPlayer, onlyMove.getTargetPiece(), onlyMove.getXMove(), onlyMove.getYMove());
+				gameBoard.setGameTurn(false);
+
+			}
+
+			return;
+		}
 		// get both player's target pieces that are moving
 		Piece whiteTarget = whiteMove.getTargetPiece();
 		Piece blackTarget = blackMove.getTargetPiece();
@@ -71,10 +102,8 @@ public class GameHost {
 		// check if same spot move conflict
 		if (whiteX == blackX && whiteY == blackY) {
 			// if white is faster than black
-			if !((whiteTarget.getName() == "King" && blackTarget.getName() == "King"))
-			{
-				if (whiteTarget.getName() == "King")
-				{
+			if (!((whiteTarget.getName() == "King" && blackTarget.getName() == "King"))) {
+				if ((whiteTarget.getName() == "King")) {
 					gameBoard.setGameTurn(true);
 					gameBoard.movePiece(whitePlayer, whiteTarget, whiteX, whiteY);
 					return;
@@ -87,7 +116,7 @@ public class GameHost {
 				}
 			}
 
-			if (whiteMove.getTime() < blackMove.getTime())
+			if (whiteMove.wasFirst())
 			{
 				gameBoard.setGameTurn(true);
 				gameBoard.movePiece(whitePlayer, whiteTarget, whiteX, whiteY);
@@ -98,7 +127,7 @@ public class GameHost {
 				return;
 			}
 			// if black is faster than white
-			else if (whiteMove.getTime() > blackMove.getTime())
+			else if (blackMove.wasFirst())
 			{
 				gameBoard.setGameTurn(true);
 				gameBoard.movePiece(blackPlayer, blackTarget, blackX, blackY);
@@ -120,7 +149,7 @@ public class GameHost {
 		// not same spot move conflict, sort out scenarios
 		else
 		{
-			// Move Conflict involving Pawns being handled
+			// MoveData Conflict involving Pawns being handled
 			if (checkPawns(whiteTarget, whiteMove, blackTarget, blackMove))
 			{
 				return;
@@ -144,11 +173,11 @@ public class GameHost {
 			gameBoard.pickUpPiece(blackTarget);
 
 
-			//Move the white piece
+			//MoveData the white piece
 			gameBoard.movePiece(whitePlayer, whiteTarget, whiteX, whiteY);
 
 
-			//Move the black piece
+			//MoveData the black piece
 			gameBoard.movePiece(blackPlayer, blackTarget, blackX, blackY);
 
 			// end the turn so set it back to false
@@ -166,7 +195,7 @@ public class GameHost {
 	 * @return boolean true if this function handles conflict
 	 * @return boolean false if not a pawn conflict, lets general handle it
 	**/
-	public static boolean checkPawns(Piece whiteTarget, Move whiteMove, Piece blackTarget, Move blackMove)
+	public boolean checkPawns(Piece whiteTarget, Move whiteMove, Piece blackTarget, Move blackMove)
 	{
 		int whiteX = whiteMove.getXMove();
 		int whiteY = whiteMove.getYMove();
@@ -188,7 +217,7 @@ public class GameHost {
 				{
 					if (blackTarget.getName() == "Pawn")
 					{
-						System.out.println("Illegal Pawn Move.");
+						System.out.println("Illegal Pawn MoveData.");
 						System.out.println("Both players tried to capture each other's game piece. Both game turns forfeited!");
 						return true;
 					}
@@ -208,7 +237,7 @@ public class GameHost {
 				// piece white is trying to capture is moving, white cannot move
 				else if (blackMove.getInitX() == whiteX && blackMove.getInitY() == whiteY)
 				{
-					System.out.println("Illegal white Pawn Move.");
+					System.out.println("Illegal white Pawn MoveData.");
 					System.out.println("Game piece white player is trying to capture has moved away. Game Turn forfeited.");
 					gameBoard.setGameTurn(true);
 					gameBoard.pickUpPiece(blackTarget);
@@ -233,7 +262,7 @@ public class GameHost {
 					// if both pawns, cannot move
 					if (whiteTarget.getName() == "Pawn")
 					{
-						System.out.println("Illegal Pawn Move.");
+						System.out.println("Illegal Pawn MoveData.");
 						System.out.println("Both players tried to capture each other's game piece. Both game turns forfeited!");
 						return true;
 					}
@@ -253,7 +282,7 @@ public class GameHost {
 				// piece black is trying to capture is moving, black cannot move
 				else if (whiteMove.getInitX() == blackX && whiteMove.getInitY() == blackY)
 				{
-					System.out.println("Illegal black Pawn Move.");
+					System.out.println("Illegal black Pawn MoveData.");
 					System.out.println("Game piece black player is trying to capture has moved away. Game Turn forfeited.");
 					gameBoard.setGameTurn(true);
 					gameBoard.pickUpPiece(whiteTarget);

@@ -154,8 +154,8 @@ public class Pawn extends Piece {
 
 	/**
 	 * Moves according to pawn rules
-	 * @param x			Move to X
-	 * @param y			Move to Y
+	 * @param x			MoveData to X
+	 * @param y			MoveData to Y
 	 */
 	public void move(int x, int y) {
 		if (firstMove == true)

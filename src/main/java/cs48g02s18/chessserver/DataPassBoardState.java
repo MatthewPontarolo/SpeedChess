@@ -11,10 +11,12 @@ public class DataPassBoardState {
 
     public DataPassBoardState() {
         this.boardData = null;
+        opponentLastMove = null;
     }
 
     public DataPassBoardState(String boardData) {
         this.boardData = boardData;
+        this.opponentLastMove = null;
     }
 
     public String getBoardData() {
@@ -33,5 +35,11 @@ public class DataPassBoardState {
         this.opponentLastMove = opponentLastMove;
     }
 
-
+    @Override
+    public String toString() {
+        return "DataPassBoardState{" +
+                "boardData='" + boardData + '\'' +
+                ", opponentLastMove=" + opponentLastMove +
+                '}';
+    }
 }

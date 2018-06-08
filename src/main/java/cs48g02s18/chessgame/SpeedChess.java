@@ -28,10 +28,14 @@ public class SpeedChess extends BorderPane {
 	Piece selectedPiece = null;
 	int playerPerspective = 0;
 	ClientConnector clientConnector;
+	GameHost gameHost = new GameHost();
+	Point lastClickPosition;//todo using this make requests get sent coherently
 
 	public SpeedChess() {
-		GameHost.initialize();
-
+		GameHost gameHost = new GameHost();
+		gameHost.initialize();
+		this.clientConnector = new ClientConnector();
+		clientConnector.setUpAndConnect();
 		//Setting the top as text for now
 		HBox northBox = new HBox(10);
 		setTop(northBox);
@@ -46,6 +50,8 @@ public class SpeedChess extends BorderPane {
 
 		//Setting up the chess grid in the center
 		GridPane grid = new GridPane();
+		final GameHost gameHostFinal = gameHost;
+
 		for (int i = 0; i < 8; i++) {
 			grid.getColumnConstraints().add(new ColumnConstraints(68));
 			grid.getRowConstraints().add(new RowConstraints(60));
@@ -57,41 +63,44 @@ public class SpeedChess extends BorderPane {
 					grid.add(button, 7-i, 7-j);
 				buttons[i][j] = button;
 				button.setAlignment(Pos.CENTER);
-
 				final int x = i;
 				final int y = j;
 				button.setOnAction(new EventHandler<ActionEvent>() {
 					public void handle(ActionEvent event) {
-						Board b = GameHost.gameBoard;
 						System.out.println("Clicked at " + x + " " + y);
 						System.out.println("selected piece: " + selectedPiece);
 
+						clientConnector.registerAccount();
+
 						if (selectedPiece != null) {
-							if (selectedPiece == b.getPiece(x, y)) {
+							if (selectedPiece == gameHostFinal.gameBoard.getPiece(x, y)) {
 								selectedPiece = null;
 							} else {
-								if (selectedPiece.getValidMoves(b, selectedPiece.getPlayer()).contains(new Point(x, y))) {
+								if (selectedPiece.getValidMoves(gameHostFinal.gameBoard, selectedPiece.getPlayer()).contains(new Point(x, y))) {
 									//check whether or not it's a capture move (need to check for friendly piece)
 									int playerType = selectedPiece.getPlayer();
 									//b.movePiece(b.getPlayer(playerType), selectedPiece, x, y);
-									b.getPlayer(playerType).setNextMove(new Move(selectedPiece, x, y, 0));
-									clientConnector.submitMove(new Move(selectedPiece, x, y, 0));
+									Move move = new Move(selectedPiece, x, y);
+									clientConnector.submitMove(move);
 									selectedPiece = null;
+									//clientConnector.lockInMove();
 								} else {
 									System.out.println("Invalid move!");
 								}
 							}
 						} else {
-							selectedPiece = b.getPiece(x, y);
+							gameHostFinal.checkIfReady();
+							clientConnector.updateBoardFromServer();
+							gameHostFinal.gameBoard = clientConnector.getNewBoard();
+
+							selectedPiece = gameHostFinal.gameBoard.getPiece(x, y);
 						}
 
 						System.out.println("selected piece is now: " + selectedPiece);
-						GameHost.checkIfReady();
-						clientConnector.updateBoardFromServer();
-						GameHost.gameBoard = clientConnector.getNewBoard();
 						redrawBoard();
 						drawHighlights();
 					}
+
 				});
 			}
 		}
@@ -127,24 +136,26 @@ public class SpeedChess extends BorderPane {
 			for (Button b : bt) {
 				b.setText("");
 				//Later I can use the coords to determine if it should be a black or white tile
-				Image im = new Image(getClass().getResourceAsStream("images/BlankSlot.png"));
+				Image im = new Image(getClass().getResourceAsStream("/images/BlankSlot.png"));
 				b.setGraphic(new ImageView(im));
 			}
 		}
 		//Place pieces
-		Player p1 = GameHost.whitePlayer;
+		gameHost.gameBoard = clientConnector.getNewBoard();
+		gameHost.updatePlayersForUI();
+		Player p1 = gameHost.whitePlayer;
 		for (Piece p : p1.getPieces()) {
 			if (p.isAlive()) {
 				Button b = buttons[p.getXPosition()][p.getYPosition()];
-				Image im = new Image(getClass().getResourceAsStream("images/" + p.getName() + "WhitePiece.png"));
+				Image im = new Image(getClass().getResourceAsStream("/images/" + p.getName() + "WhitePiece.png"));
 				b.setGraphic(new ImageView(im));
 			}
 		}
-		Player p2 = GameHost.blackPlayer;
+		Player p2 = gameHost.blackPlayer;
 		for (Piece p : p2.getPieces()) {
 			if (p.isAlive()) {
 				Button b = buttons[p.getXPosition()][p.getYPosition()];
-				Image im = new Image(getClass().getResourceAsStream("images/" + p.getName() + "BlackPiece.png"));
+				Image im = new Image(getClass().getResourceAsStream("/images/" + p.getName() + "BlackPiece.png"));
 				b.setGraphic(new ImageView(im));
 			}
 		}
@@ -153,14 +164,14 @@ public class SpeedChess extends BorderPane {
 	public void drawHighlights() {
 		if (selectedPiece != null) {
 			Image im;
-			ArrayList<Point> moves = selectedPiece.getValidMoves(GameHost.gameBoard, selectedPiece.getPlayer());
+			ArrayList<Point> moves = selectedPiece.getValidMoves(gameHost.gameBoard, selectedPiece.getPlayer());
 			for (int i = 0; i < 8; i++) {
 				for (int j = 0; j < 8; j++) {
 					if (moves.contains(new Point(i, j))) {
-						if (GameHost.gameBoard.getPiece(i, j) != null && GameHost.gameBoard.getPiece(i, j).getPlayer() != selectedPiece.getPlayer()) {
-							im = new Image(getClass().getResourceAsStream("images/HighlightCapture.png"));
+						if (gameHost.gameBoard.getPiece(i, j) != null && gameHost.gameBoard.getPiece(i, j).getPlayer() != selectedPiece.getPlayer()) {
+							im = new Image(getClass().getResourceAsStream("/images/HighlightCapture.png"));
 						} else {
-							im = new Image(getClass().getResourceAsStream("images/HighlightValid.png"));
+							im = new Image(getClass().getResourceAsStream("/images/HighlightValid.png"));
 						}
 						highlights[i][j].setGraphic(new ImageView(im));
 					} else {
@@ -168,7 +179,7 @@ public class SpeedChess extends BorderPane {
 					}
 				}
 			}
-			im = new Image(getClass().getResourceAsStream("images/HighlightSelected.png"));
+			im = new Image(getClass().getResourceAsStream("/images/HighlightSelected.png"));
 			highlights[selectedPiece.getXPosition()][selectedPiece.getYPosition()].setGraphic(new ImageView(im));
 		} else {
 			for (int i = 0; i < 8; i++)

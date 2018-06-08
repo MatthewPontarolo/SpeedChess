@@ -25,6 +25,19 @@ public class Player {
 		this.playerType = playerType;
 	}
 
+	public Player(int playerType, Board board) {
+		for (int x = 0; x < 8; x++){
+			for (int y = 0; y < 8; y++){
+				Piece piece = board.getPiece(x, y);
+				if (piece != null){
+					if (piece.getPlayer() == playerType){
+						this.pieces.add(piece);
+					}
+				}
+			}
+		}
+	}
+
 	public void setUp(int playerType) {
 		int PLACEHOLDER = 0; // FOR POSITION BC WE HAVEN'T DECIDED
 		int offset = 0;
