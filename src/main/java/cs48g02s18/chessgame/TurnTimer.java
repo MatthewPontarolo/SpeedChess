@@ -37,7 +37,7 @@ public class TurnTimer {
 	  		@Override
 			public void run() {
 				if (GameHost.gameEnded == false) {
-			  		SpeedChess.updateTimeView(timeCounter);
+			  		//SpeedChess.updateTimeView(timeCounter);
 				}
 		 	}
 	  	});
@@ -49,7 +49,7 @@ public class TurnTimer {
       timeCounter = TIME_LIMIT;
       System.out.println("Timer Starts!");
       System.out.println(timeCounter);
-      timer = new Timer(1000, this::update);
+      //timer = new Timer(1000, this::update);
       timer.start();
     }
     public void stop() {
@@ -57,7 +57,7 @@ public class TurnTimer {
       timestamp = timeCounter;
       System.out.println("stop");
       if (timestamp == 0) {
-        GameHost.forfeit();
+        //GameHost.forfeit();
         System.out.println("forfeit");
       }
     }

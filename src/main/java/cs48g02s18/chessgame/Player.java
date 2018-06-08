@@ -15,15 +15,21 @@ public class Player {
 	private int king = 1;
 	private Piece kingPiece;
 
-	private int playerType;
-	private Move moveSelection;
 	//1 = white
 	//0 = black
+	private int playerType;
+	private Move moveSelection;
+	private Board board;
 
 	// CONSTRUCTOR
 	public Player(int playerType) {
 		setUp(playerType);
 		this.playerType = playerType;
+	}
+	public Player(int playerType, Board b) {
+		setUp(playerType);
+		this.playerType = playerType;
+		board = b;
 	}
 
 	public void setUp(int playerType) {
