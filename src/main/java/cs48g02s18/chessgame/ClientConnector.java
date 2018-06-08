@@ -7,12 +7,10 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import cs48g02s18.chessserver.*;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.http.HttpEntity;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import javax.swing.*;
-import java.util.HashMap;
 
 //import cs48g02s18.chessServer.DataPassMoveData;
 
@@ -50,6 +48,10 @@ public class ClientConnector {
 
     public void setGameHost(GameHost gameHost) {
         this.gameHost = gameHost;
+    }
+
+    public int getPlayerNumber(){
+        return lastBoard.getPlayerNumber();
     }
 
     public void setUpAndConnect(){
@@ -123,6 +125,9 @@ public class ClientConnector {
         this.communicate("/submitMove", "moveData", data);
     }
 
+    public int getPlayerNum(){
+        return lastBoard.getPlayerNumber();
+    }
 
 
     public boolean updateBoardFromServer(){

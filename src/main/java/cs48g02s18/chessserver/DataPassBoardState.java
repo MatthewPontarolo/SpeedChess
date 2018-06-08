@@ -7,11 +7,13 @@ import cs48g02s18.chessgame.Move;
 public class DataPassBoardState {
     String boardData;
     Move opponentLastMove;
+    int playerNumber;
 
 
     public DataPassBoardState() {
         this.boardData = null;
         opponentLastMove = null;
+        playerNumber = -1;
     }
 
     public DataPassBoardState(String boardData) {
@@ -27,6 +29,20 @@ public class DataPassBoardState {
         return opponentLastMove;
     }
 
+    public int getPlayerNumber() {
+        return playerNumber;
+    }
+
+    public void setPlayerNumber(int playerNumber) {
+        this.playerNumber = playerNumber;
+    }
+
+    public DataPassBoardState(String boardData, int playerNumber) {
+        this.boardData = boardData;
+        this.opponentLastMove = null;
+        this.playerNumber = playerNumber;
+    }
+
     public void setBoardData(String boardData) {
         this.boardData = boardData;
     }
@@ -40,6 +56,7 @@ public class DataPassBoardState {
         return "DataPassBoardState{" +
                 "boardData='" + boardData + '\'' +
                 ", opponentLastMove=" + opponentLastMove +
+                ", playerNumber=" + playerNumber +
                 '}';
     }
 }
