@@ -106,7 +106,7 @@ class GameServer implements Serializable {
     public DataPassBoardState getBoardState(DataPass userData){
         ServerPlayer player = accessPlayer(userData);
         if (player != null){
-            DataPassBoardState boardState = new DataPassBoardState(player.getGameString()); //todo update to pass the new move made by opponent as well
+            DataPassBoardState boardState = new DataPassBoardState(player.getGameString(), player.getGamePlayer().getPlayerType()); //todo update to pass the new move made by opponent as well
             return boardState;
         }
         else {
