@@ -305,7 +305,7 @@ public class SpeedChess extends BorderPane {
 					b.setDisable(true);
 				}
 			}
-			GameHost.stopTimer();
+			gameHost.stopTimer();
 		}
 	}
 
