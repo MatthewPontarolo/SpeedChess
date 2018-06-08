@@ -16,9 +16,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.geometry.Pos;
 import javafx.geometry.Insets;
-
 import javax.security.auth.login.CredentialException;
-import javax.swing.*;
 import java.util.ArrayList;
 import java.awt.Point;
 
@@ -31,6 +29,7 @@ public class SpeedChess extends BorderPane {
 	ClientConnector clientConnector;
 	GameHost gameHost = new GameHost();
 	Point lastClickPosition;//todo using this make requests get sent coherently
+	public static BorderPane masterOverlay;
 	public static Label overlayLabel;
 
 	public SpeedChess() {
@@ -136,6 +135,13 @@ public class SpeedChess extends BorderPane {
 		southBox.setPadding(new Insets(5, 5, 5, 5));
 		southBox.setAlignment(Pos.CENTER);
 		southBox.setStyle("-fx-background-color: #667788;");
+
+		masterOverlay = new BorderPane();
+		masterOverlay.setMouseTransparent(true);
+
+		overlayLabel = new Label("");
+		overlayLabel.setFont(new Font("Lucida Grande", 18));
+		masterOverlay.setCenter(overlayLabel);
 
 		Button confirmButton = new Button("Confirm");
 		confirmButton.setOnAction(new EventHandler<ActionEvent>() {
