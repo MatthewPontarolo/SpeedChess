@@ -40,6 +40,7 @@ public class SpeedChess extends BorderPane {
 		this.clientConnector = new ClientConnector();
 		clientConnector.setUpAndConnect();
 		clientConnector.updateBoardFromServer();
+		playerPerspective = clientConnector.getPlayerNumber();
 		//Setting the top as text for now
 		HBox northBox = new HBox(10);
 		setTop(northBox);
@@ -221,6 +222,7 @@ public class SpeedChess extends BorderPane {
 
 	public void confirm() {
 		clientConnector.submitMove(selectedMove);
+		redrawBoard();
 	}
 
 }
