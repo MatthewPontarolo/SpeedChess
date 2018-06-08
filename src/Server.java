@@ -8,7 +8,6 @@ public class Server {
 	private static Move moveToSend = null;
 	private static boolean isIt = false;
 	private static int counter = 10;
-	private static String IP = "";
 
 	public static void setup() throws IOException {
 
@@ -42,22 +41,5 @@ public class Server {
 	}
 	public static Move getMoveToSend() {
 		return moveToSend;
-	}
-
-	public static String getIP()
-	{
-		try
-		{
-			String host = InetAddress.getLocalHost().toString();
-			String[] parse = host.split("/");
-			IP = parse[1];
-			System.out.println("IP: " + IP);
-		}
-		catch (Exception e)
-		{
-			System.out.println("Unable to get IP Address");
-		}
-		return IP;
-
 	}
 }

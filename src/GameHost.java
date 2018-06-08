@@ -135,7 +135,7 @@ public class GameHost {
 			}
 			else if (whiteTime == blackTime)
 			{
-				int player = (int) (Math.random() * 2);
+				int player = (int) Math.random();
 				if (player == 0)
 				{
 					gameBoard.setGameTurn(true);
@@ -162,7 +162,7 @@ public class GameHost {
 					// end the turn so set it back to false
 					gameBoard.setGameTurn(false);
 					endTurn = false;
-					return;			
+					return;
 				}
 			}
 			// if both are equally fast, NOTE: TBD

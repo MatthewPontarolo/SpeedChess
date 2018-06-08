@@ -4,10 +4,8 @@ import java.net.*;
 public class Client {
 
 	public static Move moveToSend = null;
-	public static String IP = "";
 
 	public static void setup() throws IOException {
-		// String hostName = IP;
 		String hostName = "128.111.43.38";
 		int portNumber = 1058;
 
@@ -36,11 +34,6 @@ public class Client {
 			//System.err.println("Couldn't get I/O for the connection to " + hostName);
 			//System.exit(1);
 		}
-	}
-
-	public static void setIP(String ip)
-	{
-		IP = ip;
 	}
 
 	public static void setMoveToSend(Move m) {
