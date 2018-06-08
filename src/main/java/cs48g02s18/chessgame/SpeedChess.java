@@ -100,8 +100,12 @@ public class SpeedChess extends BorderPane {
 					public void handle(ActionEvent event) {
 						System.out.println("Clicked at " + x + " " + y);
 						System.out.println("selected piece: " + selectedPiece);
+						System.out.println("piece at clicked? " + gameHostFinal.gameBoard.getPiece(x, y));
 
 						clientConnector.registerAccount();
+						gameHostFinal.checkIfReady();
+						clientConnector.updateBoardFromServer();
+						gameHostFinal.gameBoard = clientConnector.getNewBoard();
 
 						if (selectedPiece != null) {
 							if (selectedPiece == gameHostFinal.gameBoard.getPiece(x, y)) {
@@ -119,10 +123,6 @@ public class SpeedChess extends BorderPane {
 						} else if (gameHostFinal.gameBoard.getPiece(x, y) != null) {
 							System.out.println("playerNumber? " + clientConnector.getPlayerNumber());
 							if (clientConnector.getPlayerNumber() == gameHostFinal.gameBoard.getPiece(x, y).getPlayer()) {
-								gameHostFinal.checkIfReady();
-								clientConnector.updateBoardFromServer();
-								gameHostFinal.gameBoard = clientConnector.getNewBoard();
-
 								selectedPiece = gameHostFinal.gameBoard.getPiece(x, y);
 							}
 						}
@@ -253,6 +253,9 @@ public class SpeedChess extends BorderPane {
 	}
 
 	public void kingCheck() {
+		if (GameHost.gameEnded)
+			return;
+
 		GameHost.gameEnded = false;
 		if (!gameHost.blackPlayer.hasKing() && !gameHost.whitePlayer.hasKing()) {
 			Platform.runLater(new Runnable() {
@@ -317,7 +320,10 @@ public class SpeedChess extends BorderPane {
 	public void updateTimeView() {
 		int c = clientConnector.secondsLeft();
 
-		if (c == 0) {
+		if (gameHost.gameEnded)
+			return;
+
+		if (c <= 0) {
 			overlayLabel.setText("");
 			return;
 		}
@@ -330,7 +336,7 @@ public class SpeedChess extends BorderPane {
 			else
 				size = 16;
 			overlayLabel.setFont(new Font("Lucida Grande", size));
-			if (c < 4) {
+			if (c < 4 && c >= 0) {
 				Color[] colors = new Color[] { Color.RED, Color.DARKORANGE, Color.ORANGE, Color.YELLOW };
 				overlayLabel.setTextFill(colors[c]);
 			} else {

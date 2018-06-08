@@ -93,20 +93,19 @@ public class Player {
 		for (Piece p : pieces)
 			if (p.getName() == "King")
 				kingPiece = p;
+		if (kingPiece == null)
+			return false;
 		return kingPiece.isAlive();
 	}
 
 	// get Piece in pieces arraylist at given spot on board
-	public int getPieceIdx(int x, int y)
-	{
+	public int getPieceIdx(int x, int y) {
 		// get the piece from pieces array in player class
 		int index = 0;
-		for (Piece p : pieces)
-		{
+		for (Piece p : pieces) {
 			int xPos = (int) p.getXPosition();
 			int yPos = (int) p.getYPosition();
-			if(xPos == x && yPos == y)
-			{
+			if (xPos == x && yPos == y) {
 				return index;
 			}
 			index++;

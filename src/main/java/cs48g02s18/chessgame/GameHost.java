@@ -79,8 +79,7 @@ public class GameHost {
 		System.out.println("bM: " + blackMove);
 		if (gameEnded == false)
 		{
-			if (whiteMove != null && blackMove != null)
-			{
+			if (whiteMove != null && blackMove != null) {
 				executeGameTurn();
 				Main.scene.redrawBoard();
 			}
