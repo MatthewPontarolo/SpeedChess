@@ -47,4 +47,20 @@ public class Server {
 	public static Move getMoveToSend() {
 		return moveToSend;
 	}
+	public static String initializeIP()
+	{
+		try
+		{
+			String host = InetAddress.getLocalHost().toString();
+			String[] parse = host.split("/");
+			String IP = parse[1];
+			System.out.println("IP: " + IP);
+		}
+		catch (Exception e)
+		{
+			System.out.println("Unable to get IP Address");
+		}
+		return IP;
+
+	}
 }

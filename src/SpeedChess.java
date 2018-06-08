@@ -71,6 +71,8 @@ public class SpeedChess extends BorderPane {
 			public void handle(ActionEvent event) {
 				//Main.tryToBeServer();
 				//Black
+				String IP = Server.initializeIP();
+				System.out.println("IP: " + IP);
 				setupBoard();
 				redrawBoard();
 				GameHost.startTimer();
