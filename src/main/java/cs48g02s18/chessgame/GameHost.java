@@ -9,6 +9,8 @@ public class GameHost {
 	public static boolean endTurn = false;
 	public static boolean forfeit = false;
 	public static boolean gameEnded = false;
+	public static int timestamp;
+	public static TurnTimer timer = new TurnTimer();
 
 	/**
 	 * empty constructor
@@ -24,6 +26,43 @@ public class GameHost {
 
 	}
 
+	public static void startTimer()
+	{
+		forfeit = false;
+		timer.start();
+	}
+
+	public static void stopTimer()
+	{
+		timer.stop();
+		timestamp = timer.getTimeStamp();
+		endTurn = true;
+	}
+
+	public static void forfeit()
+	{
+		endTurn = true;
+		forfeit = true;
+		Player player;
+		if (SpeedChess.playerPerspective == 1)
+		{
+			player = whitePlayer;
+		}
+		else if (SpeedChess.playerPerspective == 0)
+		{
+			player = blackPlayer;
+		}
+		Move randomMove = randomMove();
+
+		player.setNextMove(randomMove);
+		SpeedChess.confirm();
+	}
+
+	public static int getTimeStamp()
+	{
+		return timestamp;
+	}
+
 	//Decides if it's time to go ahead and run executeGameTurn()
 	/**
 	 * Decides if it's time to go ahead and run executeGameTurn()
@@ -34,10 +73,16 @@ public class GameHost {
 		Move blackMove = blackPlayer.getNextMove();
 		System.out.println("wM: " + whiteMove);
 		System.out.println("bM: " + blackMove);
-		if (whiteMove != null && blackMove != null)
+		if (gameEnded == false)
 		{
-			executeGameTurn();
+			if (whiteMove != null && blackMove != null)
+			{
+				executeGameTurn();
+				SpeedChess.redrawBoard();
+			}
+			SpeedChess.kingCheck();
 		}
+
 	}
 
 	public void updatePlayersForUI(){
@@ -98,6 +143,9 @@ public class GameHost {
 		int blackX = blackMove.getXMove();
 		int blackY = blackMove.getYMove();
 
+		long whiteTime = whiteMove.getTime();
+		long blackTime = blackMove.getTime();
+
 		whitePlayer.setNextMove(null);
 		blackPlayer.setNextMove(null);
 
@@ -121,31 +169,29 @@ public class GameHost {
 			if (whiteMove.wasFirst())
 			{
 				gameBoard.setGameTurn(true);
+				gameBoard.pickUpPiece(whiteTarget);
 				gameBoard.movePiece(whitePlayer, whiteTarget, whiteX, whiteY);
 				//Capture the black piece
+				gameBoard.removePiece(blackPlayer, blackTarget, blackX, blackY);
 				blackTarget.capture();
 				// end the turn so set it back to false
 				gameBoard.setGameTurn(false);
+				endTurn = false;
 				return;
 			}
 			// if black is faster than white
 			else if (blackMove.wasFirst())
 			{
 				gameBoard.setGameTurn(true);
+				gameBoard.pickUpPiece(blackTarget);
 				gameBoard.movePiece(blackPlayer, blackTarget, blackX, blackY);
 				//Capture the white piece
+				gameBoard.removePiece(whitePlayer, whiteTarget, whiteX, whiteY);
 				whiteTarget.capture();
 				// end the turn so set it back to false
 				gameBoard.setGameTurn(false);
-
+				endTurn = false;
 				return;
-			}
-			// if both are equally fast, NOTE: TBD
-			else
-			{
-				// depending on implementation of timer,
-				// this might be unnecessary to implement especially if likelihood of such
-				// event occurring is low
 			}
 		}
 		// not same spot move conflict, sort out scenarios
@@ -154,6 +200,7 @@ public class GameHost {
 			// MoveData Conflict involving Pawns being handled
 			if (checkPawns(whiteTarget, whiteMove, blackTarget, blackMove))
 			{
+				endTurn = false;
 				return;
 			}
 
@@ -163,11 +210,13 @@ public class GameHost {
 			//Attempt capturing a black piece if it isn't the moving piece
 			if (gameBoard.getPiece(whiteX, whiteY) != null && gameBoard.getPiece(whiteX, whiteY) != blackTarget)
 			{
+				gameBoard.removePiece(whitePlayer, gameBoard.getPiece(whiteX, whiteY));
 				gameBoard.getPiece(whiteX, whiteY).capture();
 			}
 
 			//Attempt capturing a white piece if it isn't the moving piece
 			if (gameBoard.getPiece(blackX, blackY) != null && gameBoard.getPiece(blackX, blackY) != whiteTarget) {
+				gameBoard.removePiece(blackPlayer, gameBoard.getPiece(blackX, blackY));
 				gameBoard.getPiece(blackX, blackY).capture();
 			}
 
@@ -184,6 +233,7 @@ public class GameHost {
 
 			// end the turn so set it back to false
 			gameBoard.setGameTurn(false);
+			endTurn = false;
 			return;
 		}
 	}
@@ -220,13 +270,8 @@ public class GameHost {
 						System.out.println("Both players tried to capture each other's game piece. Both game turns forfeited!");
 						return true;
 					}
-					// if other piece is not pawn, can pawn be captured?
-					// NOTE: DISCUSS THIS could be interesting, but also a disadvantage!
-					gameBoard.setGameTurn(true);
-					//gameBoard.getPiece(whiteX, whiteY).capture();
-					//gameBoard.movePiece(blackPlayer, blackTarget, blackX, blackY);
-					gameBoard.setGameTurn(false);
-					return true;
+
+					return false;
 				}
 				// if black initial position isn't where white is moving, the piece white is trying to capture isn't moving
 				else if (blackMove.getInitX() != whiteX && blackMove.getInitY() != whiteY)
@@ -265,12 +310,6 @@ public class GameHost {
 						System.out.println("Both players tried to capture each other's game piece. Both game turns forfeited!");
 						return true;
 					}
-					// if other piece is not pawn, can pawn be captured?
-					// NOTE: DISCUSS THIS could be interesting, but also a disadvantage!
-					gameBoard.setGameTurn(true);
-					//gameBoard.getPiece(blackX, blackY).capture();
-					//gameBoard.movePiece(whitePlayer, whiteTarget, whiteX, whiteY);
-					gameBoard.setGameTurn(false);
 					return false;
 				}
 				// if its initial position isn't where black is moving, the piece black is trying to capture isn't moving
@@ -292,6 +331,86 @@ public class GameHost {
 			}
 		}
 		return false;
+
+	}
+	public static void processMove(String m) {
+		System.out.println("OTHER PLAYER'S MOVE: " + m);
+
+		String[] data = m.split("\\s+");
+
+		System.out.println("parse attempt: " + Long.parseLong(data[4]));
+
+		Move mv = new Move(gameBoard.getPiece(Integer.parseInt(data[0]), Integer.parseInt(data[1])), Integer.parseInt(data[2]), Integer.parseInt(data[3]));
+		mv.setTime(Long.parseLong(data[4]));
+		if (SpeedChess.playerPerspective == 0) {
+			players[1].setNextMove(mv);
+		} else {
+			players[0].setNextMove(mv);
+		}
+	}
+
+	/**
+	 * When timer runs out, call this function to get a random move
+	 */
+	public static Move randomMove()
+	{
+		ArrayList<Point> moves = new ArrayList<Point>();
+		Piece targetPiece;
+		int pieceIdx;
+		int moveIdx;
+		do
+		{
+
+			Player player = players[SpeedChess.playerPerspective];
+			int playerType = player.getPlayerType();
+
+			// get Pieces
+			ArrayList<Piece> pieces = player.getPieces();
+
+			int count = 0;
+			for (Piece p : pieces)
+			{
+				System.out.println("VALID PIECES(" + count +  ") Name: " + p.getName() + " X: " + p.getXPosition() + " Y: " + p.getYPosition());
+				count++;
+			}
+			System.out.println("size: " + pieces.size());
+
+			// Pick Piece idx
+			pieceIdx = (int) (Math.random() * pieces.size());
+
+			System.out.println("Idx CHOSEN: " + pieceIdx);
+
+			// get Piece
+			targetPiece = pieces.get(pieceIdx);
+
+			System.out.println("PIECE CHOSEN: " + targetPiece.getName());
+
+			// Get Moves
+			moves = targetPiece.getValidMoves(gameBoard, playerType);
+			for (Point m : moves)
+			{
+				//Piece target = gameBoard.getPiece((int) m.getX(), (int) m.getY());
+				System.out.println("VALID MOVE --" + "X: " + m.getX() + "Y: " + m.getY());
+			}
+
+
+		}
+		while (moves.isEmpty());
+
+
+		// Pick Move from an nonempty moves arraylist
+		moveIdx = (int) (Math.random() * moves.size());
+		System.out.println("move IDX: " + moveIdx);
+		Point targetMove = moves.get(moveIdx);
+
+
+		System.out.println("x: " + targetMove.getX());
+		System.out.println("y: " + targetMove.getY());
+
+		Move nextMove = new Move(targetPiece, (int) targetMove.getX(), (int) targetMove.getY());
+
+		//players[playerType].setNextMove(nextMove);
+		return nextMove;
 
 	}
 }
