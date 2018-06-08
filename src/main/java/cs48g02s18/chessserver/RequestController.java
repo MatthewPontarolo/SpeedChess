@@ -77,6 +77,7 @@ public class RequestController {
         return serverResponse;
     }
 
+
     @RequestMapping("/submitMove")
     public String submitMove(@RequestParam(name = "moveData") String moveDataString){
         String serverResponse;
