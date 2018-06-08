@@ -30,12 +30,18 @@ public class GameHost {
 
 	}
 
+	/**
+	 * Starts the timer for the game Turn
+	 */
 	public void startTimer()
 	{
 		forfeit = false;
 		//timer.start();
 	}
 
+	/**
+	 * Stops the timer for the game Turn
+	 */
 	public void stopTimer()
 	{
 		//timer.stop();
@@ -44,6 +50,9 @@ public class GameHost {
 	}
 
 
+	/**
+	 * Forfeits the game turn after the timer has run out and no move selection is made
+	 */
 	public void forfeit() {
 		endTurn = true;
 		forfeit = true;
@@ -62,12 +71,14 @@ public class GameHost {
 		Main.scene.confirm();
 	}
 
+	/**
+	 * Gets the timestamp of when the move was inputted
+	 */
 	public static int getTimeStamp()
 	{
 		return timestamp;
 	}
 
-	//Decides if it's time to go ahead and run executeGameTurn()
 	/**
 	 * Decides if it's time to go ahead and run executeGameTurn()
 	 */
@@ -98,10 +109,6 @@ public class GameHost {
 		// is not in validMoves array
 	// PostCondition: GameHost acts as a referee and determines if moves can be executed.
 		// calls board::movePiece on the valid pieces that can be moved
-		// TODO: deal with capture situations
-		/**
-		 * Calls board::movePiece on the valid pieces that can be moved
-		 */
 	public void executeGameTurn()
 	{
 		// get both player's moves
@@ -336,6 +343,9 @@ public class GameHost {
 		return false;
 
 	}
+	/**
+	 * Processes Move given by the server
+	 */
 	public void processMove(String m) {
 		System.out.println("OTHER PLAYER'S MOVE: " + m);
 

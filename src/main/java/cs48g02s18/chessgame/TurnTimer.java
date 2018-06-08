@@ -10,29 +10,27 @@ public class TurnTimer {
     Timer timer;
     int timestamp;
 
+    /**
+     * Empty constructor
+     */
     public TurnTimer() {
 
     }
 
+    /**
+     * Updates the timer
+     */
     public void update(java.awt.event.ActionEvent e) {
       if (timeCounter == 0) {
         text = "Time's Up!";
         System.out.println(text);
         GameHost.forfeit = true;
         stop();
-        if (GameHost.gameEnded == true)
-        {
-          System.out.println("FIRST IF !!!!!!!!!");
-
-        }
       }
       else {
         timeCounter--;
         text = "" + timeCounter;
         System.out.println(text);
-        if (GameHost.gameEnded == true) {
-          System.out.println("SECOND ELSE !!!!!!!!!");
-        }
 	  	Platform.runLater(new Runnable() {
 	  		@Override
 			public void run() {
@@ -44,6 +42,9 @@ public class TurnTimer {
       }
     }
 
+    /**
+     * Starts the game turn timer
+     */
     public void start() {
       timestamp = 0;
       timeCounter = TIME_LIMIT;
@@ -52,6 +53,9 @@ public class TurnTimer {
       //timer = new Timer(1000, this::update);
       timer.start();
     }
+    /**
+     * Stops the game turn timer
+     */
     public void stop() {
       timer.stop();
       timestamp = timeCounter;
@@ -62,6 +66,9 @@ public class TurnTimer {
       }
     }
 
+    /**
+     * Gets time when game turn timer stopped
+     */
     public int getTimeStamp()
     {
       return timestamp;
