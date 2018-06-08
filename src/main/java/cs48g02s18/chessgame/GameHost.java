@@ -1,5 +1,9 @@
 package cs48g02s18.chessgame;
 
+import java.awt.Point;
+import java.util.ArrayList;
+import java.util.Random;
+
 public class GameHost {
 
 	public Player whitePlayer = new Player(1);
@@ -39,23 +43,22 @@ public class GameHost {
 		endTurn = true;
 	}
 
-	public static void forfeit()
-	{
+	public void forfeit() {
 		endTurn = true;
 		forfeit = true;
-		Player player;
-		if (SpeedChess.playerPerspective == 1)
+		Player player = null;
+		if (Main.scene.playerPerspective == 1)
 		{
 			player = whitePlayer;
 		}
-		else if (SpeedChess.playerPerspective == 0)
+		else if (Main.scene.playerPerspective == 0)
 		{
 			player = blackPlayer;
 		}
 		Move randomMove = randomMove();
 
 		player.setNextMove(randomMove);
-		SpeedChess.confirm();
+		Main.scene.confirm();
 	}
 
 	public static int getTimeStamp()
@@ -78,9 +81,9 @@ public class GameHost {
 			if (whiteMove != null && blackMove != null)
 			{
 				executeGameTurn();
-				SpeedChess.redrawBoard();
+				Main.scene.redrawBoard();
 			}
-			SpeedChess.kingCheck();
+			Main.scene.kingCheck();
 		}
 
 	}
@@ -172,7 +175,7 @@ public class GameHost {
 				gameBoard.pickUpPiece(whiteTarget);
 				gameBoard.movePiece(whitePlayer, whiteTarget, whiteX, whiteY);
 				//Capture the black piece
-				gameBoard.removePiece(blackPlayer, blackTarget, blackX, blackY);
+				gameBoard.removePiece(blackPlayer, blackTarget);
 				blackTarget.capture();
 				// end the turn so set it back to false
 				gameBoard.setGameTurn(false);
@@ -186,7 +189,7 @@ public class GameHost {
 				gameBoard.pickUpPiece(blackTarget);
 				gameBoard.movePiece(blackPlayer, blackTarget, blackX, blackY);
 				//Capture the white piece
-				gameBoard.removePiece(whitePlayer, whiteTarget, whiteX, whiteY);
+				gameBoard.removePiece(whitePlayer, whiteTarget);
 				whiteTarget.capture();
 				// end the turn so set it back to false
 				gameBoard.setGameTurn(false);
@@ -333,7 +336,7 @@ public class GameHost {
 		return false;
 
 	}
-	public static void processMove(String m) {
+	public void processMove(String m) {
 		System.out.println("OTHER PLAYER'S MOVE: " + m);
 
 		String[] data = m.split("\\s+");
@@ -342,18 +345,17 @@ public class GameHost {
 
 		Move mv = new Move(gameBoard.getPiece(Integer.parseInt(data[0]), Integer.parseInt(data[1])), Integer.parseInt(data[2]), Integer.parseInt(data[3]));
 		mv.setTime(Long.parseLong(data[4]));
-		if (SpeedChess.playerPerspective == 0) {
-			players[1].setNextMove(mv);
+		if (Main.scene.playerPerspective == 0) {
+			whitePlayer.setNextMove(mv);
 		} else {
-			players[0].setNextMove(mv);
+			blackPlayer.setNextMove(mv);
 		}
 	}
 
 	/**
 	 * When timer runs out, call this function to get a random move
 	 */
-	public static Move randomMove()
-	{
+	public Move randomMove() {
 		ArrayList<Point> moves = new ArrayList<Point>();
 		Piece targetPiece;
 		int pieceIdx;
@@ -361,7 +363,12 @@ public class GameHost {
 		do
 		{
 
-			Player player = players[SpeedChess.playerPerspective];
+			Player player = null;
+			if (Main.scene.playerPerspective == 0)
+				player = blackPlayer;
+			else
+				player = whitePlayer;
+
 			int playerType = player.getPlayerType();
 
 			// get Pieces

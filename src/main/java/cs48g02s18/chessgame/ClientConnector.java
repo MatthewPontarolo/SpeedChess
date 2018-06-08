@@ -158,6 +158,11 @@ public class ClientConnector {
 
         serverResponses.append("- reply: :" + this.lastBoard.toString() + "\n");
 
+        /*if (Main.scene != null) {
+			System.out.println("it made it in here at least");
+        	Main.scene.redrawBoard();
+		}*/
+
         //return (this.lastBoard.getBoardData() == this.gameHost. ) //todo finish this to return whether or not there is a new board that needs to be updated into Ghost
         return false;
     }
