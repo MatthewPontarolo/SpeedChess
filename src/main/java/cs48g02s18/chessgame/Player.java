@@ -145,6 +145,7 @@ public class Player {
 		// find in pieces array the Piece at x_i and y_i
 		int target_idx = this.getPieceIdx(x_i, y_i);
 		// move Piece in pieces
+		System.out.println("target_idx: " + target_idx);
 		this.pieces.get(target_idx).move(x, y);
 	}
 

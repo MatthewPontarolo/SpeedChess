@@ -32,11 +32,15 @@ public class SpeedChess extends BorderPane {
 	public static BorderPane masterOverlay;
 	public static Label overlayLabel;
 
+	public Move selectedMove;
+
 	public SpeedChess() {
 		GameHost gameHost = new GameHost();
 		gameHost.initialize();
 		this.clientConnector = new ClientConnector();
 		clientConnector.setUpAndConnect();
+		clientConnector.updateBoardFromServer();
+		playerPerspective = clientConnector.getPlayerNumber();
 		//Setting the top as text for now
 		HBox northBox = new HBox(10);
 		setTop(northBox);
@@ -78,23 +82,22 @@ public class SpeedChess extends BorderPane {
 								selectedPiece = null;
 							} else {
 								if (selectedPiece.getValidMoves(gameHostFinal.gameBoard, selectedPiece.getPlayer()).contains(new Point(x, y))) {
-									//check whether or not it's a capture move (need to check for friendly piece)
-									int playerType = selectedPiece.getPlayer();
-									//b.movePiece(b.getPlayer(playerType), selectedPiece, x, y);
 									Move move = new Move(selectedPiece, x, y);
-									clientConnector.submitMove(move);
+									selectedMove = move;
 									selectedPiece = null;
-									//clientConnector.lockInMove();
 								} else {
 									System.out.println("Invalid move!");
 								}
 							}
-						} else {
-							gameHostFinal.checkIfReady();
-							clientConnector.updateBoardFromServer();
-							gameHostFinal.gameBoard = clientConnector.getNewBoard();
+						} else if (gameHostFinal.gameBoard.getPiece(x, y) != null) {
+							System.out.println("playerNumber? " + clientConnector.getPlayerNumber());
+							if (clientConnector.getPlayerNumber() == gameHostFinal.gameBoard.getPiece(x, y).getPlayer()) {
+								gameHostFinal.checkIfReady();
+								clientConnector.updateBoardFromServer();
+								gameHostFinal.gameBoard = clientConnector.getNewBoard();
 
-							selectedPiece = gameHostFinal.gameBoard.getPiece(x, y);
+								selectedPiece = gameHostFinal.gameBoard.getPiece(x, y);
+							}
 						}
 
 						System.out.println("selected piece is now: " + selectedPiece);
@@ -218,7 +221,8 @@ public class SpeedChess extends BorderPane {
 	}
 
 	public void confirm() {
-
+		clientConnector.submitMove(selectedMove);
+		redrawBoard();
 	}
 
 }

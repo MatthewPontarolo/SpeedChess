@@ -103,8 +103,7 @@ public class Board {
 		 * board situation is updated, player's piece is udpated, move is executed
 		 */
 	public void movePiece(Player player, Piece p, int x, int y) {
-		if (validGameTurn == true)
-		{
+		if (validGameTurn == true) {
 			// updates board's pieces
 			spots[x][y] = p;
 			// updates player's pieces
