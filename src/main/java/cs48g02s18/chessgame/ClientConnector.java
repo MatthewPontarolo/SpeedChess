@@ -173,7 +173,10 @@ public class ClientConnector {
     }
 
     public int secondsLeft(){
-        if (this.lastBoard == null) return -1;
+        if (this.lastBoard == null) return 15;
+        if (lastBoard.getTimeLeft() < 0) {
+            return 0;
+        }
         return lastBoard.getTimeLeft();
     }
 
