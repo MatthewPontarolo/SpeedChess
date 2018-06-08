@@ -309,4 +309,18 @@ public class SpeedChess extends BorderPane {
 		}
 	}
 
+	public void updateTimeView(int c) {
+		if (players[0].hasKing() && GameHost.players[1].hasKing()) {
+			overlayLabel.setText("" + (c + 1));
+			overlayLabel.setFont(new Font("Lucida Grande", 16 + 12 * (9 - c)));
+			if (c < 4) {
+				Color[] colors = new Color[] { Color.RED, Color.DARKORANGE, Color.ORANGE, Color.YELLOW };
+				overlayLabel.setTextFill(colors[c]);
+			} else {
+				overlayLabel.setTextFill(Color.BLACK);
+			}
+		}
+	}
+
+
 }
