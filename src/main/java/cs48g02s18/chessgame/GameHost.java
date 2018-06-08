@@ -26,20 +26,20 @@ public class GameHost {
 
 	}
 
-	public static void startTimer()
+	public void startTimer()
 	{
 		forfeit = false;
 		timer.start();
 	}
 
-	public static void stopTimer()
+	public void stopTimer()
 	{
 		timer.stop();
 		timestamp = timer.getTimeStamp();
 		endTurn = true;
 	}
 
-	public static void forfeit()
+	public void forfeit()
 	{
 		endTurn = true;
 		forfeit = true;
