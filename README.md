@@ -39,4 +39,4 @@ Be able to run ```maven``` on terminal. <br>
 ```cd SpeedChess``` <br>
 <br>Execute the following to install dependencies, compile, build, and launch the program using spring boot: <br> 
 ```mvn spring-boot:run``` <br>
-
+<br><br>If using IDEA, to set up, under the Maven tool (you may need to turn on viewing of "tool buttons" to get the maven button), press the green plus symbol "Add Maven Projects" and add the pom.xml in this directory. To run, select spring-boot:run under the spring boot plugin of our project under the Maven tool.
