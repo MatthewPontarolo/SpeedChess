@@ -39,11 +39,12 @@ public class Server {
 	}
 	public static String getIP()
 	{
+		String IP = "";
 		try
 		{
 			String host = InetAddress.getLocalHost().toString();
 			String[] parse = host.split("/");
-			String IP = parse[1];
+			IP = parse[1];
 			System.out.println("IP: " + IP);
 		}
 		catch (Exception e)
