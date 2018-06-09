@@ -240,7 +240,7 @@ public class SpeedChess extends BorderPane {
 	}
 
 	public void drawHighlights() {
-		if (selectedPiece != null) {
+		if (selectedPiece != null && selectedPiece.isAlive() && selectedPiece.getXPosition() != -1 && selectedPiece.getYPosition() != -1) {
 			Image im;
 			ArrayList<Point> moves = selectedPiece.getValidMoves(GameHost.gameBoard, selectedPiece.getPlayer());
 			for (int i = 0; i < 8; i++) {
