@@ -22,6 +22,7 @@ public class Server {
 			while (!in.ready()) { }
 			String inputLine;
 			while (in.ready()) {
+				System.out.println(getIP());
 				inputLine = in.readLine();
 				GameHost.processMove(inputLine);
 			}
@@ -35,7 +36,21 @@ public class Server {
 			System.out.println(e.getMessage());
 		}
 	}
-
+	public static String getIP()
+	{
+		try
+		{
+			String host = InetAddress.getLocalHost().toString();
+			String[] parse = host.split("/");
+			IP = parse[1];
+			System.out.println("IP: " + IP);
+		}
+		catch (Exception e)
+		{
+			System.out.println("Unable to get IP Address");
+		}
+		return IP;
+	}
 	public static void setMoveToSend(Move m) {
 		moveToSend = m;
 	}
