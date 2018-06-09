@@ -69,6 +69,8 @@ public class SpeedChess extends BorderPane {
 				GameHost.startTimer();
 				northBox.getChildren().remove(1);
 				northBox.getChildren().remove(1);
+				northBox.getChildren().remove(1);
+				northBox.getChildren().remove(1);
 			}
 		});
 		clientButton.setOnAction(new EventHandler<ActionEvent>() {

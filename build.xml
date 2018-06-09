@@ -24,7 +24,9 @@
   </target>
 
   <target name="clean" description="delete unnecessary files and directories">
-    <delete dir="build" quiet="true" />
+    <delete failonerror="false">
+      <fileset dir="build" includes="*.class"/>
+    </delete>
   </target>
 
   <target name = "jar">

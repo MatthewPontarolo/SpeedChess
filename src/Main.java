@@ -43,7 +43,7 @@ public class Main extends Application {
 		mainStage = primaryStage;
 		primaryStage.setTitle("Speed Chess");
 		SpeedChess scene = new SpeedChess();
-		primaryStage.setScene(new Scene(scene, 600, 600));
+		primaryStage.setScene(new Scene(scene, 700, 600));
 		primaryStage.show();
 	}
 
