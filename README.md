@@ -40,3 +40,15 @@ Be able to run ```maven``` on terminal. <br>
 <br>Execute the following to install dependencies, compile, build, and launch the program using spring boot: <br> 
 ```mvn spring-boot:run``` <br>
 <br><br>If using IDEA, to set up, under the Maven tool (you may need to turn on viewing of "tool buttons" to get the maven button), press the green plus symbol "Add Maven Projects" and add the pom.xml in this directory. To run, select spring-boot:run under the spring boot plugin of our project under the Maven tool.
+<br>
+
+# How to Run Server with Heroku<br>
+####Requirements: <br>
+[Heroku](https://dashboard.heroku.com/login) account (free is sufficient)<br>
+
+<br> Navigate to the Heroku Dashboard, create a new App, then navigate to it's settings --> buildpacks --> add buildpack --> "java"
+<br> Clone the Server branch
+<br> #####Now, we send this to Heroku. Many options: [Heroku CLI](https://devcenter.heroku.com/articles/heroku-cli)<br>, Intellij IDEA, and Github can all easily deploy the app. 
+<br> For Github, push this repository to a Github repo, navigate to: the App --> Heroku Dashboard --> Deploy --> Deployment Method --> Github
+<br> Connect the apppropriate repo and branch. The procfile will build the server and pass the correct port to operate on to the Server from Heroku's environment variables.
+<br> To use the Client with a different server than default, change the variable "url" in ClientConnector to math the url of the Heroku deployment of the server.
