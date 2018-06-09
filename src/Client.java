@@ -4,9 +4,9 @@ import java.net.*;
 public class Client {
 
 	public static Move moveToSend = null;
+	public static String hostName = "128.111.43.38";
 
 	public static void setup() throws IOException {
-		String hostName = "128.111.43.38";
 		int portNumber = 1058;
 
 		try (

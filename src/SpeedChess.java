@@ -1,45 +1,26 @@
 import java.awt.*;
-import java.awt.Graphics;
-import java.awt.Toolkit;
-import java.awt.event.ActionListener;
-import java.awt.FlowLayout;
-import java.awt.BorderLayout;
-import java.awt.Dimension;
-import java.io.*;
-import java.util.*;
-import javafx.application.Application;
+import java.net.UnknownHostException;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-import javafx.scene.Scene;
-import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.Background;
-import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
-import javafx.scene.layout.Pane;
 import javafx.scene.layout.RowConstraints;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.VBox;
-import javafx.scene.layout.Region;
-import javafx.scene.layout.CornerRadii;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
-import javafx.stage.Stage;
 import javafx.geometry.Pos;
 import javafx.geometry.Insets;
 import java.util.ArrayList;
-import java.awt.Point;
 import java.sql.Timestamp;
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import java.net.InetAddress;
 
 public class SpeedChess extends BorderPane {
 
@@ -64,6 +45,16 @@ public class SpeedChess extends BorderPane {
 		Label testLabel = new Label("Speed Chess");
 		testLabel.setFont(new Font("Lucida Grande", 18));
 
+		Label ipLabel = new Label("");
+		try {
+			ipLabel = new Label("" + InetAddress.getLocalHost().toString().substring(InetAddress.getLocalHost().toString().indexOf("/")+1));
+			ipLabel.setFont(new Font("Lucida Grande", 18));
+		} catch (UnknownHostException e) {
+			System.out.println(e);
+		}
+
+		TextField ipEnter = new TextField();
+
 		Button serverButton = new Button("Black Player");
 		Button clientButton = new Button("White Player");
 
@@ -83,6 +74,7 @@ public class SpeedChess extends BorderPane {
 		clientButton.setOnAction(new EventHandler<ActionEvent>() {
 			public void handle(ActionEvent event) {
 				//Main.tryToBeClient();
+				Client.hostName = ipEnter.getText();
 				playerPerspective = 1;//White
 				setupBoard();
 				redrawBoard();
@@ -94,7 +86,7 @@ public class SpeedChess extends BorderPane {
 			}
 		});
 
-		northBox.getChildren().addAll(testLabel, serverButton, clientButton);
+		northBox.getChildren().addAll(testLabel, serverButton, ipLabel, clientButton, ipEnter);
 
 		//Setting the bottom as text for now
 		HBox southBox = new HBox(10);
