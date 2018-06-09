@@ -83,7 +83,8 @@ public class SpeedChess extends BorderPane {
 				System.out.println("TIMER AT 90");
 				GameHost.startTimer();
 				northBox.getChildren().remove(1);
-				northBox.getChildren().remove(1);
+				northBox.getChildren().remove(2);
+				northBox.getChildren().remove(2);
 			}
 		});
 
