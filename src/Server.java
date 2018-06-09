@@ -8,6 +8,7 @@ public class Server {
 	private static Move moveToSend = null;
 	private static boolean isIt = false;
 	private static int counter = 10;
+	private static String IP ="";
 
 	public static void setup() throws IOException {
 
