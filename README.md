@@ -26,16 +26,17 @@ Given the next turn timer runs and both users get the chance to input their next
 Given the user has trouble placing their next move or uncertain about it, when the timer starts for both players to input their move, then the user can click on a piece for the program to show which moves are available for that piece and the user will either know which move to input or validate their move. <br>
 
 
+
+
 # How to Run <br>
 Requirements: <br>
 [Java 1.8+ Version](http://www.oracle.com/technetwork/java/javase/downloads/jdk10-downloads-4416644.html) <br>
-Be able to run ```ant``` on terminal. <br>
-<br>Some computers already have installed ant automatically, however, you can check by typing ```ant -version``` on your terminal. To install ant, you can install it through Homebrew with ```brew install ant``` on your terminal. If you do not have Homebrew, you can install it [here](https://brew.sh/) and then run the command to install ant. Both installations should be fairly quick and do not required much time to get it running. If you would prefer to install ant manually, you can take a look at this [link](http://ant.apache.org/manual/install.html) for more information. After ant is installed, you may proceed to the following steps. <br>
-<br>Clone the git repository into your local environment. <br> 
+Be able to run ```maven``` on terminal. <br>
+<br>Our program can be started using [Maven](https://maven.apache.org/) from the command line, or using Intellij IDEA. To run from command line:<br> 
+<br>clone<br>
 ```git clone https://github.com/MatthewPontarolo/SpeedChess.git```<br>
 <br>Go into directory <br>
 ```cd SpeedChess``` <br>
-<br>Execute the following lines on your terminal: <br> 
-```ant compile``` <br>
-```ant run``` <br>
+<br>Execute the following to install dependencies, compile, build, and launch the program using spring boot: <br> 
+```mvn spring-boot:run``` <br>
 
