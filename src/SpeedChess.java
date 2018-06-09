@@ -55,8 +55,8 @@ public class SpeedChess extends BorderPane {
 
 		TextField ipEnter = new TextField();
 
-		Button serverButton = new Button("Black Player");
-		Button clientButton = new Button("White Player");
+		Button serverButton = new Button("Host Player");
+		Button clientButton = new Button("Client Player");
 
 		serverButton.setOnAction(new EventHandler<ActionEvent>() {
 			public void handle(ActionEvent event) {
@@ -68,9 +68,8 @@ public class SpeedChess extends BorderPane {
 				System.out.println("TIMER AT 77");
 				GameHost.startTimer();
 				northBox.getChildren().remove(1);
-				northBox.getChildren().remove(1);
-				northBox.getChildren().remove(1);
-				northBox.getChildren().remove(1);
+				northBox.getChildren().remove(2);
+				northBox.getChildren().remove(2);
 			}
 		});
 		clientButton.setOnAction(new EventHandler<ActionEvent>() {
@@ -329,7 +328,6 @@ public class SpeedChess extends BorderPane {
 						overlayLabel.setText("You have won!");
 					}
 				});
-				System.out.println("-------- YOU WON BITCH ---------");
 			}
 			GameHost.gameEnded = true;
 
@@ -352,7 +350,6 @@ public class SpeedChess extends BorderPane {
 						overlayLabel.setText("You have won!");
 					}
 				});
-				System.out.println("-------- YOU WON BITCH ---------");
 
 			}
 			GameHost.gameEnded = true;
