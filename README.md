@@ -36,6 +36,8 @@ Be able to run ```ant``` on terminal. <br>
 <br>Go into directory <br>
 ```cd SpeedChess``` <br>
 <br>Execute the following lines on your terminal: <br> 
-```ant compile``` <br>
 ```ant run``` <br>
+
+# Game Start Up <br> 
+Upon game start up, decide which player will host the game. Host player will need to click the "Host Player" button to initialize the game. Afterwards, the client will need to enter in the IP address of the host player before clicking the "Client Player" button. After the connection has been made, the game will now start!
 
